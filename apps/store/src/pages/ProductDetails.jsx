@@ -1,3 +1,4 @@
+import ReviewSection from "@/components/ReviewSection";
 import { Button } from "@/components/ui/button";
 import { addToCart } from "@/redux/slices/cartSlice";
 import { Heart } from "lucide-react";
@@ -274,6 +275,8 @@ function ProductDetails() {
           </div>
         </section>
       )}
+
+      <ReviewSection productId={id} />
     </div>
   );
 }
