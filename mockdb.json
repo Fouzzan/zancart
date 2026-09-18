@@ -1,0 +1,604 @@
+{
+  "users" : [],
+  "products": [
+    {
+      "id": 1,
+      "title": "Classic Oversized T-Shirt",
+      "description": "Premium cotton oversized t-shirt designed for everyday comfort and casual styling.",
+      "price": 999,
+      "discountPrice": 799,
+      "category": "Men",
+      "subcategory": "T-Shirts",
+      "brand": "UrbanFit",
+      "images": [
+        "https://images.unsplash.com/photo-1521572163474-6864f9cf17ab",
+        "https://images.unsplash.com/photo-1503341504253-dff4815485f1",
+        "https://images.unsplash.com/photo-1622445275576-721325763afe"
+      ],
+      "rating": 4.6,
+      "reviewCount": 124,
+      "stock": 35,
+      "featured": true,
+      "trending": true
+    },
+    {
+      "id": 2,
+      "title": "Premium Linen Shirt",
+      "description": "Lightweight linen shirt with a relaxed fit, perfect for summer and smart casual occasions.",
+      "price": 1799,
+      "discountPrice": 1399,
+      "category": "Men",
+      "subcategory": "Shirts",
+      "brand": "NorthLane",
+      "images": [
+        "https://images.unsplash.com/photo-1602810318383-e386cc2a3ccf",
+        "https://images.unsplash.com/photo-1596755094514-f87e34085b2c",
+        "https://images.unsplash.com/photo-1603252110481-7ba873bf42ab"
+      ],
+      "rating": 4.4,
+      "reviewCount": 89,
+      "stock": 24,
+      "featured": true,
+      "trending": false
+    },
+    {
+      "id": 3,
+      "title": "Slim Fit Denim Jeans",
+      "description": "Modern slim-fit denim jeans with stretch fabric for comfortable everyday movement.",
+      "price": 2299,
+      "discountPrice": 1799,
+      "category": "Men",
+      "subcategory": "Jeans",
+      "brand": "DenimCo",
+      "images": [
+        "https://images.unsplash.com/photo-1542272604-787c3835535d",
+        "https://images.unsplash.com/photo-1541099649105-f69ad21f3246",
+        "https://images.unsplash.com/photo-1475178626620-a4d074967452"
+      ],
+      "rating": 4.7,
+      "reviewCount": 211,
+      "stock": 41,
+      "featured": false,
+      "trending": true
+    },
+    {
+      "id": 4,
+      "title": "Classic Bomber Jacket",
+      "description": "Minimal bomber jacket with a contemporary silhouette for casual streetwear looks.",
+      "price": 3499,
+      "discountPrice": 2799,
+      "category": "Men",
+      "subcategory": "Jackets",
+      "brand": "StreetMode",
+      "images": [
+        "https://images.unsplash.com/photo-1551028719-00167b16eac5",
+        "https://images.unsplash.com/photo-1521223890158-f9f7c3d5d504",
+        "https://images.unsplash.com/photo-1548883354-7622d03aca27"
+      ],
+      "rating": 4.5,
+      "reviewCount": 76,
+      "stock": 18,
+      "featured": true,
+      "trending": true
+    },
+    {
+      "id": 5,
+      "title": "Casual Polo T-Shirt",
+      "description": "Classic polo t-shirt made with soft breathable fabric for everyday wear.",
+      "price": 1299,
+      "discountPrice": 999,
+      "category": "Men",
+      "subcategory": "T-Shirts",
+      "brand": "UrbanFit",
+      "images": [
+        
+        "https://images.unsplash.com/photo-1581655353564-df123a1eb820"
+      ],
+      "rating": 4.3,
+      "reviewCount": 63,
+      "stock": 52,
+      "featured": false,
+      "trending": false
+    },
+    {
+      "id": 6,
+      "title": "Relaxed Cargo Pants",
+      "description": "Utility-inspired cargo pants with multiple pockets and a relaxed contemporary fit.",
+      "price": 1999,
+      "discountPrice": 1599,
+      "category": "Men",
+      "subcategory": "Pants",
+      "brand": "StreetMode",
+      "images": [
+
+        "https://images.unsplash.com/photo-1624378439575-d8705ad7ae80",
+        "https://images.unsplash.com/photo-1515886657613-9f3515b0c78f"
+      ],
+      "rating": 4.5,
+      "reviewCount": 97,
+      "stock": 29,
+      "featured": false,
+      "trending": true
+    },
+    {
+      "id": 7,
+      "title": "Minimal Black Hoodie",
+      "description": "Soft fleece hoodie with a clean minimal design for relaxed everyday styling.",
+      "price": 2499,
+      "discountPrice": 1999,
+      "category": "Men",
+      "subcategory": "Hoodies",
+      "brand": "NorthLane",
+      "images": [
+        "https://images.unsplash.com/photo-1556821840-3a63f95609a7",
+        "https://images.unsplash.com/photo-1578681994506-b8f463449011",
+        "https://images.unsplash.com/photo-1620799140408-edc6dcb6d633"
+      ],
+      "rating": 4.8,
+      "reviewCount": 154,
+      "stock": 33,
+      "featured": true,
+      "trending": true
+    },
+    {
+      "id": 8,
+      "title": "Floral Summer Dress",
+      "description": "Elegant floral dress with a lightweight fabric and comfortable relaxed silhouette.",
+      "price": 2499,
+      "discountPrice": 1899,
+      "category": "Women",
+      "subcategory": "Dresses",
+      "brand": "BloomWear",
+      "images": [
+        "https://images.unsplash.com/photo-1496747611176-843222e1e57c",
+        "https://images.unsplash.com/photo-1515372039744-b8f02a3ae446",
+        "https://images.unsplash.com/photo-1529139574466-a303027c1d8b"
+      ],
+      "rating": 4.7,
+      "reviewCount": 198,
+      "stock": 27,
+      "featured": true,
+      "trending": true
+    },
+    {
+      "id": 9,
+      "title": "Elegant Midi Dress",
+      "description": "Sophisticated midi dress suitable for parties, dinners and special occasions.",
+      "price": 2999,
+      "discountPrice": 2299,
+      "category": "Women",
+      "subcategory": "Dresses",
+      "brand": "BloomWear",
+      "images": [
+        "https://images.unsplash.com/photo-1595777457583-95e059d581b8",
+        "https://images.unsplash.com/photo-1566174053879-31528523f8ae",
+        "https://images.unsplash.com/photo-1572804013309-59a88b7e92f1"
+      ],
+      "rating": 4.6,
+      "reviewCount": 143,
+      "stock": 19,
+      "featured": true,
+      "trending": false
+    },
+    {
+      "id": 10,
+      "title": "High Waist Wide Leg Jeans",
+      "description": "Comfortable high-waisted jeans with a wide-leg silhouette and modern finish.",
+      "price": 2199,
+      "discountPrice": 1699,
+      "category": "Women",
+      "subcategory": "Jeans",
+      "brand": "DenimCo",
+      "images": [
+        "https://images.unsplash.com/photo-1541099649105-f69ad21f3246",
+        "https://images.unsplash.com/photo-1542272604-787c3835535d",
+        "https://images.unsplash.com/photo-1475180098004-ca77a66827be"
+      ],
+      "rating": 4.5,
+      "reviewCount": 115,
+      "stock": 38,
+      "featured": false,
+      "trending": true
+    },
+    {
+      "id": 11,
+      "title": "Oversized Knit Sweater",
+      "description": "Warm oversized knit sweater with a soft texture and relaxed fit.",
+      "price": 2299,
+      "discountPrice": 1799,
+      "category": "Women",
+      "subcategory": "Sweaters",
+      "brand": "CozyLine",
+      "images": [
+        "https://images.unsplash.com/photo-1434389677669-e08b4cac3105",
+        "https://images.unsplash.com/photo-1576566588028-4147f3842f27",
+        "https://images.unsplash.com/photo-1485968579580-b6d095142e6e"
+      ],
+      "rating": 4.4,
+      "reviewCount": 72,
+      "stock": 25,
+      "featured": false,
+      "trending": false
+    },
+    {
+      "id": 12,
+      "title": "Classic Blazer",
+      "description": "Tailored blazer designed to elevate both professional and smart casual outfits.",
+      "price": 3999,
+      "discountPrice": 3199,
+      "category": "Women",
+      "subcategory": "Blazers",
+      "brand": "ModeStudio",
+      "images": [
+        "https://images.unsplash.com/photo-1551488831-00ddcb6c6bd3",
+        "https://images.unsplash.com/photo-1594633312681-425c7b97ccd1",
+        "https://images.unsplash.com/photo-1580489944761-15a19d654956"
+      ],
+      "rating": 4.8,
+      "reviewCount": 91,
+      "stock": 14,
+      "featured": true,
+      "trending": true
+    },
+    {
+      "id": 13,
+      "title": "Minimal Crop Top",
+      "description": "Soft stretch crop top with a simple silhouette for casual everyday outfits.",
+      "price": 999,
+      "discountPrice": 699,
+      "category": "Women",
+      "subcategory": "Tops",
+      "brand": "ModeStudio",
+      "images": [
+        
+        "https://images.unsplash.com/photo-1529139574466-a303027c1d8b",
+        "https://images.unsplash.com/photo-1551488831-00ddcb6c6bd3"
+      ],
+      "rating": 4.3,
+      "reviewCount": 84,
+      "stock": 47,
+      "featured": false,
+      "trending": true
+    },
+    {
+      "id": 14,
+      "title": "Everyday Running Shoes",
+      "description": "Lightweight running shoes with responsive cushioning for daily workouts and walks.",
+      "price": 3999,
+      "discountPrice": 2999,
+      "category": "Shoes",
+      "subcategory": "Running",
+      "brand": "Stride",
+      "images": [
+        "https://images.unsplash.com/photo-1542291026-7eec264c27ff",
+        "https://images.unsplash.com/photo-1460353581641-37baddab0fa2",
+        "https://images.unsplash.com/photo-1551107696-a4b0c5a0d9a2"
+      ],
+      "rating": 4.7,
+      "reviewCount": 312,
+      "stock": 44,
+      "featured": true,
+      "trending": true
+    },
+    {
+      "id": 15,
+      "title": "Classic White Sneakers",
+      "description": "Minimal white sneakers designed to pair effortlessly with everyday outfits.",
+      "price": 3299,
+      "discountPrice": 2499,
+      "category": "Shoes",
+      "subcategory": "Sneakers",
+      "brand": "Stride",
+      "images": [
+        "https://images.unsplash.com/photo-1549298916-b41d501d3772",
+        "https://images.unsplash.com/photo-1525966222134-fcfa99b8ae77",
+        "https://images.unsplash.com/photo-1495555961986-6d4c1ecb7be3"
+      ],
+      "rating": 4.6,
+      "reviewCount": 267,
+      "stock": 61,
+      "featured": true,
+      "trending": true
+    },
+    {
+      "id": 16,
+      "title": "Trail Hiking Shoes",
+      "description": "Durable outdoor shoes with strong grip and supportive cushioning for trails.",
+      "price": 4999,
+      "discountPrice": 3799,
+      "category": "Shoes",
+      "subcategory": "Outdoor",
+      "brand": "TrailPro",
+      "images": [
+        "https://images.unsplash.com/photo-1551698618-1dfe5d97d256",
+        "https://images.unsplash.com/photo-1520639888713-7851133b1ed0",
+        "https://images.unsplash.com/photo-1518002171953-a080ee817e1f"
+      ],
+      "rating": 4.5,
+      "reviewCount": 129,
+      "stock": 21,
+      "featured": false,
+      "trending": true
+    },
+    {
+      "id": 17,
+      "title": "Comfort Slip-On Shoes",
+      "description": "Easy slip-on shoes with a flexible sole and lightweight construction.",
+      "price": 2499,
+      "discountPrice": 1899,
+      "category": "Shoes",
+      "subcategory": "Casual",
+      "brand": "WalkEasy",
+      "images": [
+        "https://images.unsplash.com/photo-1560769629-975ec94e6a86",
+        "https://images.unsplash.com/photo-1533867617858-e7b97e060509",
+        "https://images.unsplash.com/photo-1543163521-1bf539c55dd2"
+      ],
+      "rating": 4.3,
+      "reviewCount": 88,
+      "stock": 36,
+      "featured": false,
+      "trending": false
+    },
+    {
+      "id": 18,
+      "title": "Performance Training Shoes",
+      "description": "Stable training shoes designed for gym workouts, training sessions and active lifestyles.",
+      "price": 4499,
+      "discountPrice": 3399,
+      "category": "Shoes",
+      "subcategory": "Training",
+      "brand": "Stride",
+      "images": [
+        "https://images.unsplash.com/photo-1538805060514-97d9cc17730c",
+        "https://images.unsplash.com/photo-1552346154-21d32810aba3",
+        "https://images.unsplash.com/photo-1608231387042-66d1773070a5"
+      ],
+      "rating": 4.8,
+      "reviewCount": 176,
+      "stock": 31,
+      "featured": true,
+      "trending": false
+    },
+    {
+      "id": 19,
+      "title": "Minimal Leather Watch",
+      "description": "Classic analog watch with a clean dial and premium leather strap.",
+      "price": 4999,
+      "discountPrice": 3699,
+      "category": "Accessories",
+      "subcategory": "Watches",
+      "brand": "TimeCraft",
+      "images": [
+        "https://images.unsplash.com/photo-1523275335684-37898b6baf30",
+        "https://images.unsplash.com/photo-1524805444758-089113d48a6d",
+        "https://images.unsplash.com/photo-1523170335258-f5ed11844a49"
+      ],
+      "rating": 4.7,
+      "reviewCount": 205,
+      "stock": 17,
+      "featured": true,
+      "trending": true
+    },
+    {
+      "id": 20,
+      "title": "Leather Travel Backpack",
+      "description": "Spacious leather backpack with dedicated compartments for work and travel.",
+      "price": 3999,
+      "discountPrice": 2999,
+      "category": "Accessories",
+      "subcategory": "Bags",
+      "brand": "CarryCo",
+      "images": [
+        "https://images.unsplash.com/photo-1553062407-98eeb64c6a62",
+        "https://images.unsplash.com/photo-1491637639811-60e2756cc1c7",
+        "https://images.unsplash.com/photo-1581605405669-fcdf81165afa"
+      ],
+      "rating": 4.6,
+      "reviewCount": 143,
+      "stock": 28,
+      "featured": true,
+      "trending": true
+    },
+    {
+      "id": 21,
+      "title": "Classic Leather Belt",
+      "description": "Genuine leather belt with a timeless buckle design suitable for everyday wear.",
+      "price": 1299,
+      "discountPrice": 899,
+      "category": "Accessories",
+      "subcategory": "Belts",
+      "brand": "CarryCo",
+      "images": [
+        "https://images.unsplash.com/photo-1624222247344-550fb60583dc",
+        "https://images.unsplash.com/photo-1553062407-98eeb64c6a62",
+        "https://images.unsplash.com/photo-1511499767150-a48a237f0083"
+      ],
+      "rating": 4.4,
+      "reviewCount": 67,
+      "stock": 54,
+      "featured": false,
+      "trending": false
+    },
+    {
+      "id": 22,
+      "title": "Premium Sunglasses",
+      "description": "Modern sunglasses with a lightweight frame and timeless design.",
+      "price": 1999,
+      "discountPrice": 1499,
+      "category": "Accessories",
+      "subcategory": "Sunglasses",
+      "brand": "Visionary",
+      "images": [
+        "https://images.unsplash.com/photo-1511499767150-a48a237f0083",
+        "https://images.unsplash.com/photo-1511499767150-a48a237f0083",
+        "https://images.unsplash.com/photo-1508296695146-257a814070b4"
+      ],
+      "rating": 4.5,
+      "reviewCount": 102,
+      "stock": 32,
+      "featured": false,
+      "trending": true
+    },
+    {
+      "id": 23,
+      "title": "Minimalist Crossbody Bag",
+      "description": "Compact crossbody bag with a clean design for everyday essentials.",
+      "price": 2499,
+      "discountPrice": 1899,
+      "category": "Accessories",
+      "subcategory": "Bags",
+      "brand": "CarryCo",
+      "images": [
+        "https://images.unsplash.com/photo-1584917865442-de89df76afd3",
+        "https://images.unsplash.com/photo-1590874103328-eac38a683ce7",
+        "https://images.unsplash.com/photo-1548036328-c9fa89d128fa"
+      ],
+      "rating": 4.6,
+      "reviewCount": 94,
+      "stock": 22,
+      "featured": true,
+      "trending": false
+    },
+    {
+      "id": 24,
+      "title": "Wireless Noise Cancelling Headphones",
+      "description": "Immersive wireless headphones with active noise cancellation and long battery life.",
+      "price": 8999,
+      "discountPrice": 6999,
+      "category": "Electronics",
+      "subcategory": "Audio",
+      "brand": "SoundMax",
+      "images": [
+        "https://images.unsplash.com/photo-1505740420928-5e560c06d30e",
+        "https://images.unsplash.com/photo-1484704849700-f032a568e944",
+        "https://images.unsplash.com/photo-1546435770-a3e426bf472b"
+      ],
+      "rating": 4.8,
+      "reviewCount": 421,
+      "stock": 26,
+      "featured": true,
+      "trending": true
+    },
+    {
+      "id": 25,
+      "title": "Smart Fitness Watch",
+      "description": "Smart fitness watch with activity tracking, heart-rate monitoring and notifications.",
+      "price": 6999,
+      "discountPrice": 5499,
+      "category": "Electronics",
+      "subcategory": "Smartwatches",
+      "brand": "TechPulse",
+      "images": [
+        "https://images.unsplash.com/photo-1523275335684-37898b6baf30",
+        "https://images.unsplash.com/photo-1579586337278-3befd40fd17a",
+        "https://images.unsplash.com/photo-1546868871-7041f2a55e12"
+      ],
+      "rating": 4.6,
+      "reviewCount": 289,
+      "stock": 39,
+      "featured": true,
+      "trending": true
+    },
+    {
+      "id": 26,
+      "title": "Portable Bluetooth Speaker",
+      "description": "Compact wireless speaker delivering powerful sound for indoor and outdoor listening.",
+      "price": 3999,
+      "discountPrice": 2999,
+      "category": "Electronics",
+      "subcategory": "Audio",
+      "brand": "SoundMax",
+      "images": [
+        "https://images.unsplash.com/photo-1608043152269-423dbba4e7e1",
+        "https://images.unsplash.com/photo-1589003077984-894e133dabab",
+        "https://images.unsplash.com/photo-1545454675-3531b543be5d"
+      ],
+      "rating": 4.5,
+      "reviewCount": 178,
+      "stock": 48,
+      "featured": false,
+      "trending": true
+    },
+    {
+      "id": 27,
+      "title": "Mechanical Gaming Keyboard",
+      "description": "Responsive mechanical keyboard designed for gaming and productive desktop workflows.",
+      "price": 4999,
+      "discountPrice": 3799,
+      "category": "Electronics",
+      "subcategory": "Computer Accessories",
+      "brand": "GameCore",
+      "images": [
+        "https://images.unsplash.com/photo-1587829741301-dc798b83add3",
+        "https://images.unsplash.com/photo-1595225476474-87563907a212",
+        "https://images.unsplash.com/photo-1618384887929-16ec33fab9ef"
+      ],
+      "rating": 4.7,
+      "reviewCount": 156,
+      "stock": 23,
+      "featured": false,
+      "trending": true
+    },
+    {
+      "id": 28,
+      "title": "Ergonomic Wireless Mouse",
+      "description": "Comfortable wireless mouse designed for precise control and long working sessions.",
+      "price": 1999,
+      "discountPrice": 1499,
+      "category": "Electronics",
+      "subcategory": "Computer Accessories",
+      "brand": "TechPulse",
+      "images": [
+        "https://images.unsplash.com/photo-1527814050087-3793815479db",
+        "https://images.unsplash.com/photo-1615663245857-ac93bb7c39e7",
+        "https://images.unsplash.com/photo-1605773527852-c546a8584ea3"
+      ],
+      "rating": 4.4,
+      "reviewCount": 91,
+      "stock": 67,
+      "featured": false,
+      "trending": false
+    },
+    {
+      "id": 29,
+      "title": "4K Portable Action Camera",
+      "description": "Compact action camera capable of capturing high-resolution videos during travel and outdoor adventures.",
+      "price": 12999,
+      "discountPrice": 9999,
+      "category": "Electronics",
+      "subcategory": "Cameras",
+      "brand": "VisionTech",
+      "images": [
+        "https://images.unsplash.com/photo-1516035069371-29a1b244cc32",
+        "https://images.unsplash.com/photo-1502920917128-1aa500764cbd",
+        "https://images.unsplash.com/photo-1510127034890-ba27508e9f1c"
+      ],
+      "rating": 4.6,
+      "reviewCount": 113,
+      "stock": 12,
+      "featured": true,
+      "trending": false
+    },
+    {
+      "id": 30,
+      "title": "Smartphone Wireless Charger",
+      "description": "Compact wireless charging pad with a minimal design for compatible smartphones and accessories.",
+      "price": 2499,
+      "discountPrice": 1799,
+      "category": "Electronics",
+      "subcategory": "Mobile Accessories",
+      "brand": "TechPulse",
+      "images": [
+        "https://images.unsplash.com/photo-1586953208448-b95a79798f07",
+        "https://images.unsplash.com/photo-1609592424936-3e0b0c6a2d77",
+        "https://images.unsplash.com/photo-1591290619762-c5881d3e3a1e"
+      ],
+      "rating": 4.3,
+      "reviewCount": 74,
+      "stock": 58,
+      "featured": false,
+      "trending": false
+    }
+  ]
+}
