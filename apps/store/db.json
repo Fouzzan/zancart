@@ -1,0 +1,2260 @@
+{
+  "users": [],
+  "products": [
+    {
+      "id": "1",
+      "title": "Classic Oversized T-Shirt",
+      "description": "Premium cotton oversized t-shirt designed for everyday comfort and casual styling.",
+      "price": 999,
+      "discountPrice": 799,
+      "category": "Men",
+      "subcategory": "T-Shirts",
+      "brand": "UrbanFit",
+      "images": [
+        "https://images.unsplash.com/photo-1521572267360-ee0c2909d518",
+        "https://images.unsplash.com/photo-1503342217505-b0a15ec3261c",
+        "https://images.unsplash.com/photo-1583743814966-8936f5b7be1a"
+      ],
+      "rating": 3.9,
+      "reviewCount": 124,
+      "stock": 35,
+      "featured": true,
+      "trending": true
+    },
+    {
+      "id": "2",
+      "title": "Premium Linen Shirt",
+      "description": "Lightweight linen shirt with a relaxed fit, perfect for summer and smart casual occasions.",
+      "price": 1799,
+      "discountPrice": 1399,
+      "category": "Men",
+      "subcategory": "Shirts",
+      "brand": "NorthLane",
+      "images": [
+        "https://images.unsplash.com/photo-1602810318383-e386cc2a3ccf",
+        "https://images.unsplash.com/photo-1596755094514-f87e34085b2c",
+        "https://images.unsplash.com/photo-1603252109303-2751441dd157"
+      ],
+      "rating": 4.4,
+      "reviewCount": 89,
+      "stock": 24,
+      "featured": true,
+      "trending": false
+    },
+    {
+      "id": "3",
+      "title": "Slim Fit Denim Jeans",
+      "description": "Modern slim-fit denim jeans with stretch fabric for comfortable everyday movement.",
+      "price": 2299,
+      "discountPrice": 1799,
+      "category": "Men",
+      "subcategory": "Jeans",
+      "brand": "DenimCo",
+      "images": [
+        "https://images.unsplash.com/photo-1542272604-787c3835535d",
+        "https://images.unsplash.com/photo-1541099649105-f69ad21f3246",
+        "https://images.unsplash.com/photo-1475178626620-a4d074967452"
+      ],
+      "rating": 4.7,
+      "reviewCount": 211,
+      "stock": 41,
+      "featured": false,
+      "trending": true
+    },
+    {
+      "id": "4",
+      "title": "Classic Bomber Jacket",
+      "description": "Minimal bomber jacket with a contemporary silhouette for casual streetwear looks.",
+      "price": 3499,
+      "discountPrice": 2799,
+      "category": "Men",
+      "subcategory": "Jackets",
+      "brand": "StreetMode",
+      "images": [
+        "https://images.unsplash.com/photo-1551028719-00167b16eac5",
+        "https://images.unsplash.com/photo-1521223890158-f9f7c3d5d504",
+        "https://images.unsplash.com/photo-1487222477894-8943e31ef7b2"
+      ],
+      "rating": 4.5,
+      "reviewCount": 76,
+      "stock": 18,
+      "featured": true,
+      "trending": true
+    },
+    {
+      "id": "5",
+      "title": "Casual Polo T-Shirt",
+      "description": "Classic polo t-shirt made with soft breathable fabric for everyday wear.",
+      "price": 1299,
+      "discountPrice": 999,
+      "category": "Men",
+      "subcategory": "T-Shirts",
+      "brand": "UrbanFit",
+      "images": [
+        "https://images.unsplash.com/photo-1581655353564-df123a1eb820",
+        "https://images.unsplash.com/photo-1618354691373-d851c5c3a990",
+        "https://images.unsplash.com/photo-1521572267360-ee0c2909d518"
+      ],
+      "rating": 4.3,
+      "reviewCount": 63,
+      "stock": 52,
+      "featured": false,
+      "trending": false
+    },
+    {
+      "id": "6",
+      "title": "Relaxed Cargo Pants",
+      "description": "Utility-inspired cargo pants with multiple pockets and a relaxed contemporary fit.",
+      "price": 1999,
+      "discountPrice": 1599,
+      "category": "Men",
+      "subcategory": "Pants",
+      "brand": "StreetMode",
+      "images": [
+        "https://images.unsplash.com/photo-1624378439575-d8705ad7ae80",
+        "https://images.unsplash.com/photo-1517445312882-bc9910d016b7",
+        "https://images.unsplash.com/photo-1506630448388-4e683c67ddb0"
+      ],
+      "rating": 4.5,
+      "reviewCount": 97,
+      "stock": 29,
+      "featured": false,
+      "trending": true
+    },
+    {
+      "id": "7",
+      "title": "Minimal Black Hoodie",
+      "description": "Soft fleece hoodie with a clean minimal design for relaxed everyday styling.",
+      "price": 2499,
+      "discountPrice": 1999,
+      "category": "Men",
+      "subcategory": "Hoodies",
+      "brand": "NorthLane",
+      "images": [
+        "https://images.unsplash.com/photo-1556905055-8f358a7a47b2",
+        "https://images.unsplash.com/photo-1578681994506-b8f463449011",
+        "https://images.unsplash.com/photo-1509967419530-da38b4704bc6"
+      ],
+      "rating": 4.8,
+      "reviewCount": 154,
+      "stock": 33,
+      "featured": true,
+      "trending": true
+    },
+    {
+      "id": "8",
+      "title": "Floral Summer Dress",
+      "description": "Elegant floral dress with a lightweight fabric and comfortable relaxed silhouette.",
+      "price": 2499,
+      "discountPrice": 1899,
+      "category": "Women",
+      "subcategory": "Dresses",
+      "brand": "BloomWear",
+      "images": [
+        "https://images.unsplash.com/photo-1496747611176-843222e1e57c",
+        "https://images.unsplash.com/photo-1515372039744-b8f02a3ae446",
+        "https://images.unsplash.com/photo-1572804013309-59a88b7e92f1"
+      ],
+      "rating": 4.7,
+      "reviewCount": 198,
+      "stock": 27,
+      "featured": true,
+      "trending": true
+    },
+    {
+      "id": "9",
+      "title": "Elegant Midi Dress",
+      "description": "Sophisticated midi dress suitable for parties, dinners and special occasions.",
+      "price": 2999,
+      "discountPrice": 2299,
+      "category": "Women",
+      "subcategory": "Dresses",
+      "brand": "BloomWear",
+      "images": [
+        "https://images.unsplash.com/photo-1595777457583-95e059d581b8",
+        "https://images.unsplash.com/photo-1566174053879-31528523f8ae",
+        "https://images.unsplash.com/photo-1502716119720-b23a93e5fe1b"
+      ],
+      "rating": 4.6,
+      "reviewCount": 143,
+      "stock": 19,
+      "featured": true,
+      "trending": false
+    },
+    {
+      "id": "10",
+      "title": "High Waist Wide Leg Jeans",
+      "description": "Comfortable high-waisted jeans with a wide-leg silhouette and modern finish.",
+      "price": 2199,
+      "discountPrice": 1699,
+      "category": "Women",
+      "subcategory": "Jeans",
+      "brand": "DenimCo",
+      "images": [
+        "https://images.unsplash.com/photo-1584370848010-d7fe6bc767ec",
+        "https://images.unsplash.com/photo-1541099649105-f69ad21f3246",
+        "https://images.unsplash.com/photo-1509551388413-e18d0ac5d495"
+      ],
+      "rating": 4.5,
+      "reviewCount": 115,
+      "stock": 38,
+      "featured": false,
+      "trending": true
+    },
+    {
+      "id": "11",
+      "title": "Oversized Knit Sweater",
+      "description": "Warm oversized knit sweater with a soft texture and relaxed fit.",
+      "price": 2299,
+      "discountPrice": 1799,
+      "category": "Women",
+      "subcategory": "Sweaters",
+      "brand": "CozyLine",
+      "images": [
+        "https://images.unsplash.com/photo-1434389677669-e08b4cac3105",
+        "https://images.unsplash.com/photo-1576566588028-4147f3842f27",
+        "https://images.unsplash.com/photo-1583744946564-b52ac1c389c8"
+      ],
+      "rating": 4.4,
+      "reviewCount": 72,
+      "stock": 25,
+      "featured": false,
+      "trending": false
+    },
+    {
+      "id": "12",
+      "title": "Classic Blazer",
+      "description": "Tailored blazer designed to elevate both professional and smart casual outfits.",
+      "price": 3999,
+      "discountPrice": 3199,
+      "category": "Women",
+      "subcategory": "Blazers",
+      "brand": "ModeStudio",
+      "images": [
+        "https://images.unsplash.com/photo-1591047139829-d91aecb6caea",
+        "https://images.unsplash.com/photo-1594633312681-425c7b97ccd1",
+        "https://images.unsplash.com/photo-1584273143981-41c073dfe8f8"
+      ],
+      "rating": 4.8,
+      "reviewCount": 91,
+      "stock": 14,
+      "featured": true,
+      "trending": true
+    },
+    {
+      "id": "13",
+      "title": "Minimal Crop Top",
+      "description": "Soft stretch crop top with a simple silhouette for casual everyday outfits.",
+      "price": 999,
+      "discountPrice": 699,
+      "category": "Women",
+      "subcategory": "Tops",
+      "brand": "ModeStudio",
+      "images": [
+        "https://images.unsplash.com/photo-1503342217505-b0a15ec3261c",
+        "https://images.unsplash.com/photo-1515886657613-9f3515b0c78f",
+        "https://images.unsplash.com/photo-1529139574466-a303027c1d8b"
+      ],
+      "rating": 4.3,
+      "reviewCount": 84,
+      "stock": 47,
+      "featured": false,
+      "trending": true
+    },
+    {
+      "id": "14",
+      "title": "Everyday Running Shoes",
+      "description": "Lightweight running shoes with responsive cushioning for daily workouts and walks.",
+      "price": 3999,
+      "discountPrice": 2999,
+      "category": "Shoes",
+      "subcategory": "Running",
+      "brand": "Stride",
+      "images": [
+        "https://images.unsplash.com/photo-1542291026-7eec264c27ff",
+        "https://images.unsplash.com/photo-1595950653106-6c9ebd614d3a",
+        "https://images.unsplash.com/photo-1584735935682-2f2b69dff9d2"
+      ],
+      "rating": 4.7,
+      "reviewCount": 312,
+      "stock": 44,
+      "featured": true,
+      "trending": true
+    },
+    {
+      "id": "15",
+      "title": "Classic White Sneakers",
+      "description": "Minimal white sneakers designed to pair effortlessly with everyday outfits.",
+      "price": 3299,
+      "discountPrice": 2499,
+      "category": "Shoes",
+      "subcategory": "Sneakers",
+      "brand": "Stride",
+      "images": [
+        "https://images.unsplash.com/photo-1549298916-b41d501d3772",
+        "https://images.unsplash.com/photo-1525966222134-fcfa99b8ae77",
+        "https://images.unsplash.com/photo-1600185365926-3a2ce3cdb9eb"
+      ],
+      "rating": 4.6,
+      "reviewCount": 267,
+      "stock": 61,
+      "featured": true,
+      "trending": true
+    },
+    {
+      "id": "16",
+      "title": "Trail Hiking Shoes",
+      "description": "Durable outdoor shoes with strong grip and supportive cushioning for trails.",
+      "price": 4999,
+      "discountPrice": 3799,
+      "category": "Shoes",
+      "subcategory": "Outdoor",
+      "brand": "TrailPro",
+      "images": [
+        "https://images.unsplash.com/photo-1551698618-1dfe5d97d256",
+        "https://images.unsplash.com/photo-1606107557195-0e29a4b5b4aa",
+        "https://images.unsplash.com/photo-1539185441755-769473a23570"
+      ],
+      "rating": 4.5,
+      "reviewCount": 129,
+      "stock": 21,
+      "featured": false,
+      "trending": true
+    },
+    {
+      "id": "17",
+      "title": "Comfort Slip-On Shoes",
+      "description": "Easy slip-on shoes with a flexible sole and lightweight construction.",
+      "price": 2499,
+      "discountPrice": 1899,
+      "category": "Shoes",
+      "subcategory": "Casual",
+      "brand": "WalkEasy",
+      "images": [
+        "https://images.unsplash.com/photo-1560769629-975ec94e6a86",
+        "https://images.unsplash.com/photo-1575537302964-96cd47c06b1b",
+        "https://images.unsplash.com/photo-1562183241-b937e95585b6"
+      ],
+      "rating": 4.3,
+      "reviewCount": 88,
+      "stock": 36,
+      "featured": false,
+      "trending": false
+    },
+    {
+      "id": "18",
+      "title": "Performance Training Shoes",
+      "description": "Stable training shoes designed for gym workouts, training sessions and active lifestyles.",
+      "price": 4499,
+      "discountPrice": 3399,
+      "category": "Shoes",
+      "subcategory": "Training",
+      "brand": "Stride",
+      "images": [
+        "https://images.unsplash.com/photo-1608231387042-66d1773070a5",
+        "https://images.unsplash.com/photo-1582588678413-dbf45f4823e9",
+        "https://images.unsplash.com/photo-1514989940743-460b4b6f7007"
+      ],
+      "rating": 4.8,
+      "reviewCount": 176,
+      "stock": 31,
+      "featured": true,
+      "trending": false
+    },
+    {
+      "id": "19",
+      "title": "Minimal Leather Watch",
+      "description": "Classic analog watch with a clean dial and premium leather strap.",
+      "price": 4999,
+      "discountPrice": 3699,
+      "category": "Accessories",
+      "subcategory": "Watches",
+      "brand": "TimeCraft",
+      "images": [
+        "https://images.unsplash.com/photo-1524805444758-089113d48a6d",
+        "https://images.unsplash.com/photo-1522335789203-aabd1fc54bc9",
+        "https://images.unsplash.com/photo-1523275335684-37898b6baf30"
+      ],
+      "rating": 4.7,
+      "reviewCount": 205,
+      "stock": 17,
+      "featured": true,
+      "trending": true
+    },
+    {
+      "id": "20",
+      "title": "Leather Travel Backpack",
+      "description": "Spacious leather backpack with dedicated compartments for work and travel.",
+      "price": 3999,
+      "discountPrice": 2999,
+      "category": "Accessories",
+      "subcategory": "Bags",
+      "brand": "CarryCo",
+      "images": [
+        "https://images.unsplash.com/photo-1553062407-98eeb64c6a62",
+        "https://images.unsplash.com/photo-1622560480605-d83c853bc5c3",
+        "https://images.unsplash.com/photo-1546938576-6e6a64f317cc"
+      ],
+      "rating": 4.6,
+      "reviewCount": 143,
+      "stock": 28,
+      "featured": true,
+      "trending": true
+    },
+    {
+      "id": "21",
+      "title": "Classic Leather Belt",
+      "description": "Genuine leather belt with a timeless buckle design suitable for everyday wear.",
+      "price": 1299,
+      "discountPrice": 899,
+      "category": "Accessories",
+      "subcategory": "Belts",
+      "brand": "CarryCo",
+      "images": [
+        "https://images.unsplash.com/photo-1624222247344-550fb60583dc",
+        "https://images.unsplash.com/photo-1553062407-98eeb64c6a62",
+        "https://images.unsplash.com/photo-1606760227091-3dd870d97f1d"
+      ],
+      "rating": 4.4,
+      "reviewCount": 67,
+      "stock": 54,
+      "featured": false,
+      "trending": false
+    },
+    {
+      "id": "22",
+      "title": "Premium Sunglasses",
+      "description": "Modern sunglasses with a lightweight frame and timeless design.",
+      "price": 1999,
+      "discountPrice": 1499,
+      "category": "Accessories",
+      "subcategory": "Sunglasses",
+      "brand": "Visionary",
+      "images": [
+        "https://images.unsplash.com/photo-1511499767150-a48a237f0083",
+        "https://images.unsplash.com/photo-1508296695146-257a814070b4",
+        "https://images.unsplash.com/photo-1572635196237-14b3f281503f"
+      ],
+      "rating": 4.5,
+      "reviewCount": 102,
+      "stock": 32,
+      "featured": false,
+      "trending": true
+    },
+    {
+      "id": "23",
+      "title": "Minimalist Crossbody Bag",
+      "description": "Compact crossbody bag with a clean design for everyday essentials.",
+      "price": 2499,
+      "discountPrice": 1899,
+      "category": "Accessories",
+      "subcategory": "Bags",
+      "brand": "CarryCo",
+      "images": [
+        "https://images.unsplash.com/photo-1584917865442-de89df76afd3",
+        "https://images.unsplash.com/photo-1590874103328-eac38a683ce7",
+        "https://images.unsplash.com/photo-1548036328-c9fa89d128fa"
+      ],
+      "rating": 4.6,
+      "reviewCount": 94,
+      "stock": 22,
+      "featured": true,
+      "trending": false
+    },
+    {
+      "id": "24",
+      "title": "Wireless Noise Cancelling Headphones",
+      "description": "Immersive wireless headphones with active noise cancellation and long battery life.",
+      "price": 8999,
+      "discountPrice": 6999,
+      "category": "Electronics",
+      "subcategory": "Audio",
+      "brand": "SoundMax",
+      "images": [
+        "https://images.unsplash.com/photo-1505740420928-5e560c06d30e",
+        "https://images.unsplash.com/photo-1484704849700-f032a568e944",
+        "https://images.unsplash.com/photo-1546435770-a3e426bf472b"
+      ],
+      "rating": 4.8,
+      "reviewCount": 421,
+      "stock": 26,
+      "featured": true,
+      "trending": true
+    },
+    {
+      "id": "25",
+      "title": "Smart Fitness Watch",
+      "description": "Smart fitness watch with activity tracking, heart-rate monitoring and notifications.",
+      "price": 6999,
+      "discountPrice": 5499,
+      "category": "Electronics",
+      "subcategory": "Smartwatches",
+      "brand": "TechPulse",
+      "images": [
+        "https://images.unsplash.com/photo-1579586337278-3befd40fd17a",
+        "https://images.unsplash.com/photo-1546868871-7041f2a55e12",
+        "https://images.unsplash.com/photo-1508685096489-7aacd43bd3b1"
+      ],
+      "rating": 4.6,
+      "reviewCount": 289,
+      "stock": 39,
+      "featured": true,
+      "trending": true
+    },
+    {
+      "id": "26",
+      "title": "Portable Bluetooth Speaker",
+      "description": "Compact wireless speaker delivering powerful sound for indoor and outdoor listening.",
+      "price": 3999,
+      "discountPrice": 2999,
+      "category": "Electronics",
+      "subcategory": "Audio",
+      "brand": "SoundMax",
+      "images": [
+        "https://images.unsplash.com/photo-1608043152269-423dbba4e7e1",
+        "https://images.unsplash.com/photo-1545454675-3531b543be5d",
+        "https://images.unsplash.com/photo-1508700115892-45ecd05ae2ad"
+      ],
+      "rating": 4.5,
+      "reviewCount": 178,
+      "stock": 48,
+      "featured": false,
+      "trending": true
+    },
+    {
+      "id": "27",
+      "title": "Mechanical Gaming Keyboard",
+      "description": "Responsive mechanical keyboard designed for gaming and productive desktop workflows.",
+      "price": 4999,
+      "discountPrice": 3799,
+      "category": "Electronics",
+      "subcategory": "Computer Accessories",
+      "brand": "GameCore",
+      "images": [
+        "https://images.unsplash.com/photo-1587829741301-dc798b83add3",
+        "https://images.unsplash.com/photo-1595225476474-87563907a212",
+        "https://images.unsplash.com/photo-1618384887929-16ec33fab9ef"
+      ],
+      "rating": 4.7,
+      "reviewCount": 156,
+      "stock": 23,
+      "featured": false,
+      "trending": true
+    },
+    {
+      "id": "28",
+      "title": "Ergonomic Wireless Mouse",
+      "description": "Comfortable wireless mouse designed for precise control and long working sessions.",
+      "price": 1999,
+      "discountPrice": 1499,
+      "category": "Electronics",
+      "subcategory": "Computer Accessories",
+      "brand": "TechPulse",
+      "images": [
+        "https://images.unsplash.com/photo-1527814050087-3793815479db",
+        "https://images.unsplash.com/photo-1615663245857-ac93bb7c39e7",
+        "https://images.unsplash.com/photo-1605773527852-c546a8584ea3"
+      ],
+      "rating": 4.4,
+      "reviewCount": 91,
+      "stock": 67,
+      "featured": false,
+      "trending": false
+    },
+    {
+      "id": "29",
+      "title": "4K Portable Action Camera",
+      "description": "Compact action camera capable of capturing high-resolution videos during travel and outdoor adventures.",
+      "price": 12999,
+      "discountPrice": 9999,
+      "category": "Electronics",
+      "subcategory": "Cameras",
+      "brand": "VisionTech",
+      "images": [
+        "https://images.unsplash.com/photo-1526170375885-4d8ecf77b99f",
+        "https://images.unsplash.com/photo-1502920917128-1aa500764cbd",
+        "https://images.unsplash.com/photo-1516035069371-29a1b244cc32"
+      ],
+      "rating": 4.6,
+      "reviewCount": 113,
+      "stock": 12,
+      "featured": true,
+      "trending": false
+    },
+    {
+      "id": "30",
+      "title": "Smartphone Wireless Charger",
+      "description": "Compact wireless charging pad with a minimal design for compatible smartphones and accessories.",
+      "price": 2499,
+      "discountPrice": 1799,
+      "category": "Electronics",
+      "subcategory": "Mobile Accessories",
+      "brand": "TechPulse",
+      "images": [
+        "https://images.unsplash.com/photo-1586953208448-b95a79798f07",
+        "https://images.unsplash.com/photo-1622445268453-6143c683bca9",
+        "https://images.unsplash.com/photo-1583394838336-acd977736f90"
+      ],
+      "rating": 4.3,
+      "reviewCount": 74,
+      "stock": 58,
+      "featured": false,
+      "trending": false
+    },
+    {
+      "id": "31",
+      "title": "Activewear Athletic Joggers",
+      "description": "Tapered training joggers constructed with quick-dry stretch fabric and zip pockets.",
+      "price": 1899,
+      "discountPrice": 1499,
+      "category": "Men",
+      "subcategory": "Pants",
+      "brand": "Stride",
+      "images": [
+        "https://images.unsplash.com/photo-1552902865-b72c031ac5ea",
+        "https://images.unsplash.com/photo-1517445312882-bc9910d016b7",
+        "https://images.unsplash.com/photo-1506630448388-4e683c67ddb0"
+      ],
+      "rating": 4.5,
+      "reviewCount": 83,
+      "stock": 42,
+      "featured": false,
+      "trending": true
+    },
+    {
+      "id": "32",
+      "title": "Heavyweight Zip Hoodie",
+      "description": "Full-zip fleece hoodie featuring kangaroo pockets and ribbed thermal cuffs.",
+      "price": 2799,
+      "discountPrice": 2199,
+      "category": "Men",
+      "subcategory": "Hoodies",
+      "brand": "StreetMode",
+      "images": [
+        "https://images.unsplash.com/photo-1556905055-8f358a7a47b2",
+        "https://images.unsplash.com/photo-1509967419530-da38b4704bc6",
+        "https://images.unsplash.com/photo-1578681994506-b8f463449011"
+      ],
+      "rating": 4.7,
+      "reviewCount": 112,
+      "stock": 20,
+      "featured": true,
+      "trending": false
+    },
+    {
+      "id": "33",
+      "title": "Corduroy Casual Overshirt",
+      "description": "Textured cotton corduroy button-down shirt designed for effortless layering.",
+      "price": 2399,
+      "discountPrice": 1899,
+      "category": "Men",
+      "subcategory": "Shirts",
+      "brand": "NorthLane",
+      "images": [
+        "https://images.unsplash.com/photo-1602810318383-e386cc2a3ccf",
+        "https://images.unsplash.com/photo-1603252109303-2751441dd157",
+        "https://images.unsplash.com/photo-1596755094514-f87e34085b2c"
+      ],
+      "rating": 4.6,
+      "reviewCount": 65,
+      "stock": 19,
+      "featured": false,
+      "trending": true
+    },
+    {
+      "id": "34",
+      "title": "Classic Chino Trousers",
+      "description": "Slim tailored cotton chinos offering a crisp drape for smart casual styling.",
+      "price": 2199,
+      "discountPrice": 1699,
+      "category": "Men",
+      "subcategory": "Pants",
+      "brand": "UrbanFit",
+      "images": [
+        "https://images.unsplash.com/photo-1624378439575-d8705ad7ae80",
+        "https://images.unsplash.com/photo-1475178626620-a4d074967452",
+        "https://images.unsplash.com/photo-1542272604-787c3835535d"
+      ],
+      "rating": 4.4,
+      "reviewCount": 94,
+      "stock": 37,
+      "featured": false,
+      "trending": false
+    },
+    {
+      "id": "35",
+      "title": "Vintage Washed Graphic Tee",
+      "description": "Distressed wash graphic t-shirt crafted from combed organic jersey cotton.",
+      "price": 1199,
+      "discountPrice": 899,
+      "category": "Men",
+      "subcategory": "T-Shirts",
+      "brand": "StreetMode",
+      "images": [
+        "https://images.unsplash.com/photo-1503342217505-b0a15ec3261c",
+        "https://images.unsplash.com/photo-1521572267360-ee0c2909d518",
+        "https://images.unsplash.com/photo-1583743814966-8936f5b7be1a"
+      ],
+      "rating": 4.5,
+      "reviewCount": 142,
+      "stock": 60,
+      "featured": true,
+      "trending": true
+    },
+    {
+      "id": "36",
+      "title": "Quilted Puffer Vest",
+      "description": "Insulated weather-resistant sleeveless puffer gilet with stand-up neck collar.",
+      "price": 2999,
+      "discountPrice": 2399,
+      "category": "Men",
+      "subcategory": "Jackets",
+      "brand": "NorthLane",
+      "images": [
+        "https://images.unsplash.com/photo-1551028719-00167b16eac5",
+        "https://images.unsplash.com/photo-1487222477894-8943e31ef7b2",
+        "https://images.unsplash.com/photo-1521223890158-f9f7c3d5d504"
+      ],
+      "rating": 4.6,
+      "reviewCount": 51,
+      "stock": 16,
+      "featured": false,
+      "trending": false
+    },
+    {
+      "id": "37",
+      "title": "Pleated Linen Trousers",
+      "description": "High-rise tailored linen blend trousers with front pleats and fluid leg taper.",
+      "price": 2699,
+      "discountPrice": 2099,
+      "category": "Women",
+      "subcategory": "Pants",
+      "brand": "ModeStudio",
+      "images": [
+        "https://images.unsplash.com/photo-1509551388413-e18d0ac5d495",
+        "https://images.unsplash.com/photo-1584370848010-d7fe6bc767ec",
+        "https://images.unsplash.com/photo-1541099649105-f69ad21f3246"
+      ],
+      "rating": 4.7,
+      "reviewCount": 88,
+      "stock": 22,
+      "featured": true,
+      "trending": true
+    },
+    {
+      "id": "38",
+      "title": "Ribbed Knit Bodycon Dress",
+      "description": "Flattering ribbed knit sweater dress crafted from fine viscose stretch weave.",
+      "price": 2899,
+      "discountPrice": 2199,
+      "category": "Women",
+      "subcategory": "Dresses",
+      "brand": "BloomWear",
+      "images": [
+        "https://images.unsplash.com/photo-1566174053879-31528523f8ae",
+        "https://images.unsplash.com/photo-1595777457583-95e059d581b8",
+        "https://images.unsplash.com/photo-1502716119720-b23a93e5fe1b"
+      ],
+      "rating": 4.6,
+      "reviewCount": 103,
+      "stock": 18,
+      "featured": false,
+      "trending": true
+    },
+    {
+      "id": "39",
+      "title": "Satin Wrap Blouse",
+      "description": "Silky satin wrap top with a deep V-neckline and adjustable waist tie belt.",
+      "price": 1899,
+      "discountPrice": 1399,
+      "category": "Women",
+      "subcategory": "Tops",
+      "brand": "ModeStudio",
+      "images": [
+        "https://images.unsplash.com/photo-1584273143981-41c073dfe8f8",
+        "https://images.unsplash.com/photo-1515886657613-9f3515b0c78f",
+        "https://images.unsplash.com/photo-1529139574466-a303027c1d8b"
+      ],
+      "rating": 4.5,
+      "reviewCount": 77,
+      "stock": 31,
+      "featured": false,
+      "trending": false
+    },
+    {
+      "id": "40",
+      "title": "Chunky Turtleneck Sweater",
+      "description": "Cozy ribbed turtleneck sweater knitted from soft thermal wool-blend yarn.",
+      "price": 2699,
+      "discountPrice": 2099,
+      "category": "Women",
+      "subcategory": "Sweaters",
+      "brand": "CozyLine",
+      "images": [
+        "https://images.unsplash.com/photo-1576566588028-4147f3842f27",
+        "https://images.unsplash.com/photo-1434389677669-e08b4cac3105",
+        "https://images.unsplash.com/photo-1583744946564-b52ac1c389c8"
+      ],
+      "rating": 4.8,
+      "reviewCount": 165,
+      "stock": 28,
+      "featured": true,
+      "trending": true
+    },
+    {
+      "id": "41",
+      "title": "A-Line Denim Midi Skirt",
+      "description": "Structured midi-length denim skirt with a centered front slit and belt loops.",
+      "price": 2099,
+      "discountPrice": 1599,
+      "category": "Women",
+      "subcategory": "Skirts",
+      "brand": "DenimCo",
+      "images": [
+        "https://images.unsplash.com/photo-1584370848010-d7fe6bc767ec",
+        "https://images.unsplash.com/photo-1541099649105-f69ad21f3246",
+        "https://images.unsplash.com/photo-1475180098004-ca77a66827be"
+      ],
+      "rating": 4.4,
+      "reviewCount": 59,
+      "stock": 34,
+      "featured": false,
+      "trending": false
+    },
+    {
+      "id": "42",
+      "title": "Belted Trench Coat",
+      "description": "Double-breasted long trench coat with storm flaps and a removable cinch belt.",
+      "price": 5499,
+      "discountPrice": 4299,
+      "category": "Women",
+      "subcategory": "Jackets",
+      "brand": "ModeStudio",
+      "images": [
+        "https://images.unsplash.com/photo-1591047139829-d91aecb6caea",
+        "https://images.unsplash.com/photo-1594633312681-425c7b97ccd1",
+        "https://images.unsplash.com/photo-1584273143981-41c073dfe8f8"
+      ],
+      "rating": 4.9,
+      "reviewCount": 118,
+      "stock": 15,
+      "featured": true,
+      "trending": true
+    },
+    {
+      "id": "43",
+      "title": "Retro Court High-Top Sneakers",
+      "description": "Vintage heritage basketball-inspired high-top sneakers with padded collars.",
+      "price": 4299,
+      "discountPrice": 3299,
+      "category": "Shoes",
+      "subcategory": "Sneakers",
+      "brand": "Stride",
+      "images": [
+        "https://images.unsplash.com/photo-1549298916-b41d501d3772",
+        "https://images.unsplash.com/photo-1600185365926-3a2ce3cdb9eb",
+        "https://images.unsplash.com/photo-1525966222134-fcfa99b8ae77"
+      ],
+      "rating": 4.7,
+      "reviewCount": 210,
+      "stock": 25,
+      "featured": true,
+      "trending": true
+    },
+    {
+      "id": "44",
+      "title": "Leather Chelsea Boots",
+      "description": "Handcrafted ankle boots with elasticated side gussets and durable rubber lug soles.",
+      "price": 5999,
+      "discountPrice": 4799,
+      "category": "Shoes",
+      "subcategory": "Boots",
+      "brand": "TrailPro",
+      "images": [
+        "https://images.unsplash.com/photo-1520639888713-7851133b1ed0",
+        "https://images.unsplash.com/photo-1606107557195-0e29a4b5b4aa",
+        "https://images.unsplash.com/photo-1551698618-1dfe5d97d256"
+      ],
+      "rating": 4.8,
+      "reviewCount": 134,
+      "stock": 19,
+      "featured": true,
+      "trending": false
+    },
+    {
+      "id": "45",
+      "title": "Breathable Mesh Slide Sandals",
+      "description": "Ergonomic contoured footbed slip-on slides for pool sessions and casual lounging.",
+      "price": 1499,
+      "discountPrice": 1099,
+      "category": "Shoes",
+      "subcategory": "Casual",
+      "brand": "WalkEasy",
+      "images": [
+        "https://images.unsplash.com/photo-1560769629-975ec94e6a86",
+        "https://images.unsplash.com/photo-1575537302964-96cd47c06b1b",
+        "https://images.unsplash.com/photo-1562183241-b937e95585b6"
+      ],
+      "rating": 4.2,
+      "reviewCount": 78,
+      "stock": 53,
+      "featured": false,
+      "trending": false
+    },
+    {
+      "id": "46",
+      "title": "Carbon Plate Marathon Racers",
+      "description": "High-propulsion carbon fiber plated running shoes built for tempo road racing.",
+      "price": 7999,
+      "discountPrice": 6499,
+      "category": "Shoes",
+      "subcategory": "Running",
+      "brand": "Stride",
+      "images": [
+        "https://images.unsplash.com/photo-1542291026-7eec264c27ff",
+        "https://images.unsplash.com/photo-1595950653106-6c9ebd614d3a",
+        "https://images.unsplash.com/photo-1584735935682-2f2b69dff9d2"
+      ],
+      "rating": 4.9,
+      "reviewCount": 98,
+      "stock": 14,
+      "featured": true,
+      "trending": true
+    },
+    {
+      "id": "47",
+      "title": "Suede Penny Loafers",
+      "description": "Timeless slip-on dress loafers made with soft split suede and stitched leather welts.",
+      "price": 4499,
+      "discountPrice": 3499,
+      "category": "Shoes",
+      "subcategory": "Casual",
+      "brand": "WalkEasy",
+      "images": [
+        "https://images.unsplash.com/photo-1560769629-975ec94e6a86",
+        "https://images.unsplash.com/photo-1533867617858-e7b97e060509",
+        "https://images.unsplash.com/photo-1543163521-1bf539c55dd2"
+      ],
+      "rating": 4.5,
+      "reviewCount": 67,
+      "stock": 26,
+      "featured": false,
+      "trending": false
+    },
+    {
+      "id": "48",
+      "title": "Rugged Mountain Trekking Boots",
+      "description": "Waterproof leather hiking boots with deep lug rubber soles and ankle support.",
+      "price": 6499,
+      "discountPrice": 4999,
+      "category": "Shoes",
+      "subcategory": "Outdoor",
+      "brand": "TrailPro",
+      "images": [
+        "https://images.unsplash.com/photo-1551698618-1dfe5d97d256",
+        "https://images.unsplash.com/photo-1520639888713-7851133b1ed0",
+        "https://images.unsplash.com/photo-1539185441755-769473a23570"
+      ],
+      "rating": 4.7,
+      "reviewCount": 145,
+      "stock": 17,
+      "featured": false,
+      "trending": true
+    },
+    {
+      "id": "49",
+      "title": "Chronograph Stainless Steel Watch",
+      "description": "Precision quartz chronograph wristwatch with a tachymeter bezel and steel link bracelet.",
+      "price": 6999,
+      "discountPrice": 5299,
+      "category": "Accessories",
+      "subcategory": "Watches",
+      "brand": "TimeCraft",
+      "images": [
+        "https://images.unsplash.com/photo-1522335789203-aabd1fc54bc9",
+        "https://images.unsplash.com/photo-1524805444758-089113d48a6d",
+        "https://images.unsplash.com/photo-1523275335684-37898b6baf30"
+      ],
+      "rating": 4.8,
+      "reviewCount": 173,
+      "stock": 21,
+      "featured": true,
+      "trending": true
+    },
+    {
+      "id": "50",
+      "title": "Polarized Aviator Sunglasses",
+      "description": "Ultra-light metallic teardrop aviator frames with 100% UV400 polarized lenses.",
+      "price": 2499,
+      "discountPrice": 1899,
+      "category": "Accessories",
+      "subcategory": "Sunglasses",
+      "brand": "Visionary",
+      "images": [
+        "https://images.unsplash.com/photo-1511499767150-a48a237f0083",
+        "https://images.unsplash.com/photo-1508296695146-257a814070b4",
+        "https://images.unsplash.com/photo-1572635196237-14b3f281503f"
+      ],
+      "rating": 4.6,
+      "reviewCount": 89,
+      "stock": 44,
+      "featured": false,
+      "trending": false
+    },
+    {
+      "id": "51",
+      "title": "Canvas Weekend Duffel Bag",
+      "description": "Heavy waxed canvas duffel with reinforced leather handles and luggage pass-through.",
+      "price": 3499,
+      "discountPrice": 2699,
+      "category": "Accessories",
+      "subcategory": "Bags",
+      "brand": "CarryCo",
+      "images": [
+        "https://images.unsplash.com/photo-1553062407-98eeb64c6a62",
+        "https://images.unsplash.com/photo-1546938576-6e6a64f317cc",
+        "https://images.unsplash.com/photo-1622560480605-d83c853bc5c3"
+      ],
+      "rating": 4.7,
+      "reviewCount": 121,
+      "stock": 30,
+      "featured": true,
+      "trending": true
+    },
+    {
+      "id": "52",
+      "title": "Bifold RFID Leather Wallet",
+      "description": "Slim top-grain leather wallet with integrated RFID-blocking shields and eight card slots.",
+      "price": 1499,
+      "discountPrice": 1099,
+      "category": "Accessories",
+      "subcategory": "Wallets",
+      "brand": "CarryCo",
+      "images": [
+        "https://images.unsplash.com/photo-1624222247344-550fb60583dc",
+        "https://images.unsplash.com/photo-1606760227091-3dd870d97f1d",
+        "https://images.unsplash.com/photo-1553062407-98eeb64c6a62"
+      ],
+      "rating": 4.5,
+      "reviewCount": 110,
+      "stock": 65,
+      "featured": false,
+      "trending": false
+    },
+    {
+      "id": "53",
+      "title": "Wool Felt Fedora Hat",
+      "description": "Classic structured wide-brim felt fedora finished with an accent grosgrain band.",
+      "price": 1799,
+      "discountPrice": 1299,
+      "category": "Accessories",
+      "subcategory": "Hats",
+      "brand": "Visionary",
+      "images": [
+        "https://images.unsplash.com/photo-1511499767150-a48a237f0083",
+        "https://images.unsplash.com/photo-1572635196237-14b3f281503f",
+        "https://images.unsplash.com/photo-1508296695146-257a814070b4"
+      ],
+      "rating": 4.3,
+      "reviewCount": 42,
+      "stock": 25,
+      "featured": false,
+      "trending": false
+    },
+    {
+      "id": "54",
+      "title": "Braided Woven Belt",
+      "description": "Flexible stretch braided fabric belt with leather trim and antique brass prong buckle.",
+      "price": 999,
+      "discountPrice": 749,
+      "category": "Accessories",
+      "subcategory": "Belts",
+      "brand": "CarryCo",
+      "images": [
+        "https://images.unsplash.com/photo-1624222247344-550fb60583dc",
+        "https://images.unsplash.com/photo-1606760227091-3dd870d97f1d",
+        "https://images.unsplash.com/photo-1553062407-98eeb64c6a62"
+      ],
+      "rating": 4.4,
+      "reviewCount": 73,
+      "stock": 48,
+      "featured": false,
+      "trending": false
+    },
+    {
+      "id": "55",
+      "title": "True Wireless ANC Earbuds",
+      "description": "Compact wireless earbuds featuring active noise cancellation and IPX5 water resistance.",
+      "price": 5499,
+      "discountPrice": 3999,
+      "category": "Electronics",
+      "subcategory": "Audio",
+      "brand": "SoundMax",
+      "images": [
+        "https://images.unsplash.com/photo-1505740420928-5e560c06d30e",
+        "https://images.unsplash.com/photo-1546435770-a3e426bf472b",
+        "https://images.unsplash.com/photo-1484704849700-f032a568e944"
+      ],
+      "rating": 4.7,
+      "reviewCount": 380,
+      "stock": 50,
+      "featured": true,
+      "trending": true
+    },
+    {
+      "id": "56",
+      "title": "Multi-Device Wireless Keyboard",
+      "description": "Low-profile slim Bluetooth keyboard capable of quick switching across three paired devices.",
+      "price": 3499,
+      "discountPrice": 2699,
+      "category": "Electronics",
+      "subcategory": "Computer Accessories",
+      "brand": "GameCore",
+      "images": [
+        "https://images.unsplash.com/photo-1587829741301-dc798b83add3",
+        "https://images.unsplash.com/photo-1595225476474-87563907a212",
+        "https://images.unsplash.com/photo-1618384887929-16ec33fab9ef"
+      ],
+      "rating": 4.6,
+      "reviewCount": 164,
+      "stock": 33,
+      "featured": false,
+      "trending": true
+    },
+    {
+      "id": "57",
+      "title": "Fast Charging Power Bank 20000mAh",
+      "description": "High-capacity power bank supporting 65W Power Delivery for smartphones and ultrabooks.",
+      "price": 3299,
+      "discountPrice": 2499,
+      "category": "Electronics",
+      "subcategory": "Mobile Accessories",
+      "brand": "TechPulse",
+      "images": [
+        "https://images.unsplash.com/photo-1586953208448-b95a79798f07",
+        "https://images.unsplash.com/photo-1622445268453-6143c683bca9",
+        "https://images.unsplash.com/photo-1583394838336-acd977736f90"
+      ],
+      "rating": 4.8,
+      "reviewCount": 240,
+      "stock": 46,
+      "featured": true,
+      "trending": false
+    },
+    {
+      "id": "58",
+      "title": "Waterproof Outdoor Rugged Speaker",
+      "description": "Rugged IP67 shockproof Bluetooth speaker with integrated carabiner and 360-degree acoustics.",
+      "price": 4499,
+      "discountPrice": 3299,
+      "category": "Electronics",
+      "subcategory": "Audio",
+      "brand": "SoundMax",
+      "images": [
+        "https://images.unsplash.com/photo-1608043152269-423dbba4e7e1",
+        "https://images.unsplash.com/photo-1508700115892-45ecd05ae2ad",
+        "https://images.unsplash.com/photo-1545454675-3531b543be5d"
+      ],
+      "rating": 4.5,
+      "reviewCount": 115,
+      "stock": 29,
+      "featured": false,
+      "trending": true
+    },
+    {
+      "id": "59",
+      "title": "Precision RGB Gaming Mouse",
+      "description": "High-DPI optical sensor gaming mouse equipped with PTFE glides and macro toggles.",
+      "price": 2799,
+      "discountPrice": 1999,
+      "category": "Electronics",
+      "subcategory": "Computer Accessories",
+      "brand": "GameCore",
+      "images": [
+        "https://images.unsplash.com/photo-1527814050087-3793815479db",
+        "https://images.unsplash.com/photo-1615663245857-ac93bb7c39e7",
+        "https://images.unsplash.com/photo-1605773527852-c546a8584ea3"
+      ],
+      "rating": 4.6,
+      "reviewCount": 139,
+      "stock": 38,
+      "featured": false,
+      "trending": false
+    },
+    {
+      "id": "60",
+      "title": "4K Ultra-Wide Streaming Webcam",
+      "description": "Ultra HD desktop webcam featuring dual noise-reduction microphones and privacy shutter.",
+      "price": 5999,
+      "discountPrice": 4499,
+      "category": "Electronics",
+      "subcategory": "Cameras",
+      "brand": "VisionTech",
+      "images": [
+        "https://images.unsplash.com/photo-1526170375885-4d8ecf77b99f",
+        "https://images.unsplash.com/photo-1516035069371-29a1b244cc32",
+        "https://images.unsplash.com/photo-1502920917128-1aa500764cbd"
+      ],
+      "rating": 4.7,
+      "reviewCount": 92,
+      "stock": 20,
+      "featured": true,
+      "trending": true
+    },
+    {
+      "id": "61",
+      "title": "Minimalist Ceramic Planter Pot",
+      "description": "Handmade stoneware ceramic planter with built-in drainage hole and saucer base.",
+      "price": 1299,
+      "discountPrice": 899,
+      "category": "Home",
+      "subcategory": "Decor",
+      "brand": "CasaNova",
+      "images": [
+        "https://images.unsplash.com/photo-1485955900006-10f4d324d411",
+        "https://images.unsplash.com/photo-1512496015851-a90fb38ba796",
+        "https://images.unsplash.com/photo-1507473885765-e6ed057f782c"
+      ],
+      "rating": 4.6,
+      "reviewCount": 75,
+      "stock": 40,
+      "featured": true,
+      "trending": false
+    },
+    {
+      "id": "62",
+      "title": "Nordic Wooden Desk Lamp",
+      "description": "Adjustable arm architect desk light featuring a warm wood base and matte white steel hood.",
+      "price": 2899,
+      "discountPrice": 2199,
+      "category": "Home",
+      "subcategory": "Lighting",
+      "brand": "Lumina",
+      "images": [
+        "https://images.unsplash.com/photo-1507473885765-e6ed057f782c",
+        "https://images.unsplash.com/photo-1513519245088-0e12902e5a38",
+        "https://images.unsplash.com/photo-1540932239986-30128078f3c5"
+      ],
+      "rating": 4.8,
+      "reviewCount": 118,
+      "stock": 22,
+      "featured": true,
+      "trending": true
+    },
+    {
+      "id": "63",
+      "title": "Pure French Linen Duvet Set",
+      "description": "Stone-washed French flax linen bedsheet and pillowcase set that gets softer after each wash.",
+      "price": 6999,
+      "discountPrice": 5499,
+      "category": "Home",
+      "subcategory": "Bedding",
+      "brand": "CozyLine",
+      "images": [
+        "https://images.unsplash.com/photo-1522771739844-6a9f6d5f14af",
+        "https://images.unsplash.com/photo-1584100936595-c0654b55a2e2",
+        "https://images.unsplash.com/photo-1505693416388-ac5ce068fe85"
+      ],
+      "rating": 4.9,
+      "reviewCount": 86,
+      "stock": 16,
+      "featured": true,
+      "trending": true
+    },
+    {
+      "id": "64",
+      "title": "Aromatherapy Essential Oil Diffuser",
+      "description": "Ultrasonic cool mist aroma diffuser with ambient LED mood glow and auto-off safety.",
+      "price": 1999,
+      "discountPrice": 1499,
+      "category": "Home",
+      "subcategory": "Wellness",
+      "brand": "CasaNova",
+      "images": [
+        "https://images.unsplash.com/photo-1608571423902-eed4a5ad8108",
+        "https://images.unsplash.com/photo-1512496015851-a90fb38ba796",
+        "https://images.unsplash.com/photo-1507473885765-e6ed057f782c"
+      ],
+      "rating": 4.5,
+      "reviewCount": 140,
+      "stock": 35,
+      "featured": false,
+      "trending": true
+    },
+    {
+      "id": "65",
+      "title": "Handmade Scented Soy Candle",
+      "description": "Clean-burning organic soy wax candle hand-poured in an amber glass jar with cedar wick.",
+      "price": 899,
+      "discountPrice": 649,
+      "category": "Home",
+      "subcategory": "Decor",
+      "brand": "CasaNova",
+      "images": [
+        "https://images.unsplash.com/photo-1603006905003-be475563bc59",
+        "https://images.unsplash.com/photo-1608571423902-eed4a5ad8108",
+        "https://images.unsplash.com/photo-1507473885765-e6ed057f782c"
+      ],
+      "rating": 4.7,
+      "reviewCount": 204,
+      "stock": 58,
+      "featured": false,
+      "trending": false
+    },
+    {
+      "id": "66",
+      "title": "Stainless Steel Pour-Over Kettle",
+      "description": "Gooseneck precision pouring kettle with integrated analog lid thermometer for manual brewing.",
+      "price": 2499,
+      "discountPrice": 1899,
+      "category": "Home",
+      "subcategory": "Kitchen",
+      "brand": "BrewCraft",
+      "images": [
+        "https://images.unsplash.com/photo-1514432324607-a09d9b4aefdd",
+        "https://images.unsplash.com/photo-1544787219-7f47ccb76574",
+        "https://images.unsplash.com/photo-1495474472287-4d71bcdd2085"
+      ],
+      "rating": 4.8,
+      "reviewCount": 133,
+      "stock": 27,
+      "featured": true,
+      "trending": true
+    },
+    {
+      "id": "67",
+      "title": "Double-Wall Insulated Coffee Mug",
+      "description": "Leakproof thermal travel tumbler crafted with kitchen-grade stainless steel interior.",
+      "price": 1299,
+      "discountPrice": 999,
+      "category": "Home",
+      "subcategory": "Kitchen",
+      "brand": "BrewCraft",
+      "images": [
+        "https://images.unsplash.com/photo-1514432324607-a09d9b4aefdd",
+        "https://images.unsplash.com/photo-1544787219-7f47ccb76574",
+        "https://images.unsplash.com/photo-1507473885765-e6ed057f782c"
+      ],
+      "rating": 4.6,
+      "reviewCount": 185,
+      "stock": 62,
+      "featured": false,
+      "trending": false
+    },
+    {
+      "id": "68",
+      "title": "Cast Iron Pre-Seasoned Skillet",
+      "description": "Heavy-duty cast iron frying skillet offering superior heat retention for searing and baking.",
+      "price": 2299,
+      "discountPrice": 1749,
+      "category": "Home",
+      "subcategory": "Kitchen",
+      "brand": "BrewCraft",
+      "images": [
+        "https://images.unsplash.com/photo-1584990347449-3895e638b971",
+        "https://images.unsplash.com/photo-1544787219-7f47ccb76574",
+        "https://images.unsplash.com/photo-1514432324607-a09d9b4aefdd"
+      ],
+      "rating": 4.9,
+      "reviewCount": 210,
+      "stock": 24,
+      "featured": false,
+      "trending": true
+    },
+    {
+      "id": "69",
+      "title": "Textured Woven Throw Blanket",
+      "description": "Lightweight fringe-trimmed acrylic knit throw blanket suitable for couches and daybeds.",
+      "price": 1699,
+      "discountPrice": 1299,
+      "category": "Home",
+      "subcategory": "Living",
+      "brand": "CozyLine",
+      "images": [
+        "https://images.unsplash.com/photo-1584100936595-c0654b55a2e2",
+        "https://images.unsplash.com/photo-1522771739844-6a9f6d5f14af",
+        "https://images.unsplash.com/photo-1505693416388-ac5ce068fe85"
+      ],
+      "rating": 4.4,
+      "reviewCount": 68,
+      "stock": 39,
+      "featured": false,
+      "trending": false
+    },
+    {
+      "id": "70",
+      "title": "Acacia Wood Cutting Board",
+      "description": "Reversible solid butcher block cutting board with recessed juice grooves and side handles.",
+      "price": 1899,
+      "discountPrice": 1399,
+      "category": "Home",
+      "subcategory": "Kitchen",
+      "brand": "CasaNova",
+      "images": [
+        "https://images.unsplash.com/photo-1584990347449-3895e638b971",
+        "https://images.unsplash.com/photo-1514432324607-a09d9b4aefdd",
+        "https://images.unsplash.com/photo-1507473885765-e6ed057f782c"
+      ],
+      "rating": 4.7,
+      "reviewCount": 94,
+      "stock": 31,
+      "featured": true,
+      "trending": false
+    },
+    {
+      "id": "71",
+      "title": "Hydrating Hyaluronic Face Serum",
+      "description": "Concentrated daily hydrating serum formulated with multi-weight hyaluronic acid complex.",
+      "price": 1299,
+      "discountPrice": 999,
+      "category": "Beauty",
+      "subcategory": "Skincare",
+      "brand": "GlowBotanics",
+      "images": [
+        "https://images.unsplash.com/photo-1620916566398-39f1143ab7be",
+        "https://images.unsplash.com/photo-1570172619644-dfd03ed5d881",
+        "https://images.unsplash.com/photo-1556228720-195a672e8a03"
+      ],
+      "rating": 4.8,
+      "reviewCount": 310,
+      "stock": 55,
+      "featured": true,
+      "trending": true
+    },
+    {
+      "id": "72",
+      "title": "Gentle Foaming Facial Cleanser",
+      "description": "pH-balanced gentle foaming gel wash infused with green tea extract and calming niacinamide.",
+      "price": 899,
+      "discountPrice": 699,
+      "category": "Beauty",
+      "subcategory": "Skincare",
+      "brand": "GlowBotanics",
+      "images": [
+        "https://images.unsplash.com/photo-1556228720-195a672e8a03",
+        "https://images.unsplash.com/photo-1620916566398-39f1143ab7be",
+        "https://images.unsplash.com/photo-1570172619644-dfd03ed5d881"
+      ],
+      "rating": 4.6,
+      "reviewCount": 182,
+      "stock": 64,
+      "featured": false,
+      "trending": true
+    },
+    {
+      "id": "73",
+      "title": "Matte Velvet Liquid Lipstick",
+      "description": "Long-wearing smudge-resistant matte lip color with a non-drying botanical infusion.",
+      "price": 799,
+      "discountPrice": 599,
+      "category": "Beauty",
+      "subcategory": "Makeup",
+      "brand": "AuraBeauty",
+      "images": [
+        "https://images.unsplash.com/photo-1586495777744-4413f21062fa",
+        "https://images.unsplash.com/photo-1522337360788-8b13dee7a37e",
+        "https://images.unsplash.com/photo-1512496015851-a90fb38ba796"
+      ],
+      "rating": 4.5,
+      "reviewCount": 147,
+      "stock": 45,
+      "featured": false,
+      "trending": false
+    },
+    {
+      "id": "74",
+      "title": "Eau de Parfum Artisan Blend",
+      "description": "Unisex signature fragrance with notes of bergamot, dark vetiver, and smoky sandalwood.",
+      "price": 3999,
+      "discountPrice": 3199,
+      "category": "Beauty",
+      "subcategory": "Fragrance",
+      "brand": "AuraBeauty",
+      "images": [
+        "https://images.unsplash.com/photo-1592945403244-b3fbafd7f539",
+        "https://images.unsplash.com/photo-1523293182086-7651a899d37f",
+        "https://images.unsplash.com/photo-1547887537-6158d64c35b3"
+      ],
+      "rating": 4.9,
+      "reviewCount": 160,
+      "stock": 18,
+      "featured": true,
+      "trending": true
+    },
+    {
+      "id": "75",
+      "title": "Nourishing Argan Hair Oil",
+      "description": "Cold-pressed lightweight hair treatment serum designed to tame frizz and protect against heat.",
+      "price": 1499,
+      "discountPrice": 1099,
+      "category": "Beauty",
+      "subcategory": "Haircare",
+      "brand": "GlowBotanics",
+      "images": [
+        "https://images.unsplash.com/photo-1608248597359-25036987f2fb",
+        "https://images.unsplash.com/photo-1570172619644-dfd03ed5d881",
+        "https://images.unsplash.com/photo-1620916566398-39f1143ab7be"
+      ],
+      "rating": 4.7,
+      "reviewCount": 99,
+      "stock": 37,
+      "featured": false,
+      "trending": false
+    },
+    {
+      "id": "76",
+      "title": "Mineral Sunscreen SPF 50+",
+      "description": "Broad-spectrum sheer physical sunscreen with zinc oxide and a clean matte finish.",
+      "price": 1199,
+      "discountPrice": 899,
+      "category": "Beauty",
+      "subcategory": "Skincare",
+      "brand": "GlowBotanics",
+      "images": [
+        "https://images.unsplash.com/photo-1556228720-195a672e8a03",
+        "https://images.unsplash.com/photo-1620916566398-39f1143ab7be",
+        "https://images.unsplash.com/photo-1570172619644-dfd03ed5d881"
+      ],
+      "rating": 4.6,
+      "reviewCount": 218,
+      "stock": 52,
+      "featured": true,
+      "trending": true
+    },
+    {
+      "id": "77",
+      "title": "Rose Quartz Facial Roller",
+      "description": "Natural carved gemstone facial massaging tool designed to relieve facial tension.",
+      "price": 999,
+      "discountPrice": 749,
+      "category": "Beauty",
+      "subcategory": "Skincare",
+      "brand": "AuraBeauty",
+      "images": [
+        "https://images.unsplash.com/photo-1512290900672-1f5be669e469",
+        "https://images.unsplash.com/photo-1512496015851-a90fb38ba796",
+        "https://images.unsplash.com/photo-1570172619644-dfd03ed5d881"
+      ],
+      "rating": 4.4,
+      "reviewCount": 81,
+      "stock": 43,
+      "featured": false,
+      "trending": false
+    },
+    {
+      "id": "78",
+      "title": "Bamboo Professional Makeup Brushes",
+      "description": "12-piece synthetic cruelty-free brush set with durable natural bamboo handles.",
+      "price": 1799,
+      "discountPrice": 1399,
+      "category": "Beauty",
+      "subcategory": "Makeup",
+      "brand": "AuraBeauty",
+      "images": [
+        "https://images.unsplash.com/photo-1522337360788-8b13dee7a37e",
+        "https://images.unsplash.com/photo-1586495777744-4413f21062fa",
+        "https://images.unsplash.com/photo-1512496015851-a90fb38ba796"
+      ],
+      "rating": 4.7,
+      "reviewCount": 113,
+      "stock": 29,
+      "featured": false,
+      "trending": true
+    },
+    {
+      "id": "79",
+      "title": "Non-Slip Alignment Yoga Mat",
+      "description": "Eco-friendly high-density rubber yoga mat with laser-etched posture alignment markings.",
+      "price": 2499,
+      "discountPrice": 1899,
+      "category": "Fitness",
+      "subcategory": "Yoga",
+      "brand": "ZenCore",
+      "images": [
+        "https://images.unsplash.com/photo-1601925260368-ae2f83cf8b7f",
+        "https://images.unsplash.com/photo-1544367567-0f2fcb009e0b",
+        "https://images.unsplash.com/photo-1518611012118-696072aa579a"
+      ],
+      "rating": 4.8,
+      "reviewCount": 190,
+      "stock": 35,
+      "featured": true,
+      "trending": true
+    },
+    {
+      "id": "80",
+      "title": "Adjustable Cast Iron Dumbbell Set",
+      "description": "Space-saving adjustable weight dumbbell set with anti-slip knurled grip handles.",
+      "price": 8999,
+      "discountPrice": 6999,
+      "category": "Fitness",
+      "subcategory": "Strength",
+      "brand": "PowerFit",
+      "images": [
+        "https://images.unsplash.com/photo-1584735935682-2f2b69dff9d2",
+        "https://images.unsplash.com/photo-1538805060514-97d9cc17730c",
+        "https://images.unsplash.com/photo-1517838277536-f5f99be501cd"
+      ],
+      "rating": 4.9,
+      "reviewCount": 245,
+      "stock": 12,
+      "featured": true,
+      "trending": true
+    },
+    {
+      "id": "81",
+      "title": "Heavy-Duty Resistance Loop Bands",
+      "description": "Set of five latex workout exercise bands with varying resistance levels and carry pouch.",
+      "price": 999,
+      "discountPrice": 699,
+      "category": "Fitness",
+      "subcategory": "Accessories",
+      "brand": "PowerFit",
+      "images": [
+        "https://images.unsplash.com/photo-1517838277536-f5f99be501cd",
+        "https://images.unsplash.com/photo-1601925260368-ae2f83cf8b7f",
+        "https://images.unsplash.com/photo-1538805060514-97d9cc17730c"
+      ],
+      "rating": 4.5,
+      "reviewCount": 167,
+      "stock": 70,
+      "featured": false,
+      "trending": false
+    },
+    {
+      "id": "82",
+      "title": "Deep Tissue Muscle Massage Gun",
+      "description": "Percussive muscle therapy massager with five speed gears and six ergonomic heads.",
+      "price": 4999,
+      "discountPrice": 3799,
+      "category": "Fitness",
+      "subcategory": "Recovery",
+      "brand": "PowerFit",
+      "images": [
+        "https://images.unsplash.com/photo-1518611012118-696072aa579a",
+        "https://images.unsplash.com/photo-1538805060514-97d9cc17730c",
+        "https://images.unsplash.com/photo-1544367567-0f2fcb009e0b"
+      ],
+      "rating": 4.7,
+      "reviewCount": 154,
+      "stock": 20,
+      "featured": true,
+      "trending": true
+    },
+    {
+      "id": "83",
+      "title": "Insulated Stainless Shaker Bottle",
+      "description": "Sweat-proof protein shaker bottle featuring an integrated wire whisking ball.",
+      "price": 1199,
+      "discountPrice": 849,
+      "category": "Fitness",
+      "subcategory": "Hydration",
+      "brand": "PowerFit",
+      "images": [
+        "https://images.unsplash.com/photo-1514432324607-a09d9b4aefdd",
+        "https://images.unsplash.com/photo-1544787219-7f47ccb76574",
+        "https://images.unsplash.com/photo-1507473885765-e6ed057f782c"
+      ],
+      "rating": 4.4,
+      "reviewCount": 96,
+      "stock": 58,
+      "featured": false,
+      "trending": false
+    },
+    {
+      "id": "84",
+      "title": "Speed Jump Rope with Ball Bearings",
+      "description": "Tangle-free steel wire speed jump rope designed for cardio cross-training workouts.",
+      "price": 799,
+      "discountPrice": 499,
+      "category": "Fitness",
+      "subcategory": "Accessories",
+      "brand": "PowerFit",
+      "images": [
+        "https://images.unsplash.com/photo-1517838277536-f5f99be501cd",
+        "https://images.unsplash.com/photo-1601925260368-ae2f83cf8b7f",
+        "https://images.unsplash.com/photo-1538805060514-97d9cc17730c"
+      ],
+      "rating": 4.6,
+      "reviewCount": 132,
+      "stock": 80,
+      "featured": false,
+      "trending": false
+    },
+    {
+      "id": "85",
+      "title": "Padded Gym Training Duffel",
+      "description": "Spacious gym duffel bag complete with ventilated shoe pocket and wet clothes divider.",
+      "price": 2799,
+      "discountPrice": 2099,
+      "category": "Fitness",
+      "subcategory": "Bags",
+      "brand": "PowerFit",
+      "images": [
+        "https://images.unsplash.com/photo-1553062407-98eeb64c6a62",
+        "https://images.unsplash.com/photo-1622560480605-d83c853bc5c3",
+        "https://images.unsplash.com/photo-1546938576-6e6a64f317cc"
+      ],
+      "rating": 4.7,
+      "reviewCount": 105,
+      "stock": 33,
+      "featured": false,
+      "trending": true
+    },
+    {
+      "id": "86",
+      "title": "Hardcover Dot Grid Journal",
+      "description": "Faux-leather bullet journal featuring 160gsm bleed-proof bamboo pages and ribbon markers.",
+      "price": 899,
+      "discountPrice": 649,
+      "category": "Stationery",
+      "subcategory": "Notebooks",
+      "brand": "PaperCraft",
+      "images": [
+        "https://images.unsplash.com/photo-1544716278-ca5e3f4abd8c",
+        "https://images.unsplash.com/photo-1497633762265-9d179a990aa6",
+        "https://images.unsplash.com/photo-1507473885765-e6ed057f782c"
+      ],
+      "rating": 4.8,
+      "reviewCount": 215,
+      "stock": 60,
+      "featured": true,
+      "trending": true
+    },
+    {
+      "id": "87",
+      "title": "Brass Body Refillable Fountain Pen",
+      "description": "Solid brass precision weighted fountain pen fitted with an iridium fine German nib.",
+      "price": 1999,
+      "discountPrice": 1499,
+      "category": "Stationery",
+      "subcategory": "Pens",
+      "brand": "PaperCraft",
+      "images": [
+        "https://images.unsplash.com/photo-1583485088034-697b5bc54ccd",
+        "https://images.unsplash.com/photo-1544716278-ca5e3f4abd8c",
+        "https://images.unsplash.com/photo-1497633762265-9d179a990aa6"
+      ],
+      "rating": 4.7,
+      "reviewCount": 84,
+      "stock": 25,
+      "featured": false,
+      "trending": false
+    },
+    {
+      "id": "88",
+      "title": "Vegan Leather Desk Mat Pad",
+      "description": "Extended waterproof desk blotter pad with non-slip suede base for mouse and keyboard.",
+      "price": 1499,
+      "discountPrice": 1099,
+      "category": "Stationery",
+      "subcategory": "Desk Decor",
+      "brand": "PaperCraft",
+      "images": [
+        "https://images.unsplash.com/photo-1527814050087-3793815479db",
+        "https://images.unsplash.com/photo-1587829741301-dc798b83add3",
+        "https://images.unsplash.com/photo-1507473885765-e6ed057f782c"
+      ],
+      "rating": 4.6,
+      "reviewCount": 139,
+      "stock": 42,
+      "featured": true,
+      "trending": true
+    },
+    {
+      "id": "89",
+      "title": "Solid Walnut Monitor Riser Stand",
+      "description": "Handcrafted curved monitor riser crafted from natural North American walnut timber.",
+      "price": 3499,
+      "discountPrice": 2799,
+      "category": "Stationery",
+      "subcategory": "Desk Decor",
+      "brand": "Lumina",
+      "images": [
+        "https://images.unsplash.com/photo-1507473885765-e6ed057f782c",
+        "https://images.unsplash.com/photo-1513519245088-0e12902e5a38",
+        "https://images.unsplash.com/photo-1587829741301-dc798b83add3"
+      ],
+      "rating": 4.9,
+      "reviewCount": 77,
+      "stock": 16,
+      "featured": false,
+      "trending": false
+    },
+    {
+      "id": "90",
+      "title": "Fineliner Archival Drawing Pens",
+      "description": "Pack of 8 waterproof pigment ink fineliners with assorted micro nib calipers.",
+      "price": 1199,
+      "discountPrice": 899,
+      "category": "Stationery",
+      "subcategory": "Pens",
+      "brand": "PaperCraft",
+      "images": [
+        "https://images.unsplash.com/photo-1583485088034-697b5bc54ccd",
+        "https://images.unsplash.com/photo-1544716278-ca5e3f4abd8c",
+        "https://images.unsplash.com/photo-1497633762265-9d179a990aa6"
+      ],
+      "rating": 4.5,
+      "reviewCount": 128,
+      "stock": 51,
+      "featured": false,
+      "trending": false
+    },
+    {
+      "id": "91",
+      "title": "Minimalist Ceramic Mug Set",
+      "description": "Set of four matte glazed artisan clay coffee mugs with wide comfortable grip handles.",
+      "price": 1599,
+      "discountPrice": 1199,
+      "category": "Home",
+      "subcategory": "Kitchen",
+      "brand": "CasaNova",
+      "images": [
+        "https://images.unsplash.com/photo-1514432324607-a09d9b4aefdd",
+        "https://images.unsplash.com/photo-1544787219-7f47ccb76574",
+        "https://images.unsplash.com/photo-1495474472287-4d71bcdd2085"
+      ],
+      "rating": 4.7,
+      "reviewCount": 110,
+      "stock": 38,
+      "featured": false,
+      "trending": false
+    },
+    {
+      "id": "92",
+      "title": "Foldable Aluminum Laptop Stand",
+      "description": "Ventilated ergonomic height-adjustable aluminum laptop riser with protective silicone pads.",
+      "price": 1799,
+      "discountPrice": 1299,
+      "category": "Electronics",
+      "subcategory": "Computer Accessories",
+      "brand": "TechPulse",
+      "images": [
+        "https://images.unsplash.com/photo-1527814050087-3793815479db",
+        "https://images.unsplash.com/photo-1587829741301-dc798b83add3",
+        "https://images.unsplash.com/photo-1605773527852-c546a8584ea3"
+      ],
+      "rating": 4.6,
+      "reviewCount": 194,
+      "stock": 47,
+      "featured": true,
+      "trending": true
+    },
+    {
+      "id": "93",
+      "title": "Classic Oxford Cotton Shirt",
+      "description": "Heavyweight basketweave Oxford button-down collar shirt for work and weekends.",
+      "price": 1999,
+      "discountPrice": 1499,
+      "category": "Men",
+      "subcategory": "Shirts",
+      "brand": "NorthLane",
+      "images": [
+        "https://images.unsplash.com/photo-1602810318383-e386cc2a3ccf",
+        "https://images.unsplash.com/photo-1603252109303-2751441dd157",
+        "https://images.unsplash.com/photo-1596755094514-f87e34085b2c"
+      ],
+      "rating": 4.5,
+      "reviewCount": 82,
+      "stock": 29,
+      "featured": false,
+      "trending": false
+    },
+    {
+      "id": "94",
+      "title": "High-Waist Compression Leggings",
+      "description": "Squat-proof seamless compression leggings with hidden waistband key pocket.",
+      "price": 1799,
+      "discountPrice": 1299,
+      "category": "Women",
+      "subcategory": "Activewear",
+      "brand": "Stride",
+      "images": [
+        "https://images.unsplash.com/photo-1518611012118-696072aa579a",
+        "https://images.unsplash.com/photo-1544367567-0f2fcb009e0b",
+        "https://images.unsplash.com/photo-1601925260368-ae2f83cf8b7f"
+      ],
+      "rating": 4.8,
+      "reviewCount": 230,
+      "stock": 41,
+      "featured": true,
+      "trending": true
+    },
+    {
+      "id": "95",
+      "title": "Woven Straw Beach Tote",
+      "description": "Bohemian woven raffia tote bag with round bamboo top handles and cotton lining.",
+      "price": 2299,
+      "discountPrice": 1699,
+      "category": "Accessories",
+      "subcategory": "Bags",
+      "brand": "CarryCo",
+      "images": [
+        "https://images.unsplash.com/photo-1584917865442-de89df76afd3",
+        "https://images.unsplash.com/photo-1590874103328-eac38a683ce7",
+        "https://images.unsplash.com/photo-1548036328-c9fa89d128fa"
+      ],
+      "rating": 4.4,
+      "reviewCount": 61,
+      "stock": 23,
+      "featured": false,
+      "trending": false
+    },
+    {
+      "id": "96",
+      "title": "Smart LED Wi-Fi Light Strip",
+      "description": "16-million-color dimmable RGB LED ambient light strip with voice assistant support.",
+      "price": 1999,
+      "discountPrice": 1499,
+      "category": "Electronics",
+      "subcategory": "Smart Home",
+      "brand": "Lumina",
+      "images": [
+        "https://images.unsplash.com/photo-1507473885765-e6ed057f782c",
+        "https://images.unsplash.com/photo-1513519245088-0e12902e5a38",
+        "https://images.unsplash.com/photo-1540932239986-30128078f3c5"
+      ],
+      "rating": 4.5,
+      "reviewCount": 174,
+      "stock": 37,
+      "featured": false,
+      "trending": true
+    },
+    {
+      "id": "97",
+      "title": "Botanical Room Linen Spray",
+      "description": "Natural soothing room and linen mist crafted with lavender and white sage distillates.",
+      "price": 799,
+      "discountPrice": 599,
+      "category": "Home",
+      "subcategory": "Wellness",
+      "brand": "CasaNova",
+      "images": [
+        "https://images.unsplash.com/photo-1608571423902-eed4a5ad8108",
+        "https://images.unsplash.com/photo-1620916566398-39f1143ab7be",
+        "https://images.unsplash.com/photo-1556228720-195a672e8a03"
+      ],
+      "rating": 4.6,
+      "reviewCount": 89,
+      "stock": 49,
+      "featured": false,
+      "trending": false
+    },
+    {
+      "id": "98",
+      "title": "Compact USB-C Fast GaN Charger",
+      "description": "65W gallium nitride pocket wall adapter with dual USB-C and USB-A power ports.",
+      "price": 2299,
+      "discountPrice": 1699,
+      "category": "Electronics",
+      "subcategory": "Mobile Accessories",
+      "brand": "TechPulse",
+      "images": [
+        "https://images.unsplash.com/photo-1586953208448-b95a79798f07",
+        "https://images.unsplash.com/photo-1622445268453-6143c683bca9",
+        "https://images.unsplash.com/photo-1583394838336-acd977736f90"
+      ],
+      "rating": 4.8,
+      "reviewCount": 211,
+      "stock": 63,
+      "featured": true,
+      "trending": true
+    },
+    {
+      "id": "99",
+      "title": "Minimalist Canvas Sneaker Shoes",
+      "description": "Low-profile breathable cotton canvas lace-up sneakers with vulcanized rubber outsoles.",
+      "price": 2199,
+      "discountPrice": 1699,
+      "category": "Shoes",
+      "subcategory": "Sneakers",
+      "brand": "WalkEasy",
+      "images": [
+        "https://images.unsplash.com/photo-1525966222134-fcfa99b8ae77",
+        "https://images.unsplash.com/photo-1549298916-b41d501d3772",
+        "https://images.unsplash.com/photo-1600185365926-3a2ce3cdb9eb"
+      ],
+      "rating": 4.4,
+      "reviewCount": 98,
+      "stock": 52,
+      "featured": false,
+      "trending": false
+    },
+    {
+      "id": "100",
+      "title": "Heavyweight Loopback Crewneck",
+      "description": "Relaxed-fit French terry cotton crewneck sweater designed for everyday layering.",
+      "price": 2299,
+      "discountPrice": 1799,
+      "category": "Men",
+      "subcategory": "Sweaters",
+      "brand": "NorthLane",
+      "images": [
+        "https://images.unsplash.com/photo-1556905055-8f358a7a47b2",
+        "https://images.unsplash.com/photo-1578681994506-b8f463449011",
+        "https://images.unsplash.com/photo-1509967419530-da38b4704bc6"
+      ],
+      "rating": 4.7,
+      "reviewCount": 114,
+      "stock": 31,
+      "featured": true,
+      "trending": false
+    }
+  ],
+  "carts": [
+    {
+      "userId": "user_3JRXi5oydPbuGhpU5Wby7qZJOfW",
+      "items": [
+        {
+          "id": "1",
+          "title": "Classic Oversized T-Shirt",
+          "description": "Premium cotton oversized t-shirt designed for everyday comfort and casual styling.",
+          "price": 999,
+          "discountPrice": 799,
+          "category": "Men",
+          "subcategory": "T-Shirts",
+          "brand": "UrbanFit",
+          "images": [
+            "https://images.unsplash.com/photo-1521572267360-ee0c2909d518",
+            "https://images.unsplash.com/photo-1503342217505-b0a15ec3261c",
+            "https://images.unsplash.com/photo-1583743814966-8936f5b7be1a"
+          ],
+          "rating": 3.9,
+          "reviewCount": 124,
+          "stock": 35,
+          "featured": true,
+          "trending": true,
+          "quantity": 1
+        },
+        {
+          "id": "2",
+          "title": "Premium Linen Shirt",
+          "description": "Lightweight linen shirt with a relaxed fit, perfect for summer and smart casual occasions.",
+          "price": 1799,
+          "discountPrice": 1399,
+          "category": "Men",
+          "subcategory": "Shirts",
+          "brand": "NorthLane",
+          "images": [
+            "https://images.unsplash.com/photo-1602810318383-e386cc2a3ccf",
+            "https://images.unsplash.com/photo-1596755094514-f87e34085b2c",
+            "https://images.unsplash.com/photo-1603252109303-2751441dd157"
+          ],
+          "rating": 4.4,
+          "reviewCount": 89,
+          "stock": 24,
+          "featured": true,
+          "trending": false,
+          "quantity": 1
+        },
+        {
+          "id": "3",
+          "title": "Slim Fit Denim Jeans",
+          "description": "Modern slim-fit denim jeans with stretch fabric for comfortable everyday movement.",
+          "price": 2299,
+          "discountPrice": 1799,
+          "category": "Men",
+          "subcategory": "Jeans",
+          "brand": "DenimCo",
+          "images": [
+            "https://images.unsplash.com/photo-1542272604-787c3835535d",
+            "https://images.unsplash.com/photo-1541099649105-f69ad21f3246",
+            "https://images.unsplash.com/photo-1475178626620-a4d074967452"
+          ],
+          "rating": 4.7,
+          "reviewCount": 211,
+          "stock": 41,
+          "featured": false,
+          "trending": true,
+          "quantity": 1
+        },
+        {
+          "id": "4",
+          "title": "Classic Bomber Jacket",
+          "description": "Minimal bomber jacket with a contemporary silhouette for casual streetwear looks.",
+          "price": 3499,
+          "discountPrice": 2799,
+          "category": "Men",
+          "subcategory": "Jackets",
+          "brand": "StreetMode",
+          "images": [
+            "https://images.unsplash.com/photo-1551028719-00167b16eac5",
+            "https://images.unsplash.com/photo-1521223890158-f9f7c3d5d504",
+            "https://images.unsplash.com/photo-1487222477894-8943e31ef7b2"
+          ],
+          "rating": 4.5,
+          "reviewCount": 76,
+          "stock": 18,
+          "featured": true,
+          "trending": true,
+          "quantity": 1
+        },
+        {
+          "id": "5",
+          "title": "Casual Polo T-Shirt",
+          "description": "Classic polo t-shirt made with soft breathable fabric for everyday wear.",
+          "price": 1299,
+          "discountPrice": 999,
+          "category": "Men",
+          "subcategory": "T-Shirts",
+          "brand": "UrbanFit",
+          "images": [
+            "https://images.unsplash.com/photo-1581655353564-df123a1eb820",
+            "https://images.unsplash.com/photo-1618354691373-d851c5c3a990",
+            "https://images.unsplash.com/photo-1521572267360-ee0c2909d518"
+          ],
+          "rating": 4.3,
+          "reviewCount": 63,
+          "stock": 52,
+          "featured": false,
+          "trending": false,
+          "quantity": 1
+        }
+      ],
+      "id": "1kTAbTwJmfE"
+    },
+    {
+      "userId": "user_3JRXi5oydPbuGhpU5Wby7qZJOfW",
+      "items": [],
+      "id": "pP_HQO3uuP4"
+    },
+    {
+      "userId": "user_3JJDQcT11Hay732J8WGw6GmiooG",
+      "items": [
+        {
+          "id": "2",
+          "title": "Premium Linen Shirt",
+          "description": "Lightweight linen shirt with a relaxed fit, perfect for summer and smart casual occasions.",
+          "price": 1799,
+          "discountPrice": 1399,
+          "category": "Men",
+          "subcategory": "Shirts",
+          "brand": "NorthLane",
+          "images": [
+            "https://images.unsplash.com/photo-1602810318383-e386cc2a3ccf",
+            "https://images.unsplash.com/photo-1596755094514-f87e34085b2c",
+            "https://images.unsplash.com/photo-1603252109303-2751441dd157"
+          ],
+          "rating": 4.4,
+          "reviewCount": 89,
+          "stock": 24,
+          "featured": true,
+          "trending": false,
+          "quantity": 4
+        },
+        {
+          "id": "6",
+          "title": "Relaxed Cargo Pants",
+          "description": "Utility-inspired cargo pants with multiple pockets and a relaxed contemporary fit.",
+          "price": 1999,
+          "discountPrice": 1599,
+          "category": "Men",
+          "subcategory": "Pants",
+          "brand": "StreetMode",
+          "images": [
+            "https://images.unsplash.com/photo-1624378439575-d8705ad7ae80",
+            "https://images.unsplash.com/photo-1517445312882-bc9910d016b7",
+            "https://images.unsplash.com/photo-1506630448388-4e683c67ddb0"
+          ],
+          "rating": 4.5,
+          "reviewCount": 97,
+          "stock": 29,
+          "featured": false,
+          "trending": true,
+          "quantity": 1
+        }
+      ],
+      "id": "_CdhDbJsVcs"
+    }
+  ],
+  "wishlists": [
+    {
+      "userId": "user_3JJDQcT11Hay732J8WGw6GmiooG",
+      "items": [
+        {
+          "id": "6",
+          "title": "Relaxed Cargo Pants",
+          "description": "Utility-inspired cargo pants with multiple pockets and a relaxed contemporary fit.",
+          "price": 1999,
+          "discountPrice": 1599,
+          "category": "Men",
+          "subcategory": "Pants",
+          "brand": "StreetMode",
+          "images": [
+            "https://images.unsplash.com/photo-1624378439575-d8705ad7ae80",
+            "https://images.unsplash.com/photo-1517445312882-bc9910d016b7",
+            "https://images.unsplash.com/photo-1506630448388-4e683c67ddb0"
+          ],
+          "rating": 4.5,
+          "reviewCount": 97,
+          "stock": 29,
+          "featured": false,
+          "trending": true
+        },
+        {
+          "id": "14",
+          "title": "Everyday Running Shoes",
+          "description": "Lightweight running shoes with responsive cushioning for daily workouts and walks.",
+          "price": 3999,
+          "discountPrice": 2999,
+          "category": "Shoes",
+          "subcategory": "Running",
+          "brand": "Stride",
+          "images": [
+            "https://images.unsplash.com/photo-1542291026-7eec264c27ff",
+            "https://images.unsplash.com/photo-1595950653106-6c9ebd614d3a",
+            "https://images.unsplash.com/photo-1584735935682-2f2b69dff9d2"
+          ],
+          "rating": 4.7,
+          "reviewCount": 312,
+          "stock": 44,
+          "featured": true,
+          "trending": true
+        },
+        {
+          "id": "5",
+          "title": "Casual Polo T-Shirt",
+          "description": "Classic polo t-shirt made with soft breathable fabric for everyday wear.",
+          "price": 1299,
+          "discountPrice": 999,
+          "category": "Men",
+          "subcategory": "T-Shirts",
+          "brand": "UrbanFit",
+          "images": [
+            "https://images.unsplash.com/photo-1581655353564-df123a1eb820",
+            "https://images.unsplash.com/photo-1618354691373-d851c5c3a990",
+            "https://images.unsplash.com/photo-1521572267360-ee0c2909d518"
+          ],
+          "rating": 4.3,
+          "reviewCount": 63,
+          "stock": 52,
+          "featured": false,
+          "trending": false
+        },
+        {
+          "id": "4",
+          "title": "Classic Bomber Jacket",
+          "description": "Minimal bomber jacket with a contemporary silhouette for casual streetwear looks.",
+          "price": 3499,
+          "discountPrice": 2799,
+          "category": "Men",
+          "subcategory": "Jackets",
+          "brand": "StreetMode",
+          "images": [
+            "https://images.unsplash.com/photo-1551028719-00167b16eac5",
+            "https://images.unsplash.com/photo-1521223890158-f9f7c3d5d504",
+            "https://images.unsplash.com/photo-1487222477894-8943e31ef7b2"
+          ],
+          "rating": 4.5,
+          "reviewCount": 76,
+          "stock": 18,
+          "featured": true,
+          "trending": true
+        }
+      ],
+      "id": "OxSTXVQoKIw"
+    }
+  ],
+  "$schema": "./node_modules/json-server/schema.json"
+}
