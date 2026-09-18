@@ -2121,50 +2121,7 @@
     },
     {
       "userId": "user_3JJDQcT11Hay732J8WGw6GmiooG",
-      "items": [
-        {
-          "id": "2",
-          "title": "Premium Linen Shirt",
-          "description": "Lightweight linen shirt with a relaxed fit, perfect for summer and smart casual occasions.",
-          "price": 1799,
-          "discountPrice": 1399,
-          "category": "Men",
-          "subcategory": "Shirts",
-          "brand": "NorthLane",
-          "images": [
-            "https://images.unsplash.com/photo-1602810318383-e386cc2a3ccf",
-            "https://images.unsplash.com/photo-1596755094514-f87e34085b2c",
-            "https://images.unsplash.com/photo-1603252109303-2751441dd157"
-          ],
-          "rating": 4.4,
-          "reviewCount": 89,
-          "stock": 24,
-          "featured": true,
-          "trending": false,
-          "quantity": 4
-        },
-        {
-          "id": "6",
-          "title": "Relaxed Cargo Pants",
-          "description": "Utility-inspired cargo pants with multiple pockets and a relaxed contemporary fit.",
-          "price": 1999,
-          "discountPrice": 1599,
-          "category": "Men",
-          "subcategory": "Pants",
-          "brand": "StreetMode",
-          "images": [
-            "https://images.unsplash.com/photo-1624378439575-d8705ad7ae80",
-            "https://images.unsplash.com/photo-1517445312882-bc9910d016b7",
-            "https://images.unsplash.com/photo-1506630448388-4e683c67ddb0"
-          ],
-          "rating": 4.5,
-          "reviewCount": 97,
-          "stock": 29,
-          "featured": false,
-          "trending": true,
-          "quantity": 1
-        }
-      ],
+      "items": [],
       "id": "_CdhDbJsVcs"
     }
   ],
@@ -2193,46 +2150,6 @@
           "trending": true
         },
         {
-          "id": "14",
-          "title": "Everyday Running Shoes",
-          "description": "Lightweight running shoes with responsive cushioning for daily workouts and walks.",
-          "price": 3999,
-          "discountPrice": 2999,
-          "category": "Shoes",
-          "subcategory": "Running",
-          "brand": "Stride",
-          "images": [
-            "https://images.unsplash.com/photo-1542291026-7eec264c27ff",
-            "https://images.unsplash.com/photo-1595950653106-6c9ebd614d3a",
-            "https://images.unsplash.com/photo-1584735935682-2f2b69dff9d2"
-          ],
-          "rating": 4.7,
-          "reviewCount": 312,
-          "stock": 44,
-          "featured": true,
-          "trending": true
-        },
-        {
-          "id": "5",
-          "title": "Casual Polo T-Shirt",
-          "description": "Classic polo t-shirt made with soft breathable fabric for everyday wear.",
-          "price": 1299,
-          "discountPrice": 999,
-          "category": "Men",
-          "subcategory": "T-Shirts",
-          "brand": "UrbanFit",
-          "images": [
-            "https://images.unsplash.com/photo-1581655353564-df123a1eb820",
-            "https://images.unsplash.com/photo-1618354691373-d851c5c3a990",
-            "https://images.unsplash.com/photo-1521572267360-ee0c2909d518"
-          ],
-          "rating": 4.3,
-          "reviewCount": 63,
-          "stock": 52,
-          "featured": false,
-          "trending": false
-        },
-        {
           "id": "4",
           "title": "Classic Bomber Jacket",
           "description": "Minimal bomber jacket with a contemporary silhouette for casual streetwear looks.",
@@ -2254,6 +2171,419 @@
         }
       ],
       "id": "OxSTXVQoKIw"
+    },
+    {
+      "userId": "user_3JRXi5oydPbuGhpU5Wby7qZJOfW",
+      "items": [],
+      "id": "S7aYa4PihW0"
+    }
+  ],
+  "addresses": [
+    {
+      "fullName": "Fouzan Muhammed K V",
+      "phone": "9778263326",
+      "address": "Kallivalappil house",
+      "city": "Pattambi",
+      "pinCode": "679337",
+      "userId": "user_3JJDQcT11Hay732J8WGw6GmiooG",
+      "isDefault": false,
+      "id": "C1wWHpKM9bQ"
+    },
+    {
+      "fullName": "Fouzan Muhammed K V",
+      "phone": "9778263326",
+      "address": "Betterinu",
+      "city": "PERINTHALMANNA",
+      "pinCode": "679322",
+      "userId": "user_3JJDQcT11Hay732J8WGw6GmiooG",
+      "isDefault": true,
+      "id": "Vkt0ypa8bu8"
+    },
+    {
+      "fullName": "Fouzan",
+      "phone": "9778263326",
+      "address": "Kallivalappil",
+      "city": "Pattambi",
+      "pinCode": "679337",
+      "userId": "user_3JJDQcT11Hay732J8WGw6GmiooG",
+      "isDefault": false,
+      "id": "asR93AUzaoM"
+    }
+  ],
+  "orders": [
+    {
+      "userId": "user_3JJDQcT11Hay732J8WGw6GmiooG",
+      "items": [
+        {
+          "productId": "2",
+          "title": "Premium Linen Shirt",
+          "image": "https://images.unsplash.com/photo-1602810318383-e386cc2a3ccf",
+          "price": 1399,
+          "quantity": 5
+        },
+        {
+          "productId": "6",
+          "title": "Relaxed Cargo Pants",
+          "image": "https://images.unsplash.com/photo-1624378439575-d8705ad7ae80",
+          "price": 1599,
+          "quantity": 1
+        },
+        {
+          "productId": "5",
+          "title": "Casual Polo T-Shirt",
+          "image": "https://images.unsplash.com/photo-1581655353564-df123a1eb820",
+          "price": 999,
+          "quantity": 1
+        }
+      ],
+      "address": {
+        "fullName": "Fouzan Muhammed K V",
+        "phone": "9778263326",
+        "address": "Betterinu",
+        "city": "PERINTHALMANNA",
+        "pinCode": "679322",
+        "userId": "user_3JJDQcT11Hay732J8WGw6GmiooG",
+        "isDefault": true,
+        "id": "Vkt0ypa8bu8"
+      },
+      "paymentMethod": "upi",
+      "totalAmount": 9593,
+      "status": "placed",
+      "createdAt": "2026-09-18T05:29:42.635Z",
+      "id": "pk6dV1iASXU"
+    },
+    {
+      "userId": "user_3JJDQcT11Hay732J8WGw6GmiooG",
+      "items": [
+        {
+          "productId": "3",
+          "title": "Slim Fit Denim Jeans",
+          "image": "https://images.unsplash.com/photo-1542272604-787c3835535d",
+          "price": 1799,
+          "quantity": 1
+        }
+      ],
+      "address": {
+        "fullName": "Fouzan Muhammed K V",
+        "phone": "9778263326",
+        "address": "Betterinu",
+        "city": "PERINTHALMANNA",
+        "pinCode": "679322",
+        "userId": "user_3JJDQcT11Hay732J8WGw6GmiooG",
+        "isDefault": true,
+        "id": "Vkt0ypa8bu8"
+      },
+      "paymentMethod": "upi",
+      "totalAmount": 1799,
+      "status": "cancelled",
+      "createdAt": "2026-09-18T05:30:13.378Z",
+      "id": "6jK69SZ8-U4"
+    },
+    {
+      "userId": "user_3JJDQcT11Hay732J8WGw6GmiooG",
+      "items": [
+        {
+          "productId": "2",
+          "title": "Premium Linen Shirt",
+          "image": "https://images.unsplash.com/photo-1602810318383-e386cc2a3ccf",
+          "price": 1399,
+          "quantity": 1
+        }
+      ],
+      "address": {
+        "fullName": "Fouzan Muhammed K V",
+        "phone": "9778263326",
+        "address": "Betterinu",
+        "city": "PERINTHALMANNA",
+        "pinCode": "679322",
+        "userId": "user_3JJDQcT11Hay732J8WGw6GmiooG",
+        "isDefault": true,
+        "id": "Vkt0ypa8bu8"
+      },
+      "paymentMethod": "upi",
+      "totalAmount": 1399,
+      "status": "placed",
+      "createdAt": "2026-09-18T05:31:21.180Z",
+      "id": "ktMItJrCDLs"
+    },
+    {
+      "userId": "user_3JJDQcT11Hay732J8WGw6GmiooG",
+      "items": [
+        {
+          "productId": "7",
+          "title": "Minimal Black Hoodie",
+          "image": "https://images.unsplash.com/photo-1556905055-8f358a7a47b2",
+          "price": 1999,
+          "quantity": 1
+        }
+      ],
+      "address": {
+        "fullName": "Fouzan Muhammed K V",
+        "phone": "9778263326",
+        "address": "Betterinu",
+        "city": "PERINTHALMANNA",
+        "pinCode": "679322",
+        "userId": "user_3JJDQcT11Hay732J8WGw6GmiooG",
+        "isDefault": true,
+        "id": "Vkt0ypa8bu8"
+      },
+      "paymentMethod": "upi",
+      "totalAmount": 1999,
+      "status": "cancelled",
+      "createdAt": "2026-09-18T05:48:55.971Z",
+      "id": "Qq4_ednQlk4"
+    },
+    {
+      "userId": "user_3JJDQcT11Hay732J8WGw6GmiooG",
+      "items": [
+        {
+          "productId": "1",
+          "title": "Classic Oversized T-Shirt",
+          "image": "https://images.unsplash.com/photo-1521572267360-ee0c2909d518",
+          "price": 799,
+          "quantity": 1
+        },
+        {
+          "productId": "2",
+          "title": "Premium Linen Shirt",
+          "image": "https://images.unsplash.com/photo-1602810318383-e386cc2a3ccf",
+          "price": 1399,
+          "quantity": 1
+        }
+      ],
+      "address": {
+        "fullName": "Fouzan Muhammed K V",
+        "phone": "9778263326",
+        "address": "Betterinu",
+        "city": "PERINTHALMANNA",
+        "pinCode": "679322",
+        "userId": "user_3JJDQcT11Hay732J8WGw6GmiooG",
+        "isDefault": true,
+        "id": "Vkt0ypa8bu8"
+      },
+      "paymentMethod": "upi",
+      "totalAmount": 2198,
+      "status": "placed",
+      "createdAt": "2026-09-18T06:09:06.771Z",
+      "id": "grs4_VLWeA0"
+    },
+    {
+      "userId": "user_3JJDQcT11Hay732J8WGw6GmiooG",
+      "items": [
+        {
+          "productId": "1",
+          "title": "Classic Oversized T-Shirt",
+          "image": "https://images.unsplash.com/photo-1521572267360-ee0c2909d518",
+          "price": 799,
+          "quantity": 2
+        }
+      ],
+      "address": {
+        "fullName": "Fouzan Muhammed K V",
+        "phone": "9778263326",
+        "address": "Betterinu",
+        "city": "PERINTHALMANNA",
+        "pinCode": "679322",
+        "userId": "user_3JJDQcT11Hay732J8WGw6GmiooG",
+        "isDefault": true,
+        "id": "Vkt0ypa8bu8"
+      },
+      "paymentMethod": "upi",
+      "subtotal": 1598,
+      "coupon": null,
+      "discountAmount": 0,
+      "totalAmount": 1598,
+      "status": "placed",
+      "createdAt": "2026-09-18T06:32:58.832Z",
+      "id": "JioknUn97XY"
+    },
+    {
+      "userId": "user_3JJDQcT11Hay732J8WGw6GmiooG",
+      "items": [
+        {
+          "productId": "1",
+          "title": "Classic Oversized T-Shirt",
+          "image": "https://images.unsplash.com/photo-1521572267360-ee0c2909d518",
+          "price": 799,
+          "quantity": 1
+        },
+        {
+          "productId": "2",
+          "title": "Premium Linen Shirt",
+          "image": "https://images.unsplash.com/photo-1602810318383-e386cc2a3ccf",
+          "price": 1399,
+          "quantity": 1
+        }
+      ],
+      "address": {
+        "fullName": "Fouzan Muhammed K V",
+        "phone": "9778263326",
+        "address": "Betterinu",
+        "city": "PERINTHALMANNA",
+        "pinCode": "679322",
+        "userId": "user_3JJDQcT11Hay732J8WGw6GmiooG",
+        "isDefault": true,
+        "id": "Vkt0ypa8bu8"
+      },
+      "paymentMethod": "cod",
+      "subtotal": 2198,
+      "coupon": null,
+      "discountAmount": 0,
+      "totalAmount": 2198,
+      "status": "cancelled",
+      "createdAt": "2026-09-18T06:33:30.803Z",
+      "id": "aSp_1tblE3U"
+    },
+    {
+      "userId": "user_3JJDQcT11Hay732J8WGw6GmiooG",
+      "items": [
+        {
+          "productId": "1",
+          "title": "Classic Oversized T-Shirt",
+          "image": "https://images.unsplash.com/photo-1521572267360-ee0c2909d518",
+          "price": 799,
+          "quantity": 1
+        }
+      ],
+      "address": {
+        "fullName": "Fouzan Muhammed K V",
+        "phone": "9778263326",
+        "address": "Betterinu",
+        "city": "PERINTHALMANNA",
+        "pinCode": "679322",
+        "userId": "user_3JJDQcT11Hay732J8WGw6GmiooG",
+        "isDefault": true,
+        "id": "Vkt0ypa8bu8"
+      },
+      "paymentMethod": "upi",
+      "subtotal": 799,
+      "coupon": null,
+      "discountAmount": 0,
+      "totalAmount": 799,
+      "status": "cancelled",
+      "createdAt": "2026-09-18T06:34:31.652Z",
+      "id": "XxOnVr6GIr4"
+    },
+    {
+      "userId": "user_3JJDQcT11Hay732J8WGw6GmiooG",
+      "items": [
+        {
+          "productId": "1",
+          "title": "Classic Oversized T-Shirt",
+          "image": "https://images.unsplash.com/photo-1521572267360-ee0c2909d518",
+          "price": 799,
+          "quantity": 1
+        }
+      ],
+      "address": {
+        "fullName": "Fouzan Muhammed K V",
+        "phone": "9778263326",
+        "address": "Betterinu",
+        "city": "PERINTHALMANNA",
+        "pinCode": "679322",
+        "userId": "user_3JJDQcT11Hay732J8WGw6GmiooG",
+        "isDefault": true,
+        "id": "Vkt0ypa8bu8"
+      },
+      "paymentMethod": "card",
+      "subtotal": 799,
+      "coupon": null,
+      "discountAmount": 0,
+      "totalAmount": 799,
+      "status": "cancelled",
+      "createdAt": "2026-09-18T06:35:00.630Z",
+      "id": "H6ezdfdVchs"
+    },
+    {
+      "userId": "user_3JJDQcT11Hay732J8WGw6GmiooG",
+      "items": [
+        {
+          "productId": "3",
+          "title": "Slim Fit Denim Jeans",
+          "image": "https://images.unsplash.com/photo-1542272604-787c3835535d",
+          "price": 1799,
+          "quantity": 1
+        }
+      ],
+      "address": {
+        "fullName": "Fouzan Muhammed K V",
+        "phone": "9778263326",
+        "address": "Betterinu",
+        "city": "PERINTHALMANNA",
+        "pinCode": "679322",
+        "userId": "user_3JJDQcT11Hay732J8WGw6GmiooG",
+        "isDefault": true,
+        "id": "Vkt0ypa8bu8"
+      },
+      "paymentMethod": "upi",
+      "subtotal": 1799,
+      "coupon": null,
+      "discountAmount": 0,
+      "totalAmount": 1799,
+      "status": "cancelled",
+      "createdAt": "2026-09-18T09:49:50.387Z",
+      "id": "quE0iqsMJCc"
+    },
+    {
+      "userId": "user_3JJDQcT11Hay732J8WGw6GmiooG",
+      "items": [
+        {
+          "productId": "4",
+          "title": "Classic Bomber Jacket",
+          "image": "https://images.unsplash.com/photo-1551028719-00167b16eac5",
+          "price": 2799,
+          "quantity": 1
+        }
+      ],
+      "address": {
+        "fullName": "Fouzan Muhammed K V",
+        "phone": "9778263326",
+        "address": "Betterinu",
+        "city": "PERINTHALMANNA",
+        "pinCode": "679322",
+        "userId": "user_3JJDQcT11Hay732J8WGw6GmiooG",
+        "isDefault": true,
+        "id": "Vkt0ypa8bu8"
+      },
+      "paymentMethod": "cod",
+      "subtotal": 2799,
+      "coupon": null,
+      "discountAmount": 0,
+      "totalAmount": 2799,
+      "status": "placed",
+      "createdAt": "2026-09-18T10:08:10.154Z",
+      "id": "GAqtvIiYJ_o"
+    }
+  ],
+  "coupons": [
+    {
+      "id": "1",
+      "code": "WELCOME10",
+      "discountType": "percentage",
+      "discountValue": 10,
+      "minimumOrderAmount": 500,
+      "expiryDate": "2026-12-31",
+      "isActive": true
+    },
+    {
+      "id": "2",
+      "code": "SAVE200",
+      "discountType": "fixed",
+      "discountValue": 200,
+      "minimumOrderAmount": 1000,
+      "expiryDate": "2026-12-31",
+      "isActive": true
+    }
+  ],
+  "reviews": [
+    {
+      "productId": "1",
+      "userId": "user_3JJDQcT11Hay732J8WGw6GmiooG",
+      "userName": "Fouzan Muhammed KV",
+      "rating": 4,
+      "comment": "Fantastic Product but a little overpriced",
+      "createdAt": "2026-09-18T10:19:01.449Z",
+      "id": "QexEthZAvaA"
     }
   ],
   "$schema": "./node_modules/json-server/schema.json"
