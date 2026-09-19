@@ -33,11 +33,11 @@ function Navbar() {
           {/* Logo */}
           <Link
             to="/"
-            className="flex items-center gap-1 text-2xl font-bold tracking-tight text-[#1D1D1F]"
+            className="flex items-center gap-1 text-xl font-semibold tracking-tight text-[#1D1D1F]"
           >
             {/* <ShoppingBag className="h-8 w-8"/> */}
 
-            <span>Zancart</span>
+            <span>Z A N C A R T</span>
           </Link>
 
           <button
@@ -91,31 +91,10 @@ function Navbar() {
                 className="w-48 border-white/30 bg-white/40 shadow-lg backdrop-blur-md "
               >
                 <DropdownMenuItem
-                  onClick={() => handleCategorySelect("Men")}
+                  onClick={() => handleCategorySelect("Fashion")}
                   className="transition-all duration-300 ease-in-out hover:scale-105 hover:font-semibold"
                 >
-                  Men
-                </DropdownMenuItem>
-
-                <DropdownMenuItem
-                  onClick={() => handleCategorySelect("Women")}
-                  className="transition-all duration-300 ease-in-out hover:scale-105 hover:font-semibold"
-                >
-                  Women
-                </DropdownMenuItem>
-
-                <DropdownMenuItem
-                  onClick={() => handleCategorySelect("Shoes")}
-                  className="transition-all duration-300 ease-in-out hover:scale-105 hover:font-semibold"
-                >
-                  Shoes
-                </DropdownMenuItem>
-
-                <DropdownMenuItem
-                  onClick={() => handleCategorySelect("Accessories")}
-                  className="transition-all duration-300 ease-in-out hover:scale-105 hover:font-semibold"
-                >
-                  Accessories
+                  Fashion
                 </DropdownMenuItem>
 
                 <DropdownMenuItem
@@ -123,6 +102,27 @@ function Navbar() {
                   className="transition-all duration-300 ease-in-out hover:scale-105 hover:font-semibold"
                 >
                   Electronics
+                </DropdownMenuItem>
+
+                <DropdownMenuItem
+                  onClick={() => handleCategorySelect("Home")}
+                  className="transition-all duration-300 ease-in-out hover:scale-105 hover:font-semibold"
+                >
+                  Home
+                </DropdownMenuItem>
+
+                <DropdownMenuItem
+                  onClick={() => handleCategorySelect("Stationery")}
+                  className="transition-all duration-300 ease-in-out hover:scale-105 hover:font-semibold"
+                >
+                  Stationery
+                </DropdownMenuItem>
+
+                <DropdownMenuItem
+                  onClick={() => handleCategorySelect("Fitness")}
+                  className="transition-all duration-300 ease-in-out hover:scale-105 hover:font-semibold"
+                >
+                  Fitness
                 </DropdownMenuItem>
               </DropdownMenuContent>
             </DropdownMenu>

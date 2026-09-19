@@ -5,6 +5,7 @@ import { addToCart } from "@/redux/slices/cartSlice";
 import { Heart } from "lucide-react";
 import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
+import { toast } from "sonner";
 import { toggleWishlist } from "../redux/slices/wishlistSlice";
 
 function ProductCard({ product }) {
@@ -21,7 +22,23 @@ function ProductCard({ product }) {
     e.preventDefault();
     e.stopPropagation();
 
+    const alreadyWishlisted = isWishlisted;
+
     dispatch(toggleWishlist(product));
+
+    toast.success(
+      alreadyWishlisted ? "Removed from wishlist" : "Added to wishlist",
+    );
+  };
+  const handleAddToCart = (e) => {
+    e.preventDefault();
+    e.stopPropagation();
+
+    console.log("ADD TO CART CLICKED");
+
+    dispatch(addToCart({ product, quantity: 1 }));
+
+    toast.success("Added to cart");
   };
 
   return (
@@ -79,18 +96,7 @@ function ProductCard({ product }) {
           </span>
         </div>
 
-        <Button
-          className="mt-4 w-full"
-          type="button"
-          onClick={() =>
-            dispatch(
-              addToCart({
-                product,
-                quantity: 1,
-              }),
-            )
-          }
-        >
+        <Button className="mt-4 w-full" type="button" onClick={handleAddToCart}>
           <p>Add to Cart</p>
         </Button>
       </CardContent>

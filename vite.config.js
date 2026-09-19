@@ -9,6 +9,11 @@ export default defineConfig({
     react(),
     tailwindcss(),
   ],
+   server: {
+    watch: {
+      ignored: ["**/db.json"],
+    },
+  },
   resolve: {
     alias: {
       '@': path.resolve(process.cwd(), './src'),

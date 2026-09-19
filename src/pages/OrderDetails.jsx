@@ -2,7 +2,7 @@ import { useUser } from "@clerk/react";
 import { ArrowLeft, CheckCircle, MapPin, Package, XCircle } from "lucide-react";
 import { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
-
+import { toast } from "sonner";
 import {
   AlertDialog,
   AlertDialogAction,
@@ -58,9 +58,10 @@ function OrderDetails() {
       const updatedOrder = await cancelOrder(order.id);
 
       setOrder(updatedOrder);
+      toast.success("Order cancelled successfully.");
     } catch (error) {
       console.error("Failed to cancel order:", error);
-      alert("Failed to cancel the order. Please try again.");
+      toast.error("Failed to cancel the order. Please try again.");
     } finally {
       setCancelling(false);
     }

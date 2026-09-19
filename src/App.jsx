@@ -1,3 +1,4 @@
+import { Toaster } from "@/components/ui/sonner";
 import { Route, Routes } from "react-router-dom";
 import "./App.css";
 import CartSync from "./components/CartSync";
@@ -23,6 +24,7 @@ import Wishlist from "./pages/Wishlist";
 function App() {
   return (
     <>
+      <Toaster />
       <Navbar />
       <CartSync />
       <WishlistSync />

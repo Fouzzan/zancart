@@ -11,6 +11,7 @@ import { ArrowLeft, Pencil, Plus, Star, Trash2 } from "lucide-react";
 import { useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
 import { useNavigate } from "react-router-dom";
+import { toast } from "sonner";
 
 import {
   createAddress,
@@ -95,6 +96,8 @@ function Addresses() {
             address.id === editingAddress.id ? updatedAddress : address,
           ),
         );
+
+        toast.success("Address updated successfully.");
       } else {
         const newAddress = await createAddress({
           ...data,
@@ -103,6 +106,8 @@ function Addresses() {
         });
 
         setAddresses((current) => [...current, newAddress]);
+
+        toast.success("Address added successfully.");
       }
 
       setOpen(false);
@@ -120,6 +125,8 @@ function Addresses() {
       setAddresses((current) =>
         current.filter((address) => address.id !== addressId),
       );
+
+      toast.success("Address deleted successfully.");
     } catch (error) {
       console.error("Failed to delete address:", error);
     }

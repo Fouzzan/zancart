@@ -7,6 +7,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { removeFromCart } from "../redux/slices/cartSlice";
 import { clearCheckout, setPaymentMethod } from "../redux/slices/checkoutSlice";
+import { toast } from "sonner";
 
 function Payment() {
   const navigate = useNavigate();
@@ -137,7 +138,7 @@ function Payment() {
       console.error("Failed to create order:", error);
 
       setIsProcessing(false);
-      alert("Failed to place order. Please try again.");
+      toast.error("Payment failed. Please try again.");
     }
   };
 
