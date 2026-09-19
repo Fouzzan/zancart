@@ -3,11 +3,7 @@ import { useEffect, useRef } from "react";
 import { useDispatch, useSelector } from "react-redux";
 
 import { setCart } from "../redux/slices/cartSlice";
-import {
-  createUserCart,
-  getUserCart,
-  updateUserCart,
-} from "../services/cartServices";
+import { createUserCart, getUserCart } from "../services/cartServices";
 
 function CartSync() {
   const { user, isLoaded } = useUser();

@@ -7,6 +7,7 @@ import {
 import { Minus, Plus, ShoppingBag, Trash2 } from "lucide-react";
 import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
+import { toast } from "sonner";
 
 function Cart() {
   const items = useSelector((state) => state.cart.items);
@@ -15,6 +16,14 @@ function Cart() {
   const subtotal = items.reduce((total, item) => {
     return total + item.discountPrice * item.quantity;
   }, 0);
+
+  const handleRemove = (id, title) => {
+    dispatch(removeFromCart(id));
+
+    toast.success("Removed from cart", {
+      description: title,
+    });
+  };
 
   if (items.length === 0) {
     return (
@@ -133,7 +142,7 @@ function Cart() {
                       type="button"
                       variant="ghost"
                       size="icon"
-                      onClick={() => dispatch(removeFromCart(item.id))}
+                      onClick={() => handleRemove(item.id, item.title)}
                       className="shrink-0 text-muted-foreground hover:text-red-500"
                     >
                       <Trash2 className="h-4 w-4" />

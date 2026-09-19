@@ -1,10 +1,14 @@
-import Hero from "@/components/home/Hero";
+import BenefitsSection from "@/components/BenefitsSection";
+import HeroCarousel from "@/components/HeroCarousel";
+import ShopByCategory from "@/components/ShopByCategory";
 
 function Home() {
   return (
     <>
       <main>
-        <Hero />
+        <HeroCarousel />
+        <BenefitsSection />
+        <ShopByCategory />
       </main>
     </>
   );

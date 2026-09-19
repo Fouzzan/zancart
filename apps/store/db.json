@@ -7,7 +7,7 @@
       "description": "Premium cotton oversized t-shirt designed for everyday comfort and casual styling.",
       "price": 999,
       "discountPrice": 799,
-      "category": "Men",
+      "category": "Fashion",
       "subcategory": "T-Shirts",
       "brand": "UrbanFit",
       "images": [
@@ -27,7 +27,7 @@
       "description": "Lightweight linen shirt with a relaxed fit, perfect for summer and smart casual occasions.",
       "price": 1799,
       "discountPrice": 1399,
-      "category": "Men",
+      "category": "Fashion",
       "subcategory": "Shirts",
       "brand": "NorthLane",
       "images": [
@@ -47,7 +47,7 @@
       "description": "Modern slim-fit denim jeans with stretch fabric for comfortable everyday movement.",
       "price": 2299,
       "discountPrice": 1799,
-      "category": "Men",
+      "category": "Fashion",
       "subcategory": "Jeans",
       "brand": "DenimCo",
       "images": [
@@ -67,7 +67,7 @@
       "description": "Minimal bomber jacket with a contemporary silhouette for casual streetwear looks.",
       "price": 3499,
       "discountPrice": 2799,
-      "category": "Men",
+      "category": "Fashion",
       "subcategory": "Jackets",
       "brand": "StreetMode",
       "images": [
@@ -87,7 +87,7 @@
       "description": "Classic polo t-shirt made with soft breathable fabric for everyday wear.",
       "price": 1299,
       "discountPrice": 999,
-      "category": "Men",
+      "category": "Fashion",
       "subcategory": "T-Shirts",
       "brand": "UrbanFit",
       "images": [
@@ -107,7 +107,7 @@
       "description": "Utility-inspired cargo pants with multiple pockets and a relaxed contemporary fit.",
       "price": 1999,
       "discountPrice": 1599,
-      "category": "Men",
+      "category": "Fashion",
       "subcategory": "Pants",
       "brand": "StreetMode",
       "images": [
@@ -127,7 +127,7 @@
       "description": "Soft fleece hoodie with a clean minimal design for relaxed everyday styling.",
       "price": 2499,
       "discountPrice": 1999,
-      "category": "Men",
+      "category": "Fashion",
       "subcategory": "Hoodies",
       "brand": "NorthLane",
       "images": [
@@ -147,7 +147,7 @@
       "description": "Elegant floral dress with a lightweight fabric and comfortable relaxed silhouette.",
       "price": 2499,
       "discountPrice": 1899,
-      "category": "Women",
+      "category": "Fashion",
       "subcategory": "Dresses",
       "brand": "BloomWear",
       "images": [
@@ -167,7 +167,7 @@
       "description": "Sophisticated midi dress suitable for parties, dinners and special occasions.",
       "price": 2999,
       "discountPrice": 2299,
-      "category": "Women",
+      "category": "Fashion",
       "subcategory": "Dresses",
       "brand": "BloomWear",
       "images": [
@@ -187,7 +187,7 @@
       "description": "Comfortable high-waisted jeans with a wide-leg silhouette and modern finish.",
       "price": 2199,
       "discountPrice": 1699,
-      "category": "Women",
+      "category": "Fashion",
       "subcategory": "Jeans",
       "brand": "DenimCo",
       "images": [
@@ -207,7 +207,7 @@
       "description": "Warm oversized knit sweater with a soft texture and relaxed fit.",
       "price": 2299,
       "discountPrice": 1799,
-      "category": "Women",
+      "category": "Fashion",
       "subcategory": "Sweaters",
       "brand": "CozyLine",
       "images": [
@@ -227,7 +227,7 @@
       "description": "Tailored blazer designed to elevate both professional and smart casual outfits.",
       "price": 3999,
       "discountPrice": 3199,
-      "category": "Women",
+      "category": "Fashion",
       "subcategory": "Blazers",
       "brand": "ModeStudio",
       "images": [
@@ -247,7 +247,7 @@
       "description": "Soft stretch crop top with a simple silhouette for casual everyday outfits.",
       "price": 999,
       "discountPrice": 699,
-      "category": "Women",
+      "category": "Fashion",
       "subcategory": "Tops",
       "brand": "ModeStudio",
       "images": [
@@ -267,7 +267,7 @@
       "description": "Lightweight running shoes with responsive cushioning for daily workouts and walks.",
       "price": 3999,
       "discountPrice": 2999,
-      "category": "Shoes",
+      "category": "Fashion",
       "subcategory": "Running",
       "brand": "Stride",
       "images": [
@@ -287,7 +287,7 @@
       "description": "Minimal white sneakers designed to pair effortlessly with everyday outfits.",
       "price": 3299,
       "discountPrice": 2499,
-      "category": "Shoes",
+      "category": "Fashion",
       "subcategory": "Sneakers",
       "brand": "Stride",
       "images": [
@@ -307,7 +307,7 @@
       "description": "Durable outdoor shoes with strong grip and supportive cushioning for trails.",
       "price": 4999,
       "discountPrice": 3799,
-      "category": "Shoes",
+      "category": "Fashion",
       "subcategory": "Outdoor",
       "brand": "TrailPro",
       "images": [
@@ -327,7 +327,7 @@
       "description": "Easy slip-on shoes with a flexible sole and lightweight construction.",
       "price": 2499,
       "discountPrice": 1899,
-      "category": "Shoes",
+      "category": "Fashion",
       "subcategory": "Casual",
       "brand": "WalkEasy",
       "images": [
@@ -347,7 +347,7 @@
       "description": "Stable training shoes designed for gym workouts, training sessions and active lifestyles.",
       "price": 4499,
       "discountPrice": 3399,
-      "category": "Shoes",
+      "category": "Fashion",
       "subcategory": "Training",
       "brand": "Stride",
       "images": [
@@ -367,7 +367,7 @@
       "description": "Classic analog watch with a clean dial and premium leather strap.",
       "price": 4999,
       "discountPrice": 3699,
-      "category": "Accessories",
+      "category": "Fashion",
       "subcategory": "Watches",
       "brand": "TimeCraft",
       "images": [
@@ -387,7 +387,7 @@
       "description": "Spacious leather backpack with dedicated compartments for work and travel.",
       "price": 3999,
       "discountPrice": 2999,
-      "category": "Accessories",
+      "category": "Fashion",
       "subcategory": "Bags",
       "brand": "CarryCo",
       "images": [
@@ -407,7 +407,7 @@
       "description": "Genuine leather belt with a timeless buckle design suitable for everyday wear.",
       "price": 1299,
       "discountPrice": 899,
-      "category": "Accessories",
+      "category": "Fashion",
       "subcategory": "Belts",
       "brand": "CarryCo",
       "images": [
@@ -427,7 +427,7 @@
       "description": "Modern sunglasses with a lightweight frame and timeless design.",
       "price": 1999,
       "discountPrice": 1499,
-      "category": "Accessories",
+      "category": "Fashion",
       "subcategory": "Sunglasses",
       "brand": "Visionary",
       "images": [
@@ -447,7 +447,7 @@
       "description": "Compact crossbody bag with a clean design for everyday essentials.",
       "price": 2499,
       "discountPrice": 1899,
-      "category": "Accessories",
+      "category": "Fashion",
       "subcategory": "Bags",
       "brand": "CarryCo",
       "images": [
@@ -607,7 +607,7 @@
       "description": "Tapered training joggers constructed with quick-dry stretch fabric and zip pockets.",
       "price": 1899,
       "discountPrice": 1499,
-      "category": "Men",
+      "category": "Fashion",
       "subcategory": "Pants",
       "brand": "Stride",
       "images": [
@@ -627,7 +627,7 @@
       "description": "Full-zip fleece hoodie featuring kangaroo pockets and ribbed thermal cuffs.",
       "price": 2799,
       "discountPrice": 2199,
-      "category": "Men",
+      "category": "Fashion",
       "subcategory": "Hoodies",
       "brand": "StreetMode",
       "images": [
@@ -647,7 +647,7 @@
       "description": "Textured cotton corduroy button-down shirt designed for effortless layering.",
       "price": 2399,
       "discountPrice": 1899,
-      "category": "Men",
+      "category": "Fashion",
       "subcategory": "Shirts",
       "brand": "NorthLane",
       "images": [
@@ -667,7 +667,7 @@
       "description": "Slim tailored cotton chinos offering a crisp drape for smart casual styling.",
       "price": 2199,
       "discountPrice": 1699,
-      "category": "Men",
+      "category": "Fashion",
       "subcategory": "Pants",
       "brand": "UrbanFit",
       "images": [
@@ -687,7 +687,7 @@
       "description": "Distressed wash graphic t-shirt crafted from combed organic jersey cotton.",
       "price": 1199,
       "discountPrice": 899,
-      "category": "Men",
+      "category": "Fashion",
       "subcategory": "T-Shirts",
       "brand": "StreetMode",
       "images": [
@@ -707,7 +707,7 @@
       "description": "Insulated weather-resistant sleeveless puffer gilet with stand-up neck collar.",
       "price": 2999,
       "discountPrice": 2399,
-      "category": "Men",
+      "category": "Fashion",
       "subcategory": "Jackets",
       "brand": "NorthLane",
       "images": [
@@ -727,7 +727,7 @@
       "description": "High-rise tailored linen blend trousers with front pleats and fluid leg taper.",
       "price": 2699,
       "discountPrice": 2099,
-      "category": "Women",
+      "category": "Fashion",
       "subcategory": "Pants",
       "brand": "ModeStudio",
       "images": [
@@ -747,7 +747,7 @@
       "description": "Flattering ribbed knit sweater dress crafted from fine viscose stretch weave.",
       "price": 2899,
       "discountPrice": 2199,
-      "category": "Women",
+      "category": "Fashion",
       "subcategory": "Dresses",
       "brand": "BloomWear",
       "images": [
@@ -767,7 +767,7 @@
       "description": "Silky satin wrap top with a deep V-neckline and adjustable waist tie belt.",
       "price": 1899,
       "discountPrice": 1399,
-      "category": "Women",
+      "category": "Fashion",
       "subcategory": "Tops",
       "brand": "ModeStudio",
       "images": [
@@ -787,7 +787,7 @@
       "description": "Cozy ribbed turtleneck sweater knitted from soft thermal wool-blend yarn.",
       "price": 2699,
       "discountPrice": 2099,
-      "category": "Women",
+      "category": "Fashion",
       "subcategory": "Sweaters",
       "brand": "CozyLine",
       "images": [
@@ -807,7 +807,7 @@
       "description": "Structured midi-length denim skirt with a centered front slit and belt loops.",
       "price": 2099,
       "discountPrice": 1599,
-      "category": "Women",
+      "category": "Fashion",
       "subcategory": "Skirts",
       "brand": "DenimCo",
       "images": [
@@ -827,7 +827,7 @@
       "description": "Double-breasted long trench coat with storm flaps and a removable cinch belt.",
       "price": 5499,
       "discountPrice": 4299,
-      "category": "Women",
+      "category": "Fashion",
       "subcategory": "Jackets",
       "brand": "ModeStudio",
       "images": [
@@ -847,7 +847,7 @@
       "description": "Vintage heritage basketball-inspired high-top sneakers with padded collars.",
       "price": 4299,
       "discountPrice": 3299,
-      "category": "Shoes",
+      "category": "Fashion",
       "subcategory": "Sneakers",
       "brand": "Stride",
       "images": [
@@ -867,7 +867,7 @@
       "description": "Handcrafted ankle boots with elasticated side gussets and durable rubber lug soles.",
       "price": 5999,
       "discountPrice": 4799,
-      "category": "Shoes",
+      "category": "Fashion",
       "subcategory": "Boots",
       "brand": "TrailPro",
       "images": [
@@ -887,7 +887,7 @@
       "description": "Ergonomic contoured footbed slip-on slides for pool sessions and casual lounging.",
       "price": 1499,
       "discountPrice": 1099,
-      "category": "Shoes",
+      "category": "Fashion",
       "subcategory": "Casual",
       "brand": "WalkEasy",
       "images": [
@@ -907,7 +907,7 @@
       "description": "High-propulsion carbon fiber plated running shoes built for tempo road racing.",
       "price": 7999,
       "discountPrice": 6499,
-      "category": "Shoes",
+      "category": "Fashion",
       "subcategory": "Running",
       "brand": "Stride",
       "images": [
@@ -927,7 +927,7 @@
       "description": "Timeless slip-on dress loafers made with soft split suede and stitched leather welts.",
       "price": 4499,
       "discountPrice": 3499,
-      "category": "Shoes",
+      "category": "Fashion",
       "subcategory": "Casual",
       "brand": "WalkEasy",
       "images": [
@@ -947,7 +947,7 @@
       "description": "Waterproof leather hiking boots with deep lug rubber soles and ankle support.",
       "price": 6499,
       "discountPrice": 4999,
-      "category": "Shoes",
+      "category": "Fashion",
       "subcategory": "Outdoor",
       "brand": "TrailPro",
       "images": [
@@ -967,7 +967,7 @@
       "description": "Precision quartz chronograph wristwatch with a tachymeter bezel and steel link bracelet.",
       "price": 6999,
       "discountPrice": 5299,
-      "category": "Accessories",
+      "category": "Fashion",
       "subcategory": "Watches",
       "brand": "TimeCraft",
       "images": [
@@ -987,7 +987,7 @@
       "description": "Ultra-light metallic teardrop aviator frames with 100% UV400 polarized lenses.",
       "price": 2499,
       "discountPrice": 1899,
-      "category": "Accessories",
+      "category": "Fashion",
       "subcategory": "Sunglasses",
       "brand": "Visionary",
       "images": [
@@ -1007,7 +1007,7 @@
       "description": "Heavy waxed canvas duffel with reinforced leather handles and luggage pass-through.",
       "price": 3499,
       "discountPrice": 2699,
-      "category": "Accessories",
+      "category": "Fashion",
       "subcategory": "Bags",
       "brand": "CarryCo",
       "images": [
@@ -1027,7 +1027,7 @@
       "description": "Slim top-grain leather wallet with integrated RFID-blocking shields and eight card slots.",
       "price": 1499,
       "discountPrice": 1099,
-      "category": "Accessories",
+      "category": "Fashion",
       "subcategory": "Wallets",
       "brand": "CarryCo",
       "images": [
@@ -1047,7 +1047,7 @@
       "description": "Classic structured wide-brim felt fedora finished with an accent grosgrain band.",
       "price": 1799,
       "discountPrice": 1299,
-      "category": "Accessories",
+      "category": "Fashion",
       "subcategory": "Hats",
       "brand": "Visionary",
       "images": [
@@ -1067,7 +1067,7 @@
       "description": "Flexible stretch braided fabric belt with leather trim and antique brass prong buckle.",
       "price": 999,
       "discountPrice": 749,
-      "category": "Accessories",
+      "category": "Fashion",
       "subcategory": "Belts",
       "brand": "CarryCo",
       "images": [
@@ -1847,7 +1847,7 @@
       "description": "Heavyweight basketweave Oxford button-down collar shirt for work and weekends.",
       "price": 1999,
       "discountPrice": 1499,
-      "category": "Men",
+      "category": "Fashion",
       "subcategory": "Shirts",
       "brand": "NorthLane",
       "images": [
@@ -1867,7 +1867,7 @@
       "description": "Squat-proof seamless compression leggings with hidden waistband key pocket.",
       "price": 1799,
       "discountPrice": 1299,
-      "category": "Women",
+      "category": "Fashion",
       "subcategory": "Activewear",
       "brand": "Stride",
       "images": [
@@ -1887,7 +1887,7 @@
       "description": "Bohemian woven raffia tote bag with round bamboo top handles and cotton lining.",
       "price": 2299,
       "discountPrice": 1699,
-      "category": "Accessories",
+      "category": "Fashion",
       "subcategory": "Bags",
       "brand": "CarryCo",
       "images": [
@@ -1967,7 +1967,7 @@
       "description": "Low-profile breathable cotton canvas lace-up sneakers with vulcanized rubber outsoles.",
       "price": 2199,
       "discountPrice": 1699,
-      "category": "Shoes",
+      "category": "Fashion",
       "subcategory": "Sneakers",
       "brand": "WalkEasy",
       "images": [
@@ -1987,7 +1987,7 @@
       "description": "Relaxed-fit French terry cotton crewneck sweater designed for everyday layering.",
       "price": 2299,
       "discountPrice": 1799,
-      "category": "Men",
+      "category": "Fashion",
       "subcategory": "Sweaters",
       "brand": "NorthLane",
       "images": [
@@ -2121,7 +2121,176 @@
     },
     {
       "userId": "user_3JJDQcT11Hay732J8WGw6GmiooG",
-      "items": [],
+      "items": [
+        {
+          "id": "6",
+          "title": "Relaxed Cargo Pants",
+          "description": "Utility-inspired cargo pants with multiple pockets and a relaxed contemporary fit.",
+          "price": 1999,
+          "discountPrice": 1599,
+          "category": "Men",
+          "subcategory": "Pants",
+          "brand": "StreetMode",
+          "images": [
+            "https://images.unsplash.com/photo-1624378439575-d8705ad7ae80",
+            "https://images.unsplash.com/photo-1517445312882-bc9910d016b7",
+            "https://images.unsplash.com/photo-1506630448388-4e683c67ddb0"
+          ],
+          "rating": 4.5,
+          "reviewCount": 97,
+          "stock": 29,
+          "featured": false,
+          "trending": true,
+          "quantity": 5
+        },
+        {
+          "id": "1",
+          "title": "Classic Oversized T-Shirt",
+          "description": "Premium cotton oversized t-shirt designed for everyday comfort and casual styling.",
+          "price": 999,
+          "discountPrice": 799,
+          "category": "Men",
+          "subcategory": "T-Shirts",
+          "brand": "UrbanFit",
+          "images": [
+            "https://images.unsplash.com/photo-1521572267360-ee0c2909d518",
+            "https://images.unsplash.com/photo-1503342217505-b0a15ec3261c",
+            "https://images.unsplash.com/photo-1583743814966-8936f5b7be1a"
+          ],
+          "rating": 3.9,
+          "reviewCount": 124,
+          "stock": 35,
+          "featured": true,
+          "trending": true,
+          "quantity": 3
+        },
+        {
+          "id": "4",
+          "title": "Classic Bomber Jacket",
+          "description": "Minimal bomber jacket with a contemporary silhouette for casual streetwear looks.",
+          "price": 3499,
+          "discountPrice": 2799,
+          "category": "Men",
+          "subcategory": "Jackets",
+          "brand": "StreetMode",
+          "images": [
+            "https://images.unsplash.com/photo-1551028719-00167b16eac5",
+            "https://images.unsplash.com/photo-1521223890158-f9f7c3d5d504",
+            "https://images.unsplash.com/photo-1487222477894-8943e31ef7b2"
+          ],
+          "rating": 4.5,
+          "reviewCount": 76,
+          "stock": 18,
+          "featured": true,
+          "trending": true,
+          "quantity": 4
+        },
+        {
+          "id": "8",
+          "title": "Floral Summer Dress",
+          "description": "Elegant floral dress with a lightweight fabric and comfortable relaxed silhouette.",
+          "price": 2499,
+          "discountPrice": 1899,
+          "category": "Women",
+          "subcategory": "Dresses",
+          "brand": "BloomWear",
+          "images": [
+            "https://images.unsplash.com/photo-1496747611176-843222e1e57c",
+            "https://images.unsplash.com/photo-1515372039744-b8f02a3ae446",
+            "https://images.unsplash.com/photo-1572804013309-59a88b7e92f1"
+          ],
+          "rating": 4.7,
+          "reviewCount": 198,
+          "stock": 27,
+          "featured": true,
+          "trending": true,
+          "quantity": 1
+        },
+        {
+          "id": "7",
+          "title": "Minimal Black Hoodie",
+          "description": "Soft fleece hoodie with a clean minimal design for relaxed everyday styling.",
+          "price": 2499,
+          "discountPrice": 1999,
+          "category": "Men",
+          "subcategory": "Hoodies",
+          "brand": "NorthLane",
+          "images": [
+            "https://images.unsplash.com/photo-1556905055-8f358a7a47b2",
+            "https://images.unsplash.com/photo-1578681994506-b8f463449011",
+            "https://images.unsplash.com/photo-1509967419530-da38b4704bc6"
+          ],
+          "rating": 4.8,
+          "reviewCount": 154,
+          "stock": 33,
+          "featured": true,
+          "trending": true,
+          "quantity": 2
+        },
+        {
+          "id": "5",
+          "title": "Casual Polo T-Shirt",
+          "description": "Classic polo t-shirt made with soft breathable fabric for everyday wear.",
+          "price": 1299,
+          "discountPrice": 999,
+          "category": "Men",
+          "subcategory": "T-Shirts",
+          "brand": "UrbanFit",
+          "images": [
+            "https://images.unsplash.com/photo-1581655353564-df123a1eb820",
+            "https://images.unsplash.com/photo-1618354691373-d851c5c3a990",
+            "https://images.unsplash.com/photo-1521572267360-ee0c2909d518"
+          ],
+          "rating": 4.3,
+          "reviewCount": 63,
+          "stock": 52,
+          "featured": false,
+          "trending": false,
+          "quantity": 1
+        },
+        {
+          "id": "2",
+          "title": "Premium Linen Shirt",
+          "description": "Lightweight linen shirt with a relaxed fit, perfect for summer and smart casual occasions.",
+          "price": 1799,
+          "discountPrice": 1399,
+          "category": "Men",
+          "subcategory": "Shirts",
+          "brand": "NorthLane",
+          "images": [
+            "https://images.unsplash.com/photo-1602810318383-e386cc2a3ccf",
+            "https://images.unsplash.com/photo-1596755094514-f87e34085b2c",
+            "https://images.unsplash.com/photo-1603252109303-2751441dd157"
+          ],
+          "rating": 4.4,
+          "reviewCount": 89,
+          "stock": 24,
+          "featured": true,
+          "trending": false,
+          "quantity": 1
+        },
+        {
+          "id": "3",
+          "title": "Slim Fit Denim Jeans",
+          "description": "Modern slim-fit denim jeans with stretch fabric for comfortable everyday movement.",
+          "price": 2299,
+          "discountPrice": 1799,
+          "category": "Men",
+          "subcategory": "Jeans",
+          "brand": "DenimCo",
+          "images": [
+            "https://images.unsplash.com/photo-1542272604-787c3835535d",
+            "https://images.unsplash.com/photo-1541099649105-f69ad21f3246",
+            "https://images.unsplash.com/photo-1475178626620-a4d074967452"
+          ],
+          "rating": 4.7,
+          "reviewCount": 211,
+          "stock": 41,
+          "featured": false,
+          "trending": true,
+          "quantity": 3
+        }
+      ],
       "id": "_CdhDbJsVcs"
     }
   ],
@@ -2129,6 +2298,46 @@
     {
       "userId": "user_3JJDQcT11Hay732J8WGw6GmiooG",
       "items": [
+        {
+          "id": "3",
+          "title": "Slim Fit Denim Jeans",
+          "description": "Modern slim-fit denim jeans with stretch fabric for comfortable everyday movement.",
+          "price": 2299,
+          "discountPrice": 1799,
+          "category": "Men",
+          "subcategory": "Jeans",
+          "brand": "DenimCo",
+          "images": [
+            "https://images.unsplash.com/photo-1542272604-787c3835535d",
+            "https://images.unsplash.com/photo-1541099649105-f69ad21f3246",
+            "https://images.unsplash.com/photo-1475178626620-a4d074967452"
+          ],
+          "rating": 4.7,
+          "reviewCount": 211,
+          "stock": 41,
+          "featured": false,
+          "trending": true
+        },
+        {
+          "id": "2",
+          "title": "Premium Linen Shirt",
+          "description": "Lightweight linen shirt with a relaxed fit, perfect for summer and smart casual occasions.",
+          "price": 1799,
+          "discountPrice": 1399,
+          "category": "Men",
+          "subcategory": "Shirts",
+          "brand": "NorthLane",
+          "images": [
+            "https://images.unsplash.com/photo-1602810318383-e386cc2a3ccf",
+            "https://images.unsplash.com/photo-1596755094514-f87e34085b2c",
+            "https://images.unsplash.com/photo-1603252109303-2751441dd157"
+          ],
+          "rating": 4.4,
+          "reviewCount": 89,
+          "stock": 24,
+          "featured": true,
+          "trending": false
+        },
         {
           "id": "6",
           "title": "Relaxed Cargo Pants",
@@ -2150,22 +2359,82 @@
           "trending": true
         },
         {
-          "id": "4",
-          "title": "Classic Bomber Jacket",
-          "description": "Minimal bomber jacket with a contemporary silhouette for casual streetwear looks.",
-          "price": 3499,
-          "discountPrice": 2799,
+          "id": "7",
+          "title": "Minimal Black Hoodie",
+          "description": "Soft fleece hoodie with a clean minimal design for relaxed everyday styling.",
+          "price": 2499,
+          "discountPrice": 1999,
           "category": "Men",
-          "subcategory": "Jackets",
-          "brand": "StreetMode",
+          "subcategory": "Hoodies",
+          "brand": "NorthLane",
           "images": [
-            "https://images.unsplash.com/photo-1551028719-00167b16eac5",
-            "https://images.unsplash.com/photo-1521223890158-f9f7c3d5d504",
-            "https://images.unsplash.com/photo-1487222477894-8943e31ef7b2"
+            "https://images.unsplash.com/photo-1556905055-8f358a7a47b2",
+            "https://images.unsplash.com/photo-1578681994506-b8f463449011",
+            "https://images.unsplash.com/photo-1509967419530-da38b4704bc6"
           ],
-          "rating": 4.5,
-          "reviewCount": 76,
-          "stock": 18,
+          "rating": 4.8,
+          "reviewCount": 154,
+          "stock": 33,
+          "featured": true,
+          "trending": true
+        },
+        {
+          "id": "8",
+          "title": "Floral Summer Dress",
+          "description": "Elegant floral dress with a lightweight fabric and comfortable relaxed silhouette.",
+          "price": 2499,
+          "discountPrice": 1899,
+          "category": "Women",
+          "subcategory": "Dresses",
+          "brand": "BloomWear",
+          "images": [
+            "https://images.unsplash.com/photo-1496747611176-843222e1e57c",
+            "https://images.unsplash.com/photo-1515372039744-b8f02a3ae446",
+            "https://images.unsplash.com/photo-1572804013309-59a88b7e92f1"
+          ],
+          "rating": 4.7,
+          "reviewCount": 198,
+          "stock": 27,
+          "featured": true,
+          "trending": true
+        },
+        {
+          "id": "24",
+          "title": "Wireless Noise Cancelling Headphones",
+          "description": "Immersive wireless headphones with active noise cancellation and long battery life.",
+          "price": 8999,
+          "discountPrice": 6999,
+          "category": "Electronics",
+          "subcategory": "Audio",
+          "brand": "SoundMax",
+          "images": [
+            "https://images.unsplash.com/photo-1505740420928-5e560c06d30e",
+            "https://images.unsplash.com/photo-1484704849700-f032a568e944",
+            "https://images.unsplash.com/photo-1546435770-a3e426bf472b"
+          ],
+          "rating": 4.8,
+          "reviewCount": 421,
+          "stock": 26,
+          "featured": true,
+          "trending": true
+        },
+        {
+          "id": "25",
+          "title": "Smart Fitness Watch",
+          "description": "Smart fitness watch with activity tracking, heart-rate monitoring and notifications.",
+          "price": 6999,
+          "discountPrice": 5499,
+          "category": "Electronics",
+          "subcategory": "Smartwatches",
+          "brand": "TechPulse",
+          "images": [
+            "https://images.unsplash.com/photo-1579586337278-3befd40fd17a",
+            "https://images.unsplash.com/photo-1546868871-7041f2a55e12",
+            "https://images.unsplash.com/photo-1508685096489-7aacd43bd3b1"
+          ],
+          "rating": 4.6,
+          "reviewCount": 289,
+          "stock": 39,
           "featured": true,
           "trending": true
         }
@@ -2192,22 +2461,22 @@
     {
       "fullName": "Fouzan Muhammed K V",
       "phone": "9778263326",
-      "address": "Betterinu",
-      "city": "PERINTHALMANNA",
-      "pinCode": "679322",
-      "userId": "user_3JJDQcT11Hay732J8WGw6GmiooG",
-      "isDefault": true,
-      "id": "Vkt0ypa8bu8"
-    },
-    {
-      "fullName": "Fouzan",
-      "phone": "9778263326",
-      "address": "Kallivalappil",
+      "address": "Kallivalappil house",
       "city": "Pattambi",
       "pinCode": "679337",
       "userId": "user_3JJDQcT11Hay732J8WGw6GmiooG",
       "isDefault": false,
-      "id": "asR93AUzaoM"
+      "id": "X6xmxsbVt0o"
+    },
+    {
+      "fullName": "Fouzan Muhammed K V",
+      "phone": "9778263326",
+      "address": "Kallivalappil house",
+      "city": "Pattambi",
+      "pinCode": "679337",
+      "userId": "user_3JJDQcT11Hay732J8WGw6GmiooG",
+      "isDefault": false,
+      "id": "mYcNoI_D7kA"
     }
   ],
   "orders": [
@@ -2553,6 +2822,380 @@
       "status": "placed",
       "createdAt": "2026-09-18T10:08:10.154Z",
       "id": "GAqtvIiYJ_o"
+    },
+    {
+      "userId": "user_3JJDQcT11Hay732J8WGw6GmiooG",
+      "items": [
+        {
+          "productId": "6",
+          "title": "Relaxed Cargo Pants",
+          "image": "https://images.unsplash.com/photo-1624378439575-d8705ad7ae80",
+          "price": 1599,
+          "quantity": 5
+        },
+        {
+          "productId": "1",
+          "title": "Classic Oversized T-Shirt",
+          "image": "https://images.unsplash.com/photo-1521572267360-ee0c2909d518",
+          "price": 799,
+          "quantity": 3
+        },
+        {
+          "productId": "4",
+          "title": "Classic Bomber Jacket",
+          "image": "https://images.unsplash.com/photo-1551028719-00167b16eac5",
+          "price": 2799,
+          "quantity": 4
+        },
+        {
+          "productId": "8",
+          "title": "Floral Summer Dress",
+          "image": "https://images.unsplash.com/photo-1496747611176-843222e1e57c",
+          "price": 1899,
+          "quantity": 2
+        },
+        {
+          "productId": "7",
+          "title": "Minimal Black Hoodie",
+          "image": "https://images.unsplash.com/photo-1556905055-8f358a7a47b2",
+          "price": 1999,
+          "quantity": 3
+        },
+        {
+          "productId": "5",
+          "title": "Casual Polo T-Shirt",
+          "image": "https://images.unsplash.com/photo-1581655353564-df123a1eb820",
+          "price": 999,
+          "quantity": 1
+        },
+        {
+          "productId": "2",
+          "title": "Premium Linen Shirt",
+          "image": "https://images.unsplash.com/photo-1602810318383-e386cc2a3ccf",
+          "price": 1399,
+          "quantity": 1
+        },
+        {
+          "productId": "3",
+          "title": "Slim Fit Denim Jeans",
+          "image": "https://images.unsplash.com/photo-1542272604-787c3835535d",
+          "price": 1799,
+          "quantity": 3
+        },
+        {
+          "productId": "9",
+          "title": "Elegant Midi Dress",
+          "image": "https://images.unsplash.com/photo-1595777457583-95e059d581b8",
+          "price": 2299,
+          "quantity": 1
+        },
+        {
+          "productId": "10",
+          "title": "High Waist Wide Leg Jeans",
+          "image": "https://images.unsplash.com/photo-1584370848010-d7fe6bc767ec",
+          "price": 1699,
+          "quantity": 1
+        }
+      ],
+      "address": {
+        "fullName": "Fouzan Muhammed K V",
+        "phone": "9778263326",
+        "address": "Betterinu",
+        "city": "PERINTHALMANNA",
+        "pinCode": "679322",
+        "userId": "user_3JJDQcT11Hay732J8WGw6GmiooG",
+        "isDefault": true,
+        "id": "Vkt0ypa8bu8"
+      },
+      "paymentMethod": "upi",
+      "subtotal": 43176,
+      "coupon": null,
+      "discountAmount": 0,
+      "totalAmount": 43176,
+      "status": "placed",
+      "createdAt": "2026-09-18T12:10:53.165Z",
+      "id": "NrCkYQuYp9w"
+    },
+    {
+      "userId": "user_3JJDQcT11Hay732J8WGw6GmiooG",
+      "items": [
+        {
+          "productId": "1",
+          "title": "Classic Oversized T-Shirt",
+          "image": "https://images.unsplash.com/photo-1521572267360-ee0c2909d518",
+          "price": 799,
+          "quantity": 3
+        },
+        {
+          "productId": "7",
+          "title": "Minimal Black Hoodie",
+          "image": "https://images.unsplash.com/photo-1556905055-8f358a7a47b2",
+          "price": 1999,
+          "quantity": 2
+        },
+        {
+          "productId": "5",
+          "title": "Casual Polo T-Shirt",
+          "image": "https://images.unsplash.com/photo-1581655353564-df123a1eb820",
+          "price": 999,
+          "quantity": 1
+        },
+        {
+          "productId": "2",
+          "title": "Premium Linen Shirt",
+          "image": "https://images.unsplash.com/photo-1602810318383-e386cc2a3ccf",
+          "price": 1399,
+          "quantity": 1
+        },
+        {
+          "productId": "3",
+          "title": "Slim Fit Denim Jeans",
+          "image": "https://images.unsplash.com/photo-1542272604-787c3835535d",
+          "price": 1799,
+          "quantity": 3
+        }
+      ],
+      "address": {
+        "fullName": "Fouzan Muhammed K V",
+        "phone": "9778263326",
+        "address": "Kallivalappil house",
+        "city": "Pattambi",
+        "pinCode": "679337",
+        "userId": "user_3JJDQcT11Hay732J8WGw6GmiooG",
+        "isDefault": false,
+        "id": "C1wWHpKM9bQ"
+      },
+      "paymentMethod": "card",
+      "subtotal": 14190,
+      "coupon": null,
+      "discountAmount": 0,
+      "totalAmount": 14190,
+      "status": "placed",
+      "createdAt": "2026-09-19T02:26:05.702Z",
+      "id": "C7n1qFVxBuY"
+    },
+    {
+      "userId": "user_3JJDQcT11Hay732J8WGw6GmiooG",
+      "items": [
+        {
+          "productId": "4",
+          "title": "Classic Bomber Jacket",
+          "image": "https://images.unsplash.com/photo-1551028719-00167b16eac5",
+          "price": 2799,
+          "quantity": 4
+        },
+        {
+          "productId": "8",
+          "title": "Floral Summer Dress",
+          "image": "https://images.unsplash.com/photo-1496747611176-843222e1e57c",
+          "price": 1899,
+          "quantity": 1
+        },
+        {
+          "productId": "7",
+          "title": "Minimal Black Hoodie",
+          "image": "https://images.unsplash.com/photo-1556905055-8f358a7a47b2",
+          "price": 1999,
+          "quantity": 2
+        },
+        {
+          "productId": "5",
+          "title": "Casual Polo T-Shirt",
+          "image": "https://images.unsplash.com/photo-1581655353564-df123a1eb820",
+          "price": 999,
+          "quantity": 1
+        },
+        {
+          "productId": "2",
+          "title": "Premium Linen Shirt",
+          "image": "https://images.unsplash.com/photo-1602810318383-e386cc2a3ccf",
+          "price": 1399,
+          "quantity": 1
+        },
+        {
+          "productId": "3",
+          "title": "Slim Fit Denim Jeans",
+          "image": "https://images.unsplash.com/photo-1542272604-787c3835535d",
+          "price": 1799,
+          "quantity": 3
+        }
+      ],
+      "address": {
+        "fullName": "Fouzan Muhammed K V",
+        "phone": "9778263326",
+        "address": "Kallivalappil house",
+        "city": "Pattambi",
+        "pinCode": "679337",
+        "userId": "user_3JJDQcT11Hay732J8WGw6GmiooG",
+        "isDefault": false,
+        "id": "C1wWHpKM9bQ"
+      },
+      "paymentMethod": "upi",
+      "subtotal": 24888,
+      "coupon": null,
+      "discountAmount": 0,
+      "totalAmount": 24888,
+      "status": "placed",
+      "createdAt": "2026-09-19T02:28:26.556Z",
+      "id": "yufC4wAOIEk"
+    },
+    {
+      "userId": "user_3JJDQcT11Hay732J8WGw6GmiooG",
+      "items": [
+        {
+          "productId": "6",
+          "title": "Relaxed Cargo Pants",
+          "image": "https://images.unsplash.com/photo-1624378439575-d8705ad7ae80",
+          "price": 1599,
+          "quantity": 6
+        },
+        {
+          "productId": "1",
+          "title": "Classic Oversized T-Shirt",
+          "image": "https://images.unsplash.com/photo-1521572267360-ee0c2909d518",
+          "price": 799,
+          "quantity": 3
+        },
+        {
+          "productId": "4",
+          "title": "Classic Bomber Jacket",
+          "image": "https://images.unsplash.com/photo-1551028719-00167b16eac5",
+          "price": 2799,
+          "quantity": 4
+        },
+        {
+          "productId": "8",
+          "title": "Floral Summer Dress",
+          "image": "https://images.unsplash.com/photo-1496747611176-843222e1e57c",
+          "price": 1899,
+          "quantity": 1
+        },
+        {
+          "productId": "7",
+          "title": "Minimal Black Hoodie",
+          "image": "https://images.unsplash.com/photo-1556905055-8f358a7a47b2",
+          "price": 1999,
+          "quantity": 2
+        },
+        {
+          "productId": "5",
+          "title": "Casual Polo T-Shirt",
+          "image": "https://images.unsplash.com/photo-1581655353564-df123a1eb820",
+          "price": 999,
+          "quantity": 1
+        },
+        {
+          "productId": "2",
+          "title": "Premium Linen Shirt",
+          "image": "https://images.unsplash.com/photo-1602810318383-e386cc2a3ccf",
+          "price": 1399,
+          "quantity": 2
+        },
+        {
+          "productId": "3",
+          "title": "Slim Fit Denim Jeans",
+          "image": "https://images.unsplash.com/photo-1542272604-787c3835535d",
+          "price": 1799,
+          "quantity": 3
+        }
+      ],
+      "address": {
+        "fullName": "Fouzan Muhammed K V",
+        "phone": "9778263326",
+        "address": "Kallivalappil house",
+        "city": "Pattambi",
+        "pinCode": "679337",
+        "userId": "user_3JJDQcT11Hay732J8WGw6GmiooG",
+        "isDefault": false,
+        "id": "C1wWHpKM9bQ"
+      },
+      "paymentMethod": "upi",
+      "subtotal": 38278,
+      "coupon": null,
+      "discountAmount": 0,
+      "totalAmount": 38278,
+      "status": "placed",
+      "createdAt": "2026-09-19T02:29:08.505Z",
+      "id": "Qc-wVdo_wcU"
+    },
+    {
+      "userId": "user_3JJDQcT11Hay732J8WGw6GmiooG",
+      "items": [
+        {
+          "productId": "6",
+          "title": "Relaxed Cargo Pants",
+          "image": "https://images.unsplash.com/photo-1624378439575-d8705ad7ae80",
+          "price": 1599,
+          "quantity": 5
+        },
+        {
+          "productId": "1",
+          "title": "Classic Oversized T-Shirt",
+          "image": "https://images.unsplash.com/photo-1521572267360-ee0c2909d518",
+          "price": 799,
+          "quantity": 4
+        },
+        {
+          "productId": "4",
+          "title": "Classic Bomber Jacket",
+          "image": "https://images.unsplash.com/photo-1551028719-00167b16eac5",
+          "price": 2799,
+          "quantity": 4
+        },
+        {
+          "productId": "8",
+          "title": "Floral Summer Dress",
+          "image": "https://images.unsplash.com/photo-1496747611176-843222e1e57c",
+          "price": 1899,
+          "quantity": 1
+        },
+        {
+          "productId": "7",
+          "title": "Minimal Black Hoodie",
+          "image": "https://images.unsplash.com/photo-1556905055-8f358a7a47b2",
+          "price": 1999,
+          "quantity": 2
+        },
+        {
+          "productId": "5",
+          "title": "Casual Polo T-Shirt",
+          "image": "https://images.unsplash.com/photo-1581655353564-df123a1eb820",
+          "price": 999,
+          "quantity": 1
+        },
+        {
+          "productId": "2",
+          "title": "Premium Linen Shirt",
+          "image": "https://images.unsplash.com/photo-1602810318383-e386cc2a3ccf",
+          "price": 1399,
+          "quantity": 1
+        },
+        {
+          "productId": "3",
+          "title": "Slim Fit Denim Jeans",
+          "image": "https://images.unsplash.com/photo-1542272604-787c3835535d",
+          "price": 1799,
+          "quantity": 3
+        }
+      ],
+      "address": {
+        "fullName": "Fouzan Muhammed K V",
+        "phone": "9778263326",
+        "address": "Kallivalappil house",
+        "city": "Pattambi",
+        "pinCode": "679337",
+        "userId": "user_3JJDQcT11Hay732J8WGw6GmiooG",
+        "isDefault": false,
+        "id": "X6xmxsbVt0o"
+      },
+      "paymentMethod": "cod",
+      "subtotal": 36079,
+      "coupon": null,
+      "discountAmount": 0,
+      "totalAmount": 36079,
+      "status": "placed",
+      "createdAt": "2026-09-19T03:34:09.320Z",
+      "id": "M5AT2BNrLZo"
     }
   ],
   "coupons": [
@@ -2580,10 +3223,10 @@
       "productId": "1",
       "userId": "user_3JJDQcT11Hay732J8WGw6GmiooG",
       "userName": "Fouzan Muhammed KV",
-      "rating": 4,
-      "comment": "Fantastic Product but a little overpriced",
-      "createdAt": "2026-09-18T10:19:01.449Z",
-      "id": "QexEthZAvaA"
+      "rating": 5,
+      "comment": "Excellent Product!",
+      "createdAt": "2026-09-18T11:08:03.928Z",
+      "id": "_CAi9JpEeFc"
     }
   ],
   "$schema": "./node_modules/json-server/schema.json"

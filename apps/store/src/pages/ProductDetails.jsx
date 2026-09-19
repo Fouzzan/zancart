@@ -8,6 +8,7 @@ import { Link, useParams } from "react-router-dom";
 import ProductCard from "../components/ProductCard";
 import { toggleWishlist } from "../redux/slices/wishlistSlice";
 import api from "../services/api";
+import { toast } from "sonner";
 
 function ProductDetails() {
   const [selectedImage, setSelectedImage] = useState(null);

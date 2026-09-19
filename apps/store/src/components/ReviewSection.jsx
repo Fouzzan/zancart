@@ -14,7 +14,7 @@ import { Textarea } from "@/components/ui/textarea";
 import { useUser } from "@clerk/react";
 import { Star, Trash2 } from "lucide-react";
 import { useEffect, useState } from "react";
-
+import { toast } from "sonner";
 import {
   createReview,
   deleteReview,
@@ -109,12 +109,12 @@ function ReviewSection({ productId }) {
     }
 
     if (rating === 0) {
-      alert("Please select a rating.");
+      toast.error("Please select a rating.");
       return;
     }
 
     if (!comment.trim()) {
-      alert("Please write a review.");
+      toast.error("Please write a review.");
       return;
     }
 
@@ -138,6 +138,9 @@ function ReviewSection({ productId }) {
       const updatedReviews = await getProductReviews(productId);
 
       setReviews(updatedReviews);
+      toast.success("Review submitted successfully.");
+
+      toast.success("Review submitted successfully.");
 
       setRating(0);
       setComment("");
@@ -146,7 +149,7 @@ function ReviewSection({ productId }) {
 
       console.error("Response:", error.response?.data);
 
-      alert("Failed to submit review. Please try again.");
+      toast.error("Failed to submit review. Please try again.");
     } finally {
       setSubmitting(false);
     }
@@ -187,8 +190,11 @@ function ReviewSection({ productId }) {
 
       setExistingReview(updatedReview);
       setEditing(false);
+
+      toast.success("Review updated successfully.");
     } catch (error) {
       console.error("Failed to update review:", error);
+      toast.error("Failed to update review.");
     } finally {
       setUpdating(false);
     }
@@ -201,8 +207,10 @@ function ReviewSection({ productId }) {
       setReviews((prev) => prev.filter((review) => review.id !== reviewId));
 
       setExistingReview(null);
+      toast.success("Review deleted successfully.");
     } catch (error) {
       console.error("Failed to delete review:", error);
+      toast.error("Failed to delete review.");
     }
   };
 

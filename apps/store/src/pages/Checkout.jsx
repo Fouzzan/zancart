@@ -6,7 +6,7 @@ import { useNavigate } from "react-router-dom";
 
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
-
+import { toast } from "sonner";
 import { setCoupon, setSelectedAddress } from "../redux/slices/checkoutSlice";
 import { getUserAddresses } from "../services/addressServices";
 import { getCouponByCode } from "../services/couponServices";
@@ -104,6 +104,7 @@ function Checkout() {
       if (!coupon) {
         dispatch(setCoupon(null));
         setCouponError("Invalid coupon code.");
+        toast.error("Invalid coupon code.");
         return;
       }
 
@@ -111,6 +112,7 @@ function Checkout() {
       if (!coupon.isActive) {
         dispatch(setCoupon(null));
         setCouponError("This coupon is no longer active.");
+        toast.error("This coupon is no longer valid.");
         return;
       }
 
@@ -120,6 +122,7 @@ function Checkout() {
       if (coupon.expiryDate < today) {
         dispatch(setCoupon(null));
         setCouponError("This coupon has expired.");
+        toast.error("This coupon is no longer valid.");
         return;
       }
 
@@ -129,6 +132,7 @@ function Checkout() {
         setCouponError(
           `Minimum order amount is ₹${coupon.minimumOrderAmount}.`,
         );
+        toast.error(`Minimum order amount is ₹${coupon.minimumOrderAmount}.`);
         return;
       }
 
@@ -136,6 +140,8 @@ function Checkout() {
       dispatch(setCoupon(coupon));
       setCouponError("");
       setCouponCode(coupon.code);
+      dispatch(setCoupon(coupon));
+      toast.success("Coupon applied successfully.");
     } catch (error) {
       console.error("Failed to apply coupon:", error);
       setCouponError("Unable to validate coupon. Please try again.");
