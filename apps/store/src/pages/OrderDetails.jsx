@@ -1,8 +1,3 @@
-import { useUser } from "@clerk/react";
-import { ArrowLeft, CheckCircle, MapPin, Package, XCircle } from "lucide-react";
-import { useEffect, useState } from "react";
-import { useNavigate, useParams } from "react-router-dom";
-import { toast } from "sonner";
 import {
   AlertDialog,
   AlertDialogAction,
@@ -15,6 +10,18 @@ import {
   AlertDialogTrigger,
 } from "@/components/ui/alert-dialog";
 import { Button } from "@/components/ui/button";
+import { useUser } from "@clerk/react";
+import {
+  ArrowLeft,
+  CheckCircle,
+  MapPin,
+  Package,
+  Truck,
+  XCircle,
+} from "lucide-react";
+import { useEffect, useState } from "react";
+import { useNavigate, useParams } from "react-router-dom";
+import { toast } from "sonner";
 import { cancelOrder, getOrderById } from "../services/orderServices";
 
 function OrderDetails() {
@@ -29,12 +36,15 @@ function OrderDetails() {
   useEffect(() => {
     if (!isLoaded || !user) return;
 
-    const fetchOrder = async () => {
+    const fetchOrder = async (showLoading = false) => {
       try {
+        if (showLoading) {
+          setLoading(true);
+        }
+
         const data = await getOrderById(id);
 
-        // Security check:
-        // Users should only see their own orders.
+        // Security check
         if (data.userId !== user.id) {
           navigate("/orders");
           return;
@@ -44,11 +54,21 @@ function OrderDetails() {
       } catch (error) {
         console.error("Failed to fetch order:", error);
       } finally {
-        setLoading(false);
+        if (showLoading) {
+          setLoading(false);
+        }
       }
     };
 
-    fetchOrder();
+    // Initial fetch
+    fetchOrder(true);
+
+    // Check for status changes every 10 seconds
+    const interval = setInterval(() => {
+      fetchOrder();
+    }, 10000);
+
+    return () => clearInterval(interval);
   }, [id, user, isLoaded, navigate]);
 
   const handleCancelOrder = async () => {
@@ -173,6 +193,104 @@ function OrderDetails() {
       <div className="grid gap-6 lg:grid-cols-[1fr_360px]">
         {/* LEFT */}
         <div className="space-y-6">
+          {/* Order Status */}
+          <section className="rounded-2xl border p-5 sm:p-6">
+            <div className="mb-6 flex items-center gap-2">
+              <Truck className="h-5 w-5" />
+              <h2 className="text-lg font-semibold">Order Status</h2>
+            </div>
+
+            {order.status === "cancelled" ? (
+              <div className="flex items-center gap-3 rounded-xl border p-4">
+                <XCircle className="h-6 w-6" />
+                <div>
+                  <p className="font-semibold">Order Cancelled</p>
+                  <p className="text-sm text-muted-foreground">
+                    This order has been cancelled.
+                  </p>
+                </div>
+              </div>
+            ) : (
+              <div className="space-y-6">
+                {[
+                  {
+                    key: "placed",
+                    label: "Order Placed",
+                    description: "Your order has been successfully placed.",
+                  },
+                  {
+                    key: "shipped",
+                    label: "Shipped",
+                    description: "Your order is on its way.",
+                  },
+                  {
+                    key: "delivered",
+                    label: "Delivered",
+                    description: "Your order has been delivered.",
+                  },
+                ].map((step, index) => {
+                  const statuses = ["placed", "shipped", "delivered"];
+                  const currentIndex = statuses.indexOf(order.status);
+
+                  const isCompleted = index <= currentIndex;
+                  const isCurrent = index === currentIndex;
+
+                  return (
+                    <div key={step.key} className="flex gap-4">
+                      {/* Icon + Line */}
+                      <div className="flex flex-col items-center">
+                        <div
+                          className={`flex h-9 w-9 items-center justify-center rounded-full border ${
+                            isCompleted
+                              ? "border-foreground bg-foreground text-background"
+                              : "border-muted-foreground/30 text-muted-foreground"
+                          }`}
+                        >
+                          {isCompleted ? (
+                            <CheckCircle className="h-5 w-5" />
+                          ) : (
+                            <span className="h-2.5 w-2.5 rounded-full bg-muted-foreground/30" />
+                          )}
+                        </div>
+
+                        {index < 2 && (
+                          <div
+                            className={`mt-1 h-10 w-px ${
+                              index < currentIndex
+                                ? "bg-foreground"
+                                : "bg-border"
+                            }`}
+                          />
+                        )}
+                      </div>
+
+                      {/* Content */}
+                      <div className="pb-2">
+                        <p
+                          className={`font-medium ${
+                            isCurrent ? "text-foreground" : ""
+                          }`}
+                        >
+                          {step.label}
+                        </p>
+
+                        <p className="mt-1 text-sm text-muted-foreground">
+                          {step.description}
+                        </p>
+
+                        {isCurrent && (
+                          <span className="mt-2 inline-block text-xs font-medium">
+                            Current status
+                          </span>
+                        )}
+                      </div>
+                    </div>
+                  );
+                })}
+              </div>
+            )}
+          </section>
+
           {/* Products */}
           <section className="rounded-2xl border p-5 sm:p-6">
             <div className="mb-5 flex items-center gap-2">
