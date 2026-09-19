@@ -3114,7 +3114,7 @@
       "coupon": null,
       "discountAmount": 0,
       "totalAmount": 38278,
-      "status": "placed",
+      "status": "cancelled",
       "createdAt": "2026-09-19T02:29:08.505Z",
       "id": "Qc-wVdo_wcU"
     },

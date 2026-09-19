@@ -6,7 +6,15 @@ import {
 } from "@/components/ui/dropdown-menu";
 import { Input } from "@/components/ui/input";
 import { Show, UserButton } from "@clerk/react";
-import { Heart, Menu, Search, ShoppingCart, X } from "lucide-react";
+import {
+  Heart,
+  MapPin,
+  Menu,
+  Package,
+  Search,
+  ShoppingCart,
+  X,
+} from "lucide-react";
 import { useState } from "react";
 import { useSelector } from "react-redux";
 import { Link, useLocation, useNavigate } from "react-router-dom";
@@ -251,7 +259,33 @@ function Navbar() {
               <User className="h-5 w-5" />
             </button> */}
             <Show when="signed-in">
-              <UserButton className="w-5 h-5" />
+              <UserButton>
+                <UserButton.MenuItems>
+                  <UserButton.Link
+                    label="My Cart"
+                    labelIcon={<ShoppingCart className="h-4 w-4" />}
+                    href="/cart"
+                  />
+
+                  <UserButton.Link
+                    label="My Orders"
+                    labelIcon={<Package className="h-4 w-4" />}
+                    href="/orders"
+                  />
+
+                  <UserButton.Link
+                    label="Wishlist"
+                    labelIcon={<Heart className="h-4 w-4" />}
+                    href="/wishlist"
+                  />
+
+                  <UserButton.Link
+                    label="Addresses"
+                    labelIcon={<MapPin className="h-4 w-4" />}
+                    href="/addresses"
+                  />
+                </UserButton.MenuItems>
+              </UserButton>
             </Show>
             <Show when="signed-out">
               <Link
