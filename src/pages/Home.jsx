@@ -1,6 +1,8 @@
 import BenefitsSection from "@/components/BenefitsSection";
+import DealsSection from "@/components/DealsSection.jsx";
 import FeaturedProducts from "@/components/FeaturedProducts";
 import HeroCarousel from "@/components/HeroCarousel";
+import Footer from "@/components/Footer.jsx";
 import ShopByCategory from "@/components/ShopByCategory";
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
@@ -31,8 +33,11 @@ function Home() {
         <HeroCarousel />
         <BenefitsSection />
         <ShopByCategory />
+        <DealsSection />
         <FeaturedProducts products={products} />
       </main>
+
+      <Footer />
     </>
   );
 }

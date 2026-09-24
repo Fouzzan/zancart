@@ -2319,26 +2319,6 @@
           "trending": true
         },
         {
-          "id": "2",
-          "title": "Premium Linen Shirt",
-          "description": "Lightweight linen shirt with a relaxed fit, perfect for summer and smart casual occasions.",
-          "price": 1799,
-          "discountPrice": 1399,
-          "category": "Men",
-          "subcategory": "Shirts",
-          "brand": "NorthLane",
-          "images": [
-            "https://images.unsplash.com/photo-1602810318383-e386cc2a3ccf",
-            "https://images.unsplash.com/photo-1596755094514-f87e34085b2c",
-            "https://images.unsplash.com/photo-1603252109303-2751441dd157"
-          ],
-          "rating": 4.4,
-          "reviewCount": 89,
-          "stock": 24,
-          "featured": true,
-          "trending": false
-        },
-        {
           "id": "6",
           "title": "Relaxed Cargo Pants",
           "description": "Utility-inspired cargo pants with multiple pockets and a relaxed contemporary fit.",
@@ -2375,26 +2355,6 @@
           "rating": 4.8,
           "reviewCount": 154,
           "stock": 33,
-          "featured": true,
-          "trending": true
-        },
-        {
-          "id": "8",
-          "title": "Floral Summer Dress",
-          "description": "Elegant floral dress with a lightweight fabric and comfortable relaxed silhouette.",
-          "price": 2499,
-          "discountPrice": 1899,
-          "category": "Women",
-          "subcategory": "Dresses",
-          "brand": "BloomWear",
-          "images": [
-            "https://images.unsplash.com/photo-1496747611176-843222e1e57c",
-            "https://images.unsplash.com/photo-1515372039744-b8f02a3ae446",
-            "https://images.unsplash.com/photo-1572804013309-59a88b7e92f1"
-          ],
-          "rating": 4.7,
-          "reviewCount": 198,
-          "stock": 27,
           "featured": true,
           "trending": true
         },
@@ -2437,6 +2397,26 @@
           "stock": 39,
           "featured": true,
           "trending": true
+        },
+        {
+          "id": "2",
+          "title": "Premium Linen Shirt",
+          "description": "Lightweight linen shirt with a relaxed fit, perfect for summer and smart casual occasions.",
+          "price": 1799,
+          "discountPrice": 1399,
+          "category": "Fashion",
+          "subcategory": "Shirts",
+          "brand": "NorthLane",
+          "images": [
+            "https://images.unsplash.com/photo-1602810318383-e386cc2a3ccf",
+            "https://images.unsplash.com/photo-1596755094514-f87e34085b2c",
+            "https://images.unsplash.com/photo-1603252109303-2751441dd157"
+          ],
+          "rating": 4.4,
+          "reviewCount": 89,
+          "stock": 24,
+          "featured": true,
+          "trending": false
         }
       ],
       "id": "OxSTXVQoKIw"
@@ -3196,6 +3176,85 @@
       "status": "placed",
       "createdAt": "2026-09-19T03:34:09.320Z",
       "id": "M5AT2BNrLZo"
+    },
+    {
+      "userId": "user_3JJDQcT11Hay732J8WGw6GmiooG",
+      "items": [
+        {
+          "productId": "6",
+          "title": "Relaxed Cargo Pants",
+          "image": "https://images.unsplash.com/photo-1624378439575-d8705ad7ae80",
+          "price": 1599,
+          "quantity": 5
+        },
+        {
+          "productId": "1",
+          "title": "Classic Oversized T-Shirt",
+          "image": "https://images.unsplash.com/photo-1521572267360-ee0c2909d518",
+          "price": 799,
+          "quantity": 3
+        },
+        {
+          "productId": "4",
+          "title": "Classic Bomber Jacket",
+          "image": "https://images.unsplash.com/photo-1551028719-00167b16eac5",
+          "price": 2799,
+          "quantity": 4
+        },
+        {
+          "productId": "8",
+          "title": "Floral Summer Dress",
+          "image": "https://images.unsplash.com/photo-1496747611176-843222e1e57c",
+          "price": 1899,
+          "quantity": 1
+        },
+        {
+          "productId": "7",
+          "title": "Minimal Black Hoodie",
+          "image": "https://images.unsplash.com/photo-1556905055-8f358a7a47b2",
+          "price": 1999,
+          "quantity": 5
+        },
+        {
+          "productId": "5",
+          "title": "Casual Polo T-Shirt",
+          "image": "https://images.unsplash.com/photo-1581655353564-df123a1eb820",
+          "price": 999,
+          "quantity": 1
+        },
+        {
+          "productId": "2",
+          "title": "Premium Linen Shirt",
+          "image": "https://images.unsplash.com/photo-1602810318383-e386cc2a3ccf",
+          "price": 1399,
+          "quantity": 1
+        },
+        {
+          "productId": "3",
+          "title": "Slim Fit Denim Jeans",
+          "image": "https://images.unsplash.com/photo-1542272604-787c3835535d",
+          "price": 1799,
+          "quantity": 3
+        }
+      ],
+      "address": {
+        "fullName": "Fouzan Muhammed K V",
+        "phone": "9778263326",
+        "address": "Kallivalappil house",
+        "city": "Pattambi",
+        "pinCode": "679337",
+        "userId": "user_3JJDQcT11Hay732J8WGw6GmiooG",
+        "isDefault": false,
+        "id": "C1wWHpKM9bQ"
+      },
+      "paymentMethod": "card",
+      "subtotal": 41277,
+      "coupon": null,
+      "discountAmount": 0,
+      "totalAmount": 41277,
+      "status": "placed",
+      "createdAt": "2026-09-22T07:38:43.643Z",
+      "id": "B1D7m7Led6I"
     }
   ],
   "coupons": [
