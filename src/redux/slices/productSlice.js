@@ -15,7 +15,7 @@ const productSlice = createSlice({
             state.products = action.payload;
         }, 
         setLoading: (state, action) => {
-            state.l = action.payload;
+            state.loading = action.payload;
 
         },
         setError: (state,action) => {

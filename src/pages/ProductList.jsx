@@ -163,6 +163,7 @@ function ProductList() {
         const response = await api.get("/products");
 
         dispatch(setProducts(response.data));
+        dispatch(setLoading(false));
       } catch (error) {
         console.error("Failed to fetch products:", error);
 
