@@ -4,19 +4,21 @@ import { addToCart } from "@/redux/slices/cartSlice";
 import { Heart } from "lucide-react";
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { Link, useParams } from "react-router-dom";
+import { Link, useNavigate, useParams } from "react-router-dom";
+import { toast } from "sonner";
 import ProductCard from "../components/ProductCard";
 import { toggleWishlist } from "../redux/slices/wishlistSlice";
 import api from "../services/api";
-import { toast } from "sonner";
 
 function ProductDetails() {
   const [selectedImage, setSelectedImage] = useState(null);
   const [product, setProduct] = useState(null);
   const [quantity, setQuantity] = useState(1);
   const [relatedProducts, setRelatedProducts] = useState([]);
+
   const { id } = useParams();
   const dispatch = useDispatch();
+  const navigate = useNavigate();
 
   const isWishlisted = useSelector((state) =>
     state.wishlist.items.some((item) => item.id === product?.id),
@@ -44,9 +46,38 @@ function ProductDetails() {
     fetchProduct();
   }, [id]);
 
+  const handleAddToCart = () => {
+    dispatch(
+      addToCart({
+        product,
+        quantity,
+      }),
+    );
+
+    toast.success(
+      quantity === 1 ? "Added to cart" : `${quantity} items added to cart`,
+    );
+  };
+
+  const handleBuyNow = () => {
+    dispatch(
+      addToCart({
+        product,
+        quantity,
+      }),
+    );
+
+    toast.success(
+      quantity === 1 ? "Added to cart" : `${quantity} items added to cart`,
+    );
+
+    navigate("/cart");
+  };
+
   if (!product) {
     return <p>Loading...</p>;
   }
+
   return (
     <div className="mx-auto max-w-7xl px-4 py-8 sm:px-6 lg:px-8">
       {/* Back */}
@@ -108,9 +139,7 @@ function ProductDetails() {
           {/* Rating */}
           <div className="mt-4 flex items-center gap-2">
             <span className="text-yellow-500">★</span>
-
             <span className="font-medium">{product.rating}</span>
-
             <span className="text-muted-foreground">
               ({product.reviewCount} reviews)
             </span>
@@ -191,17 +220,20 @@ function ProductDetails() {
             <Button
               type="button"
               disabled={product.stock === 0}
-              onClick={() => {
-                dispatch(
-                  addToCart({
-                    product,
-                    quantity,
-                  }),
-                );
-              }}
+              onClick={handleAddToCart}
               className="h-12 flex-1 rounded-xl"
             >
               Add to Cart
+            </Button>
+
+            <Button
+              type="button"
+              disabled={product.stock === 0}
+              variant="outline"
+              onClick={handleBuyNow}
+              className="h-12 flex-1 rounded-xl"
+            >
+              Buy Now
             </Button>
 
             <Button
