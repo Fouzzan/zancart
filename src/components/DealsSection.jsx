@@ -1,6 +1,6 @@
 import { useNavigate } from "react-router-dom";
 
-function DealsSection() {
+function DealsSection({ id }) {
   const navigate = useNavigate();
 
   const handleCategory = (category) => {
@@ -12,7 +12,7 @@ function DealsSection() {
   };
 
   return (
-    <section className="px-4 py-16 sm:px-6 lg:px-8">
+    <section id={id} className="scroll-mt-24 px-4 py-16 sm:px-6 lg:px-8">
       <div className="mx-auto max-w-7xl">
         {/* Heading */}
         <div className="mb-8 flex items-end justify-between">
@@ -26,12 +26,12 @@ function DealsSection() {
             </h2>
           </div>
 
-          <button
+          {/* <button
             onClick={handleDeals}
             className="hidden text-sm font-medium text-neutral-900 underline underline-offset-4 sm:block"
           >
             View all deals
-          </button>
+          </button> */}
         </div>
 
         {/* Deals */}
@@ -114,12 +114,12 @@ function DealsSection() {
         </div>
 
         {/* Mobile button */}
-        <button
+        {/* <button
           onClick={handleDeals}
           className="mt-6 w-full rounded-full border border-neutral-300 py-3 text-sm font-medium transition hover:bg-neutral-50 sm:hidden"
         >
           View all deals
-        </button>
+        </button> */}
       </div>
     </section>
   );
