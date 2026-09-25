@@ -2319,46 +2319,6 @@
           "trending": true
         },
         {
-          "id": "6",
-          "title": "Relaxed Cargo Pants",
-          "description": "Utility-inspired cargo pants with multiple pockets and a relaxed contemporary fit.",
-          "price": 1999,
-          "discountPrice": 1599,
-          "category": "Men",
-          "subcategory": "Pants",
-          "brand": "StreetMode",
-          "images": [
-            "https://images.unsplash.com/photo-1624378439575-d8705ad7ae80",
-            "https://images.unsplash.com/photo-1517445312882-bc9910d016b7",
-            "https://images.unsplash.com/photo-1506630448388-4e683c67ddb0"
-          ],
-          "rating": 4.5,
-          "reviewCount": 97,
-          "stock": 29,
-          "featured": false,
-          "trending": true
-        },
-        {
-          "id": "7",
-          "title": "Minimal Black Hoodie",
-          "description": "Soft fleece hoodie with a clean minimal design for relaxed everyday styling.",
-          "price": 2499,
-          "discountPrice": 1999,
-          "category": "Men",
-          "subcategory": "Hoodies",
-          "brand": "NorthLane",
-          "images": [
-            "https://images.unsplash.com/photo-1556905055-8f358a7a47b2",
-            "https://images.unsplash.com/photo-1578681994506-b8f463449011",
-            "https://images.unsplash.com/photo-1509967419530-da38b4704bc6"
-          ],
-          "rating": 4.8,
-          "reviewCount": 154,
-          "stock": 33,
-          "featured": true,
-          "trending": true
-        },
-        {
           "id": "24",
           "title": "Wireless Noise Cancelling Headphones",
           "description": "Immersive wireless headphones with active noise cancellation and long battery life.",
@@ -2375,26 +2335,6 @@
           "rating": 4.8,
           "reviewCount": 421,
           "stock": 26,
-          "featured": true,
-          "trending": true
-        },
-        {
-          "id": "25",
-          "title": "Smart Fitness Watch",
-          "description": "Smart fitness watch with activity tracking, heart-rate monitoring and notifications.",
-          "price": 6999,
-          "discountPrice": 5499,
-          "category": "Electronics",
-          "subcategory": "Smartwatches",
-          "brand": "TechPulse",
-          "images": [
-            "https://images.unsplash.com/photo-1579586337278-3befd40fd17a",
-            "https://images.unsplash.com/photo-1546868871-7041f2a55e12",
-            "https://images.unsplash.com/photo-1508685096489-7aacd43bd3b1"
-          ],
-          "rating": 4.6,
-          "reviewCount": 289,
-          "stock": 39,
           "featured": true,
           "trending": true
         },

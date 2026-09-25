@@ -136,7 +136,7 @@ function Navbar() {
             </DropdownMenu>
 
             <Link
-              to="/products"
+              to="/#deals"
               className="text-sm font-medium text-gray-700 hover:text-black transition-transform duration-300 ease-in-out hover:scale-110"
             >
               Deals
