@@ -32,11 +32,11 @@ function App() {
         {/* Public Routes */}
         <Route path="/login" element={<Login />} />
         <Route path="/register" element={<Register />} />
-        <Route path="/reset-password" element={<ResetPassword />} />
+        {/* <Route path="/reset-password" element={<ResetPassword />} /> */}
         <Route path="/" element={<Home />} />
         <Route path="/products" element={<ProductList />} />
         <Route path="/products/:id" element={<ProductDetails />} />
-        <Route path="/forgot-password" element={<ForgotPassword />} />
+        {/* <Route path="/forgot-password" element={<ForgotPassword />} /> */}
 
         {/* Private Routes */}
         <Route element={<ProtectedRoute />}>
