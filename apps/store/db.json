@@ -2000,6 +2000,41 @@
       "stock": 31,
       "featured": true,
       "trending": false
+    },
+    {
+      "title": "Rishad Babu",
+      "price": 1000,
+      "discountPrice": 500,
+      "category": "Fashion",
+      "brand": "Babu",
+      "stock": 1,
+      "description": "Rishad babu is a very good product. Very fiine condition",
+      "images": [
+        "https://res.cloudinary.com/hkw5bslv/image/upload/f_auto,q_auto/IMG-20260928-WA0027"
+      ],
+      "id": "GhGeMsBN4ZQ",
+      "subcategory": "Boy",
+      "featured": false,
+      "trending": false,
+      "rating": 0,
+      "reviewCount": 0
+    },
+    {
+      "title": "Premium Oversized Hoodie",
+      "description": "A premium heavyweight cotton oversized hoodie designed for maximum comfort and everyday streetwear styling. Features a relaxed fit, soft interior lining, and durable construction.",
+      "price": 1999,
+      "discountPrice": 1499,
+      "category": "Fashion",
+      "subcategory": "Hoodies",
+      "brand": "UrbanFit",
+      "stock": 42,
+      "images": [
+        "https://img.magnific.com/free-photo/handsome-attractive-european-man-gray-hoodie-with-hands-pockets-look-pleased-has-good-mood-as-comes-home-after-work-good-looking-male-student-poses_176420-13438.jpg?semt=ais_hybrid&w=740&q=80",
+        "https://media.istockphoto.com/id/1177415728/photo/mens-black-blank-hoodie-template-from-two-sides-natural-shape-on-invisible-mannequin-for-your.jpg?s=612x612&w=0&k=20&c=z6Wid_C4aXNwqMX-6z-Z17eVBHpQZRnQF-SgnrP6pig="
+      ],
+      "featured": true,
+      "trending": true,
+      "id": "96Gr39TxZ0w"
     }
   ],
   "carts": [
@@ -2357,6 +2392,24 @@
           "stock": 24,
           "featured": true,
           "trending": false
+        },
+        {
+          "title": "Rishad Babu",
+          "price": 1000,
+          "discountPrice": 500,
+          "category": "Fashion",
+          "brand": "Babu",
+          "stock": 1,
+          "description": "Rishad babu is a very good product. Very fiine condition",
+          "images": [
+            "https://res.cloudinary.com/hkw5bslv/image/upload/f_auto,q_auto/IMG-20260928-WA0027"
+          ],
+          "id": "GhGeMsBN4ZQ",
+          "subcategory": "Boy",
+          "featured": false,
+          "trending": false,
+          "rating": 0,
+          "reviewCount": 0
         }
       ],
       "id": "OxSTXVQoKIw"
