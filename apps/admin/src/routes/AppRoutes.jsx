@@ -2,10 +2,15 @@ import { Navigate, Route, Routes } from "react-router-dom";
 
 import AdminLayout from "../components/layout/AdminLayout";
 
+import Brands from "@/pages/Brands/Brands";
+import Inventory from "@/pages/Inventory/Inventory";
 import AddProduct from "@/pages/Products/AddProduct";
 import EditProduct from "@/pages/Products/EditProduct";
 import Products from "@/pages/Products/Products";
+import Categories from "../pages/Categories/Categories";
 import Dashboard from "../pages/Dashboard/Dashboard";
+import Orders from "@/pages/Orders/Orders";
+import OrderDetails from "@/pages/Orders/OrderDetails";
 import Login from "../pages/Login/Login";
 import Unauthorized from "../pages/Unauthorized/Unauthorized";
 
@@ -33,11 +38,15 @@ function AppRoutes() {
 
         <Route path="/products/:id/edit" element={<EditProduct />} />
 
-        <Route path="/categories" element={<div>Categories</div>} />
+        <Route path="/categories" element={<Categories />} />
 
-        <Route path="/brands" element={<div>Brands</div>} />
+        <Route path="/brands" element={<Brands />} />
 
-        <Route path="/orders" element={<div>Orders</div>} />
+        <Route path="/inventory" element={<Inventory />} />
+
+        <Route path="/orders" element={<Orders />} />
+
+        <Route path="/orders/:id" element={<OrderDetails />} />
 
         <Route path="/users" element={<div>Users</div>} />
 

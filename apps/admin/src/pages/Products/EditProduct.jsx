@@ -22,6 +22,8 @@ function EditProduct() {
   const [saving, setSaving] = useState(false);
   const [error, setErrorMessage] = useState("");
 
+  const [categories, setCategories] = useState([]);
+
   useEffect(() => {
     const fetchProduct = async () => {
       try {
@@ -42,6 +44,29 @@ function EditProduct() {
 
     fetchProduct();
   }, [id]);
+
+  // Fetching Product Categories
+
+  useEffect(() => {
+    const fetchCategories = async () => {
+      try {
+        const response = await fetch(
+          `${import.meta.env.VITE_API_URL}/categories`,
+        );
+
+        if (!response.ok) {
+          throw new Error("Failed to fetch categories");
+        }
+
+        const data = await response.json();
+        setCategories(data);
+      } catch (error) {
+        console.error("Failed to fetch categories:", error);
+      }
+    };
+
+    fetchCategories();
+  }, []);
 
   const handleSubmit = async (productData, validationError) => {
     if (validationError) {
@@ -102,6 +127,7 @@ function EditProduct() {
         loading={saving}
         error={error}
         submitLabel="Update Product"
+        categories={categories}
       />
     </div>
   );

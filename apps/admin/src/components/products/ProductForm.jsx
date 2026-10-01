@@ -1,5 +1,16 @@
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { Checkbox } from "@/components/ui/checkbox";
+import { Input } from "@/components/ui/input";
+import { Label } from "@/components/ui/label";
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "@/components/ui/select";
+import { Textarea } from "@/components/ui/textarea";
 import { useState } from "react";
 
 const emptyProduct = {
@@ -22,6 +33,8 @@ function ProductForm({
   loading = false,
   error = "",
   submitLabel = "Save Product",
+  categories = [],
+  brands = [],
 }) {
   const [formData, setFormData] = useState({
     ...emptyProduct,
@@ -35,6 +48,13 @@ function ProductForm({
     setFormData((previous) => ({
       ...previous,
       [name]: value,
+    }));
+  };
+
+  const handleCategoryChange = (value) => {
+    setFormData((previous) => ({
+      ...previous,
+      category: value,
     }));
   };
 
@@ -130,7 +150,6 @@ function ProductForm({
       featured: formData.featured,
       trending: formData.trending,
 
-      // Initial review data
       rating: 0,
       reviewCount: 0,
     };
@@ -147,86 +166,109 @@ function ProductForm({
         </CardHeader>
 
         <CardContent className="space-y-6">
+          {/* Product Name */}
           <div className="space-y-2">
-            <label htmlFor="title" className="text-sm font-medium">
-              Product Name
-            </label>
+            <Label htmlFor="title">Product Name</Label>
 
-            <input
+            <Input
               id="title"
               name="title"
               type="text"
               value={formData.title}
               onChange={handleChange}
               placeholder="Enter product name"
-              className="w-full rounded-md border bg-background px-3 py-2 text-sm outline-none focus:ring-2 focus:ring-ring"
+              disabled={loading}
             />
           </div>
 
+          {/* Description */}
           <div className="space-y-2">
-            <label htmlFor="description" className="text-sm font-medium">
-              Description
-            </label>
+            <Label htmlFor="description">Description</Label>
 
-            <textarea
+            <Textarea
               id="description"
               name="description"
-              rows="5"
+              rows={5}
               value={formData.description}
               onChange={handleChange}
               placeholder="Enter product description"
-              className="w-full resize-none rounded-md border bg-background px-3 py-2 text-sm outline-none focus:ring-2 focus:ring-ring"
+              className="resize-none"
+              disabled={loading}
             />
           </div>
 
+          {/* Category + Subcategory */}
           <div className="grid gap-4 sm:grid-cols-2">
+            {/* Category */}
             <div className="space-y-2">
-              <label htmlFor="category" className="text-sm font-medium">
-                Category
-              </label>
+              <Label htmlFor="category">Category</Label>
 
-              <input
-                id="category"
-                name="category"
-                type="text"
+              <Select
                 value={formData.category}
-                onChange={handleChange}
-                placeholder="e.g. Fashion"
-                className="w-full rounded-md border bg-background px-3 py-2 text-sm outline-none focus:ring-2 focus:ring-ring"
-              />
+                onValueChange={handleCategoryChange}
+                disabled={loading}
+              >
+                <SelectTrigger id="category" className="w-full">
+                  <SelectValue placeholder="Select a category" />
+                </SelectTrigger>
+
+                <SelectContent>
+                  {categories.length === 0 ? (
+                    <SelectItem value="no-categories" disabled>
+                      No categories available
+                    </SelectItem>
+                  ) : (
+                    categories.map((category) => (
+                      <SelectItem key={category.id} value={category.name}>
+                        {category.name}
+                      </SelectItem>
+                    ))
+                  )}
+                </SelectContent>
+              </Select>
             </div>
 
+            {/* Subcategory */}
             <div className="space-y-2">
-              <label htmlFor="subcategory" className="text-sm font-medium">
-                Subcategory
-              </label>
+              <Label htmlFor="subcategory">Subcategory</Label>
 
-              <input
+              <Input
                 id="subcategory"
                 name="subcategory"
                 type="text"
                 value={formData.subcategory}
                 onChange={handleChange}
                 placeholder="e.g. T-Shirts"
-                className="w-full rounded-md border bg-background px-3 py-2 text-sm outline-none focus:ring-2 focus:ring-ring"
+                disabled={loading}
               />
             </div>
           </div>
 
+          {/* Brand */}
           <div className="space-y-2">
-            <label htmlFor="brand" className="text-sm font-medium">
-              Brand
-            </label>
+            <Label htmlFor="brand">Brand</Label>
 
-            <input
-              id="brand"
-              name="brand"
-              type="text"
+            <Select
               value={formData.brand}
-              onChange={handleChange}
-              placeholder="e.g. UrbanFit"
-              className="w-full rounded-md border bg-background px-3 py-2 text-sm outline-none focus:ring-2 focus:ring-ring"
-            />
+              onValueChange={(value) =>
+                setFormData((previous) => ({
+                  ...previous,
+                  brand: value,
+                }))
+              }
+            >
+              <SelectTrigger className="w-[49%]">
+                <SelectValue placeholder="Select a brand" />
+              </SelectTrigger>
+
+              <SelectContent>
+                {brands.map((brand) => (
+                  <SelectItem key={brand.id} value={brand.name}>
+                    {brand.name}
+                  </SelectItem>
+                ))}
+              </SelectContent>
+            </Select>
           </div>
         </CardContent>
       </Card>
@@ -239,12 +281,11 @@ function ProductForm({
 
         <CardContent>
           <div className="grid gap-4 sm:grid-cols-2">
+            {/* Original Price */}
             <div className="space-y-2">
-              <label htmlFor="price" className="text-sm font-medium">
-                Original Price
-              </label>
+              <Label htmlFor="price">Original Price</Label>
 
-              <input
+              <Input
                 id="price"
                 name="price"
                 type="number"
@@ -252,16 +293,15 @@ function ProductForm({
                 value={formData.price}
                 onChange={handleChange}
                 placeholder="₹0"
-                className="w-full rounded-md border bg-background px-3 py-2 text-sm outline-none focus:ring-2 focus:ring-ring"
+                disabled={loading}
               />
             </div>
 
+            {/* Discount Price */}
             <div className="space-y-2">
-              <label htmlFor="discountPrice" className="text-sm font-medium">
-                Discount Price
-              </label>
+              <Label htmlFor="discountPrice">Discount Price</Label>
 
-              <input
+              <Input
                 id="discountPrice"
                 name="discountPrice"
                 type="number"
@@ -269,7 +309,7 @@ function ProductForm({
                 value={formData.discountPrice}
                 onChange={handleChange}
                 placeholder="₹0"
-                className="w-full rounded-md border bg-background px-3 py-2 text-sm outline-none focus:ring-2 focus:ring-ring"
+                disabled={loading}
               />
             </div>
           </div>
@@ -283,12 +323,10 @@ function ProductForm({
         </CardHeader>
 
         <CardContent>
-          <div className="max-w-sm space-y-2">
-            <label htmlFor="stock" className="text-sm font-medium">
-              Stock Quantity
-            </label>
+          <div className="max-w-[49%] space-y-2">
+            <Label htmlFor="stock">Stock Quantity</Label>
 
-            <input
+            <Input
               id="stock"
               name="stock"
               type="number"
@@ -296,7 +334,7 @@ function ProductForm({
               value={formData.stock}
               onChange={handleChange}
               placeholder="Enter stock quantity"
-              className="w-full rounded-md border bg-background px-3 py-2 text-sm outline-none focus:ring-2 focus:ring-ring"
+              disabled={loading}
             />
           </div>
         </CardContent>
@@ -311,14 +349,14 @@ function ProductForm({
         <CardContent className="space-y-4">
           {formData.images.map((image, index) => (
             <div key={index} className="flex gap-3">
-              <input
+              <Input
                 type="url"
                 value={image}
                 onChange={(event) =>
                   handleImageChange(index, event.target.value)
                 }
                 placeholder={`Image URL ${index + 1}`}
-                className="flex-1 rounded-md border bg-background px-3 py-2 text-sm outline-none focus:ring-2 focus:ring-ring"
+                disabled={loading}
               />
 
               {formData.images.length > 1 && (
@@ -326,6 +364,7 @@ function ProductForm({
                   type="button"
                   variant="outline"
                   onClick={() => removeImageField(index)}
+                  disabled={loading}
                 >
                   Remove
                 </Button>
@@ -333,7 +372,12 @@ function ProductForm({
             </div>
           ))}
 
-          <Button type="button" variant="outline" onClick={addImageField}>
+          <Button
+            type="button"
+            variant="outline"
+            onClick={addImageField}
+            disabled={loading}
+          >
             + Add Image
           </Button>
 
@@ -350,46 +394,50 @@ function ProductForm({
         </CardHeader>
 
         <CardContent className="space-y-4">
-          <label className="flex cursor-pointer items-center gap-3">
-            <input
-              type="checkbox"
+          {/* Featured */}
+          <div className="flex items-start gap-3">
+            <Checkbox
+              id="featured"
               checked={formData.featured}
-              onChange={() => handleToggle("featured")}
-              className="h-4 w-4 rounded border"
+              onCheckedChange={() => handleToggle("featured")}
+              disabled={loading}
             />
 
-            <div>
-              <p className="text-sm font-medium">Featured Product</p>
+            <div className="space-y-1">
+              <Label htmlFor="featured" className="cursor-pointer">
+                Featured Product
+              </Label>
 
               <p className="text-xs text-muted-foreground">
                 Show this product in featured sections.
               </p>
             </div>
-          </label>
+          </div>
 
-          <label className="flex cursor-pointer items-center gap-3">
-            <input
-              type="checkbox"
+          {/* Trending */}
+          <div className="flex items-start gap-3">
+            <Checkbox
+              id="trending"
               checked={formData.trending}
-              onChange={() => handleToggle("trending")}
-              className="h-4 w-4 rounded border"
+              onCheckedChange={() => handleToggle("trending")}
+              disabled={loading}
             />
 
-            <div>
-              <p className="text-sm font-medium">Trending Product</p>
+            <div className="space-y-1">
+              <Label htmlFor="trending" className="cursor-pointer">
+                Trending Product
+              </Label>
 
               <p className="text-xs text-muted-foreground">
                 Show this product in trending sections.
               </p>
             </div>
-          </label>
+          </div>
         </CardContent>
       </Card>
 
       {/* Error */}
-      {(error || error === "") && error && (
-        <p className="text-sm text-destructive">{error}</p>
-      )}
+      {error && <p className="text-sm text-destructive">{error}</p>}
 
       {/* Actions */}
       <div className="flex justify-end gap-3 border-t pt-6">

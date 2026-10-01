@@ -195,9 +195,9 @@
         "https://images.unsplash.com/photo-1541099649105-f69ad21f3246",
         "https://images.unsplash.com/photo-1509551388413-e18d0ac5d495"
       ],
-      "rating": 4.5,
-      "reviewCount": 115,
-      "stock": 38,
+      "rating": 0,
+      "reviewCount": 0,
+      "stock": 5,
       "featured": false,
       "trending": true
     },
@@ -2007,7 +2007,7 @@
       "discountPrice": 500,
       "category": "Fashion",
       "brand": "Babu",
-      "stock": 1,
+      "stock": 0,
       "description": "Rishad babu is a very good product. Very fiine condition",
       "images": [
         "https://res.cloudinary.com/hkw5bslv/image/upload/f_auto,q_auto/IMG-20260928-WA0027"
@@ -2018,23 +2018,6 @@
       "trending": false,
       "rating": 0,
       "reviewCount": 0
-    },
-    {
-      "title": "Premium Oversized Hoodie",
-      "description": "A premium heavyweight cotton oversized hoodie designed for maximum comfort and everyday streetwear styling. Features a relaxed fit, soft interior lining, and durable construction.",
-      "price": 1999,
-      "discountPrice": 1499,
-      "category": "Fashion",
-      "subcategory": "Hoodies",
-      "brand": "UrbanFit",
-      "stock": 42,
-      "images": [
-        "https://img.magnific.com/free-photo/handsome-attractive-european-man-gray-hoodie-with-hands-pockets-look-pleased-has-good-mood-as-comes-home-after-work-good-looking-male-student-poses_176420-13438.jpg?semt=ais_hybrid&w=740&q=80",
-        "https://media.istockphoto.com/id/1177415728/photo/mens-black-blank-hoodie-template-from-two-sides-natural-shape-on-invisible-mannequin-for-your.jpg?s=612x612&w=0&k=20&c=z6Wid_C4aXNwqMX-6z-Z17eVBHpQZRnQF-SgnrP6pig="
-      ],
-      "featured": true,
-      "trending": true,
-      "id": "96Gr39TxZ0w"
     }
   ],
   "carts": [
@@ -2490,7 +2473,7 @@
       },
       "paymentMethod": "upi",
       "totalAmount": 9593,
-      "status": "placed",
+      "status": null,
       "createdAt": "2026-09-18T05:29:42.635Z",
       "id": "pk6dV1iASXU"
     },
@@ -3279,6 +3262,134 @@
       "comment": "Excellent Product!",
       "createdAt": "2026-09-18T11:08:03.928Z",
       "id": "_CAi9JpEeFc"
+    }
+  ],
+  "categories": [
+    {
+      "id": "1",
+      "name": "Fashion"
+    },
+    {
+      "id": "2",
+      "name": "Electronics"
+    },
+    {
+      "id": "3",
+      "name": "Beauty"
+    },
+    {
+      "id": "4",
+      "name": "Fitness"
+    },
+    {
+      "id": "5",
+      "name": "Home"
+    },
+    {
+      "id": "6",
+      "name": "Stationery"
+    },
+    {
+      "name": "adsfasfqwe",
+      "id": "22ubmXsfRZA"
+    }
+  ],
+  "brands": [
+    {
+      "id": "2",
+      "name": "BloomWear"
+    },
+    {
+      "id": "3",
+      "name": "BrewCraft"
+    },
+    {
+      "id": "4",
+      "name": "CarryCo"
+    },
+    {
+      "id": "5",
+      "name": "CasaNova"
+    },
+    {
+      "id": "6",
+      "name": "CozyLine"
+    },
+    {
+      "id": "7",
+      "name": "DenimCo"
+    },
+    {
+      "id": "8",
+      "name": "GameCore"
+    },
+    {
+      "id": "9",
+      "name": "GlowBotanics"
+    },
+    {
+      "id": "10",
+      "name": "Lumina"
+    },
+    {
+      "id": "11",
+      "name": "ModeStudio"
+    },
+    {
+      "id": "12",
+      "name": "NorthLane"
+    },
+    {
+      "id": "13",
+      "name": "PaperCraft"
+    },
+    {
+      "id": "14",
+      "name": "PowerFit"
+    },
+    {
+      "id": "15",
+      "name": "SoundMax"
+    },
+    {
+      "id": "16",
+      "name": "StreetMode"
+    },
+    {
+      "id": "17",
+      "name": "Stride"
+    },
+    {
+      "id": "18",
+      "name": "TechPulse"
+    },
+    {
+      "id": "19",
+      "name": "TimeCraft"
+    },
+    {
+      "id": "20",
+      "name": "TrailPro"
+    },
+    {
+      "id": "21",
+      "name": "UrbanFit"
+    },
+    {
+      "id": "22",
+      "name": "VisionTech"
+    },
+    {
+      "id": "23",
+      "name": "Visionary"
+    },
+    {
+      "id": "24",
+      "name": "WalkEasy"
+    },
+    {
+      "id": "25",
+      "name": "ZenCore"
     }
   ],
   "$schema": "./node_modules/json-server/schema.json"

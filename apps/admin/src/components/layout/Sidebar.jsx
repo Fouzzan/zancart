@@ -11,7 +11,7 @@ import {
 } from "lucide-react";
 import { NavLink } from "react-router-dom";
 
-const navigation = [
+export const navigation = [
   {
     label: "Dashboard",
     path: "/dashboard",
@@ -21,6 +21,11 @@ const navigation = [
     label: "Products",
     path: "/products",
     icon: ShoppingBag,
+  },
+  {
+    label: "Inventory",
+    path: "/inventory",
+    icon: Boxes,
   },
   {
     label: "Categories",
@@ -56,7 +61,7 @@ const navigation = [
 
 function Sidebar() {
   return (
-    <aside className="flex h-screen w-64 flex-col border-r bg-background">
+    <aside className="hidden h-screen w-64 shrink-0 flex-col border-r bg-background lg:flex">
       {/* Logo */}
       <div className="flex h-16 items-center border-b px-6">
         <div>
@@ -75,6 +80,7 @@ function Sidebar() {
             <NavLink
               key={item.path}
               to={item.path}
+              onClick={() => setMobileMenuOpen(false)}
               className={({ isActive }) =>
                 [
                   "flex items-center gap-3 rounded-lg px-3 py-2.5 text-sm font-medium transition-colors",
