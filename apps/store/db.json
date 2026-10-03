@@ -2170,7 +2170,29 @@
     },
     {
       "userId": "user_3JJDQcT11Hay732J8WGw6GmiooG",
-      "items": [],
+      "items": [
+        {
+          "id": "11",
+          "title": "Oversized Knit Sweater",
+          "description": "Warm oversized knit sweater with a soft texture and relaxed fit.",
+          "price": 2299,
+          "discountPrice": 1799,
+          "category": "Fashion",
+          "subcategory": "Sweaters",
+          "brand": "CozyLine",
+          "images": [
+            "https://images.unsplash.com/photo-1434389677669-e08b4cac3105",
+            "https://images.unsplash.com/photo-1576566588028-4147f3842f27",
+            "https://images.unsplash.com/photo-1583744946564-b52ac1c389c8"
+          ],
+          "rating": 4.4,
+          "reviewCount": 72,
+          "stock": 25,
+          "featured": false,
+          "trending": false,
+          "quantity": 1
+        }
+      ],
       "id": "_CdhDbJsVcs"
     },
     {
@@ -3228,9 +3250,9 @@
   "coupons": [
     {
       "id": "1",
-      "code": "WELCOME10",
+      "code": "WELCOME30",
       "discountType": "percentage",
-      "discountValue": 10,
+      "discountValue": 30,
       "minimumOrderAmount": 500,
       "expiryDate": "2026-12-31",
       "isActive": true
@@ -3243,6 +3265,15 @@
       "minimumOrderAmount": 1000,
       "expiryDate": "2026-12-31",
       "isActive": true
+    },
+    {
+      "code": "WELCOME20",
+      "discountType": "percentage",
+      "discountValue": 20,
+      "minimumOrderAmount": 500,
+      "expiryDate": "2026-12-31",
+      "isActive": true,
+      "id": "7K7PtvGxI6M"
     }
   ],
   "reviews": [
