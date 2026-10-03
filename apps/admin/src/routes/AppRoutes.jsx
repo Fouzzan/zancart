@@ -4,13 +4,15 @@ import AdminLayout from "../components/layout/AdminLayout";
 
 import Brands from "@/pages/Brands/Brands";
 import Inventory from "@/pages/Inventory/Inventory";
+import OrderDetails from "@/pages/Orders/OrderDetails";
+import Orders from "@/pages/Orders/Orders";
 import AddProduct from "@/pages/Products/AddProduct";
 import EditProduct from "@/pages/Products/EditProduct";
 import Products from "@/pages/Products/Products";
+import UserDetails from "@/pages/Users/UserDetails";
+import Users from "@/pages/Users/Users";
 import Categories from "../pages/Categories/Categories";
 import Dashboard from "../pages/Dashboard/Dashboard";
-import Orders from "@/pages/Orders/Orders";
-import OrderDetails from "@/pages/Orders/OrderDetails";
 import Login from "../pages/Login/Login";
 import Unauthorized from "../pages/Unauthorized/Unauthorized";
 
@@ -48,7 +50,9 @@ function AppRoutes() {
 
         <Route path="/orders/:id" element={<OrderDetails />} />
 
-        <Route path="/users" element={<div>Users</div>} />
+        <Route path="/users" element={<Users />} />
+
+        <Route path="/users/:id" element={<UserDetails />} />
 
         <Route path="/coupons" element={<div>Coupons</div>} />
 

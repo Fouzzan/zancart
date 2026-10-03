@@ -4,6 +4,7 @@ import CartSync from "./components/CartSync";
 import Navbar from "./components/Navbar";
 import WishlistSync from "./components/wishlistSync";
 import AppRoutes from "./routes/AppRoutes";
+import UserSync from "./components/UserSync";
 
 function App() {
   return (
@@ -12,6 +13,7 @@ function App() {
       <Navbar />
       <CartSync />
       <WishlistSync />
+      <UserSync />
       <AppRoutes />
     </>
   );

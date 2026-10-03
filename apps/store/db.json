@@ -1,5 +1,36 @@
 {
-  "users": [],
+  "users": [
+    {
+      "clerkId": "user_3JJDQcT11Hay732J8WGw6GmiooG",
+      "name": "Fouzan Muhammed KV",
+      "email": "mfouzan961@gmail.com",
+      "imageUrl": "https://img.clerk.com/eyJ0eXBlIjoicHJveHkiLCJzcmMiOiJodHRwczovL2ltYWdlcy5jbGVyay5kZXYvdXBsb2FkZWQvaW1nXzNKb1lpcXVreFkwamhIR2pCTFpnVlRjSEUxOCJ9",
+      "status": "active",
+      "createdAt": "2026-10-03T03:34:18.858Z",
+      "id": "xYpyYYt9DZE",
+      "role": "admin"
+    },
+    {
+      "clerkId": "user_3JRXi5oydPbuGhpU5Wby7qZJOfW",
+      "name": "Fouzan Muhammed KV",
+      "email": "fouzanmuhammedkv@gmail.com",
+      "imageUrl": "https://img.clerk.com/eyJ0eXBlIjoicHJveHkiLCJzcmMiOiJodHRwczovL2ltYWdlcy5jbGVyay5kZXYvb2F1dGhfZ29vZ2xlL2ltZ18zSlJYaUJBSnY1UFhHM2xHb01GTFVOV1kwdFIifQ",
+      "status": "active",
+      "createdAt": "2026-10-03T03:35:08.812Z",
+      "id": "eFYvB-64VIM",
+      "role": "user"
+    },
+    {
+      "clerkId": "user_3JRbYpDqrify8jbTRBObB1fomjB",
+      "name": "fouzan",
+      "email": "fouzzanai@gmail.com",
+      "imageUrl": "https://img.clerk.com/eyJ0eXBlIjoicHJveHkiLCJzcmMiOiJodHRwczovL2ltYWdlcy5jbGVyay5kZXYvb2F1dGhfZ29vZ2xlL2ltZ18zSlJiWW53WUUyamNNNkVKaHVvQzlTSFNJRUEifQ",
+      "role": "user",
+      "status": "blocked",
+      "createdAt": "2026-10-03T04:10:55.646Z",
+      "id": "Zmq2mpabzT0"
+    }
+  ],
   "products": [
     {
       "id": "1",
@@ -2141,6 +2172,11 @@
       "userId": "user_3JJDQcT11Hay732J8WGw6GmiooG",
       "items": [],
       "id": "_CdhDbJsVcs"
+    },
+    {
+      "userId": "user_3JRbYpDqrify8jbTRBObB1fomjB",
+      "items": [],
+      "id": "RbnDIEt3OSM"
     }
   ],
   "wishlists": [
@@ -2232,6 +2268,11 @@
       "userId": "user_3JRXi5oydPbuGhpU5Wby7qZJOfW",
       "items": [],
       "id": "S7aYa4PihW0"
+    },
+    {
+      "userId": "user_3JRbYpDqrify8jbTRBObB1fomjB",
+      "items": [],
+      "id": "eyTJ4xaP3yA"
     }
   ],
   "addresses": [
