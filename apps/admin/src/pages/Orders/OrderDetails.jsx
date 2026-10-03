@@ -7,7 +7,7 @@ import {
   Package,
   User,
 } from "lucide-react";
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { Link, useParams } from "react-router-dom";
 
 import { Badge } from "@/components/ui/badge";
@@ -43,15 +43,23 @@ function OrderDetails() {
 
   const API_URL = import.meta.env.VITE_API_URL;
 
+  // Used to prevent an old fetch from overwriting newer state.
+  const fetchRequestRef = useRef(0);
+
   // -----------------------------------------
   // Fetch order
   // -----------------------------------------
-  const fetchOrder = async () => {
+  const fetchOrder = async (signal) => {
+    const requestId = ++fetchRequestRef.current;
+
     try {
       setLoading(true);
       setError("");
 
-      const orderResponse = await fetch(`${API_URL}/orders/${id}`);
+      const orderResponse = await fetch(`${API_URL}/orders/${id}`, {
+        signal,
+        cache: "no-store",
+      });
 
       if (!orderResponse.ok) {
         throw new Error("Order not found");
@@ -59,13 +67,21 @@ function OrderDetails() {
 
       const orderData = await orderResponse.json();
 
+      // Ignore this response if a newer request has already started.
+      if (requestId !== fetchRequestRef.current) {
+        return;
+      }
+
       setOrder(orderData);
 
       // -----------------------------------------
       // Fetch customer
       // -----------------------------------------
       try {
-        const usersResponse = await fetch(`${API_URL}/users`);
+        const usersResponse = await fetch(`${API_URL}/users`, {
+          signal,
+          cache: "no-store",
+        });
 
         if (usersResponse.ok) {
           const users = await usersResponse.json();
@@ -77,21 +93,37 @@ function OrderDetails() {
               item.userId === orderData.userId,
           );
 
-          setUser(foundUser || null);
+          if (requestId === fetchRequestRef.current) {
+            setUser(foundUser || null);
+          }
         }
       } catch (userError) {
-        console.error("Failed to fetch customer:", userError);
+        if (userError.name !== "AbortError") {
+          console.error("Failed to fetch customer:", userError);
+        }
       }
     } catch (error) {
+      if (error.name === "AbortError") {
+        return;
+      }
+
       console.error("Failed to fetch order:", error);
       setError("Unable to load this order.");
     } finally {
-      setLoading(false);
+      if (!signal.aborted && requestId === fetchRequestRef.current) {
+        setLoading(false);
+      }
     }
   };
 
   useEffect(() => {
-    fetchOrder();
+    const controller = new AbortController();
+
+    fetchOrder(controller.signal);
+
+    return () => {
+      controller.abort();
+    };
   }, [id]);
 
   // -----------------------------------------
@@ -129,18 +161,34 @@ function OrderDetails() {
   };
 
   // -----------------------------------------
-  // Order Status update function
+  // Order Status update
   // -----------------------------------------
   const handleStatusChange = async (newStatus) => {
-    if (!order || newStatus === order.status) {
+    if (!order || updatingStatus) {
       return;
     }
 
-    const previousStatus = order.status;
+    const currentStatus = order.status || "placed";
+
+    if (newStatus === currentStatus) {
+      return;
+    }
+
+    const previousOrder = order;
 
     try {
       setUpdatingStatus(true);
       setError("");
+
+      /*
+       * Update the UI immediately.
+       * This prevents the Select from visually jumping
+       * back while the PATCH request is being processed.
+       */
+      setOrder((currentOrder) => ({
+        ...currentOrder,
+        status: newStatus,
+      }));
 
       const response = await fetch(`${API_URL}/orders/${order.id}`, {
         method: "PATCH",
@@ -150,43 +198,32 @@ function OrderDetails() {
         body: JSON.stringify({
           status: newStatus,
         }),
+        cache: "no-store",
       });
 
       if (!response.ok) {
         throw new Error("Failed to update order status");
       }
 
-      // Update UI immediately
+      const updatedOrder = await response.json();
+
+      /*
+       * Keep the updated server response,
+       * but explicitly preserve the requested status.
+       *
+       * JSON Server should already return the new status,
+       * but this makes the UI deterministic.
+       */
       setOrder((currentOrder) => ({
         ...currentOrder,
+        ...updatedOrder,
         status: newStatus,
       }));
-
-      // Verify the actual database value
-      const verifyResponse = await fetch(`${API_URL}/orders/${order.id}`);
-
-      if (!verifyResponse.ok) {
-        throw new Error("Failed to verify order status");
-      }
-
-      const verifiedOrder = await verifyResponse.json();
-
-      if (verifiedOrder.status !== newStatus) {
-        throw new Error(
-          `Status was not saved. Expected "${newStatus}" but got "${verifiedOrder.status}".`,
-        );
-      }
-
-      // Use the verified database value
-      setOrder(verifiedOrder);
     } catch (error) {
       console.error("Failed to update order status:", error);
 
-      // Restore previous UI state if something failed
-      setOrder((currentOrder) => ({
-        ...currentOrder,
-        status: previousStatus,
-      }));
+      // Roll back only when the PATCH actually fails.
+      setOrder(previousOrder);
 
       setError("Unable to update order status.");
     } finally {
@@ -391,6 +428,13 @@ function OrderDetails() {
           </Select>
         </div>
       </div>
+
+      {/* Status update error */}
+      {error && (
+        <div className="rounded-lg border border-destructive/30 bg-destructive/5 px-4 py-3">
+          <p className="text-sm text-destructive">{error}</p>
+        </div>
+      )}
 
       {/* Overview Cards */}
       <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-4">

@@ -1,5 +1,10 @@
 import { Button } from "@/components/ui/button";
-import { createOrder } from "@/services/orderServices";
+import { createOrder, deleteOrder } from "@/services/orderServices";
+import {
+  reduceOrderStock,
+  restoreOrderStock,
+  validateOrderStock,
+} from "@/services/productServices";
 import { useUser } from "@clerk/react";
 import { ArrowLeft, Banknote, CreditCard, Smartphone } from "lucide-react";
 import { useState } from "react";
@@ -15,6 +20,7 @@ function Payment() {
   const { user } = useUser();
 
   const items = useSelector((state) => state.cart.items);
+
   const selectedAddress = useSelector(
     (state) => state.checkout.selectedAddress,
   );
@@ -23,7 +29,6 @@ function Payment() {
 
   const [paymentMethod, setLocalPaymentMethod] = useState("");
   const [isProcessing, setIsProcessing] = useState(false);
-  const [paymentSuccess, setPaymentSuccess] = useState(false);
 
   const subtotal = items.reduce(
     (total, item) => total + item.discountPrice * item.quantity,
@@ -43,55 +48,42 @@ function Payment() {
     dispatch(setPaymentMethod(method));
   };
 
-  //   const handlePlaceOrder = async () => {
-  //     if (!paymentMethod || !selectedAddress || !user) {
-  //       return;
-  //     }
-
-  //     try {
-  //       const order = {
-  //         userId: user.id,
-
-  //         items: items.map((item) => ({
-  //           productId: item.id,
-  //           title: item.title,
-  //           image: item.images[0],
-  //           price: item.discountPrice,
-  //           quantity: item.quantity,
-  //         })),
-
-  //         address: selectedAddress,
-
-  //         paymentMethod,
-
-  //         totalAmount: subtotal,
-
-  //         status: "placed",
-
-  //         createdAt: new Date().toISOString(),
-  //       };
-
-  //       const createdOrder = await createOrder(order);
-
-  //       console.log("Order created:", createdOrder);
-
-  //       // Clear cart
-  //       items.forEach((item) => {
-  //         dispatch(removeFromCart(item.id));
-  //       });
-
-  //       // Clear checkout data
-  //       dispatch(clearCheckout());
-
-  //       // Go to order confirmation
-  //       navigate(`/order-success/${createdOrder.id}`);
-  //     } catch (error) {
-  //       console.error("Failed to place order:", error);
-  //     }
-  //   };
-
   const handleCreateOrder = async () => {
+    let createdOrder = null;
+    let stockUpdates = [];
+
     try {
+      /*
+       * STEP 1
+       * Make sure we still have enough stock.
+       *
+       * We check the database instead of trusting the
+       * product data that was already in the cart.
+       */
+      const stockCheck = await validateOrderStock(
+        items.map((item) => ({
+          productId: item.id,
+          quantity: item.quantity,
+        })),
+      );
+
+      if (!stockCheck.valid) {
+        const message = stockCheck.insufficientItems
+          .map((item) => `${item.title}: only ${item.available} left`)
+          .join("\n");
+
+        toast.error("Some products are out of stock.", {
+          description: message,
+        });
+
+        setIsProcessing(false);
+        return;
+      }
+
+      /*
+       * STEP 2
+       * Create the order.
+       */
       const order = {
         userId: user.id,
 
@@ -120,35 +112,104 @@ function Payment() {
         createdAt: new Date().toISOString(),
       };
 
-      const createdOrder = await createOrder(order);
+      createdOrder = await createOrder(order);
 
       console.log("Order created:", createdOrder);
 
-      // Remove all purchased items from cart
+      /*
+       * STEP 3
+       * Reduce stock only after the order has
+       * successfully been created.
+       */
+      stockUpdates = await reduceOrderStock(order.items);
+
+      console.log("Stock updated:", stockUpdates);
+
+      /*
+       * STEP 4
+       * Remove purchased items from cart.
+       */
       items.forEach((item) => {
         dispatch(removeFromCart(item.id));
       });
 
-      // Clear checkout information
+      /*
+       * STEP 5
+       * Clear checkout information.
+       */
       dispatch(clearCheckout());
 
-      // Go to success page
+      /*
+       * STEP 6
+       * Go to order confirmation.
+       */
       navigate(`/order-success/${createdOrder.id}`);
     } catch (error) {
       console.error("Failed to create order:", error);
 
+      /*
+       * If stock was reduced but something failed
+       * afterwards, restore the previous stock.
+       */
+      if (stockUpdates.length > 0) {
+        try {
+          await restoreOrderStock(stockUpdates);
+          console.log("Stock successfully restored.");
+        } catch (restoreError) {
+          console.error("Failed to restore stock:", restoreError);
+        }
+      }
+
+      /*
+       * If the order was created but stock reduction
+       * failed, remove that order so we don't leave
+       * an invalid order in the database.
+       */
+      if (createdOrder?.id && stockUpdates.length === 0) {
+        try {
+          await deleteOrder(createdOrder.id);
+          console.log("Invalid order removed.");
+        } catch (deleteError) {
+          console.error("Failed to remove invalid order:", deleteError);
+        }
+      }
+
+      const message = error?.message || "Unable to complete your order.";
+
+      toast.error("Unable to place order", {
+        description: message,
+      });
+
       setIsProcessing(false);
-      toast.error("Payment failed. Please try again.");
     }
   };
 
   const handlePlaceOrder = () => {
-    if (!paymentMethod) return;
+    if (!paymentMethod) {
+      toast.error("Please select a payment method.");
+      return;
+    }
+
+    if (!selectedAddress) {
+      toast.error("Please select a delivery address.");
+      return;
+    }
+
+    if (!user) {
+      toast.error("Please sign in before placing an order.");
+      return;
+    }
+
+    if (isProcessing) {
+      return;
+    }
 
     setIsProcessing(true);
 
+    /*
+     * Simulated payment processing.
+     */
     setTimeout(() => {
-      setIsProcessing(false);
       handleCreateOrder();
     }, 2000);
   };
@@ -173,36 +234,6 @@ function Payment() {
     );
   }
 
-  //   if (paymentSuccess) {
-  //     return (
-  //       <main className="flex min-h-[70vh] items-center justify-center px-4">
-  //         <div className="w-full max-w-md text-center">
-  //           <div className="mx-auto flex h-16 w-16 items-center justify-center rounded-full bg-muted">
-  //             ✓
-  //           </div>
-
-  //           <h1 className="mt-6 text-3xl font-bold">Payment Successful</h1>
-
-  //           <p className="mt-3 text-muted-foreground">
-  //             Your payment has been processed successfully.
-  //           </p>
-
-  //           <p className="mt-4 text-lg font-semibold">₹{total}</p>
-
-  //           <Button
-  //             onClick={() => {
-  //               // Order creation will be connected here next
-  //               navigate("/order-success");
-  //             }}
-  //             className="mt-8 w-full rounded-full"
-  //           >
-  //             Continue
-  //           </Button>
-  //         </div>
-  //       </main>
-  //     );
-  //   }
-
   return (
     <main className="mx-auto max-w-6xl px-4 py-8 sm:px-6">
       {/* Back */}
@@ -210,6 +241,7 @@ function Payment() {
         variant="ghost"
         onClick={() => navigate("/checkout")}
         className="mb-6 -ml-2 rounded-full"
+        disabled={isProcessing}
       >
         <ArrowLeft className="mr-2 h-4 w-4" />
         Back to Checkout
@@ -231,6 +263,7 @@ function Payment() {
             <button
               type="button"
               onClick={() => handlePaymentMethod("cod")}
+              disabled={isProcessing}
               className={`flex w-full items-center gap-4 rounded-2xl border p-5 text-left transition ${
                 paymentMethod === "cod"
                   ? "border-primary bg-primary/5"
@@ -262,6 +295,7 @@ function Payment() {
             <button
               type="button"
               onClick={() => handlePaymentMethod("upi")}
+              disabled={isProcessing}
               className={`flex w-full items-center gap-4 rounded-2xl border p-5 text-left transition ${
                 paymentMethod === "upi"
                   ? "border-primary bg-primary/5"
@@ -293,6 +327,7 @@ function Payment() {
             <button
               type="button"
               onClick={() => handlePaymentMethod("card")}
+              disabled={isProcessing}
               className={`flex w-full items-center gap-4 rounded-2xl border p-5 text-left transition ${
                 paymentMethod === "card"
                   ? "border-primary bg-primary/5"
@@ -331,6 +366,7 @@ function Payment() {
                 size="sm"
                 onClick={() => navigate("/checkout")}
                 className="rounded-full"
+                disabled={isProcessing}
               >
                 Change
               </Button>

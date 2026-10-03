@@ -17,7 +17,7 @@
       ],
       "rating": 3.9,
       "reviewCount": 124,
-      "stock": 35,
+      "stock": 33,
       "featured": true,
       "trending": true
     },
@@ -235,9 +235,9 @@
         "https://images.unsplash.com/photo-1594633312681-425c7b97ccd1",
         "https://images.unsplash.com/photo-1584273143981-41c073dfe8f8"
       ],
-      "rating": 4.8,
-      "reviewCount": 91,
-      "stock": 14,
+      "rating": 0,
+      "reviewCount": 0,
+      "stock": 12,
       "featured": true,
       "trending": true
     },
@@ -2139,176 +2139,7 @@
     },
     {
       "userId": "user_3JJDQcT11Hay732J8WGw6GmiooG",
-      "items": [
-        {
-          "id": "6",
-          "title": "Relaxed Cargo Pants",
-          "description": "Utility-inspired cargo pants with multiple pockets and a relaxed contemporary fit.",
-          "price": 1999,
-          "discountPrice": 1599,
-          "category": "Men",
-          "subcategory": "Pants",
-          "brand": "StreetMode",
-          "images": [
-            "https://images.unsplash.com/photo-1624378439575-d8705ad7ae80",
-            "https://images.unsplash.com/photo-1517445312882-bc9910d016b7",
-            "https://images.unsplash.com/photo-1506630448388-4e683c67ddb0"
-          ],
-          "rating": 4.5,
-          "reviewCount": 97,
-          "stock": 29,
-          "featured": false,
-          "trending": true,
-          "quantity": 5
-        },
-        {
-          "id": "1",
-          "title": "Classic Oversized T-Shirt",
-          "description": "Premium cotton oversized t-shirt designed for everyday comfort and casual styling.",
-          "price": 999,
-          "discountPrice": 799,
-          "category": "Men",
-          "subcategory": "T-Shirts",
-          "brand": "UrbanFit",
-          "images": [
-            "https://images.unsplash.com/photo-1521572267360-ee0c2909d518",
-            "https://images.unsplash.com/photo-1503342217505-b0a15ec3261c",
-            "https://images.unsplash.com/photo-1583743814966-8936f5b7be1a"
-          ],
-          "rating": 3.9,
-          "reviewCount": 124,
-          "stock": 35,
-          "featured": true,
-          "trending": true,
-          "quantity": 3
-        },
-        {
-          "id": "4",
-          "title": "Classic Bomber Jacket",
-          "description": "Minimal bomber jacket with a contemporary silhouette for casual streetwear looks.",
-          "price": 3499,
-          "discountPrice": 2799,
-          "category": "Men",
-          "subcategory": "Jackets",
-          "brand": "StreetMode",
-          "images": [
-            "https://images.unsplash.com/photo-1551028719-00167b16eac5",
-            "https://images.unsplash.com/photo-1521223890158-f9f7c3d5d504",
-            "https://images.unsplash.com/photo-1487222477894-8943e31ef7b2"
-          ],
-          "rating": 4.5,
-          "reviewCount": 76,
-          "stock": 18,
-          "featured": true,
-          "trending": true,
-          "quantity": 4
-        },
-        {
-          "id": "8",
-          "title": "Floral Summer Dress",
-          "description": "Elegant floral dress with a lightweight fabric and comfortable relaxed silhouette.",
-          "price": 2499,
-          "discountPrice": 1899,
-          "category": "Women",
-          "subcategory": "Dresses",
-          "brand": "BloomWear",
-          "images": [
-            "https://images.unsplash.com/photo-1496747611176-843222e1e57c",
-            "https://images.unsplash.com/photo-1515372039744-b8f02a3ae446",
-            "https://images.unsplash.com/photo-1572804013309-59a88b7e92f1"
-          ],
-          "rating": 4.7,
-          "reviewCount": 198,
-          "stock": 27,
-          "featured": true,
-          "trending": true,
-          "quantity": 1
-        },
-        {
-          "id": "7",
-          "title": "Minimal Black Hoodie",
-          "description": "Soft fleece hoodie with a clean minimal design for relaxed everyday styling.",
-          "price": 2499,
-          "discountPrice": 1999,
-          "category": "Men",
-          "subcategory": "Hoodies",
-          "brand": "NorthLane",
-          "images": [
-            "https://images.unsplash.com/photo-1556905055-8f358a7a47b2",
-            "https://images.unsplash.com/photo-1578681994506-b8f463449011",
-            "https://images.unsplash.com/photo-1509967419530-da38b4704bc6"
-          ],
-          "rating": 4.8,
-          "reviewCount": 154,
-          "stock": 33,
-          "featured": true,
-          "trending": true,
-          "quantity": 2
-        },
-        {
-          "id": "5",
-          "title": "Casual Polo T-Shirt",
-          "description": "Classic polo t-shirt made with soft breathable fabric for everyday wear.",
-          "price": 1299,
-          "discountPrice": 999,
-          "category": "Men",
-          "subcategory": "T-Shirts",
-          "brand": "UrbanFit",
-          "images": [
-            "https://images.unsplash.com/photo-1581655353564-df123a1eb820",
-            "https://images.unsplash.com/photo-1618354691373-d851c5c3a990",
-            "https://images.unsplash.com/photo-1521572267360-ee0c2909d518"
-          ],
-          "rating": 4.3,
-          "reviewCount": 63,
-          "stock": 52,
-          "featured": false,
-          "trending": false,
-          "quantity": 1
-        },
-        {
-          "id": "2",
-          "title": "Premium Linen Shirt",
-          "description": "Lightweight linen shirt with a relaxed fit, perfect for summer and smart casual occasions.",
-          "price": 1799,
-          "discountPrice": 1399,
-          "category": "Men",
-          "subcategory": "Shirts",
-          "brand": "NorthLane",
-          "images": [
-            "https://images.unsplash.com/photo-1602810318383-e386cc2a3ccf",
-            "https://images.unsplash.com/photo-1596755094514-f87e34085b2c",
-            "https://images.unsplash.com/photo-1603252109303-2751441dd157"
-          ],
-          "rating": 4.4,
-          "reviewCount": 89,
-          "stock": 24,
-          "featured": true,
-          "trending": false,
-          "quantity": 5
-        },
-        {
-          "id": "3",
-          "title": "Slim Fit Denim Jeans",
-          "description": "Modern slim-fit denim jeans with stretch fabric for comfortable everyday movement.",
-          "price": 2299,
-          "discountPrice": 1799,
-          "category": "Men",
-          "subcategory": "Jeans",
-          "brand": "DenimCo",
-          "images": [
-            "https://images.unsplash.com/photo-1542272604-787c3835535d",
-            "https://images.unsplash.com/photo-1541099649105-f69ad21f3246",
-            "https://images.unsplash.com/photo-1475178626620-a4d074967452"
-          ],
-          "rating": 4.7,
-          "reviewCount": 211,
-          "stock": 41,
-          "featured": false,
-          "trending": true,
-          "quantity": 3
-        }
-      ],
+      "items": [],
       "id": "_CdhDbJsVcs"
     }
   ],
@@ -2473,7 +2304,7 @@
       },
       "paymentMethod": "upi",
       "totalAmount": 9593,
-      "status": null,
+      "status": "delivered",
       "createdAt": "2026-09-18T05:29:42.635Z",
       "id": "pk6dV1iASXU"
     },
@@ -2527,7 +2358,7 @@
       },
       "paymentMethod": "upi",
       "totalAmount": 1399,
-      "status": "placed",
+      "status": "cancelled",
       "createdAt": "2026-09-18T05:31:21.180Z",
       "id": "ktMItJrCDLs"
     },
@@ -2588,7 +2419,7 @@
       },
       "paymentMethod": "upi",
       "totalAmount": 2198,
-      "status": "placed",
+      "status": null,
       "createdAt": "2026-09-18T06:09:06.771Z",
       "id": "grs4_VLWeA0"
     },
@@ -2775,7 +2606,7 @@
       "coupon": null,
       "discountAmount": 0,
       "totalAmount": 2799,
-      "status": "placed",
+      "status": "delivered",
       "createdAt": "2026-09-18T10:08:10.154Z",
       "id": "GAqtvIiYJ_o"
     },
@@ -3231,6 +3062,126 @@
       "status": "placed",
       "createdAt": "2026-09-22T07:38:43.643Z",
       "id": "B1D7m7Led6I"
+    },
+    {
+      "userId": "user_3JJDQcT11Hay732J8WGw6GmiooG",
+      "items": [
+        {
+          "productId": "12",
+          "title": "Classic Blazer",
+          "image": "https://images.unsplash.com/photo-1591047139829-d91aecb6caea",
+          "price": 3199,
+          "quantity": 4
+        }
+      ],
+      "address": {
+        "fullName": "Fouzan Muhammed K V",
+        "phone": "9778263326",
+        "address": "Kallivalappil house",
+        "city": "Pattambi",
+        "pinCode": "679337",
+        "userId": "user_3JJDQcT11Hay732J8WGw6GmiooG",
+        "isDefault": false,
+        "id": "C1wWHpKM9bQ"
+      },
+      "paymentMethod": "cod",
+      "subtotal": 12796,
+      "coupon": null,
+      "discountAmount": 0,
+      "totalAmount": 12796,
+      "status": "delivered",
+      "createdAt": "2026-10-01T14:32:38.013Z",
+      "id": "xaJ0iPjMoe8"
+    },
+    {
+      "userId": "user_3JJDQcT11Hay732J8WGw6GmiooG",
+      "items": [
+        {
+          "productId": "12",
+          "title": "Classic Blazer",
+          "image": "https://images.unsplash.com/photo-1591047139829-d91aecb6caea",
+          "price": 3199,
+          "quantity": 3
+        }
+      ],
+      "address": {
+        "fullName": "Fouzan Muhammed K V",
+        "phone": "9778263326",
+        "address": "Kallivalappil house",
+        "city": "Pattambi",
+        "pinCode": "679337",
+        "userId": "user_3JJDQcT11Hay732J8WGw6GmiooG",
+        "isDefault": false,
+        "id": "C1wWHpKM9bQ"
+      },
+      "paymentMethod": "cod",
+      "subtotal": 9597,
+      "coupon": null,
+      "discountAmount": 0,
+      "totalAmount": 9597,
+      "status": "shipped",
+      "createdAt": "2026-10-01T14:36:03.912Z",
+      "id": "wtAEWAW1o-8"
+    },
+    {
+      "userId": "user_3JJDQcT11Hay732J8WGw6GmiooG",
+      "items": [
+        {
+          "productId": "1",
+          "title": "Classic Oversized T-Shirt",
+          "image": "https://images.unsplash.com/photo-1521572267360-ee0c2909d518",
+          "price": 799,
+          "quantity": 2
+        }
+      ],
+      "address": {
+        "fullName": "Fouzan Muhammed K V",
+        "phone": "9778263326",
+        "address": "Kallivalappil house",
+        "city": "Pattambi",
+        "pinCode": "679337",
+        "userId": "user_3JJDQcT11Hay732J8WGw6GmiooG",
+        "isDefault": false,
+        "id": "C1wWHpKM9bQ"
+      },
+      "paymentMethod": "cod",
+      "subtotal": 1598,
+      "coupon": null,
+      "discountAmount": 0,
+      "totalAmount": 1598,
+      "status": "cancelled",
+      "createdAt": "2026-10-01T14:55:54.485Z",
+      "id": "5WsSsTDQWFg"
+    },
+    {
+      "userId": "user_3JJDQcT11Hay732J8WGw6GmiooG",
+      "items": [
+        {
+          "productId": "1",
+          "title": "Classic Oversized T-Shirt",
+          "image": "https://images.unsplash.com/photo-1521572267360-ee0c2909d518",
+          "price": 799,
+          "quantity": 6
+        }
+      ],
+      "address": {
+        "fullName": "Fouzan Muhammed K V",
+        "phone": "9778263326",
+        "address": "Kallivalappil house",
+        "city": "Pattambi",
+        "pinCode": "679337",
+        "userId": "user_3JJDQcT11Hay732J8WGw6GmiooG",
+        "isDefault": false,
+        "id": "C1wWHpKM9bQ"
+      },
+      "paymentMethod": "cod",
+      "subtotal": 4794,
+      "coupon": null,
+      "discountAmount": 0,
+      "totalAmount": 4794,
+      "status": "cancelled",
+      "createdAt": "2026-10-03T01:41:15.795Z",
+      "id": "Q8RN4JK6FnQ"
     }
   ],
   "coupons": [
