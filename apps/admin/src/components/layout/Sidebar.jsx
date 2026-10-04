@@ -4,7 +4,9 @@ import {
   ClipboardList,
   FolderTree,
   LayoutDashboard,
+  MessageSquare,
   ShoppingBag,
+  Tag,
   Tags,
   TicketPercent,
   Users,
@@ -43,6 +45,11 @@ export const navigation = [
     icon: ClipboardList,
   },
   {
+    label: "Deals",
+    path: "/deals",
+    icon: Tag,
+  },
+  {
     label: "Users",
     path: "/users",
     icon: Users,
@@ -51,6 +58,11 @@ export const navigation = [
     label: "Coupons",
     path: "/coupons",
     icon: TicketPercent,
+  },
+  {
+    label: "reviews",
+    path: "/reviews",
+    icon: MessageSquare,
   },
   {
     label: "Reports",

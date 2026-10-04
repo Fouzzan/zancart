@@ -22,45 +22,39 @@ import {
   TableRow,
 } from "@/components/ui/table";
 
+import { getOrders, getUsers } from "@/features/orders/orderService";
+
 function Orders() {
   const [orders, setOrders] = useState([]);
   const [users, setUsers] = useState([]);
+
   const [loading, setLoading] = useState(true);
+  const [error, setError] = useState("");
 
   const [searchQuery, setSearchQuery] = useState("");
   const [statusFilter, setStatusFilter] = useState("all");
   const [paymentFilter, setPaymentFilter] = useState("all");
 
-  const [error, setError] = useState("");
-
-  const API_URL = import.meta.env.VITE_API_URL;
-
-  // -----------------------------------------
-  // Fetch orders + users
-  // -----------------------------------------
+  // ============================================================
+  // Fetch orders and users
+  // ============================================================
   const fetchData = async () => {
     try {
       setLoading(true);
       setError("");
 
-      const [ordersResponse, usersResponse] = await Promise.all([
-        fetch(`${API_URL}/orders`),
-        fetch(`${API_URL}/users`),
+      const [ordersData, usersData] = await Promise.all([
+        getOrders(),
+        getUsers(),
       ]);
 
-      if (!ordersResponse.ok) {
-        throw new Error("Failed to fetch orders");
-      }
+      // Newest orders first
+      const sortedOrders = [...ordersData].sort(
+        (a, b) => new Date(b.createdAt || 0) - new Date(a.createdAt || 0),
+      );
 
-      if (!usersResponse.ok) {
-        throw new Error("Failed to fetch users");
-      }
-
-      const ordersData = await ordersResponse.json();
-      const usersData = await usersResponse.json();
-
-      setOrders(ordersData);
-      setUsers(usersData);
+      setOrders(sortedOrders);
+      setUsers(Array.isArray(usersData) ? usersData : []);
     } catch (error) {
       console.error("Failed to fetch orders:", error);
       setError("Unable to load orders.");
@@ -73,130 +67,225 @@ function Orders() {
     fetchData();
   }, []);
 
-  // -----------------------------------------
-  // Find customer
-  // -----------------------------------------
-  const getCustomerName = (order) => {
-    const user = users.find(
+  // ============================================================
+  // Find customer for an order
+  // ============================================================
+  const getCustomer = (userId) => {
+    return users.find(
       (user) =>
-        user.id === order.userId ||
-        user.clerkId === order.userId ||
-        user.userId === order.userId,
+        user.id === userId || user.clerkId === userId || user.userId === userId,
     );
+  };
 
-    if (user) {
-      return (
-        user.name ||
-        user.fullName ||
-        `${user.firstName || ""} ${user.lastName || ""}`.trim() ||
-        order.address?.fullName ||
-        "Unknown Customer"
-      );
+  // ============================================================
+  // Get customer display name
+  // ============================================================
+  const getCustomerName = (order) => {
+    const customer = getCustomer(order.userId);
+
+    if (customer) {
+      const fullName =
+        customer.name ||
+        customer.fullName ||
+        [customer.firstName, customer.lastName].filter(Boolean).join(" ");
+
+      if (fullName) {
+        return fullName;
+      }
+
+      if (customer.email) {
+        return customer.email;
+      }
     }
 
-    return order.address?.fullName || "Unknown Customer";
+    // Fallback to the name saved inside the order address
+    if (order.address?.fullName) {
+      return order.address.fullName;
+    }
+
+    return "Unknown Customer";
   };
 
-  // -----------------------------------------
-  // Number of items
-  // -----------------------------------------
-  const getItemCount = (order) => {
-    return (
-      order.items?.reduce(
-        (total, item) => total + Number(item.quantity || 0),
-        0,
-      ) || 0
-    );
+  // ============================================================
+  // Get customer email
+  // ============================================================
+  const getCustomerEmail = (order) => {
+    const customer = getCustomer(order.userId);
+
+    return customer?.email || order.email || "—";
   };
 
-  // -----------------------------------------
-  // Format currency
-  // -----------------------------------------
-  const formatCurrency = (amount) => {
-    return new Intl.NumberFormat("en-IN", {
-      style: "currency",
-      currency: "INR",
-      maximumFractionDigits: 0,
-    }).format(Number(amount || 0));
-  };
-
-  // -----------------------------------------
+  // ============================================================
   // Format date
-  // -----------------------------------------
+  // ============================================================
   const formatDate = (date) => {
     if (!date) return "—";
 
-    return new Intl.DateTimeFormat("en-IN", {
-      day: "2-digit",
+    const parsedDate = new Date(date);
+
+    if (Number.isNaN(parsedDate.getTime())) {
+      return "—";
+    }
+
+    return parsedDate.toLocaleDateString("en-IN", {
+      day: "numeric",
       month: "short",
       year: "numeric",
-    }).format(new Date(date));
+    });
   };
 
-  // -----------------------------------------
-  // Status badge
-  // -----------------------------------------
+  // ============================================================
+  // Format currency
+  // ============================================================
+  const formatCurrency = (amount) => {
+    const value = Number(amount);
+
+    if (!Number.isFinite(value)) {
+      return "₹0.00";
+    }
+
+    return `₹${value.toLocaleString("en-IN", {
+      minimumFractionDigits: 2,
+      maximumFractionDigits: 2,
+    })}`;
+  };
+
+  // ============================================================
+  // Get actual unit count
+  // ============================================================
+  // Important for deals such as BOGO.
+  //
+  // Example:
+  // quantity: 1
+  // paidQuantity: 1
+  // freeQuantity: 1
+  //
+  // Actual products leaving inventory = 2
+  // ============================================================
+  const getItemQuantity = (item) => {
+    const paidQuantity = Number(item?.paidQuantity ?? item?.quantity ?? 0);
+
+    const freeQuantity = Number(item?.freeQuantity ?? 0);
+
+    return paidQuantity + freeQuantity;
+  };
+
+  // ============================================================
+  // Get total units in an order
+  // ============================================================
+  const getOrderItemCount = (order) => {
+    if (!Array.isArray(order.items)) {
+      return 0;
+    }
+
+    return order.items.reduce(
+      (total, item) => total + getItemQuantity(item),
+      0,
+    );
+  };
+
+  // ============================================================
+  // Get status badge
+  // ============================================================
   const getStatusBadge = (status) => {
     const normalizedStatus = status?.toLowerCase();
 
-    if (normalizedStatus === "placed") {
-      return (
-        <Badge className="border-0 bg-green-100 text-green-700 hover:bg-green-100">
-          Placed
-        </Badge>
-      );
-    }
+    const statusStyles = {
+      placed:
+        "border-blue-200 bg-blue-50 text-blue-700 dark:border-blue-900 dark:bg-blue-950 dark:text-blue-300",
 
-    if (normalizedStatus === "cancelled") {
-      return (
-        <Badge className="border-0 bg-red-100 text-red-700 hover:bg-red-100">
-          Cancelled
-        </Badge>
-      );
-    }
+      processing:
+        "border-yellow-200 bg-yellow-50 text-yellow-700 dark:border-yellow-900 dark:bg-yellow-950 dark:text-yellow-300",
 
-    return <Badge variant="secondary">{status || "Unknown"}</Badge>;
+      shipped:
+        "border-purple-200 bg-purple-50 text-purple-700 dark:border-purple-900 dark:bg-purple-950 dark:text-purple-300",
+
+      delivered:
+        "border-green-200 bg-green-50 text-green-700 dark:border-green-900 dark:bg-green-950 dark:text-green-300",
+
+      cancelled:
+        "border-red-200 bg-red-50 text-red-700 dark:border-red-900 dark:bg-red-950 dark:text-red-300",
+    };
+
+    const label = normalizedStatus
+      ? normalizedStatus.charAt(0).toUpperCase() + normalizedStatus.slice(1)
+      : "Unknown";
+
+    return (
+      <Badge
+        variant="outline"
+        className={
+          statusStyles[normalizedStatus] ||
+          "border-muted bg-muted text-muted-foreground"
+        }
+      >
+        {label}
+      </Badge>
+    );
   };
 
-  // -----------------------------------------
+  // ============================================================
   // Filter orders
-  // -----------------------------------------
+  // ============================================================
   const filteredOrders = useMemo(() => {
     const query = searchQuery.trim().toLowerCase();
 
     return orders.filter((order) => {
       const customerName = getCustomerName(order).toLowerCase();
 
+      const customerEmail = getCustomerEmail(order).toLowerCase();
+
+      const orderId = String(order.id || "").toLowerCase();
+
+      const paymentMethod = String(order.paymentMethod || "").toLowerCase();
+
+      const status = String(order.status || "").toLowerCase();
+
+      // Search
       const matchesSearch =
         !query ||
-        order.id?.toLowerCase().includes(query) ||
-        customerName.includes(query);
+        orderId.includes(query) ||
+        customerName.includes(query) ||
+        customerEmail.includes(query) ||
+        paymentMethod.includes(query);
 
-      const matchesStatus =
-        statusFilter === "all" || order.status?.toLowerCase() === statusFilter;
+      // Status
+      const matchesStatus = statusFilter === "all" || status === statusFilter;
 
+      // Payment
       const matchesPayment =
-        paymentFilter === "all" ||
-        order.paymentMethod?.toLowerCase() === paymentFilter;
+        paymentFilter === "all" || paymentMethod === paymentFilter;
 
       return matchesSearch && matchesStatus && matchesPayment;
     });
   }, [orders, users, searchQuery, statusFilter, paymentFilter]);
 
-  // -----------------------------------------
-  // Loading
-  // -----------------------------------------
+  // ============================================================
+  // Loading state
+  // ============================================================
   if (loading) {
     return (
-      <div className="flex min-h-40 items-center justify-center">
-        <p className="text-sm text-muted-foreground">Loading orders...</p>
+      <div className="space-y-6">
+        <div>
+          <h1 className="text-3xl font-bold tracking-tight">Orders</h1>
+
+          <p className="text-muted-foreground">
+            View and manage customer orders.
+          </p>
+        </div>
+
+        <Card>
+          <CardContent className="flex min-h-40 items-center justify-center">
+            <p className="text-sm text-muted-foreground">Loading orders...</p>
+          </CardContent>
+        </Card>
       </div>
     );
   }
 
-  // -----------------------------------------
-  // Error
-  // -----------------------------------------
+  // ============================================================
+  // Error state
+  // ============================================================
   if (error) {
     return (
       <div className="space-y-6">
@@ -219,6 +308,9 @@ function Orders() {
     );
   }
 
+  // ============================================================
+  // Main UI
+  // ============================================================
   return (
     <div className="space-y-6">
       {/* Header */}
@@ -261,6 +353,12 @@ function Orders() {
 
                   <SelectItem value="placed">Placed</SelectItem>
 
+                  <SelectItem value="processing">Processing</SelectItem>
+
+                  <SelectItem value="shipped">Shipped</SelectItem>
+
+                  <SelectItem value="delivered">Delivered</SelectItem>
+
                   <SelectItem value="cancelled">Cancelled</SelectItem>
                 </SelectContent>
               </Select>
@@ -300,14 +398,21 @@ function Orders() {
             <div className="overflow-x-auto">
               <Table>
                 <TableHeader>
-                  <TableRow className="bg-muted/50">
+                  <TableRow>
                     <TableHead>Order</TableHead>
+
                     <TableHead>Customer</TableHead>
-                    <TableHead>Items</TableHead>
-                    <TableHead>Total</TableHead>
-                    <TableHead>Payment</TableHead>
-                    <TableHead>Status</TableHead>
+
                     <TableHead>Date</TableHead>
+
+                    <TableHead>Items</TableHead>
+
+                    <TableHead>Payment</TableHead>
+
+                    <TableHead>Total</TableHead>
+
+                    <TableHead>Status</TableHead>
+
                     <TableHead className="text-right">Action</TableHead>
                   </TableRow>
                 </TableHeader>
@@ -315,59 +420,53 @@ function Orders() {
                 <TableBody>
                   {filteredOrders.map((order) => (
                     <TableRow key={order.id}>
-                      {/* Order ID */}
+                      {/* Order */}
                       <TableCell>
-                        <span className="font-medium">#{order.id}</span>
+                        <p className="font-medium">#{order.id}</p>
                       </TableCell>
 
                       {/* Customer */}
                       <TableCell>
-                        <div>
-                          <p className="font-medium">
+                        <div className="max-w-48">
+                          <p className="truncate font-medium">
                             {getCustomerName(order)}
                           </p>
 
-                          <p className="text-xs text-muted-foreground">
-                            {order.userId}
+                          <p className="truncate text-xs text-muted-foreground">
+                            {getCustomerEmail(order)}
                           </p>
                         </div>
                       </TableCell>
 
-                      {/* Items */}
-                      <TableCell>
-                        {getItemCount(order)}{" "}
-                        {getItemCount(order) === 1 ? "item" : "items"}
-                      </TableCell>
+                      {/* Date */}
+                      <TableCell>{formatDate(order.createdAt)}</TableCell>
 
-                      {/* Total */}
-                      <TableCell className="font-medium">
-                        {formatCurrency(order.totalAmount)}
-                      </TableCell>
+                      {/* Items */}
+                      <TableCell>{getOrderItemCount(order)}</TableCell>
 
                       {/* Payment */}
                       <TableCell>
-                        <span className="uppercase">
+                        <span className="capitalize">
                           {order.paymentMethod || "—"}
+                        </span>
+                      </TableCell>
+
+                      {/* Total */}
+                      <TableCell>
+                        <span className="font-semibold">
+                          {formatCurrency(order.totalAmount)}
                         </span>
                       </TableCell>
 
                       {/* Status */}
                       <TableCell>{getStatusBadge(order.status)}</TableCell>
 
-                      {/* Date */}
-                      <TableCell className="whitespace-nowrap">
-                        {formatDate(order.createdAt)}
-                      </TableCell>
-
                       {/* Action */}
                       <TableCell className="text-right">
                         <Button asChild variant="outline" size="sm">
-                          <Link
-                            to={`/orders/${order.id}`}
-                            className="flex items-center gap-2"
-                          >
-                            <Eye className="size-4" />
-                            <span>View</span>
+                          <Link to={`/orders/${order.id}`}>
+                            <Eye className="mr-2 size-4" />
+                            View
                           </Link>
                         </Button>
                       </TableCell>

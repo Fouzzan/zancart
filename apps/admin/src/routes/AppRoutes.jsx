@@ -6,17 +6,23 @@ import Brands from "@/pages/Brands/Brands";
 import AddCoupon from "@/pages/Coupons/AddCoupon";
 import Coupons from "@/pages/Coupons/Coupons";
 import EditCoupon from "@/pages/Coupons/EditCoupons";
+import CreateDeals from "@/pages/Deals/CreateDeals";
+import EditDeals from "@/pages/Deals/EditDeals";
 import Inventory from "@/pages/Inventory/Inventory";
 import OrderDetails from "@/pages/Orders/OrderDetails";
 import Orders from "@/pages/Orders/Orders";
 import AddProduct from "@/pages/Products/AddProduct";
 import EditProduct from "@/pages/Products/EditProduct";
 import Products from "@/pages/Products/Products";
+import Reports from "@/pages/Reports/Reports";
+import Reviews from "@/pages/Reviews/Reviews";
 import UserDetails from "@/pages/Users/UserDetails";
 import Users from "@/pages/Users/Users";
 import Categories from "../pages/Categories/Categories";
 import Dashboard from "../pages/Dashboard/Dashboard";
+import Deals from "../pages/Deals/Deals";
 import Login from "../pages/Login/Login";
+import ProductReviews from "../pages/Reviews/ProductReviews";
 import Unauthorized from "../pages/Unauthorized/Unauthorized";
 
 import ProtectedRoute from "./ProtectedRoute";
@@ -51,6 +57,12 @@ function AppRoutes() {
 
         <Route path="/orders" element={<Orders />} />
 
+        <Route path="/deals" element={<Deals />} />
+
+        <Route path="/deals/:id/edit" element={<EditDeals />} />
+
+        <Route path="/deals/create" element={<CreateDeals />} />
+
         <Route path="/orders/:id" element={<OrderDetails />} />
 
         <Route path="/users" element={<Users />} />
@@ -63,7 +75,11 @@ function AppRoutes() {
 
         <Route path="/coupons/edit/:id" element={<EditCoupon />} />
 
-        <Route path="/reports" element={<div>Reports</div>} />
+        <Route path="/reviews" element={<Reviews />} />
+
+        <Route path="/reviews/:productId" element={<ProductReviews />} />
+
+        <Route path="/reports" element={<Reports />} />
       </Route>
 
       <Route path="*" element={<Navigate to="/dashboard" replace />} />

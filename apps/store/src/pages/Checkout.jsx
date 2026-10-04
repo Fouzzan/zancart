@@ -1,5 +1,5 @@
 import { useUser } from "@clerk/react";
-import { Check, MapPin, Plus, Tag, X } from "lucide-react";
+import { Check, Gift, MapPin, Plus, Tag, X } from "lucide-react";
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
@@ -7,9 +7,12 @@ import { useNavigate } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { toast } from "sonner";
+
 import { setCoupon, setSelectedAddress } from "../redux/slices/checkoutSlice";
+
 import { getUserAddresses } from "../services/addressServices";
 import { getCouponByCode } from "../services/couponServices";
+import { calculateCartDeals } from "../services/dealCalculationService";
 
 function Checkout() {
   const navigate = useNavigate();
@@ -32,21 +35,116 @@ function Checkout() {
   const [couponError, setCouponError] = useState("");
   const [couponLoading, setCouponLoading] = useState(false);
 
-  const subtotal = items.reduce(
-    (total, item) => total + item.discountPrice * item.quantity,
-    0,
-  );
+  const [dealCalculation, setDealCalculation] = useState({
+    items: [],
+    bundles: [],
+    subtotal: 0,
+    totalDiscount: 0,
+    bundleDiscount: 0,
+    finalTotal: 0,
+  });
 
-  // Calculate discount
+  const [dealLoading, setDealLoading] = useState(false);
+  const [dealError, setDealError] = useState("");
+
+  /*
+   * -----------------------------------------
+   * FORMAT PRICE
+   * -----------------------------------------
+   */
+  const formatPrice = (value) => {
+    return Number(value || 0).toLocaleString("en-IN", {
+      maximumFractionDigits: 2,
+    });
+  };
+
+  /*
+   * -----------------------------------------
+   * CALCULATE DEALS
+   * -----------------------------------------
+   */
+  useEffect(() => {
+    let cancelled = false;
+
+    const calculateDeals = async () => {
+      if (items.length === 0) {
+        setDealCalculation({
+          items: [],
+          bundles: [],
+          subtotal: 0,
+          totalDiscount: 0,
+          bundleDiscount: 0,
+          finalTotal: 0,
+        });
+
+        return;
+      }
+
+      try {
+        setDealLoading(true);
+        setDealError("");
+
+        const result = await calculateCartDeals(items);
+
+        if (!cancelled) {
+          setDealCalculation(result);
+        }
+      } catch (error) {
+        console.error("Failed to calculate deals:", error);
+
+        if (!cancelled) {
+          setDealError("Unable to calculate current deals. Please try again.");
+        }
+      } finally {
+        if (!cancelled) {
+          setDealLoading(false);
+        }
+      }
+    };
+
+    calculateDeals();
+
+    return () => {
+      cancelled = true;
+    };
+  }, [items]);
+
+  /*
+   * -----------------------------------------
+   * DEAL-AWARE VALUES
+   * -----------------------------------------
+   */
+
+  // Subtotal after flash sale / BOGO /
+  // quantity discounts.
+  const subtotal = Number(dealCalculation.subtotal || 0);
+
+  // Bundle discount is applied after the
+  // product-level subtotal.
+  const bundleDiscount = Number(dealCalculation.bundleDiscount || 0);
+
+  // Total after all product-level and bundle deals.
+  const dealTotal = Number(dealCalculation.finalTotal || 0);
+
+  /*
+   * -----------------------------------------
+   * COUPON DISCOUNT
+   * -----------------------------------------
+   */
   const getDiscountAmount = () => {
-    if (!appliedCoupon) return 0;
+    if (!appliedCoupon) {
+      return 0;
+    }
 
     if (appliedCoupon.discountType === "percentage") {
-      return Math.min((subtotal * appliedCoupon.discountValue) / 100, subtotal);
+      return Math.min(
+        (dealTotal * Number(appliedCoupon.discountValue || 0)) / 100,
+        dealTotal,
+      );
     }
 
     if (appliedCoupon.discountType === "fixed") {
-      return Math.min(appliedCoupon.discountValue, subtotal);
+      return Math.min(Number(appliedCoupon.discountValue || 0), dealTotal);
     }
 
     return 0;
@@ -54,11 +152,17 @@ function Checkout() {
 
   const discountAmount = getDiscountAmount();
 
-  const total = subtotal - discountAmount;
+  const total = Math.max(0, dealTotal - discountAmount);
 
-  // Fetch addresses
+  /*
+   * -----------------------------------------
+   * FETCH ADDRESSES
+   * -----------------------------------------
+   */
   useEffect(() => {
-    if (!isLoaded || !user) return;
+    if (!isLoaded || !user) {
+      return;
+    }
 
     const fetchAddresses = async () => {
       try {
@@ -85,7 +189,11 @@ function Checkout() {
     fetchAddresses();
   }, [user, isLoaded, dispatch]);
 
-  // Apply coupon
+  /*
+   * -----------------------------------------
+   * APPLY COUPON
+   * -----------------------------------------
+   */
   const handleApplyCoupon = async () => {
     const code = couponCode.trim();
 
@@ -100,73 +208,137 @@ function Checkout() {
 
       const coupon = await getCouponByCode(code);
 
-      // Coupon doesn't exist
+      /*
+       * Coupon doesn't exist
+       */
       if (!coupon) {
         dispatch(setCoupon(null));
+
         setCouponError("Invalid coupon code.");
+
         toast.error("Invalid coupon code.");
+
         return;
       }
 
-      // Coupon is inactive
+      /*
+       * Coupon inactive
+       */
       if (!coupon.isActive) {
         dispatch(setCoupon(null));
+
         setCouponError("This coupon is no longer active.");
+
         toast.error("This coupon is no longer valid.");
+
         return;
       }
 
-      // Coupon expired
+      /*
+       * Coupon expired
+       */
       const today = new Date().toISOString().split("T")[0];
 
       if (coupon.expiryDate < today) {
         dispatch(setCoupon(null));
+
         setCouponError("This coupon has expired.");
+
         toast.error("This coupon is no longer valid.");
+
         return;
       }
 
-      // Minimum order validation
-      if (subtotal < coupon.minimumOrderAmount) {
+      /*
+       * Minimum order validation
+       *
+       * IMPORTANT:
+       * Validate against the price after
+       * product/bundle deals.
+       */
+      if (subtotal < Number(coupon.minimumOrderAmount || 0)) {
         dispatch(setCoupon(null));
+
         setCouponError(
           `Minimum order amount is ₹${coupon.minimumOrderAmount}.`,
         );
+
         toast.error(`Minimum order amount is ₹${coupon.minimumOrderAmount}.`);
+
         return;
       }
 
-      // Coupon is valid
+      /*
+       * Coupon is valid
+       */
       dispatch(setCoupon(coupon));
+
       setCouponError("");
       setCouponCode(coupon.code);
-      dispatch(setCoupon(coupon));
+
       toast.success("Coupon applied successfully.");
     } catch (error) {
       console.error("Failed to apply coupon:", error);
+
       setCouponError("Unable to validate coupon. Please try again.");
     } finally {
       setCouponLoading(false);
     }
   };
 
-  // Remove coupon
+  /*
+   * -----------------------------------------
+   * REMOVE COUPON
+   * -----------------------------------------
+   */
   const handleRemoveCoupon = () => {
     dispatch(setCoupon(null));
+
     setCouponCode("");
     setCouponError("");
   };
 
+  /*
+   * -----------------------------------------
+   * SELECT ADDRESS
+   * -----------------------------------------
+   */
   const handleSelectAddress = (address) => {
     dispatch(setSelectedAddress(address));
   };
 
+  /*
+   * -----------------------------------------
+   * CONTINUE TO PAYMENT
+   * -----------------------------------------
+   */
   const handleContinueToPayment = () => {
-    if (!selectedAddress) return;
+    if (!selectedAddress) {
+      toast.error("Please select a delivery address.");
+
+      return;
+    }
+
+    if (dealLoading) {
+      toast.error("Please wait while we calculate the latest deals.");
+
+      return;
+    }
+
+    if (dealError) {
+      toast.error("Unable to verify deals. Please try again.");
+
+      return;
+    }
 
     navigate("/payment");
   };
 
+  /*
+   * -----------------------------------------
+   * EMPTY CART
+   * -----------------------------------------
+   */
   if (items.length === 0) {
     return (
       <div className="flex min-h-[60vh] flex-col items-center justify-center px-4 text-center">
@@ -186,6 +358,11 @@ function Checkout() {
     );
   }
 
+  /*
+   * -----------------------------------------
+   * LOADING
+   * -----------------------------------------
+   */
   if (!isLoaded || loading) {
     return (
       <div className="flex min-h-[60vh] items-center justify-center">
@@ -194,12 +371,19 @@ function Checkout() {
     );
   }
 
+  /*
+   * -----------------------------------------
+   * RENDER
+   * -----------------------------------------
+   */
   return (
     <main className="mx-auto max-w-6xl px-4 py-8 sm:px-6">
       <h1 className="mb-8 text-3xl font-bold">Checkout</h1>
 
       <div className="grid gap-8 lg:grid-cols-[1fr_380px]">
-        {/* Delivery Address */}
+        {/* =====================================
+            DELIVERY ADDRESS
+        ====================================== */}
         <section className="rounded-2xl border p-6">
           <div className="mb-6 flex items-center justify-between gap-4">
             <div>
@@ -300,36 +484,95 @@ function Checkout() {
           )}
         </section>
 
-        {/* Order Summary */}
+        {/* =====================================
+            ORDER SUMMARY
+        ====================================== */}
         <section className="h-fit rounded-2xl border p-6">
           <h2 className="mb-6 text-xl font-semibold">Order Summary</h2>
 
           {/* Products */}
           <div className="space-y-4">
-            {items.map((item) => (
-              <div key={item.id} className="flex gap-3">
-                <img
-                  src={item.images[0]}
-                  alt={item.title}
-                  className="h-16 w-16 rounded-lg object-cover"
-                />
+            {dealCalculation.items.map((item) => {
+              const hasDeal = Number(item.dealDiscount || 0) > 0;
 
-                <div className="min-w-0 flex-1">
-                  <p className="truncate text-sm font-medium">{item.title}</p>
+              return (
+                <div key={item.id} className="flex gap-3">
+                  <img
+                    src={item.images?.[0]}
+                    alt={item.title}
+                    className="h-16 w-16 rounded-lg object-cover"
+                  />
 
-                  <p className="text-sm text-muted-foreground">
-                    Qty: {item.quantity}
-                  </p>
+                  <div className="min-w-0 flex-1">
+                    <p className="truncate text-sm font-medium">{item.title}</p>
+
+                    <p className="text-sm text-muted-foreground">
+                      Qty: {item.quantity}
+                    </p>
+
+                    {item.deal && (
+                      <p className="mt-1 flex items-center gap-1 text-xs font-medium text-green-600">
+                        {item.deal.type === "bogo" ? (
+                          <>
+                            <Gift className="h-3 w-3" />
+                            {item.freeQuantity} free
+                          </>
+                        ) : (
+                          <>
+                            <Tag className="h-3 w-3" />
+                            {item.deal.title}
+                          </>
+                        )}
+                      </p>
+                    )}
+                  </div>
+
+                  <div className="text-right">
+                    {hasDeal && (
+                      <p className="text-xs text-muted-foreground line-through">
+                        ₹{formatPrice(item.originalItemTotal)}
+                      </p>
+                    )}
+
+                    <p className="text-sm font-medium">
+                      ₹{formatPrice(item.finalItemTotal)}
+                    </p>
+                  </div>
                 </div>
-
-                <p className="text-sm font-medium">
-                  ₹{item.discountPrice * item.quantity}
-                </p>
-              </div>
-            ))}
+              );
+            })}
           </div>
 
           <div className="my-6 border-t" />
+
+          {/* Deal status */}
+          {dealLoading && (
+            <div className="mb-5 rounded-xl bg-muted/50 p-3 text-center text-sm text-muted-foreground">
+              Checking available deals...
+            </div>
+          )}
+
+          {dealError && (
+            <div className="mb-5 rounded-xl bg-red-50 p-3 text-sm text-red-600">
+              {dealError}
+            </div>
+          )}
+
+          {/* Bundle savings */}
+          {bundleDiscount > 0 && (
+            <div className="mb-5 rounded-xl bg-green-50 p-3">
+              <div className="flex justify-between text-sm">
+                <span className="font-medium text-green-700">
+                  Bundle savings
+                </span>
+
+                <span className="font-semibold text-green-700">
+                  -₹
+                  {formatPrice(bundleDiscount)}
+                </span>
+              </div>
+            </div>
+          )}
 
           {/* Coupon */}
           <div>
@@ -390,7 +633,9 @@ function Checkout() {
             )}
 
             {appliedCoupon && !couponError && (
-              <p className="mt-2 text-sm">✓ Coupon applied successfully</p>
+              <p className="mt-2 text-sm text-green-600">
+                ✓ Coupon applied successfully
+              </p>
             )}
           </div>
 
@@ -401,14 +646,30 @@ function Checkout() {
             <div className="flex justify-between">
               <span className="text-muted-foreground">Subtotal</span>
 
-              <span>₹{subtotal}</span>
+              <span>₹{formatPrice(subtotal)}</span>
             </div>
 
-            {discountAmount > 0 && (
-              <div className="flex justify-between">
-                <span className="text-muted-foreground">Discount</span>
+            {bundleDiscount > 0 && (
+              <div className="flex justify-between text-green-600">
+                <span>Bundle savings</span>
 
-                <span>-₹{discountAmount}</span>
+                <span>
+                  -₹
+                  {formatPrice(bundleDiscount)}
+                </span>
+              </div>
+            )}
+
+            {discountAmount > 0 && (
+              <div className="flex justify-between text-green-600">
+                <span>
+                  Coupon {appliedCoupon?.code ? `(${appliedCoupon.code})` : ""}
+                </span>
+
+                <span>
+                  -₹
+                  {formatPrice(discountAmount)}
+                </span>
               </div>
             )}
 
@@ -424,12 +685,19 @@ function Checkout() {
           <div className="flex justify-between text-lg font-bold">
             <span>Total</span>
 
-            <span>₹{total}</span>
+            <span>₹{formatPrice(total)}</span>
           </div>
+
+          {dealCalculation.totalDiscount > 0 && (
+            <p className="mt-3 text-center text-sm font-medium text-green-600">
+              🎉 You're saving ₹{formatPrice(dealCalculation.totalDiscount)}{" "}
+              with deals
+            </p>
+          )}
 
           <Button
             onClick={handleContinueToPayment}
-            disabled={!selectedAddress}
+            disabled={!selectedAddress || dealLoading || Boolean(dealError)}
             className="mt-6 w-full rounded-full"
           >
             Continue to Payment

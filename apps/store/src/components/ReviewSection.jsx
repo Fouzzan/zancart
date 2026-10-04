@@ -99,12 +99,12 @@ function ReviewSection({ productId }) {
     e.preventDefault();
 
     if (!user) {
-      console.error("User is not logged in");
+      toast.error("Please log in to submit a review.");
       return;
     }
 
     if (existingReview) {
-      alert("You have already reviewed this product.");
+      toast.error("You have already reviewed this product.");
       return;
     }
 
@@ -130,26 +130,23 @@ function ReviewSection({ productId }) {
         createdAt: new Date().toISOString(),
       };
 
-      console.log("Submitting review:", newReview);
+      const createdReview = await createReview(newReview);
 
-      await createReview(newReview);
+      // Add the newly created review locally.
+      setReviews((prev) => [...prev, createdReview]);
 
-      // Fetch reviews again from JSON Server
-      const updatedReviews = await getProductReviews(productId);
-
-      setReviews(updatedReviews);
-      toast.success("Review submitted successfully.");
-
-      toast.success("Review submitted successfully.");
+      setExistingReview(createdReview);
 
       setRating(0);
       setComment("");
+
+      toast.success("Review submitted successfully.");
     } catch (error) {
       console.error("Failed to create review:", error);
 
-      console.error("Response:", error.response?.data);
-
-      toast.error("Failed to submit review. Please try again.");
+      toast.error(
+        error.message || "Failed to submit review. Please try again.",
+      );
     } finally {
       setSubmitting(false);
     }

@@ -1,15 +1,47 @@
+import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
+
+import { getActiveDealsWithProducts } from "../services/dealsService";
 
 function DealsSection({ id }) {
   const navigate = useNavigate();
 
-  const handleCategory = (category) => {
-    navigate(`/products?category=${encodeURIComponent(category)}`);
-  };
+  const [deals, setDeals] = useState([]);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    const fetchDeals = async () => {
+      try {
+        const activeDeals = await getActiveDealsWithProducts();
+
+        // Show only deals that actually have products.
+        const validDeals = activeDeals.filter(
+          (deal) => deal.products?.length > 0,
+        );
+
+        // Homepage only needs a small preview.
+        setDeals(validDeals.slice(0, 2));
+      } catch (error) {
+        console.error("Failed to load deals:", error);
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchDeals();
+  }, []);
 
   const handleDeals = () => {
-    navigate("/product-list?deals=true");
+    navigate("/deals");
   };
+
+  const handleProduct = (productId) => {
+    navigate(`/products/${productId}`);
+  };
+
+  if (!loading && deals.length === 0) {
+    return null;
+  }
 
   return (
     <section id={id} className="scroll-mt-24 px-4 py-16 sm:px-6 lg:px-8">
@@ -26,103 +58,149 @@ function DealsSection({ id }) {
             </h2>
           </div>
 
-          {/* <button
+          <button
             onClick={handleDeals}
-            className="hidden text-sm font-medium text-neutral-900 underline underline-offset-4 sm:block"
+            className="hidden text-sm font-medium text-neutral-900 underline underline-offset-4 transition hover:text-neutral-500 sm:block"
           >
             View all deals
-          </button> */}
+          </button>
         </div>
 
-        {/* Deals */}
-        <div className="grid gap-5 md:grid-cols-2">
-          {/* Fashion */}
-          <div className="group relative min-h-[360px] overflow-hidden rounded-3xl bg-[#e8e2d8]">
-            <div className="absolute inset-0">
-              <img
-                src="https://images.unsplash.com/photo-1445205170230-053b83016050?q=80&w=1200&auto=format&fit=crop"
-                alt="Fashion collection"
-                className="h-full w-full object-cover transition duration-700 group-hover:scale-105"
+        {/* Loading */}
+        {loading ? (
+          <div className="grid gap-5 md:grid-cols-2">
+            {[1, 2].map((item) => (
+              <div
+                key={item}
+                className="h-[360px] animate-pulse rounded-3xl bg-neutral-100"
               />
-
-              <div className="absolute inset-0 bg-black/25" />
-            </div>
-
-            <div className="relative z-10 flex h-full flex-col justify-between p-7 text-white sm:p-9">
-              <div>
-                <span className="inline-flex rounded-full bg-white/90 px-3 py-1 text-xs font-semibold uppercase tracking-wider text-neutral-900">
-                  Up to 40% off
-                </span>
-              </div>
-
-              <div>
-                <h3 className="max-w-sm text-3xl font-semibold tracking-tight sm:text-4xl">
-                  Refresh your wardrobe.
-                </h3>
-
-                <p className="mt-3 max-w-sm text-sm leading-6 text-white/85">
-                  Discover everyday styles made for your next look.
-                </p>
-
-                <button
-                  onClick={() => handleCategory("Fashion")}
-                  className="mt-6 rounded-full bg-white px-5 py-3 text-sm font-medium text-neutral-900 transition hover:bg-neutral-100"
-                >
-                  Shop fashion
-                </button>
-              </div>
-            </div>
+            ))}
           </div>
+        ) : (
+          <div className="grid gap-5 md:grid-cols-2">
+            {deals.map((deal) => {
+              const previewProducts = deal.products.slice(0, 3);
 
-          {/* Electronics */}
-          <div className="group relative min-h-[360px] overflow-hidden rounded-3xl bg-[#dfe4e1]">
-            <div className="absolute inset-0">
-              <img
-                src="https://images.unsplash.com/photo-1468495244123-6c6c332eeece?q=80&w=1200&auto=format&fit=crop"
-                alt="Technology products"
-                className="h-full w-full object-cover transition duration-700 group-hover:scale-105"
-              />
-
-              <div className="absolute inset-0 bg-black/30" />
-            </div>
-
-            <div className="relative z-10 flex h-full flex-col justify-between p-7 text-white sm:p-9">
-              <div>
-                <span className="inline-flex rounded-full bg-white/90 px-3 py-1 text-xs font-semibold uppercase tracking-wider text-neutral-900">
-                  Tech picks
-                </span>
-              </div>
-
-              <div>
-                <h3 className="max-w-sm text-3xl font-semibold tracking-tight sm:text-4xl">
-                  Upgrade your everyday.
-                </h3>
-
-                <p className="mt-3 max-w-sm text-sm leading-6 text-white/85">
-                  Smart gadgets and essentials at prices worth checking out.
-                </p>
-
-                <button
-                  onClick={() => handleCategory("Electronics")}
-                  className="mt-6 rounded-full bg-white px-5 py-3 text-sm font-medium text-neutral-900 transition hover:bg-neutral-100"
+              return (
+                <div
+                  key={deal.id}
+                  className="overflow-hidden rounded-3xl border border-neutral-200 bg-white"
                 >
-                  Shop electronics
-                </button>
-              </div>
-            </div>
+                  {/* Deal Header */}
+                  <div className="p-7 sm:p-8">
+                    <div className="flex items-start justify-between gap-4">
+                      <div>
+                        <span className="inline-flex rounded-full bg-neutral-900 px-3 py-1 text-xs font-semibold uppercase tracking-wider text-white">
+                          {getDealLabel(deal)}
+                        </span>
+
+                        <h3 className="mt-4 text-2xl font-semibold tracking-tight text-neutral-900 sm:text-3xl">
+                          {deal.title}
+                        </h3>
+
+                        {deal.description && (
+                          <p className="mt-2 max-w-md text-sm leading-6 text-neutral-500">
+                            {deal.description}
+                          </p>
+                        )}
+                      </div>
+
+                      <button
+                        onClick={handleDeals}
+                        className="shrink-0 text-sm font-medium text-neutral-900 underline underline-offset-4"
+                      >
+                        View deal
+                      </button>
+                    </div>
+                  </div>
+
+                  {/* Products */}
+                  <div className="grid grid-cols-3 gap-px bg-neutral-200">
+                    {previewProducts.map((product) => (
+                      <button
+                        key={product.id}
+                        onClick={() => handleProduct(product.id)}
+                        className="group bg-white text-left"
+                      >
+                        <div className="aspect-square overflow-hidden bg-neutral-100">
+                          <img
+                            src={getProductImage(product)}
+                            alt={product.title}
+                            className="h-full w-full object-cover transition duration-500 group-hover:scale-105"
+                          />
+                        </div>
+
+                        <div className="p-3">
+                          <p className="truncate text-sm font-medium text-neutral-900">
+                            {product.title}
+                          </p>
+
+                          <p className="mt-1 text-sm font-semibold text-neutral-900">
+                            ₹{product.discountPrice ?? product.price}
+                          </p>
+                        </div>
+                      </button>
+                    ))}
+                  </div>
+
+                  {/* Product count */}
+                  {deal.products.length > 3 && (
+                    <button
+                      onClick={handleDeals}
+                      className="w-full border-t border-neutral-200 px-5 py-3 text-sm font-medium text-neutral-600 transition hover:bg-neutral-50 hover:text-neutral-900"
+                    >
+                      View all {deal.products.length} products →
+                    </button>
+                  )}
+                </div>
+              );
+            })}
           </div>
-        </div>
+        )}
 
         {/* Mobile button */}
-        {/* <button
+        <button
           onClick={handleDeals}
           className="mt-6 w-full rounded-full border border-neutral-300 py-3 text-sm font-medium transition hover:bg-neutral-50 sm:hidden"
         >
           View all deals
-        </button> */}
+        </button>
       </div>
     </section>
   );
+}
+
+/**
+ * Display a readable deal type.
+ */
+function getDealLabel(deal) {
+  switch (deal.type) {
+    case "flash_sale":
+      return "Flash Sale";
+
+    case "bogo":
+      return "Buy 1 Get 1";
+
+    case "bundle":
+      return "Bundle Deal";
+
+    case "quantity_discount":
+      return "Buy More, Save More";
+
+    default:
+      return "Special Deal";
+  }
+}
+
+/**
+ * Safely get the first product image.
+ */
+function getProductImage(product) {
+  if (Array.isArray(product.images) && product.images.length > 0) {
+    return product.images[0];
+  }
+
+  return "https://via.placeholder.com/500x500?text=Product";
 }
 
 export default DealsSection;

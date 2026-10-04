@@ -14,6 +14,7 @@ import { useUser } from "@clerk/react";
 import {
   ArrowLeft,
   CheckCircle,
+  Gift,
   MapPin,
   Package,
   Truck,
@@ -78,10 +79,14 @@ function OrderDetails() {
       const updatedOrder = await cancelOrder(order.id);
 
       setOrder(updatedOrder);
+
       toast.success("Order cancelled successfully.");
     } catch (error) {
       console.error("Failed to cancel order:", error);
-      toast.error("Failed to cancel the order. Please try again.");
+
+      toast.error(
+        error?.message || "Failed to cancel the order. Please try again.",
+      );
     } finally {
       setCancelling(false);
     }
@@ -114,13 +119,71 @@ function OrderDetails() {
     );
   }
 
-  const canCancel = order.status === "placed" || order.status === "confirmed";
+  // Keep cancellation rules consistent with orderServices.
+  const canCancel = order.status === "placed" || order.status === "processing";
 
   const orderDate = new Date(order.createdAt).toLocaleDateString("en-IN", {
     day: "numeric",
     month: "long",
     year: "numeric",
   });
+
+  /*
+   * ============================================================
+   * Helpers for deal-aware order items
+   * ============================================================
+   */
+
+  const getPaidQuantity = (item) => {
+    return Number(item.paidQuantity ?? item.quantity ?? 0);
+  };
+
+  const getFreeQuantity = (item) => {
+    return Number(item.freeQuantity ?? 0);
+  };
+
+  const getTotalQuantity = (item) => {
+    return getPaidQuantity(item) + getFreeQuantity(item);
+  };
+
+  const getItemPrice = (item) => {
+    return Number(item.price ?? item.discountPrice ?? 0);
+  };
+
+  const getItemTotal = (item) => {
+    /*
+     * The order item price represents the amount
+     * actually paid for the paid quantity.
+     *
+     * Example:
+     *
+     * BOGO
+     * paidQuantity = 1
+     * freeQuantity = 1
+     * price = 999
+     *
+     * Amount paid = ₹999
+     * Not ₹1998.
+     */
+
+    if (item.totalPrice !== undefined) {
+      return Number(item.totalPrice);
+    }
+
+    return getItemPrice(item) * getPaidQuantity(item);
+  };
+
+  const getDealTitle = (item) => {
+    if (item.deal?.title) {
+      return item.deal.title;
+    }
+
+    if (item.dealTitle) {
+      return item.dealTitle;
+    }
+
+    return null;
+  };
 
   return (
     <main className="mx-auto max-w-5xl px-4 py-8 sm:px-6">
@@ -191,20 +254,25 @@ function OrderDetails() {
       </div>
 
       <div className="grid gap-6 lg:grid-cols-[1fr_360px]">
-        {/* LEFT */}
+        {/* ======================================================
+            LEFT
+        ======================================================= */}
         <div className="space-y-6">
           {/* Order Status */}
           <section className="rounded-2xl border p-5 sm:p-6">
             <div className="mb-6 flex items-center gap-2">
               <Truck className="h-5 w-5" />
+
               <h2 className="text-lg font-semibold">Order Status</h2>
             </div>
 
             {order.status === "cancelled" ? (
               <div className="flex items-center gap-3 rounded-xl border p-4">
                 <XCircle className="h-6 w-6" />
+
                 <div>
                   <p className="font-semibold">Order Cancelled</p>
+
                   <p className="text-sm text-muted-foreground">
                     This order has been cancelled.
                   </p>
@@ -230,9 +298,11 @@ function OrderDetails() {
                   },
                 ].map((step, index) => {
                   const statuses = ["placed", "shipped", "delivered"];
+
                   const currentIndex = statuses.indexOf(order.status);
 
                   const isCompleted = index <= currentIndex;
+
                   const isCurrent = index === currentIndex;
 
                   return (
@@ -291,7 +361,9 @@ function OrderDetails() {
             )}
           </section>
 
-          {/* Products */}
+          {/* ====================================================
+              ORDER ITEMS
+          ===================================================== */}
           <section className="rounded-2xl border p-5 sm:p-6">
             <div className="mb-5 flex items-center gap-2">
               <Package className="h-5 w-5" />
@@ -300,30 +372,80 @@ function OrderDetails() {
             </div>
 
             <div className="divide-y">
-              {order.items.map((item) => (
-                <div
-                  key={item.productId}
-                  className="flex gap-4 py-4 first:pt-0 last:pb-0"
-                >
-                  <img
-                    src={item.image}
-                    alt={item.title}
-                    className="h-20 w-20 rounded-xl object-cover"
-                  />
+              {order.items.map((item, index) => {
+                const paidQuantity = getPaidQuantity(item);
 
-                  <div className="min-w-0 flex-1">
-                    <h3 className="font-medium">{item.title}</h3>
+                const freeQuantity = getFreeQuantity(item);
 
-                    <p className="mt-1 text-sm text-muted-foreground">
-                      Quantity: {item.quantity}
-                    </p>
+                const totalQuantity = getTotalQuantity(item);
 
-                    <p className="mt-2 font-semibold">₹{item.price}</p>
+                const itemPrice = getItemPrice(item);
+
+                const itemTotal = getItemTotal(item);
+
+                const dealTitle = getDealTitle(item);
+
+                return (
+                  <div
+                    key={item.productId ?? `${item.title}-${index}`}
+                    className="flex gap-4 py-4 first:pt-0 last:pb-0"
+                  >
+                    {/* Product Image */}
+                    <div className="shrink-0">
+                      <img
+                        src={item.image}
+                        alt={item.title}
+                        className="h-20 w-20 rounded-xl object-cover"
+                      />
+                    </div>
+
+                    {/* Product Information */}
+                    <div className="min-w-0 flex-1">
+                      <h3 className="font-medium">{item.title}</h3>
+
+                      {/* Deal Badge */}
+                      {dealTitle && (
+                        <div className="mt-2 inline-flex items-center gap-1.5 rounded-full bg-muted px-2.5 py-1 text-xs font-medium">
+                          <Gift className="h-3.5 w-3.5" />
+                          {dealTitle}
+                        </div>
+                      )}
+
+                      {/* Quantity Information */}
+                      <div className="mt-2 space-y-1 text-sm text-muted-foreground">
+                        {freeQuantity > 0 ? (
+                          <>
+                            <p>Paid quantity: {paidQuantity}</p>
+
+                            <p className="flex items-center gap-1.5 font-medium text-foreground">
+                              <Gift className="h-3.5 w-3.5" />
+                              Free quantity: {freeQuantity}
+                            </p>
+
+                            <p>Total quantity: {totalQuantity}</p>
+                          </>
+                        ) : (
+                          <p>Quantity: {paidQuantity}</p>
+                        )}
+                      </div>
+
+                      {/* Unit Price */}
+                      <p className="mt-2 font-semibold">₹{itemPrice}</p>
+                    </div>
+
+                    {/* Item Total */}
+                    <div className="shrink-0 text-right">
+                      <p className="font-semibold">₹{itemTotal}</p>
+
+                      {freeQuantity > 0 && (
+                        <p className="mt-1 text-xs text-muted-foreground">
+                          {totalQuantity} items
+                        </p>
+                      )}
+                    </div>
                   </div>
-
-                  <p className="font-semibold">₹{item.price * item.quantity}</p>
-                </div>
-              ))}
+                );
+              })}
             </div>
           </section>
 
@@ -337,26 +459,29 @@ function OrderDetails() {
 
             <div className="text-sm leading-6 text-muted-foreground">
               <p className="font-medium text-foreground">
-                {order.address.name}
+                {order.address?.name}
               </p>
 
-              <p>{order.address.phone}</p>
+              <p>{order.address?.phone}</p>
 
               <p>
-                {order.address.addressLine1}
-                {order.address.addressLine2 &&
+                {order.address?.addressLine1}
+
+                {order.address?.addressLine2 &&
                   `, ${order.address.addressLine2}`}
               </p>
 
               <p>
-                {order.address.city}, {order.address.state} -{" "}
-                {order.address.pincode}
+                {order.address?.city}, {order.address?.state} -{" "}
+                {order.address?.pincode}
               </p>
             </div>
           </section>
         </div>
 
-        {/* RIGHT */}
+        {/* ======================================================
+            RIGHT - ORDER SUMMARY
+        ======================================================= */}
         <aside className="h-fit rounded-2xl border p-5 sm:p-6 lg:sticky lg:top-24">
           <h2 className="text-lg font-semibold">Order Summary</h2>
 
@@ -367,7 +492,7 @@ function OrderDetails() {
               <span>₹{order.subtotal}</span>
             </div>
 
-            {order.discountAmount > 0 && (
+            {Number(order.discountAmount) > 0 && (
               <div className="flex justify-between">
                 <span className="text-muted-foreground">
                   Discount
@@ -397,7 +522,9 @@ function OrderDetails() {
           <div className="mt-6 border-t pt-5">
             <p className="text-sm text-muted-foreground">Payment Method</p>
 
-            <p className="mt-1 font-medium uppercase">{order.paymentMethod}</p>
+            <p className="mt-1 font-medium uppercase">
+              {order.paymentMethod || "N/A"}
+            </p>
           </div>
         </aside>
       </div>

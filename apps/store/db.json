@@ -29,6 +29,414 @@
       "status": "blocked",
       "createdAt": "2026-10-03T04:10:55.646Z",
       "id": "Zmq2mpabzT0"
+    },
+    {
+      "id": "knHFlQiBjhk",
+      "userId": "user_3JJDQcT11Hay732J8WGw6GmiooG",
+      "email": "mfouzan961@gmail.com",
+      "firstName": "Fouzan",
+      "lastName": "Muhammed KV",
+      "name": "Fouzan Muhammed KV",
+      "imageUrl": "https://img.clerk.com/eyJ0eXBlIjoicHJveHkiLCJzcmMiOiJodHRwczovL2ltYWdlcy5jbGVyay5kZXYvdXBsb2FkZWQvaW1nXzNKb1lpcXVreFkwamhIR2pCTFpnVlRjSEUxOCJ9",
+      "status": "active",
+      "isAdmin": false,
+      "createdAt": "2026-10-03T07:23:26.616Z"
+    },
+    {
+      "id": "BsXZ-6U3pE4",
+      "userId": "user_3JJDQcT11Hay732J8WGw6GmiooG",
+      "email": "mfouzan961@gmail.com",
+      "firstName": "Fouzan",
+      "lastName": "Muhammed KV",
+      "name": "Fouzan Muhammed KV",
+      "imageUrl": "https://img.clerk.com/eyJ0eXBlIjoicHJveHkiLCJzcmMiOiJodHRwczovL2ltYWdlcy5jbGVyay5kZXYvdXBsb2FkZWQvaW1nXzNKb1lpcXVreFkwamhIR2pCTFpnVlRjSEUxOCJ9",
+      "status": "active",
+      "isAdmin": false,
+      "createdAt": "2026-10-03T07:23:43.105Z"
+    },
+    {
+      "id": "-Wr0KT-7HzI",
+      "userId": "user_3JJDQcT11Hay732J8WGw6GmiooG",
+      "email": "mfouzan961@gmail.com",
+      "firstName": "Fouzan",
+      "lastName": "Muhammed KV",
+      "name": "Fouzan Muhammed KV",
+      "imageUrl": "https://img.clerk.com/eyJ0eXBlIjoicHJveHkiLCJzcmMiOiJodHRwczovL2ltYWdlcy5jbGVyay5kZXYvdXBsb2FkZWQvaW1nXzNKb1lpcXVreFkwamhIR2pCTFpnVlRjSEUxOCJ9",
+      "status": "active",
+      "isAdmin": false,
+      "createdAt": "2026-10-03T07:24:01.410Z"
+    },
+    {
+      "id": "TbD03icdnzk",
+      "userId": "user_3JJDQcT11Hay732J8WGw6GmiooG",
+      "email": "mfouzan961@gmail.com",
+      "firstName": "Fouzan",
+      "lastName": "Muhammed KV",
+      "name": "Fouzan Muhammed KV",
+      "imageUrl": "https://img.clerk.com/eyJ0eXBlIjoicHJveHkiLCJzcmMiOiJodHRwczovL2ltYWdlcy5jbGVyay5kZXYvdXBsb2FkZWQvaW1nXzNKb1lpcXVreFkwamhIR2pCTFpnVlRjSEUxOCJ9",
+      "status": "active",
+      "isAdmin": false,
+      "createdAt": "2026-10-03T07:26:45.277Z"
+    },
+    {
+      "id": "iyyRhCni2N8",
+      "userId": "user_3JJDQcT11Hay732J8WGw6GmiooG",
+      "email": "mfouzan961@gmail.com",
+      "firstName": "Fouzan",
+      "lastName": "Muhammed KV",
+      "name": "Fouzan Muhammed KV",
+      "imageUrl": "https://img.clerk.com/eyJ0eXBlIjoicHJveHkiLCJzcmMiOiJodHRwczovL2ltYWdlcy5jbGVyay5kZXYvdXBsb2FkZWQvaW1nXzNKb1lpcXVreFkwamhIR2pCTFpnVlRjSEUxOCJ9",
+      "status": "active",
+      "isAdmin": false,
+      "createdAt": "2026-10-03T07:34:16.036Z"
+    },
+    {
+      "id": "tDqFenrMhhU",
+      "userId": "user_3JJDQcT11Hay732J8WGw6GmiooG",
+      "email": "mfouzan961@gmail.com",
+      "firstName": "Fouzan",
+      "lastName": "Muhammed KV",
+      "name": "Fouzan Muhammed KV",
+      "imageUrl": "https://img.clerk.com/eyJ0eXBlIjoicHJveHkiLCJzcmMiOiJodHRwczovL2ltYWdlcy5jbGVyay5kZXYvdXBsb2FkZWQvaW1nXzNKb1lpcXVreFkwamhIR2pCTFpnVlRjSEUxOCJ9",
+      "status": "active",
+      "isAdmin": false,
+      "createdAt": "2026-10-03T09:52:58.806Z"
+    },
+    {
+      "id": "rCvyZvj2FDs",
+      "userId": "user_3JJDQcT11Hay732J8WGw6GmiooG",
+      "email": "mfouzan961@gmail.com",
+      "firstName": "Fouzan",
+      "lastName": "Muhammed KV",
+      "name": "Fouzan Muhammed KV",
+      "imageUrl": "https://img.clerk.com/eyJ0eXBlIjoicHJveHkiLCJzcmMiOiJodHRwczovL2ltYWdlcy5jbGVyay5kZXYvdXBsb2FkZWQvaW1nXzNKb1lpcXVreFkwamhIR2pCTFpnVlRjSEUxOCJ9",
+      "status": "active",
+      "isAdmin": false,
+      "createdAt": "2026-10-03T11:20:05.794Z"
+    },
+    {
+      "id": "Ydu3ZOzcsDQ",
+      "userId": "user_3JJDQcT11Hay732J8WGw6GmiooG",
+      "email": "mfouzan961@gmail.com",
+      "firstName": "Fouzan",
+      "lastName": "Muhammed KV",
+      "name": "Fouzan Muhammed KV",
+      "imageUrl": "https://img.clerk.com/eyJ0eXBlIjoicHJveHkiLCJzcmMiOiJodHRwczovL2ltYWdlcy5jbGVyay5kZXYvdXBsb2FkZWQvaW1nXzNKb1lpcXVreFkwamhIR2pCTFpnVlRjSEUxOCJ9",
+      "status": "active",
+      "isAdmin": false,
+      "createdAt": "2026-10-04T01:01:38.851Z"
+    },
+    {
+      "id": "WhfbRscKNrs",
+      "userId": "user_3JJDQcT11Hay732J8WGw6GmiooG",
+      "email": "mfouzan961@gmail.com",
+      "firstName": "Fouzan",
+      "lastName": "Muhammed KV",
+      "name": "Fouzan Muhammed KV",
+      "imageUrl": "https://img.clerk.com/eyJ0eXBlIjoicHJveHkiLCJzcmMiOiJodHRwczovL2ltYWdlcy5jbGVyay5kZXYvdXBsb2FkZWQvaW1nXzNKb1lpcXVreFkwamhIR2pCTFpnVlRjSEUxOCJ9",
+      "status": "active",
+      "isAdmin": false,
+      "createdAt": "2026-10-04T01:38:12.931Z"
+    },
+    {
+      "id": "-6QM1WEkDCQ",
+      "userId": "user_3JJDQcT11Hay732J8WGw6GmiooG",
+      "email": "mfouzan961@gmail.com",
+      "firstName": "Fouzan",
+      "lastName": "Muhammed KV",
+      "name": "Fouzan Muhammed KV",
+      "imageUrl": "https://img.clerk.com/eyJ0eXBlIjoicHJveHkiLCJzcmMiOiJodHRwczovL2ltYWdlcy5jbGVyay5kZXYvdXBsb2FkZWQvaW1nXzNKb1lpcXVreFkwamhIR2pCTFpnVlRjSEUxOCJ9",
+      "status": "active",
+      "isAdmin": false,
+      "createdAt": "2026-10-04T11:54:23.894Z"
+    },
+    {
+      "id": "ljCCPytVq9I",
+      "userId": "user_3JJDQcT11Hay732J8WGw6GmiooG",
+      "email": "mfouzan961@gmail.com",
+      "firstName": "Fouzan",
+      "lastName": "Muhammed KV",
+      "name": "Fouzan Muhammed KV",
+      "imageUrl": "https://img.clerk.com/eyJ0eXBlIjoicHJveHkiLCJzcmMiOiJodHRwczovL2ltYWdlcy5jbGVyay5kZXYvdXBsb2FkZWQvaW1nXzNKb1lpcXVreFkwamhIR2pCTFpnVlRjSEUxOCJ9",
+      "status": "active",
+      "isAdmin": false,
+      "createdAt": "2026-10-04T11:59:11.907Z"
+    },
+    {
+      "id": "F526InD-ty0",
+      "userId": "user_3JJDQcT11Hay732J8WGw6GmiooG",
+      "email": "mfouzan961@gmail.com",
+      "firstName": "Fouzan",
+      "lastName": "Muhammed KV",
+      "name": "Fouzan Muhammed KV",
+      "imageUrl": "https://img.clerk.com/eyJ0eXBlIjoicHJveHkiLCJzcmMiOiJodHRwczovL2ltYWdlcy5jbGVyay5kZXYvdXBsb2FkZWQvaW1nXzNKb1lpcXVreFkwamhIR2pCTFpnVlRjSEUxOCJ9",
+      "status": "active",
+      "isAdmin": false,
+      "createdAt": "2026-10-04T12:00:15.833Z"
+    },
+    {
+      "id": "5JpPswTfXHg",
+      "userId": "user_3JJDQcT11Hay732J8WGw6GmiooG",
+      "email": "mfouzan961@gmail.com",
+      "firstName": "Fouzan",
+      "lastName": "Muhammed KV",
+      "name": "Fouzan Muhammed KV",
+      "imageUrl": "https://img.clerk.com/eyJ0eXBlIjoicHJveHkiLCJzcmMiOiJodHRwczovL2ltYWdlcy5jbGVyay5kZXYvdXBsb2FkZWQvaW1nXzNKb1lpcXVreFkwamhIR2pCTFpnVlRjSEUxOCJ9",
+      "status": "active",
+      "isAdmin": false,
+      "createdAt": "2026-10-04T12:19:57.073Z"
+    },
+    {
+      "id": "WTLPJwnRmiM",
+      "userId": "user_3JJDQcT11Hay732J8WGw6GmiooG",
+      "email": "mfouzan961@gmail.com",
+      "firstName": "Fouzan",
+      "lastName": "Muhammed KV",
+      "name": "Fouzan Muhammed KV",
+      "imageUrl": "https://img.clerk.com/eyJ0eXBlIjoicHJveHkiLCJzcmMiOiJodHRwczovL2ltYWdlcy5jbGVyay5kZXYvdXBsb2FkZWQvaW1nXzNKb1lpcXVreFkwamhIR2pCTFpnVlRjSEUxOCJ9",
+      "status": "active",
+      "isAdmin": false,
+      "createdAt": "2026-10-04T12:20:54.993Z"
+    },
+    {
+      "id": "CNIMbJib-V4",
+      "userId": "user_3JJDQcT11Hay732J8WGw6GmiooG",
+      "email": "mfouzan961@gmail.com",
+      "firstName": "Fouzan",
+      "lastName": "Muhammed KV",
+      "name": "Fouzan Muhammed KV",
+      "imageUrl": "https://img.clerk.com/eyJ0eXBlIjoicHJveHkiLCJzcmMiOiJodHRwczovL2ltYWdlcy5jbGVyay5kZXYvdXBsb2FkZWQvaW1nXzNKb1lpcXVreFkwamhIR2pCTFpnVlRjSEUxOCJ9",
+      "status": "active",
+      "isAdmin": false,
+      "createdAt": "2026-10-04T12:30:02.463Z"
+    },
+    {
+      "id": "5lgPgmM71BY",
+      "userId": "user_3JJDQcT11Hay732J8WGw6GmiooG",
+      "email": "mfouzan961@gmail.com",
+      "firstName": "Fouzan",
+      "lastName": "Muhammed KV",
+      "name": "Fouzan Muhammed KV",
+      "imageUrl": "https://img.clerk.com/eyJ0eXBlIjoicHJveHkiLCJzcmMiOiJodHRwczovL2ltYWdlcy5jbGVyay5kZXYvdXBsb2FkZWQvaW1nXzNKb1lpcXVreFkwamhIR2pCTFpnVlRjSEUxOCJ9",
+      "status": "active",
+      "isAdmin": false,
+      "createdAt": "2026-10-04T12:46:16.419Z"
+    },
+    {
+      "id": "gr_EJNidIvk",
+      "userId": "user_3JJDQcT11Hay732J8WGw6GmiooG",
+      "email": "mfouzan961@gmail.com",
+      "firstName": "Fouzan",
+      "lastName": "Muhammed KV",
+      "name": "Fouzan Muhammed KV",
+      "imageUrl": "https://img.clerk.com/eyJ0eXBlIjoicHJveHkiLCJzcmMiOiJodHRwczovL2ltYWdlcy5jbGVyay5kZXYvdXBsb2FkZWQvaW1nXzNKb1lpcXVreFkwamhIR2pCTFpnVlRjSEUxOCJ9",
+      "status": "active",
+      "isAdmin": false,
+      "createdAt": "2026-10-04T12:49:21.983Z"
+    },
+    {
+      "id": "FHOlwmP19as",
+      "userId": "user_3JJDQcT11Hay732J8WGw6GmiooG",
+      "email": "mfouzan961@gmail.com",
+      "firstName": "Fouzan",
+      "lastName": "Muhammed KV",
+      "name": "Fouzan Muhammed KV",
+      "imageUrl": "https://img.clerk.com/eyJ0eXBlIjoicHJveHkiLCJzcmMiOiJodHRwczovL2ltYWdlcy5jbGVyay5kZXYvdXBsb2FkZWQvaW1nXzNKb1lpcXVreFkwamhIR2pCTFpnVlRjSEUxOCJ9",
+      "status": "active",
+      "isAdmin": false,
+      "createdAt": "2026-10-04T14:39:34.942Z"
+    },
+    {
+      "id": "EBcavigtqRg",
+      "userId": "user_3JJDQcT11Hay732J8WGw6GmiooG",
+      "email": "mfouzan961@gmail.com",
+      "firstName": "Fouzan",
+      "lastName": "Muhammed KV",
+      "name": "Fouzan Muhammed KV",
+      "imageUrl": "https://img.clerk.com/eyJ0eXBlIjoicHJveHkiLCJzcmMiOiJodHRwczovL2ltYWdlcy5jbGVyay5kZXYvdXBsb2FkZWQvaW1nXzNKb1lpcXVreFkwamhIR2pCTFpnVlRjSEUxOCJ9",
+      "status": "active",
+      "isAdmin": false,
+      "createdAt": "2026-10-04T14:44:53.428Z"
+    },
+    {
+      "id": "-y4JtMV4FNU",
+      "userId": "user_3JJDQcT11Hay732J8WGw6GmiooG",
+      "email": "mfouzan961@gmail.com",
+      "firstName": "Fouzan",
+      "lastName": "Muhammed KV",
+      "name": "Fouzan Muhammed KV",
+      "imageUrl": "https://img.clerk.com/eyJ0eXBlIjoicHJveHkiLCJzcmMiOiJodHRwczovL2ltYWdlcy5jbGVyay5kZXYvdXBsb2FkZWQvaW1nXzNKb1lpcXVreFkwamhIR2pCTFpnVlRjSEUxOCJ9",
+      "status": "active",
+      "isAdmin": false,
+      "createdAt": "2026-10-04T15:02:52.252Z"
+    },
+    {
+      "id": "g2M6FesZYOM",
+      "userId": "user_3JJDQcT11Hay732J8WGw6GmiooG",
+      "email": "mfouzan961@gmail.com",
+      "firstName": "Fouzan",
+      "lastName": "Muhammed KV",
+      "name": "Fouzan Muhammed KV",
+      "imageUrl": "https://img.clerk.com/eyJ0eXBlIjoicHJveHkiLCJzcmMiOiJodHRwczovL2ltYWdlcy5jbGVyay5kZXYvdXBsb2FkZWQvaW1nXzNKb1lpcXVreFkwamhIR2pCTFpnVlRjSEUxOCJ9",
+      "status": "active",
+      "isAdmin": false,
+      "createdAt": "2026-10-04T15:05:46.311Z"
+    },
+    {
+      "id": "sSVXQ3wQIDc",
+      "userId": "user_3JJDQcT11Hay732J8WGw6GmiooG",
+      "email": "mfouzan961@gmail.com",
+      "firstName": "Fouzan",
+      "lastName": "Muhammed KV",
+      "name": "Fouzan Muhammed KV",
+      "imageUrl": "https://img.clerk.com/eyJ0eXBlIjoicHJveHkiLCJzcmMiOiJodHRwczovL2ltYWdlcy5jbGVyay5kZXYvdXBsb2FkZWQvaW1nXzNKb1lpcXVreFkwamhIR2pCTFpnVlRjSEUxOCJ9",
+      "status": "active",
+      "isAdmin": false,
+      "createdAt": "2026-10-04T15:10:07.052Z"
+    },
+    {
+      "id": "no62z31zFtM",
+      "userId": "user_3JJDQcT11Hay732J8WGw6GmiooG",
+      "email": "mfouzan961@gmail.com",
+      "firstName": "Fouzan",
+      "lastName": "Muhammed KV",
+      "name": "Fouzan Muhammed KV",
+      "imageUrl": "https://img.clerk.com/eyJ0eXBlIjoicHJveHkiLCJzcmMiOiJodHRwczovL2ltYWdlcy5jbGVyay5kZXYvdXBsb2FkZWQvaW1nXzNKb1lpcXVreFkwamhIR2pCTFpnVlRjSEUxOCJ9",
+      "status": "active",
+      "isAdmin": false,
+      "createdAt": "2026-10-04T15:15:22.738Z"
+    },
+    {
+      "id": "eqerDC5JfMo",
+      "userId": "user_3JJDQcT11Hay732J8WGw6GmiooG",
+      "email": "mfouzan961@gmail.com",
+      "firstName": "Fouzan",
+      "lastName": "Muhammed KV",
+      "name": "Fouzan Muhammed KV",
+      "imageUrl": "https://img.clerk.com/eyJ0eXBlIjoicHJveHkiLCJzcmMiOiJodHRwczovL2ltYWdlcy5jbGVyay5kZXYvdXBsb2FkZWQvaW1nXzNKb1lpcXVreFkwamhIR2pCTFpnVlRjSEUxOCJ9",
+      "status": "active",
+      "isAdmin": false,
+      "createdAt": "2026-10-04T15:16:22.094Z"
+    },
+    {
+      "id": "1y3Or1VW_4Q",
+      "userId": "user_3JJDQcT11Hay732J8WGw6GmiooG",
+      "email": "mfouzan961@gmail.com",
+      "firstName": "Fouzan",
+      "lastName": "Muhammed KV",
+      "name": "Fouzan Muhammed KV",
+      "imageUrl": "https://img.clerk.com/eyJ0eXBlIjoicHJveHkiLCJzcmMiOiJodHRwczovL2ltYWdlcy5jbGVyay5kZXYvdXBsb2FkZWQvaW1nXzNKb1lpcXVreFkwamhIR2pCTFpnVlRjSEUxOCJ9",
+      "status": "active",
+      "isAdmin": false,
+      "createdAt": "2026-10-04T15:26:54.090Z"
+    },
+    {
+      "id": "UuuV-ecs2SA",
+      "userId": "user_3JJDQcT11Hay732J8WGw6GmiooG",
+      "email": "mfouzan961@gmail.com",
+      "firstName": "Fouzan",
+      "lastName": "Muhammed KV",
+      "name": "Fouzan Muhammed KV",
+      "imageUrl": "https://img.clerk.com/eyJ0eXBlIjoicHJveHkiLCJzcmMiOiJodHRwczovL2ltYWdlcy5jbGVyay5kZXYvdXBsb2FkZWQvaW1nXzNKb1lpcXVreFkwamhIR2pCTFpnVlRjSEUxOCJ9",
+      "status": "active",
+      "isAdmin": false,
+      "createdAt": "2026-10-04T15:27:54.026Z"
+    },
+    {
+      "id": "EbDsxsrRXZE",
+      "userId": "user_3JJDQcT11Hay732J8WGw6GmiooG",
+      "email": "mfouzan961@gmail.com",
+      "firstName": "Fouzan",
+      "lastName": "Muhammed KV",
+      "name": "Fouzan Muhammed KV",
+      "imageUrl": "https://img.clerk.com/eyJ0eXBlIjoicHJveHkiLCJzcmMiOiJodHRwczovL2ltYWdlcy5jbGVyay5kZXYvdXBsb2FkZWQvaW1nXzNKb1lpcXVreFkwamhIR2pCTFpnVlRjSEUxOCJ9",
+      "status": "active",
+      "isAdmin": false,
+      "createdAt": "2026-10-04T16:33:08.668Z"
+    },
+    {
+      "id": "N0NKNnOyg94",
+      "userId": "user_3JJDQcT11Hay732J8WGw6GmiooG",
+      "email": "mfouzan961@gmail.com",
+      "firstName": "Fouzan",
+      "lastName": "Muhammed KV",
+      "name": "Fouzan Muhammed KV",
+      "imageUrl": "https://img.clerk.com/eyJ0eXBlIjoicHJveHkiLCJzcmMiOiJodHRwczovL2ltYWdlcy5jbGVyay5kZXYvdXBsb2FkZWQvaW1nXzNKb1lpcXVreFkwamhIR2pCTFpnVlRjSEUxOCJ9",
+      "status": "active",
+      "isAdmin": false,
+      "createdAt": "2026-10-04T16:35:02.134Z"
+    },
+    {
+      "id": "KmUrme_by6o",
+      "userId": "user_3JJDQcT11Hay732J8WGw6GmiooG",
+      "email": "mfouzan961@gmail.com",
+      "firstName": "Fouzan",
+      "lastName": "Muhammed KV",
+      "name": "Fouzan Muhammed KV",
+      "imageUrl": "https://img.clerk.com/eyJ0eXBlIjoicHJveHkiLCJzcmMiOiJodHRwczovL2ltYWdlcy5jbGVyay5kZXYvdXBsb2FkZWQvaW1nXzNKb1lpcXVreFkwamhIR2pCTFpnVlRjSEUxOCJ9",
+      "status": "active",
+      "isAdmin": false,
+      "createdAt": "2026-10-04T16:42:22.148Z"
+    },
+    {
+      "id": "t3y3pQa5hIk",
+      "userId": "user_3JJDQcT11Hay732J8WGw6GmiooG",
+      "email": "mfouzan961@gmail.com",
+      "firstName": "Fouzan",
+      "lastName": "Muhammed KV",
+      "name": "Fouzan Muhammed KV",
+      "imageUrl": "https://img.clerk.com/eyJ0eXBlIjoicHJveHkiLCJzcmMiOiJodHRwczovL2ltYWdlcy5jbGVyay5kZXYvdXBsb2FkZWQvaW1nXzNKb1lpcXVreFkwamhIR2pCTFpnVlRjSEUxOCJ9",
+      "status": "active",
+      "isAdmin": false,
+      "createdAt": "2026-10-04T17:54:50.030Z"
+    },
+    {
+      "id": "NXm1okCpj-8",
+      "userId": "user_3JJDQcT11Hay732J8WGw6GmiooG",
+      "email": "mfouzan961@gmail.com",
+      "firstName": "Fouzan",
+      "lastName": "Muhammed KV",
+      "name": "Fouzan Muhammed KV",
+      "imageUrl": "https://img.clerk.com/eyJ0eXBlIjoicHJveHkiLCJzcmMiOiJodHRwczovL2ltYWdlcy5jbGVyay5kZXYvdXBsb2FkZWQvaW1nXzNKb1lpcXVreFkwamhIR2pCTFpnVlRjSEUxOCJ9",
+      "status": "active",
+      "isAdmin": false,
+      "createdAt": "2026-10-04T18:14:48.670Z"
+    },
+    {
+      "id": "db38rJdzQAY",
+      "userId": "user_3JJDQcT11Hay732J8WGw6GmiooG",
+      "email": "mfouzan961@gmail.com",
+      "firstName": "Fouzan",
+      "lastName": "Muhammed KV",
+      "name": "Fouzan Muhammed KV",
+      "imageUrl": "https://img.clerk.com/eyJ0eXBlIjoicHJveHkiLCJzcmMiOiJodHRwczovL2ltYWdlcy5jbGVyay5kZXYvdXBsb2FkZWQvaW1nXzNKb1lpcXVreFkwamhIR2pCTFpnVlRjSEUxOCJ9",
+      "status": "active",
+      "isAdmin": false,
+      "createdAt": "2026-10-04T18:16:31.878Z"
+    },
+    {
+      "id": "uX7bTeXTo3M",
+      "userId": "user_3JJDQcT11Hay732J8WGw6GmiooG",
+      "email": "mfouzan961@gmail.com",
+      "firstName": "Fouzan",
+      "lastName": "Muhammed KV",
+      "name": "Fouzan Muhammed KV",
+      "imageUrl": "https://img.clerk.com/eyJ0eXBlIjoicHJveHkiLCJzcmMiOiJodHRwczovL2ltYWdlcy5jbGVyay5kZXYvdXBsb2FkZWQvaW1nXzNKb1lpcXVreFkwamhIR2pCTFpnVlRjSEUxOCJ9",
+      "status": "active",
+      "isAdmin": false,
+      "createdAt": "2026-10-04T18:20:58.924Z"
+    },
+    {
+      "id": "qRILk8FXyEo",
+      "userId": "user_3JJDQcT11Hay732J8WGw6GmiooG",
+      "email": "mfouzan961@gmail.com",
+      "firstName": "Fouzan",
+      "lastName": "Muhammed KV",
+      "name": "Fouzan Muhammed KV",
+      "imageUrl": "https://img.clerk.com/eyJ0eXBlIjoicHJveHkiLCJzcmMiOiJodHRwczovL2ltYWdlcy5jbGVyay5kZXYvdXBsb2FkZWQvaW1nXzNKb1lpcXVreFkwamhIR2pCTFpnVlRjSEUxOCJ9",
+      "status": "active",
+      "isAdmin": false,
+      "createdAt": "2026-10-04T18:21:17.825Z"
     }
   ],
   "products": [
@@ -46,8 +454,8 @@
         "https://images.unsplash.com/photo-1503342217505-b0a15ec3261c",
         "https://images.unsplash.com/photo-1583743814966-8936f5b7be1a"
       ],
-      "rating": 3.9,
-      "reviewCount": 124,
+      "rating": 5,
+      "reviewCount": 1,
       "stock": 33,
       "featured": true,
       "trending": true
@@ -66,8 +474,8 @@
         "https://images.unsplash.com/photo-1596755094514-f87e34085b2c",
         "https://images.unsplash.com/photo-1603252109303-2751441dd157"
       ],
-      "rating": 4.4,
-      "reviewCount": 89,
+      "rating": 5,
+      "reviewCount": 1,
       "stock": 24,
       "featured": true,
       "trending": false
@@ -248,7 +656,7 @@
       ],
       "rating": 4.4,
       "reviewCount": 72,
-      "stock": 25,
+      "stock": 24,
       "featured": false,
       "trending": false
     },
@@ -2170,29 +2578,7 @@
     },
     {
       "userId": "user_3JJDQcT11Hay732J8WGw6GmiooG",
-      "items": [
-        {
-          "id": "11",
-          "title": "Oversized Knit Sweater",
-          "description": "Warm oversized knit sweater with a soft texture and relaxed fit.",
-          "price": 2299,
-          "discountPrice": 1799,
-          "category": "Fashion",
-          "subcategory": "Sweaters",
-          "brand": "CozyLine",
-          "images": [
-            "https://images.unsplash.com/photo-1434389677669-e08b4cac3105",
-            "https://images.unsplash.com/photo-1576566588028-4147f3842f27",
-            "https://images.unsplash.com/photo-1583744946564-b52ac1c389c8"
-          ],
-          "rating": 4.4,
-          "reviewCount": 72,
-          "stock": 25,
-          "featured": false,
-          "trending": false,
-          "quantity": 1
-        }
-      ],
+      "items": [],
       "id": "_CdhDbJsVcs"
     },
     {
@@ -3245,6 +3631,102 @@
       "status": "cancelled",
       "createdAt": "2026-10-03T01:41:15.795Z",
       "id": "Q8RN4JK6FnQ"
+    },
+    {
+      "userId": "user_3JJDQcT11Hay732J8WGw6GmiooG",
+      "items": [
+        {
+          "productId": "11",
+          "title": "Oversized Knit Sweater",
+          "image": "https://images.unsplash.com/photo-1434389677669-e08b4cac3105",
+          "price": 1799,
+          "quantity": 1
+        }
+      ],
+      "address": {
+        "fullName": "Fouzan Muhammed K V",
+        "phone": "9778263326",
+        "address": "Kallivalappil house",
+        "city": "Pattambi",
+        "pinCode": "679337",
+        "userId": "user_3JJDQcT11Hay732J8WGw6GmiooG",
+        "isDefault": false,
+        "id": "C1wWHpKM9bQ"
+      },
+      "paymentMethod": "cod",
+      "subtotal": 1799,
+      "coupon": {
+        "code": "WELCOME20",
+        "discountType": "percentage",
+        "discountValue": 20,
+        "minimumOrderAmount": 500,
+        "expiryDate": "2026-12-31",
+        "isActive": true,
+        "id": "7K7PtvGxI6M"
+      },
+      "discountAmount": 359.8,
+      "totalAmount": 1439.2,
+      "status": "placed",
+      "createdAt": "2026-10-03T07:17:43.222Z",
+      "id": "7wobGQEgclM"
+    },
+    {
+      "userId": "user_3JJDQcT11Hay732J8WGw6GmiooG",
+      "items": [
+        {
+          "productId": "2",
+          "title": "Premium Linen Shirt",
+          "image": "https://images.unsplash.com/photo-1602810318383-e386cc2a3ccf",
+          "price": 1399,
+          "quantity": 1,
+          "originalItemTotal": 1399,
+          "dealDiscount": 419.7,
+          "finalItemTotal": 979.3,
+          "freeQuantity": 0,
+          "paidQuantity": 1,
+          "deal": {
+            "id": "deal_001",
+            "title": "Weekend Flash Sale",
+            "type": "flash_sale"
+          },
+          "discountPercentage": 30,
+          "appliedTier": null
+        }
+      ],
+      "address": {
+        "fullName": "Fouzan Muhammed K V",
+        "phone": "9778263326",
+        "address": "Kallivalappil house",
+        "city": "Pattambi",
+        "pinCode": "679337",
+        "userId": "user_3JJDQcT11Hay732J8WGw6GmiooG",
+        "isDefault": false,
+        "id": "C1wWHpKM9bQ"
+      },
+      "paymentMethod": "card",
+      "subtotal": 979.3,
+      "dealDiscount": 419.7,
+      "bundleDiscount": 0,
+      "dealTotal": 979.3,
+      "coupon": null,
+      "discountAmount": 0,
+      "totalAmount": 979.3,
+      "appliedDeals": {
+        "productDeals": [
+          {
+            "dealId": "deal_001",
+            "title": "Weekend Flash Sale",
+            "type": "flash_sale",
+            "productId": "2",
+            "discount": 419.7,
+            "freeQuantity": 0
+          }
+        ],
+        "bundles": []
+      },
+      "status": "placed",
+      "createdAt": "2026-10-04T16:32:38.742Z",
+      "id": "Ygu_8cLeX00"
     }
   ],
   "coupons": [
@@ -3284,7 +3766,26 @@
       "rating": 5,
       "comment": "Excellent Product!",
       "createdAt": "2026-09-18T11:08:03.928Z",
-      "id": "_CAi9JpEeFc"
+      "id": "_CAi9JpEeFc",
+      "updatedAt": "2026-10-03T07:34:08.770Z"
+    },
+    {
+      "productId": "2",
+      "userId": "user_3JJDQcT11Hay732J8WGw6GmiooG",
+      "userName": "Fouzan Muhammed KV",
+      "rating": 5,
+      "comment": "Nice Product",
+      "createdAt": "2026-10-03T07:18:14.286Z",
+      "id": "0DHC-y6uZWg"
+    },
+    {
+      "productId": "3",
+      "userId": "user_3JJDQcT11Hay732J8WGw6GmiooG",
+      "userName": "Fouzan Muhammed KV",
+      "rating": 4,
+      "comment": "good",
+      "createdAt": "2026-10-03T07:23:55.758Z",
+      "id": "ajO_0HXhr5M"
     }
   ],
   "categories": [
@@ -3413,6 +3914,96 @@
     {
       "id": "25",
       "name": "ZenCore"
+    }
+  ],
+  "deals": [
+    {
+      "id": "deal_001",
+      "title": "Weekend Flash Sale",
+      "description": "Limited-time discounts on selected products.",
+      "type": "flash_sale",
+      "products": [
+        "2",
+        "5",
+        "8"
+      ],
+      "discountType": "percentage",
+      "discountValue": 30,
+      "image": "",
+      "startDate": "2026-10-04T00:00:00.000Z",
+      "endDate": "2026-10-07T23:59:59.000Z",
+      "isActive": true,
+      "priority": 1,
+      "createdAt": "2026-10-04T00:00:00.000Z"
+    },
+    {
+      "id": "deal_002",
+      "title": "Buy 1 Get 1 Free",
+      "description": "Buy one qualifying product and get another qualifying product free.",
+      "type": "bogo",
+      "products": [
+        "1",
+        "4"
+      ],
+      "discountType": "free_item",
+      "discountValue": 100,
+      "image": "",
+      "startDate": "2026-10-04T00:00:00.000Z",
+      "endDate": "2026-10-15T23:59:59.000Z",
+      "isActive": true,
+      "priority": 2,
+      "createdAt": "2026-10-04T00:00:00.000Z"
+    },
+    {
+      "id": "deal_003",
+      "title": "Buy More, Save More",
+      "description": "Get bigger discounts when you purchase more qualifying items.",
+      "type": "quantity_discount",
+      "products": [
+        "2",
+        "5",
+        "6"
+      ],
+      "discountType": "tiered",
+      "tiers": [
+        {
+          "quantity": 2,
+          "discount": 10
+        },
+        {
+          "quantity": 3,
+          "discount": 15
+        },
+        {
+          "quantity": 4,
+          "discount": 20
+        }
+      ],
+      "image": "",
+      "startDate": "2026-10-04T00:00:00.000Z",
+      "endDate": "2026-10-31T23:59:59.000Z",
+      "isActive": true,
+      "priority": 3,
+      "createdAt": "2026-10-04T00:00:00.000Z"
+    },
+    {
+      "id": "deal_004",
+      "title": "Complete Your Look",
+      "description": "Save when you purchase this selected product combination.",
+      "type": "bundle",
+      "products": [
+        "1",
+        "6",
+        "9"
+      ],
+      "discountType": "fixed_price",
+      "bundlePrice": 2499,
+      "image": "",
+      "startDate": "2026-10-04T00:00:00.000Z",
+      "endDate": "2026-10-20T23:59:59.000Z",
+      "isActive": true,
+      "priority": 4,
+      "createdAt": "2026-10-04T00:00:00.000Z"
     }
   ],
   "$schema": "./node_modules/json-server/schema.json"

@@ -1,3 +1,4 @@
+import Deals from "@/pages/Deals";
 import ProtectedRoute from "../components/ProtectedRoute";
 import Addresses from "../pages/Addresses";
 import Cart from "../pages/Cart";
@@ -25,6 +26,7 @@ function AppRoutes() {
       <Route path="/" element={<Home />} />
       <Route path="/products" element={<ProductList />} />
       <Route path="/products/:id" element={<ProductDetails />} />
+      <Route path="/deals" element={<Deals />} />
       {/* <Route path="/forgot-password" element={<ForgotPassword />} /> */}
 
       {/* Private Routes */}
