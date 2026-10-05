@@ -2,6 +2,9 @@ import { Navigate, Route, Routes } from "react-router-dom";
 
 import AdminLayout from "../components/layout/AdminLayout";
 
+import Banners from "@/pages/Banners/Banners";
+import CreateBanner from "@/pages/Banners/CreateBanners";
+import EditBanner from "@/pages/Banners/EditBanner";
 import Brands from "@/pages/Brands/Brands";
 import AddCoupon from "@/pages/Coupons/AddCoupon";
 import Coupons from "@/pages/Coupons/Coupons";
@@ -80,6 +83,12 @@ function AppRoutes() {
         <Route path="/reviews/:productId" element={<ProductReviews />} />
 
         <Route path="/reports" element={<Reports />} />
+
+        <Route path="/banners" element={<Banners />} />
+
+        <Route path="/banners/create" element={<CreateBanner />} />
+
+        <Route path="/banners/edit/:id" element={<EditBanner />} />
       </Route>
 
       <Route path="*" element={<Navigate to="/dashboard" replace />} />

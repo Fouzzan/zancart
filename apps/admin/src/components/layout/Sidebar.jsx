@@ -3,6 +3,7 @@ import {
   Boxes,
   ClipboardList,
   FolderTree,
+  Image,
   LayoutDashboard,
   MessageSquare,
   ShoppingBag,
@@ -63,6 +64,11 @@ export const navigation = [
     label: "reviews",
     path: "/reviews",
     icon: MessageSquare,
+  },
+  {
+    label: "Banners",
+    path: "/banners",
+    icon: Image,
   },
   {
     label: "Reports",
