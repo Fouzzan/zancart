@@ -1,7 +1,9 @@
-import { UserButton, useUser } from "@clerk/react";
-import { Bell, Menu } from "lucide-react";
+import { Bell, LogOut, Menu, User } from "lucide-react";
 import { useState } from "react";
-import { NavLink } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
+import { NavLink, useNavigate } from "react-router-dom";
+
+import { logout } from "@/features/auth/authSlice";
 
 import { Button } from "@/components/ui/button";
 import { Separator } from "@/components/ui/separator";
@@ -16,10 +18,19 @@ import {
 import { navigation } from "./Sidebar";
 
 function Header() {
-  const { user } = useUser();
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
-  const firstName = user?.firstName || "Admin";
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
+
+  const { admin } = useSelector((state) => state.auth);
+
+  const firstName = admin?.name?.split(" ")[0] || "Admin";
+
+  const handleLogout = () => {
+    dispatch(logout());
+    navigate("/login", { replace: true });
+  };
 
   return (
     <header className="flex h-16 shrink-0 items-center justify-between border-b bg-background px-4 sm:px-6">
@@ -82,12 +93,14 @@ function Header() {
 
       {/* Right side */}
       <div className="flex items-center gap-2 sm:gap-3">
+        {/* Notifications */}
         <Button variant="ghost" size="icon" aria-label="Notifications">
           <Bell className="size-4" />
         </Button>
 
         <Separator orientation="vertical" className="hidden h-6 sm:block" />
 
+        {/* Admin information */}
         <div className="flex items-center gap-2 sm:gap-3">
           <div className="hidden sm:block">
             <p className="text-sm font-medium">{firstName}</p>
@@ -95,7 +108,22 @@ function Header() {
             <p className="text-xs text-muted-foreground">Administrator</p>
           </div>
 
-          <UserButton />
+          {/* Admin avatar */}
+          <div className="flex h-9 w-9 items-center justify-center rounded-full bg-muted">
+            <User className="size-4" />
+          </div>
+
+          {/* Logout */}
+          <Button
+            variant="outline"
+            size="sm"
+            onClick={handleLogout}
+            className="gap-2"
+          >
+            <LogOut className="size-4" />
+
+            <span className="hidden sm:inline">Logout</span>
+          </Button>
         </div>
       </div>
     </header>

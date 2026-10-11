@@ -1,67 +1,103 @@
-
 import api from "@/services/api";
+import authApi from "@/services/authApi";
+
+/*
+|--------------------------------------------------------------------------
+| Get All Users
+|--------------------------------------------------------------------------
+| Fetches users from JSON Server.
+|--------------------------------------------------------------------------
+*/
 
 export const getUsers = async () => {
   const response = await api.get("/users");
+
   return response.data;
 };
 
-export const getUserById = async (userId) => {
-  const response = await api.get(`/users/${userId}`);
+
+/*
+|--------------------------------------------------------------------------
+| Get User By ID
+|--------------------------------------------------------------------------
+*/
+
+export const getUserById = async (id) => {
+  const response = await api.get(`/users/${id}`);
+
   return response.data;
 };
 
-export const updateUser = async (userId, data) => {
-  const response = await api.patch(`/users/${userId}`, data);
-  return response.data;
-};
 
-export const blockUser = async (id) => {
-  return updateUser(id, {
-    status: "blocked",
-  });
-};
+/*
+|--------------------------------------------------------------------------
+| Update User Status
+|--------------------------------------------------------------------------
+| Used for Block / Unblock.
+|--------------------------------------------------------------------------
+*/
 
-export const unblockUser = async (id) => {
-  return updateUser(id, {
-    status: "active",
-  });
-};
-
-
-const ADMIN_API_URL =
-  import.meta.env.VITE_ADMIN_API_URL ||
-  "http://localhost:4000";
-
-export const updateAdminRole = async (
-  clerkUserId,
-  role,
+export const updateUserStatus = async (
+  userId,
+  isBlocked
 ) => {
-  const response = await fetch(
-    `${ADMIN_API_URL}/api/admin/users/${clerkUserId}/role`,
+  const response = await api.patch(
+    `/users/${userId}`,
     {
-      method: "PATCH",
-
-      headers: {
-        "Content-Type": "application/json",
-      },
-
-      body: JSON.stringify({
-        role,
-      }),
-    },
+      isBlocked,
+      status: isBlocked
+        ? "blocked"
+        : "active",
+    }
   );
 
-  const data = await response.json();
-
-  if (!response.ok) {
-    throw new Error(
-      data.message ||
-        "Failed to update admin access.",
-    );
-  }
-
-  return data;
+  return response.data;
 };
 
 
+/*
+|--------------------------------------------------------------------------
+| Update Admin Role
+|--------------------------------------------------------------------------
+| Uses the custom authentication backend.
+|--------------------------------------------------------------------------
+*/
+
+export const updateAdminRole = async (
+  email,
+  role
+) => {
+  const response = await authApi.patch(
+    "/api/admin/users/role",
+    {
+      email,
+      role,
+    }
+  );
+
+  return response.data;
+};
+
+
+/*
+|--------------------------------------------------------------------------
+| Change User Password
+|--------------------------------------------------------------------------
+| Admin manually sets a new password for a user.
+|--------------------------------------------------------------------------
+*/
+
+export const changeUserPassword = async (
+  email,
+  newPassword
+) => {
+  const response = await authApi.patch(
+    "/api/admin/users/change-password",
+    {
+      email,
+      newPassword,
+    }
+  );
+
+  return response.data;
+};

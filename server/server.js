@@ -1,31 +1,31 @@
 
+import cors from "cors";
 import "dotenv/config";
 import express from "express";
-import cors from "cors";
-import { createClerkClient } from "@clerk/backend";
+
+import adminRoutes from "./routes/adminRoutes.js";
+import { requireAdmin } from "./middleware/requireAdmin.js";
+import { requireAuth } from "./middleware/requireAuth.js";
+import authRoutes from "./routes/authRoutes.js";
 
 const app = express();
 
 const PORT = process.env.PORT || 4000;
 
-const clerkClient = createClerkClient({
-  secretKey: process.env.CLERK_SECRET_KEY,
-});
+
+// Middleware
+
 
 app.use(
   cors({
     origin: true,
     credentials: true,
-  }),
+  })
 );
 
 app.use(express.json());
 
-/*
-|--------------------------------------------------------------------------
-| Health check
-|--------------------------------------------------------------------------
-*/
+//Health Check
 
 app.get("/api/health", (req, res) => {
   res.json({
@@ -34,99 +34,61 @@ app.get("/api/health", (req, res) => {
   });
 });
 
-/*
-|--------------------------------------------------------------------------
-| Get Clerk user
-|--------------------------------------------------------------------------
-*/
+// ------------------------------------------------------------
+// Authentication Routes
+// ------------------------------------------------------------
 
-app.get("/api/admin/users/:clerkUserId", async (req, res) => {
-  try {
-    const { clerkUserId } = req.params;
+app.use("/api/auth", authRoutes);
+app.use("/api/admin", adminRoutes);
 
-    const user = await clerkClient.users.getUser(
-      clerkUserId,
-    );
+// ------------------------------------------------------------
+// Temporary Admin Protected Route
+// Used to test requireAuth + requireAdmin
+// ------------------------------------------------------------
 
+app.get(
+  "/api/admin-test",
+  requireAuth,
+  requireAdmin,
+  (req, res) => {
     res.json({
       success: true,
-      user,
-    });
-  } catch (error) {
-    console.error(
-      "Failed to fetch Clerk user:",
-      error,
-    );
-
-    res.status(500).json({
-      success: false,
-      message: "Failed to fetch Clerk user",
+      message: "Admin access granted.",
+      user: req.user,
     });
   }
-});
-
-/*
-|--------------------------------------------------------------------------
-| Enable / Disable Admin Access
-|--------------------------------------------------------------------------
-*/
-
-app.patch(
-  "/api/admin/users/:clerkUserId/role",
-  async (req, res) => {
-    try {
-      const { clerkUserId } = req.params;
-      const { role } = req.body;
-
-      if (!["admin", "user"].includes(role)) {
-        return res.status(400).json({
-          success: false,
-          message:
-            'Role must be either "admin" or "user".',
-        });
-      }
-
-      const updatedUser =
-        await clerkClient.users.updateUserMetadata(
-          clerkUserId,
-          {
-            publicMetadata: {
-              role,
-            },
-          },
-        );
-
-      res.json({
-        success: true,
-        message:
-          role === "admin"
-            ? "Admin access enabled."
-            : "Admin access disabled.",
-        user: updatedUser,
-      });
-    } catch (error) {
-      console.error(
-        "Failed to update admin role:",
-        error,
-      );
-
-      res.status(500).json({
-        success: false,
-        message:
-          "Failed to update admin access.",
-      });
-    }
-  },
 );
 
-/*
-|--------------------------------------------------------------------------
-| Start server
-|--------------------------------------------------------------------------
-*/
+// ------------------------------------------------------------
+// 404 Route
+// ------------------------------------------------------------
+
+app.use((req, res) => {
+  res.status(404).json({
+    success: false,
+    message: "Route not found.",
+  });
+});
+
+// ------------------------------------------------------------
+// Error Handler
+// ------------------------------------------------------------
+
+app.use((err, req, res, next) => {
+  console.error("Server error:", err);
+
+  res.status(500).json({
+    success: false,
+    message: "Internal server error.",
+  });
+});
+
+// ------------------------------------------------------------
+// Start Server
+// ------------------------------------------------------------
 
 app.listen(PORT, () => {
   console.log(
-    `ZanCart backend running on http://localhost:${PORT}`,
+    `ZanCart backend running on http://localhost:${PORT}`
   );
 });

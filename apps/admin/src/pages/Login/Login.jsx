@@ -1,7 +1,66 @@
-import { SignIn } from "@clerk/react";
 import { CheckCircle2, ShieldCheck, ShoppingBag } from "lucide-react";
+import { useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { useNavigate } from "react-router-dom";
+
+import {
+  loginFailure,
+  loginStart,
+  loginSuccess,
+} from "@/features/auth/authSlice";
+
+import { loginAdmin } from "@/features/auth/authServices";
 
 function Login() {
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
+
+  const { loading, error } = useSelector((state) => state.auth);
+
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+
+  const handleSubmit = async (event) => {
+    event.preventDefault();
+
+    dispatch(loginStart());
+
+    try {
+      const data = await loginAdmin(email, password);
+
+      // Admin-only check
+      if (data.user?.role !== "admin") {
+        throw new Error("Admin access required.");
+      }
+
+      // Store authentication data
+      localStorage.setItem("adminToken", data.token);
+
+      localStorage.setItem("adminUser", JSON.stringify(data.user));
+
+      // Update Redux
+      dispatch(
+        loginSuccess({
+          token: data.token,
+          admin: data.user,
+        }),
+      );
+
+      // Go to dashboard
+      navigate("/dashboard", {
+        replace: true,
+      });
+    } catch (error) {
+      console.error("Admin login failed:", error);
+
+      dispatch(
+        loginFailure(
+          error.response?.data?.message || error.message || "Unable to login.",
+        ),
+      );
+    }
+  };
+
   return (
     <main className="min-h-screen bg-muted/30">
       <div className="grid min-h-screen lg:grid-cols-2">
@@ -54,13 +113,11 @@ function Login() {
               <div className="mt-8 space-y-4">
                 <div className="flex items-center gap-3">
                   <CheckCircle2 className="h-5 w-5 shrink-0 text-primary" />
-
                   <span className="text-sm">Manage products and inventory</span>
                 </div>
 
                 <div className="flex items-center gap-3">
                   <CheckCircle2 className="h-5 w-5 shrink-0 text-primary" />
-
                   <span className="text-sm">Track orders and customers</span>
                 </div>
 
@@ -116,25 +173,67 @@ function Login() {
               </p>
             </div>
 
-            {/* Clerk */}
+            {/* ==================================================
+                Custom Login Form
+            ================================================== */}
 
-            <div className="flex justify-center">
-              <SignIn
-                routing="path"
-                path="/login"
-                appearance={{
-                  elements: {
-                    rootBox: "w-full",
-                    card: "w-full shadow-none border-0 bg-transparent p-0",
-                    headerTitle: "hidden",
-                    headerSubtitle: "hidden",
-                    socialButtonsBlockButton: "h-11 rounded-lg",
-                    formFieldInput: "h-11 rounded-lg",
-                    formButtonPrimary: "h-11 rounded-lg",
-                  },
-                }}
-              />
-            </div>
+            <form onSubmit={handleSubmit} className="space-y-5">
+              {/* Email */}
+
+              <div className="space-y-2">
+                <label htmlFor="email" className="text-sm font-medium">
+                  Email
+                </label>
+
+                <input
+                  id="email"
+                  type="email"
+                  value={email}
+                  onChange={(event) => setEmail(event.target.value)}
+                  placeholder="admin@zancart.com"
+                  autoComplete="email"
+                  required
+                  className="h-11 w-full rounded-lg border bg-background px-3 text-sm outline-none transition focus:ring-2"
+                />
+              </div>
+
+              {/* Password */}
+
+              <div className="space-y-2">
+                <label htmlFor="password" className="text-sm font-medium">
+                  Password
+                </label>
+
+                <input
+                  id="password"
+                  type="password"
+                  value={password}
+                  onChange={(event) => setPassword(event.target.value)}
+                  placeholder="Enter your password"
+                  autoComplete="current-password"
+                  required
+                  className="h-11 w-full rounded-lg border bg-background px-3 text-sm outline-none transition focus:ring-2"
+                />
+              </div>
+
+              {/* Error */}
+
+              {error && (
+                <div className="rounded-lg border border-destructive/20 bg-destructive/10 p-3">
+                  <p className="text-sm text-destructive">{error}</p>
+                </div>
+              )}
+
+              {/* Submit */}
+
+              <button
+                type="submit"
+                disabled={loading}
+                className="h-11 w-full rounded-lg bg-primary px-4 text-sm font-medium text-primary-foreground transition hover:opacity-90 disabled:cursor-not-allowed disabled:opacity-50"
+              >
+                {loading ? "Signing in..." : "Sign In"}
+              </button>
+            </form>
 
             {/* Security Note */}
 

@@ -41,6 +41,7 @@ function Users() {
   // -----------------------------------------
   // Fetch users + orders
   // -----------------------------------------
+
   const fetchData = async () => {
     try {
       dispatch(setLoading(true));
@@ -75,6 +76,7 @@ function Users() {
   // -----------------------------------------
   // Helpers
   // -----------------------------------------
+
   const getUserName = (user) => {
     return (
       user.name ||
@@ -93,31 +95,103 @@ function Users() {
   };
 
   const getUserStatus = (user) => {
-    return user.status === "blocked" ? "blocked" : "active";
+    // Support both the old status field
+    // and the new custom-auth isBlocked field.
+    if (user.status === "blocked" || user.isBlocked === true) {
+      return "blocked";
+    }
+
+    return "active";
   };
 
   // -----------------------------------------
   // Order count
   // -----------------------------------------
+
   const getOrderCount = (user) => {
-    return orders.filter(
-      (order) =>
-        order.userId === user.clerkId ||
-        order.userId === user.id ||
-        order.userId === user.userId,
-    ).length;
+    /*
+      A single displayed user may represent multiple
+      duplicate records with the same email.
+
+      We therefore check all IDs belonging to that
+      email so existing orders are not lost.
+    */
+
+    const userIds =
+      user._userIds || [user.clerkId, user.id, user.userId].filter(Boolean);
+
+    return orders.filter((order) => {
+      return userIds.includes(order.userId);
+    }).length;
   };
+
+  // -----------------------------------------
+  // Remove duplicate users
+  // -----------------------------------------
+
+  const uniqueUsers = useMemo(() => {
+    const usersByEmail = new Map();
+
+    users.forEach((user) => {
+      const email = getUserEmail(user).trim().toLowerCase();
+
+      /*
+        If an account has no email, don't merge it
+        with another account that also has no email.
+      */
+      const key = email || `id:${user.id}`;
+
+      const existingUser = usersByEmail.get(key);
+
+      if (!existingUser) {
+        usersByEmail.set(key, {
+          ...user,
+          _userIds: [user.id, user.clerkId, user.userId].filter(Boolean),
+        });
+
+        return;
+      }
+
+      /*
+        Keep track of every duplicate record ID
+        so order counts still work correctly.
+      */
+      const existingIds = existingUser._userIds || [];
+
+      const newIds = [user.id, user.clerkId, user.userId].filter(Boolean);
+
+      existingUser._userIds = [...new Set([...existingIds, ...newIds])];
+
+      /*
+        If duplicate records exist for the same email,
+        prefer the Admin record.
+      */
+      if (user.role === "admin" && existingUser.role !== "admin") {
+        usersByEmail.set(key, {
+          ...user,
+          _userIds: existingUser._userIds,
+        });
+      }
+    });
+
+    return Array.from(usersByEmail.values());
+  }, [users]);
 
   // -----------------------------------------
   // Search + filter
   // -----------------------------------------
+
   const filteredUsers = useMemo(() => {
     const query = searchQuery.trim().toLowerCase();
 
-    return users.filter((user) => {
+    return uniqueUsers.filter((user) => {
       const name = getUserName(user).toLowerCase();
+
       const email = getUserEmail(user).toLowerCase();
-      const clerkId = String(user.clerkId || "").toLowerCase();
+
+      const userId = String(
+        user.clerkId || user.userId || user.id || "",
+      ).toLowerCase();
 
       const status = getUserStatus(user);
 
@@ -125,17 +199,18 @@ function Users() {
         !query ||
         name.includes(query) ||
         email.includes(query) ||
-        clerkId.includes(query);
+        userId.includes(query);
 
       const matchesStatus = statusFilter === "all" || status === statusFilter;
 
       return matchesSearch && matchesStatus;
     });
-  }, [users, orders, searchQuery, statusFilter]);
+  }, [uniqueUsers, searchQuery, statusFilter]);
 
   // -----------------------------------------
   // Role badge
   // -----------------------------------------
+
   const getRoleBadge = (role) => {
     if (role === "admin") {
       return (
@@ -151,6 +226,7 @@ function Users() {
   // -----------------------------------------
   // Status badge
   // -----------------------------------------
+
   const getStatusBadge = (status) => {
     if (status === "blocked") {
       return (
@@ -170,6 +246,7 @@ function Users() {
   // -----------------------------------------
   // Loading
   // -----------------------------------------
+
   if (loading) {
     return (
       <div className="flex min-h-40 items-center justify-center">
@@ -181,6 +258,7 @@ function Users() {
   // -----------------------------------------
   // Error
   // -----------------------------------------
+
   if (error) {
     return (
       <div className="space-y-6">
@@ -202,6 +280,10 @@ function Users() {
       </div>
     );
   }
+
+  // -----------------------------------------
+  // Main UI
+  // -----------------------------------------
 
   return (
     <div className="space-y-6">
@@ -290,6 +372,7 @@ function Users() {
                 <TableBody>
                   {filteredUsers.map((user) => {
                     const role = getUserRole(user);
+
                     const status = getUserStatus(user);
 
                     return (
@@ -315,7 +398,7 @@ function Users() {
                               <p className="font-medium">{getUserName(user)}</p>
 
                               <p className="max-w-48 truncate font-mono text-xs text-muted-foreground">
-                                {user.clerkId || user.id}
+                                {user.clerkId || user.userId || user.id}
                               </p>
                             </div>
                           </div>

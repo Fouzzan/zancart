@@ -23,7 +23,9 @@ function Navbar() {
   const items = useSelector((state) => state.cart.items);
   const navigate = useNavigate();
   const location = useLocation();
-  const cartCount = items.reduce((total, item) => total + item.quantity, 0);
+  const cartCount = Array.isArray(items)
+    ? items.reduce((total, item) => total + (Number(item.quantity) || 0), 0)
+    : 0;
   const wishListCount = useSelector((state) => state.wishlist.items).length;
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [search, setSearch] = useState();

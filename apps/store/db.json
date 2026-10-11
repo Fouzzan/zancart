@@ -8,7 +8,8 @@
       "status": "active",
       "createdAt": "2026-10-03T03:34:18.858Z",
       "id": "xYpyYYt9DZE",
-      "role": "admin"
+      "role": "admin",
+      "isBlocked": false
     },
     {
       "clerkId": "user_3JRXi5oydPbuGhpU5Wby7qZJOfW",
@@ -569,6 +570,195 @@
       "status": "active",
       "isAdmin": false,
       "createdAt": "2026-10-05T04:49:43.102Z"
+    },
+    {
+      "id": "y2CZDog0Qcw",
+      "userId": "user_3JJDQcT11Hay732J8WGw6GmiooG",
+      "email": "mfouzan961@gmail.com",
+      "firstName": "Fouzan",
+      "lastName": "Muhammed KV",
+      "name": "Fouzan Muhammed KV",
+      "imageUrl": "https://img.clerk.com/eyJ0eXBlIjoicHJveHkiLCJzcmMiOiJodHRwczovL2ltYWdlcy5jbGVyay5kZXYvdXBsb2FkZWQvaW1nXzNKb1lpcXVreFkwamhIR2pCTFpnVlRjSEUxOCJ9",
+      "status": "active",
+      "isAdmin": false,
+      "createdAt": "2026-10-05T06:23:43.264Z"
+    },
+    {
+      "id": "bjrbPKbSzxA",
+      "userId": "user_3JJDQcT11Hay732J8WGw6GmiooG",
+      "email": "mfouzan961@gmail.com",
+      "firstName": "Fouzan",
+      "lastName": "Muhammed KV",
+      "name": "Fouzan Muhammed KV",
+      "imageUrl": "https://img.clerk.com/eyJ0eXBlIjoicHJveHkiLCJzcmMiOiJodHRwczovL2ltYWdlcy5jbGVyay5kZXYvdXBsb2FkZWQvaW1nXzNKb1lpcXVreFkwamhIR2pCTFpnVlRjSEUxOCJ9",
+      "status": "active",
+      "isAdmin": false,
+      "createdAt": "2026-10-05T06:24:29.702Z"
+    },
+    {
+      "id": "KMxxIhM71hQ",
+      "userId": "user_3JJDQcT11Hay732J8WGw6GmiooG",
+      "email": "mfouzan961@gmail.com",
+      "firstName": "Fouzan",
+      "lastName": "Muhammed KV",
+      "name": "Fouzan Muhammed KV",
+      "imageUrl": "https://img.clerk.com/eyJ0eXBlIjoicHJveHkiLCJzcmMiOiJodHRwczovL2ltYWdlcy5jbGVyay5kZXYvdXBsb2FkZWQvaW1nXzNKb1lpcXVreFkwamhIR2pCTFpnVlRjSEUxOCJ9",
+      "status": "active",
+      "isAdmin": false,
+      "createdAt": "2026-10-05T06:27:32.289Z"
+    },
+    {
+      "id": "53200841-c946-4484-bdf3-d2763b1de836",
+      "name": "Test User",
+      "email": "test@zancart.com",
+      "password": "$2b$12$zIXMh9nGCO3vI.4TBrXj6OHt2HYB.AKt1w1BAkex7rMR69Hf2ccbK",
+      "role": "user",
+      "isBlocked": false,
+      "createdAt": "2026-10-06T07:26:12.644Z"
+    },
+    {
+      "id": "oGuBVk5zsAM",
+      "userId": "user_3JJDQcT11Hay732J8WGw6GmiooG",
+      "email": "mfouzan961@gmail.com",
+      "firstName": "Fouzan",
+      "lastName": "Muhammed KV",
+      "name": "Fouzan Muhammed KV",
+      "imageUrl": "https://img.clerk.com/eyJ0eXBlIjoicHJveHkiLCJzcmMiOiJodHRwczovL2ltYWdlcy5jbGVyay5kZXYvdXBsb2FkZWQvaW1nXzNKb1lpcXVreFkwamhIR2pCTFpnVlRjSEUxOCJ9",
+      "status": "active",
+      "isAdmin": false,
+      "createdAt": "2026-10-09T07:22:50.796Z"
+    },
+    {
+      "id": "JXYLwphXJ4U",
+      "userId": "user_3JJDQcT11Hay732J8WGw6GmiooG",
+      "email": "mfouzan961@gmail.com",
+      "firstName": "Fouzan",
+      "lastName": "Muhammed KV",
+      "name": "Fouzan Muhammed KV",
+      "imageUrl": "https://img.clerk.com/eyJ0eXBlIjoicHJveHkiLCJzcmMiOiJodHRwczovL2ltYWdlcy5jbGVyay5kZXYvdXBsb2FkZWQvaW1nXzNKb1lpcXVreFkwamhIR2pCTFpnVlRjSEUxOCJ9",
+      "status": "active",
+      "isAdmin": false,
+      "createdAt": "2026-10-09T07:23:37.122Z"
+    },
+    {
+      "id": "R11Nl6-E3sI",
+      "userId": "user_3JJDQcT11Hay732J8WGw6GmiooG",
+      "email": "mfouzan961@gmail.com",
+      "firstName": "Fouzan",
+      "lastName": "Muhammed KV",
+      "name": "Fouzan Muhammed KV",
+      "imageUrl": "https://img.clerk.com/eyJ0eXBlIjoicHJveHkiLCJzcmMiOiJodHRwczovL2ltYWdlcy5jbGVyay5kZXYvdXBsb2FkZWQvaW1nXzNKb1lpcXVreFkwamhIR2pCTFpnVlRjSEUxOCJ9",
+      "status": "active",
+      "isAdmin": false,
+      "createdAt": "2026-10-09T07:24:22.311Z"
+    },
+    {
+      "id": "DzA_XbGUkv4",
+      "userId": "user_3JJDQcT11Hay732J8WGw6GmiooG",
+      "email": "mfouzan961@gmail.com",
+      "firstName": "Fouzan",
+      "lastName": "Muhammed KV",
+      "name": "Fouzan Muhammed KV",
+      "imageUrl": "https://img.clerk.com/eyJ0eXBlIjoicHJveHkiLCJzcmMiOiJodHRwczovL2ltYWdlcy5jbGVyay5kZXYvdXBsb2FkZWQvaW1nXzNKb1lpcXVreFkwamhIR2pCTFpnVlRjSEUxOCJ9",
+      "status": "active",
+      "isAdmin": false,
+      "createdAt": "2026-10-09T09:09:01.744Z"
+    },
+    {
+      "id": "iGKhnY6PPWk",
+      "userId": "user_3JJDQcT11Hay732J8WGw6GmiooG",
+      "email": "mfouzan961@gmail.com",
+      "firstName": "Fouzan",
+      "lastName": "Muhammed KV",
+      "name": "Fouzan Muhammed KV",
+      "imageUrl": "https://img.clerk.com/eyJ0eXBlIjoicHJveHkiLCJzcmMiOiJodHRwczovL2ltYWdlcy5jbGVyay5kZXYvdXBsb2FkZWQvaW1nXzNKb1lpcXVreFkwamhIR2pCTFpnVlRjSEUxOCJ9",
+      "status": "active",
+      "isAdmin": false,
+      "createdAt": "2026-10-09T09:52:23.725Z"
+    },
+    {
+      "id": "gr8oXxRG_6s",
+      "userId": "user_3JJDQcT11Hay732J8WGw6GmiooG",
+      "email": "mfouzan961@gmail.com",
+      "firstName": "Fouzan",
+      "lastName": "Muhammed KV",
+      "name": "Fouzan Muhammed KV",
+      "imageUrl": "https://img.clerk.com/eyJ0eXBlIjoicHJveHkiLCJzcmMiOiJodHRwczovL2ltYWdlcy5jbGVyay5kZXYvdXBsb2FkZWQvaW1nXzNKb1lpcXVreFkwamhIR2pCTFpnVlRjSEUxOCJ9",
+      "status": "active",
+      "isAdmin": false,
+      "createdAt": "2026-10-09T09:52:59.048Z"
+    },
+    {
+      "id": "LDu80w-IL1w",
+      "userId": "user_3JJDQcT11Hay732J8WGw6GmiooG",
+      "email": "mfouzan961@gmail.com",
+      "firstName": "Fouzan",
+      "lastName": "Muhammed KV",
+      "name": "Fouzan Muhammed KV",
+      "imageUrl": "https://img.clerk.com/eyJ0eXBlIjoicHJveHkiLCJzcmMiOiJodHRwczovL2ltYWdlcy5jbGVyay5kZXYvdXBsb2FkZWQvaW1nXzNKb1lpcXVreFkwamhIR2pCTFpnVlRjSEUxOCJ9",
+      "status": "active",
+      "isAdmin": false,
+      "createdAt": "2026-10-09T09:53:12.499Z"
+    },
+    {
+      "id": "aKioVd3b5cM",
+      "userId": "user_3JJDQcT11Hay732J8WGw6GmiooG",
+      "email": "mfouzan961@gmail.com",
+      "firstName": "Fouzan",
+      "lastName": "Muhammed KV",
+      "name": "Fouzan Muhammed KV",
+      "imageUrl": "https://img.clerk.com/eyJ0eXBlIjoicHJveHkiLCJzcmMiOiJodHRwczovL2ltYWdlcy5jbGVyay5kZXYvdXBsb2FkZWQvaW1nXzNKb1lpcXVreFkwamhIR2pCTFpnVlRjSEUxOCJ9",
+      "status": "active",
+      "isAdmin": false,
+      "createdAt": "2026-10-09T09:53:21.797Z"
+    },
+    {
+      "id": "KKMysT-Ow0o",
+      "userId": "user_3JJDQcT11Hay732J8WGw6GmiooG",
+      "email": "mfouzan961@gmail.com",
+      "firstName": "Fouzan",
+      "lastName": "Muhammed KV",
+      "name": "Fouzan Muhammed KV",
+      "imageUrl": "https://img.clerk.com/eyJ0eXBlIjoicHJveHkiLCJzcmMiOiJodHRwczovL2ltYWdlcy5jbGVyay5kZXYvdXBsb2FkZWQvaW1nXzNKb1lpcXVreFkwamhIR2pCTFpnVlRjSEUxOCJ9",
+      "status": "active",
+      "isAdmin": false,
+      "createdAt": "2026-10-09T09:54:08.877Z"
+    },
+    {
+      "id": "Zk3eief0Vec",
+      "userId": "user_3JJDQcT11Hay732J8WGw6GmiooG",
+      "email": "mfouzan961@gmail.com",
+      "firstName": "Fouzan",
+      "lastName": "Muhammed KV",
+      "name": "Fouzan Muhammed KV",
+      "imageUrl": "https://img.clerk.com/eyJ0eXBlIjoicHJveHkiLCJzcmMiOiJodHRwczovL2ltYWdlcy5jbGVyay5kZXYvdXBsb2FkZWQvaW1nXzNKb1lpcXVreFkwamhIR2pCTFpnVlRjSEUxOCJ9",
+      "status": "active",
+      "isAdmin": false,
+      "createdAt": "2026-10-09T09:54:55.899Z"
+    },
+    {
+      "id": "yJNtWnmM_7g",
+      "userId": "user_3JJDQcT11Hay732J8WGw6GmiooG",
+      "email": "mfouzan961@gmail.com",
+      "firstName": "Fouzan",
+      "lastName": "Muhammed KV",
+      "name": "Fouzan Muhammed KV",
+      "imageUrl": "https://img.clerk.com/eyJ0eXBlIjoicHJveHkiLCJzcmMiOiJodHRwczovL2ltYWdlcy5jbGVyay5kZXYvdXBsb2FkZWQvaW1nXzNKb1lpcXVreFkwamhIR2pCTFpnVlRjSEUxOCJ9",
+      "status": "active",
+      "isAdmin": false,
+      "createdAt": "2026-10-09T09:55:43.841Z"
+    },
+    {
+      "id": "mQaENG7tZv8",
+      "userId": "user_3JJDQcT11Hay732J8WGw6GmiooG",
+      "email": "mfouzan961@gmail.com",
+      "firstName": "Fouzan",
+      "lastName": "Muhammed KV",
+      "name": "Fouzan Muhammed KV",
+      "imageUrl": "https://img.clerk.com/eyJ0eXBlIjoicHJveHkiLCJzcmMiOiJodHRwczovL2ltYWdlcy5jbGVyay5kZXYvdXBsb2FkZWQvaW1nXzNKb1lpcXVreFkwamhIR2pCTFpnVlRjSEUxOCJ9",
+      "status": "active",
+      "isAdmin": false,
+      "createdAt": "2026-10-09T10:29:31.606Z"
     }
   ],
   "products": [
@@ -708,7 +898,7 @@
       ],
       "rating": 4.8,
       "reviewCount": 154,
-      "stock": 33,
+      "stock": 32,
       "featured": true,
       "trending": true
     },
@@ -2589,6 +2779,24 @@
       "trending": false,
       "rating": 0,
       "reviewCount": 0
+    },
+    {
+      "title": "Vintage Shirt",
+      "description": "This is a vintage type shirt. A stylish formal Shirt",
+      "price": 999,
+      "discountPrice": 200,
+      "category": "Fashion",
+      "subcategory": "Shirts",
+      "brand": "Fouzan",
+      "stock": 32,
+      "images": [
+        "https://res.cloudinary.com/hkw5bslv/image/upload/v1791530527/zancart/products/wuyexfvisxt9qxfzzw3n.png"
+      ],
+      "featured": true,
+      "trending": true,
+      "rating": 0,
+      "reviewCount": 0,
+      "id": "onq-RS7Zjxw"
     }
   ],
   "carts": [
@@ -2710,7 +2918,48 @@
     },
     {
       "userId": "user_3JJDQcT11Hay732J8WGw6GmiooG",
-      "items": [],
+      "items": [
+        {
+          "title": "Vintage Shirt",
+          "description": "This is a vintage type shirt. A stylish formal Shirt",
+          "price": 999,
+          "discountPrice": 200,
+          "category": "Fashion",
+          "subcategory": "Shirts",
+          "brand": "Fouzan",
+          "stock": 33,
+          "images": [
+            "https://res.cloudinary.com/hkw5bslv/image/upload/v1791530527/zancart/products/wuyexfvisxt9qxfzzw3n.png"
+          ],
+          "featured": true,
+          "trending": true,
+          "rating": 0,
+          "reviewCount": 0,
+          "id": "onq-RS7Zjxw",
+          "quantity": 1
+        },
+        {
+          "id": "7",
+          "title": "Minimal Black Hoodie",
+          "description": "Soft fleece hoodie with a clean minimal design for relaxed everyday styling.",
+          "price": 2499,
+          "discountPrice": 1999,
+          "category": "Fashion",
+          "subcategory": "Hoodies",
+          "brand": "NorthLane",
+          "images": [
+            "https://images.unsplash.com/photo-1556905055-8f358a7a47b2",
+            "https://images.unsplash.com/photo-1578681994506-b8f463449011",
+            "https://images.unsplash.com/photo-1509967419530-da38b4704bc6"
+          ],
+          "rating": 4.8,
+          "reviewCount": 154,
+          "stock": 33,
+          "featured": true,
+          "trending": true,
+          "quantity": 1
+        }
+      ],
       "id": "_CdhDbJsVcs"
     },
     {
@@ -2800,6 +3049,24 @@
           "trending": false,
           "rating": 5,
           "reviewCount": 1
+        },
+        {
+          "title": "Vintage Shirt",
+          "description": "This is a vintage type shirt. A stylish formal Shirt",
+          "price": 999,
+          "discountPrice": 200,
+          "category": "Fashion",
+          "subcategory": "Shirts",
+          "brand": "Fouzan",
+          "stock": 33,
+          "images": [
+            "https://res.cloudinary.com/hkw5bslv/image/upload/v1791530527/zancart/products/wuyexfvisxt9qxfzzw3n.png"
+          ],
+          "featured": true,
+          "trending": true,
+          "rating": 0,
+          "reviewCount": 0,
+          "id": "onq-RS7Zjxw"
         }
       ],
       "id": "OxSTXVQoKIw"
@@ -3859,6 +4126,71 @@
       "status": "placed",
       "createdAt": "2026-10-04T16:32:38.742Z",
       "id": "Ygu_8cLeX00"
+    },
+    {
+      "userId": "guest",
+      "items": [
+        {
+          "productId": "onq-RS7Zjxw",
+          "title": "Vintage Shirt",
+          "image": "https://res.cloudinary.com/hkw5bslv/image/upload/v1791530527/zancart/products/wuyexfvisxt9qxfzzw3n.png",
+          "price": 200,
+          "quantity": 1,
+          "deal": null,
+          "dealDiscount": 0,
+          "originalItemTotal": 200,
+          "finalItemTotal": 200,
+          "finalUnitPrice": 0,
+          "freeQuantity": 0,
+          "paidQuantity": 1,
+          "discountPercentage": 0,
+          "appliedTier": null
+        },
+        {
+          "productId": "7",
+          "title": "Minimal Black Hoodie",
+          "image": "https://images.unsplash.com/photo-1556905055-8f358a7a47b2",
+          "price": 1999,
+          "quantity": 1,
+          "deal": null,
+          "dealDiscount": 0,
+          "originalItemTotal": 1999,
+          "finalItemTotal": 1999,
+          "finalUnitPrice": 0,
+          "freeQuantity": 0,
+          "paidQuantity": 1,
+          "discountPercentage": 0,
+          "appliedTier": null
+        }
+      ],
+      "appliedDeals": {
+        "productDeals": [],
+        "bundles": [],
+        "subtotal": 2199,
+        "totalDiscount": 0,
+        "bundleDiscount": 0,
+        "finalTotal": 2199
+      },
+      "address": {
+        "fullName": "Fouzan Muhammed K V",
+        "phone": "9778263326",
+        "address": "Kallivalappil house",
+        "city": "Pattambi",
+        "pinCode": "679337",
+        "userId": "user_3JJDQcT11Hay732J8WGw6GmiooG",
+        "isDefault": false,
+        "id": "C1wWHpKM9bQ"
+      },
+      "paymentMethod": "cod",
+      "coupon": null,
+      "discountAmount": 0,
+      "dealDiscount": 0,
+      "bundleDiscount": 0,
+      "subtotal": 2199,
+      "totalAmount": 2199,
+      "status": "placed",
+      "createdAt": "2026-10-11T16:27:24.889Z",
+      "id": "22M8iCQYuEk"
     }
   ],
   "coupons": [
@@ -4046,6 +4378,10 @@
     {
       "id": "25",
       "name": "ZenCore"
+    },
+    {
+      "name": "Fouzan",
+      "id": "7gW8_ufMDAY"
     }
   ],
   "deals": [

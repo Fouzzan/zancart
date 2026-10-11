@@ -312,26 +312,30 @@ function Checkout() {
    * CONTINUE TO PAYMENT
    * -----------------------------------------
    */
+
   const handleContinueToPayment = () => {
     if (!selectedAddress) {
       toast.error("Please select a delivery address.");
-
       return;
     }
 
     if (dealLoading) {
       toast.error("Please wait while we calculate the latest deals.");
-
       return;
     }
 
     if (dealError) {
       toast.error("Unable to verify deals. Please try again.");
-
       return;
     }
 
-    navigate("/payment");
+    navigate("/payment", {
+      state: {
+        address: selectedAddress,
+        coupon: appliedCoupon,
+        discountAmount,
+      },
+    });
   };
 
   /*

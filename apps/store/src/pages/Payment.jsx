@@ -29,18 +29,15 @@ function Payment() {
   const dispatch = useDispatch();
 
   const items = useSelector((state) => state.cart.items);
-
   const { address, coupon, discountAmount = 0 } = location.state || {};
 
   const [paymentMethod, setPaymentMethod] = useState("cod");
   const [isProcessing, setIsProcessing] = useState(false);
-
   const [dealCalculation, setDealCalculation] = useState(null);
   const [isCalculatingDeals, setIsCalculatingDeals] = useState(true);
+  const [dealCalculationError, setDealCalculationError] = useState("");
 
-  // --------------------------------------------------
   // Calculate deals when Payment loads
-  // --------------------------------------------------
   useEffect(() => {
     let cancelled = false;
 
@@ -53,6 +50,8 @@ function Payment() {
 
       try {
         setIsCalculatingDeals(true);
+        setDealCalculationError("");
+        setDealCalculation(null);
 
         const result = await calculateCartDeals(items);
 
@@ -63,6 +62,9 @@ function Payment() {
         console.error("Failed to calculate deals:", error);
 
         if (!cancelled) {
+          setDealCalculationError(
+            "Unable to calculate the latest deals. Check your connection and try again.",
+          );
           toast.error("Unable to calculate the latest deals.");
         }
       } finally {
@@ -79,28 +81,25 @@ function Payment() {
     };
   }, [items]);
 
-  // --------------------------------------------------
   // Latest calculated values
-  // --------------------------------------------------
   const latestDealCalculation = dealCalculation;
 
   const subtotal = Number(latestDealCalculation?.subtotal || 0);
-
   const dealDiscount = Number(latestDealCalculation?.totalDiscount || 0);
-
   const bundleDiscount = Number(latestDealCalculation?.bundleDiscount || 0);
-
   const couponDiscount = Number(discountAmount || 0);
 
-  const totalAmount = Math.max(0, subtotal - dealDiscount - couponDiscount);
+  // The deal service's subtotal already reflects product-level deals.
+  // finalTotal accounts for bundle savings, so don't subtract dealDiscount again.
+  const dealTotal = Number(
+    latestDealCalculation?.finalTotal ?? subtotal - bundleDiscount,
+  );
 
-  // --------------------------------------------------
+  const totalAmount = Math.max(0, dealTotal - couponDiscount);
+
   // Create order
-  // --------------------------------------------------
   const handleCreateOrder = async () => {
-    if (isProcessing) {
-      return;
-    }
+    if (isProcessing) return;
 
     if (!address) {
       toast.error("Please select a delivery address.");
@@ -114,42 +113,27 @@ function Payment() {
       return;
     }
 
+    if (dealCalculationError) {
+      toast.error("Unable to verify deals. Please try again.");
+      return;
+    }
+
     if (!latestDealCalculation || isCalculatingDeals) {
       toast.error("Please wait while we calculate the latest deals.");
       return;
     }
 
     setIsProcessing(true);
-
     let stockUpdates = [];
 
     try {
-      // --------------------------------------------------
-      // Recalculate deals immediately before order creation.
-      //
-      // This prevents stale deal information from being used
-      // if a deal expired or changed while the user was on
-      // the payment page.
-      // --------------------------------------------------
+      // Recalculate deals immediately before creating the order.
       const finalDealCalculation = await calculateCartDeals(items);
 
-      // --------------------------------------------------
-      // Build order items
-      //
-      // IMPORTANT:
-      // quantity = total physical quantity leaving inventory.
-      //
-      // For BOGO:
-      // quantity = paidQuantity + freeQuantity
-      //
-      // Example:
-      // paidQuantity = 1
-      // freeQuantity = 1
-      // quantity = 2
-      // --------------------------------------------------
+      // Build order items. Quantity represents the total physical
+      // quantity leaving inventory, including free BOGO items.
       const orderItems = finalDealCalculation.items.map((item) => {
         const quantity = Number(item.quantity) || 0;
-
         const freeQuantity = Number(item.freeQuantity) || 0;
 
         const paidQuantity = Number(
@@ -160,51 +144,31 @@ function Payment() {
           productId: item.id,
           title: item.title,
           image: item.images?.[0] || "",
-
           price: Number(item.discountPrice || 0),
-
-          // Total physical quantity being purchased/fulfilled.
           quantity,
-
-          // Deal information.
           deal: item.deal || null,
-
           dealDiscount: Number(item.dealDiscount || 0),
-
           originalItemTotal: Number(item.originalItemTotal || 0),
-
           finalItemTotal: Number(item.finalItemTotal || 0),
-
           finalUnitPrice: Number(item.finalUnitPrice || 0),
-
-          // BOGO / free-item information.
           freeQuantity,
           paidQuantity,
-
           discountPercentage: Number(item.discountPercentage || 0),
-
           appliedTier: item.appliedTier || null,
         };
       });
 
-      // --------------------------------------------------
       // Product-level deals
-      // --------------------------------------------------
       const productDeals = finalDealCalculation.items
         .filter((item) => item.deal && item.deal.type !== "bundle")
         .map((item) => ({
           productId: item.id,
-
           dealId: item.deal.id,
           title: item.deal.title,
           type: item.deal.type,
-
           discount: Number(item.dealDiscount || 0),
-
           quantity: Number(item.quantity || 0),
-
           freeQuantity: Number(item.freeQuantity || 0),
-
           paidQuantity: Number(
             item.paidQuantity ??
               Math.max(
@@ -214,138 +178,76 @@ function Payment() {
           ),
         }));
 
-      // --------------------------------------------------
       // Bundle deals
-      //
-      // We store the bundle information for order details
-      // and admin views.
-      //
-      // We DO NOT deduct bundle stock separately because
-      // orderItems already contain the physical product
-      // quantities that need to leave inventory.
-      // --------------------------------------------------
       const appliedBundles =
         finalDealCalculation.bundles
           ?.filter((bundle) => bundle.applicable)
           .map((bundle) => ({
             dealId: bundle.deal.id,
-
             title: bundle.deal.title,
-
             type: bundle.deal.type,
-
             bundlePrice: Number(bundle.bundlePrice || 0),
-
             originalPrice: Number(bundle.originalPrice || 0),
-
             discount: Number(bundle.discount || 0),
-
-            // Number of complete bundles.
             bundleQuantity: Number(bundle.bundleQuantity || 0),
-
-            // IDs of products included.
             productIds: bundle.deal.products || [],
-
-            // Exact quantities consumed by bundles.
             productQuantities: bundle.productQuantities || [],
           })) || [];
 
-      // --------------------------------------------------
-      // Applied deals object
-      // --------------------------------------------------
-      const appliedDeals = {
-        productDeals,
-
-        bundles: appliedBundles,
-
-        subtotal: Number(finalDealCalculation.subtotal || 0),
-
-        totalDiscount: Number(finalDealCalculation.totalDiscount || 0),
-
-        bundleDiscount: Number(finalDealCalculation.bundleDiscount || 0),
-
-        finalTotal: Number(
-          finalDealCalculation.finalTotal ||
-            Math.max(
-              0,
-              Number(finalDealCalculation.subtotal || 0) -
-                Number(finalDealCalculation.totalDiscount || 0),
-            ),
-        ),
-      };
-
-      // --------------------------------------------------
-      // Reduce stock
-      //
-      // IMPORTANT:
-      // productServices.js already determines the physical
-      // quantity to deduct using:
-      //
-      // paidQuantity + freeQuantity
-      //
-      // Therefore we only pass orderItems.
-      //
-      // We do NOT separately deduct bundle quantities.
-      // --------------------------------------------------
-      stockUpdates = await reduceOrderStock(orderItems);
-
-      // --------------------------------------------------
-      // Final pricing
-      //
-      // Recalculate from the FINAL deal calculation rather
-      // than the potentially stale value from the first render.
-      // --------------------------------------------------
       const finalSubtotal = Number(finalDealCalculation.subtotal || 0);
-
       const finalDealDiscount = Number(finalDealCalculation.totalDiscount || 0);
-
       const finalBundleDiscount = Number(
         finalDealCalculation.bundleDiscount || 0,
       );
 
-      const finalCouponDiscount = Number(couponDiscount || 0);
+      // finalTotal already accounts for bundle discounts.
+      const finalDealTotal = Number(
+        finalDealCalculation.finalTotal ??
+          Math.max(0, finalSubtotal - finalBundleDiscount),
+      );
+
+      const finalCouponDiscount = Math.min(
+        Math.max(0, Number(couponDiscount || 0)),
+        finalDealTotal,
+      );
 
       const finalTotalAmount = Math.max(
         0,
-        finalSubtotal - finalDealDiscount - finalCouponDiscount,
+        finalDealTotal - finalCouponDiscount,
       );
 
-      // --------------------------------------------------
+      const appliedDeals = {
+        productDeals,
+        bundles: appliedBundles,
+        subtotal: finalSubtotal,
+        totalDiscount: finalDealDiscount,
+        bundleDiscount: finalBundleDiscount,
+        finalTotal: finalDealTotal,
+      };
+
+      // Reduce stock. Stock service handles paid + free quantities.
+      stockUpdates = await reduceOrderStock(orderItems);
+
       // Create order
-      // --------------------------------------------------
       const order = {
         userId: localStorage.getItem("userId") || "guest",
-
         items: orderItems,
-
         appliedDeals,
-
         address,
-
         paymentMethod,
-
         coupon: coupon || null,
-
         discountAmount: finalCouponDiscount,
-
         dealDiscount: finalDealDiscount,
-
         bundleDiscount: finalBundleDiscount,
-
         subtotal: finalSubtotal,
-
         totalAmount: finalTotalAmount,
-
         status: "placed",
-
         createdAt: new Date().toISOString(),
       };
 
       const createdOrder = await createOrder(order);
 
-      // --------------------------------------------------
-      // Clear cart ONLY after order succeeds.
-      // --------------------------------------------------
+      // Clear cart only after order creation succeeds.
       dispatch(clearCart());
 
       toast.success("Order placed successfully!");
@@ -356,10 +258,7 @@ function Payment() {
     } catch (error) {
       console.error("Order creation failed:", error);
 
-      // --------------------------------------------------
-      // Restore stock if stock was already reduced but
-      // order creation failed.
-      // --------------------------------------------------
+      // Restore stock if stock was reduced but order creation failed.
       if (stockUpdates && stockUpdates.length > 0) {
         try {
           await restoreOrderStock(stockUpdates);
@@ -374,10 +273,65 @@ function Payment() {
     }
   };
 
-  // --------------------------------------------------
+  // Redirect if checkout information is missing.
+  useEffect(() => {
+    if (!address) {
+      navigate("/checkout", { replace: true });
+    }
+  }, [address, navigate]);
+
+  // Deal calculation error state
+  if (dealCalculationError) {
+    return (
+      <div className="mx-auto flex min-h-[60vh] max-w-5xl items-center justify-center px-4">
+        <div className="max-w-md text-center">
+          <p className="text-lg font-semibold">
+            We couldn't calculate your deals
+          </p>
+
+          <p className="mt-2 text-sm text-muted-foreground">
+            {dealCalculationError}
+          </p>
+
+          <Button
+            type="button"
+            className="mt-5 rounded-full"
+            onClick={async () => {
+              setDealCalculationError("");
+              setDealCalculation(null);
+              setIsCalculatingDeals(true);
+
+              try {
+                const result = await calculateCartDeals(items);
+                setDealCalculation(result);
+              } catch (error) {
+                console.error("Failed to calculate deals:", error);
+                setDealCalculationError(
+                  "Unable to calculate the latest deals. Check your connection and try again.",
+                );
+              } finally {
+                setIsCalculatingDeals(false);
+              }
+            }}
+          >
+            Try Again
+          </Button>
+
+          <Button
+            type="button"
+            variant="ghost"
+            className="ml-2 mt-5 rounded-full"
+            onClick={() => navigate("/checkout")}
+          >
+            Back to Checkout
+          </Button>
+        </div>
+      </div>
+    );
+  }
+
   // Loading state
-  // --------------------------------------------------
-  if (!address || isCalculatingDeals || !latestDealCalculation) {
+  if (isCalculatingDeals || !latestDealCalculation) {
     return (
       <div className="mx-auto flex min-h-[60vh] max-w-5xl items-center justify-center px-4">
         <div className="text-center">
@@ -391,9 +345,7 @@ function Payment() {
     );
   }
 
-  // --------------------------------------------------
   // Render
-  // --------------------------------------------------
   return (
     <div className="mx-auto max-w-6xl px-4 py-8 sm:px-6 lg:px-8">
       {/* Header */}
@@ -416,15 +368,12 @@ function Payment() {
       </div>
 
       <div className="grid gap-8 lg:grid-cols-[1fr_380px]">
-        {/* ==========================================
-            LEFT SIDE
-        =========================================== */}
+        {/* LEFT SIDE */}
         <div className="space-y-6">
           {/* Delivery Address */}
           <div className="rounded-2xl border bg-background p-6">
             <div className="flex items-center gap-3">
               <MapPin className="h-5 w-5" />
-
               <h2 className="text-lg font-semibold">Delivery Address</h2>
             </div>
 
@@ -450,7 +399,7 @@ function Payment() {
             <h2 className="text-lg font-semibold">Payment Method</h2>
 
             <div className="mt-4 space-y-3">
-              {/* COD */}
+              {/* Cash on Delivery */}
               <button
                 type="button"
                 onClick={() => setPaymentMethod("cod")}
@@ -466,7 +415,6 @@ function Payment() {
 
                 <div className="flex-1">
                   <p className="font-medium">Cash on Delivery</p>
-
                   <p className="text-sm text-muted-foreground">
                     Pay when your order arrives.
                   </p>
@@ -493,7 +441,6 @@ function Payment() {
 
                 <div className="flex-1">
                   <p className="font-medium">Credit / Debit Card</p>
-
                   <p className="text-sm text-muted-foreground">
                     Secure card payment.
                   </p>
@@ -520,7 +467,6 @@ function Payment() {
 
                 <div className="flex-1">
                   <p className="font-medium">UPI</p>
-
                   <p className="text-sm text-muted-foreground">
                     Pay using your UPI app.
                   </p>
@@ -539,7 +485,6 @@ function Payment() {
 
             <div>
               <p className="font-medium">Secure Checkout</p>
-
               <p className="mt-1 text-sm text-muted-foreground">
                 Your order information is securely processed.
               </p>
@@ -547,14 +492,11 @@ function Payment() {
           </div>
         </div>
 
-        {/* ==========================================
-            RIGHT SIDE
-        =========================================== */}
+        {/* RIGHT SIDE */}
         <div>
           <div className="rounded-2xl border bg-background p-6 lg:sticky lg:top-24">
             <div className="flex items-center gap-3">
               <Package className="h-5 w-5" />
-
               <h2 className="text-xl font-semibold">Order Summary</h2>
             </div>
 
@@ -599,8 +541,7 @@ function Payment() {
 
                     {item.dealDiscount > 0 && (
                       <p className="text-xs text-green-600">
-                        -₹
-                        {Number(item.dealDiscount).toFixed(2)}
+                        -₹{Number(item.dealDiscount).toFixed(2)}
                       </p>
                     )}
                   </div>
@@ -629,8 +570,7 @@ function Payment() {
                     </div>
 
                     <p className="text-sm font-semibold">
-                      -₹
-                      {Number(bundle.discount || 0).toFixed(2)}
+                      -₹{Number(bundle.discount || 0).toFixed(2)}
                     </p>
                   </div>
                 </div>
@@ -639,17 +579,17 @@ function Payment() {
             {/* Price Summary */}
             <div className="mt-6 space-y-3">
               <div className="flex justify-between text-sm">
-                <span className="text-muted-foreground">Subtotal</span>
-
+                <span className="text-muted-foreground">
+                  Subtotal after product deals
+                </span>
                 <span>₹{subtotal.toFixed(2)}</span>
               </div>
 
-              {dealDiscount > 0 && (
+              {bundleDiscount > 0 && (
                 <div className="flex justify-between text-sm">
-                  <span className="text-muted-foreground">Deal Discount</span>
-
+                  <span className="text-muted-foreground">Bundle Discount</span>
                   <span className="text-green-600">
-                    -₹{dealDiscount.toFixed(2)}
+                    -₹{bundleDiscount.toFixed(2)}
                   </span>
                 </div>
               )}
@@ -657,7 +597,6 @@ function Payment() {
               {couponDiscount > 0 && (
                 <div className="flex justify-between text-sm">
                   <span className="text-muted-foreground">Coupon Discount</span>
-
                   <span className="text-green-600">
                     -₹{couponDiscount.toFixed(2)}
                   </span>
@@ -666,7 +605,6 @@ function Payment() {
 
               <div className="flex justify-between text-sm">
                 <span className="text-muted-foreground">Delivery</span>
-
                 <span className="font-medium text-green-600">Free</span>
               </div>
             </div>
@@ -675,7 +613,6 @@ function Payment() {
 
             <div className="flex justify-between text-xl font-bold">
               <span>Total</span>
-
               <span>₹{totalAmount.toFixed(2)}</span>
             </div>
 
