@@ -20,13 +20,14 @@ function Checkout() {
 
   const { user, isLoaded } = useUser();
 
-  const items = useSelector((state) => state.cart.items);
+  const cartItems = useSelector((state) => state.cart?.items);
+  const items = Array.isArray(cartItems) ? cartItems : [];
 
   const selectedAddress = useSelector(
-    (state) => state.checkout.selectedAddress,
+    (state) => state.checkout?.selectedAddress ?? null,
   );
 
-  const appliedCoupon = useSelector((state) => state.checkout.coupon);
+  const appliedCoupon = useSelector((state) => state.checkout?.coupon ?? null);
 
   const [addresses, setAddresses] = useState([]);
   const [loading, setLoading] = useState(true);
@@ -164,29 +165,46 @@ function Checkout() {
       return;
     }
 
+    let cancelled = false;
+
     const fetchAddresses = async () => {
       try {
         setLoading(true);
 
         const data = await getUserAddresses(user.id);
+        const safeAddresses = Array.isArray(data) ? data : [];
 
-        setAddresses(data);
+        if (cancelled) return;
 
-        const defaultAddress = data.find((address) => address.isDefault);
+        setAddresses(safeAddresses);
+
+        const defaultAddress = safeAddresses.find(
+          (address) => address.isDefault,
+        );
 
         if (defaultAddress) {
           dispatch(setSelectedAddress(defaultAddress));
-        } else if (data.length > 0 && !selectedAddress) {
-          dispatch(setSelectedAddress(data[0]));
+        } else if (safeAddresses.length > 0 && !selectedAddress) {
+          dispatch(setSelectedAddress(safeAddresses[0]));
         }
       } catch (error) {
         console.error("Failed to fetch addresses:", error);
+
+        if (!cancelled) {
+          setAddresses([]);
+        }
       } finally {
-        setLoading(false);
+        if (!cancelled) {
+          setLoading(false);
+        }
       }
     };
 
     fetchAddresses();
+
+    return () => {
+      cancelled = true;
+    };
   }, [user, isLoaded, dispatch]);
 
   /*

@@ -175,7 +175,7 @@ function Cart() {
    * EMPTY CART
    * -----------------------------------------
    */
-  if (items.length === 0) {
+  if (!Array.isArray(items) || items.length === 0) {
     return (
       <div className="mx-auto max-w-6xl px-4 py-16 text-center">
         <ShoppingBag className="mx-auto h-12 w-12 text-muted-foreground" />

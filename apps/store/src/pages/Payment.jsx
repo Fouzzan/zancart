@@ -1,5 +1,10 @@
 import { Button } from "@/components/ui/button";
 import {
+  reduceOrderStock,
+  restoreOrderStock,
+} from "@/services/productServices";
+import { useUser } from "@clerk/react";
+import {
   ArrowLeft,
   CheckCircle2,
   CreditCard,
@@ -14,16 +19,12 @@ import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useLocation, useNavigate } from "react-router-dom";
 import { toast } from "sonner";
-
-import {
-  reduceOrderStock,
-  restoreOrderStock,
-} from "@/services/productServices";
 import { clearCart } from "../redux/slices/cartSlice";
 import { calculateCartDeals } from "../services/dealCalculationService";
 import { createOrder } from "../services/orderServices";
 
 function Payment() {
+  const { user, isLoaded } = useUser();
   const navigate = useNavigate();
   const location = useLocation();
   const dispatch = useDispatch();
@@ -100,6 +101,16 @@ function Payment() {
   // Create order
   const handleCreateOrder = async () => {
     if (isProcessing) return;
+
+    if (!isLoaded) {
+      toast.error("Please wait while your account loads.");
+      return;
+    }
+
+    if (!user) {
+      toast.error("Please sign in before placing an order.");
+      return;
+    }
 
     if (!address) {
       toast.error("Please select a delivery address.");
@@ -230,7 +241,7 @@ function Payment() {
 
       // Create order
       const order = {
-        userId: localStorage.getItem("userId") || "guest",
+        userId: user.id,
         items: orderItems,
         appliedDeals,
         address,
