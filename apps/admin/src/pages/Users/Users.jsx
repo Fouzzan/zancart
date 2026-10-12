@@ -32,16 +32,12 @@ function Users() {
   const { users, loading, error } = useSelector((state) => state.users);
 
   const [orders, setOrders] = useState([]);
-
   const [searchQuery, setSearchQuery] = useState("");
   const [statusFilter, setStatusFilter] = useState("all");
 
   const API_URL = import.meta.env.VITE_API_URL;
 
-  // -----------------------------------------
-  // Fetch users + orders
-  // -----------------------------------------
-
+  // Fetch users and orders
   const fetchData = async () => {
     try {
       dispatch(setLoading(true));
@@ -59,11 +55,10 @@ function Users() {
       const ordersData = await ordersResponse.json();
 
       dispatch(setUsers(usersData));
-      setOrders(ordersData);
-    } catch (error) {
-      console.error("Failed to fetch users:", error);
-
-      dispatch(setError("Unable to load users."));
+      setOrders(Array.isArray(ordersData) ? ordersData : []);
+    } catch (err) {
+      console.error("Failed to fetch users and orders:", err);
+      dispatch(setError("Unable to load users or orders."));
     } finally {
       dispatch(setLoading(false));
     }
@@ -71,12 +66,25 @@ function Users() {
 
   useEffect(() => {
     fetchData();
+    // Initial data load
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
-  // -----------------------------------------
-  // Helpers
-  // -----------------------------------------
+  // Normalize IDs before comparing them
+  const normalizeId = (value) => {
+    if (value === null || value === undefined) return "";
 
+    const normalized = String(value).trim();
+
+    // Guest orders cannot reliably be assigned to a registered user.
+    if (!normalized || normalized.toLowerCase() === "guest") {
+      return "";
+    }
+
+    return normalized;
+  };
+
+  // User helpers
   const getUserName = (user) => {
     return (
       user.name ||
@@ -95,8 +103,6 @@ function Users() {
   };
 
   const getUserStatus = (user) => {
-    // Support both the old status field
-    // and the new custom-auth isBlocked field.
     if (user.status === "blocked" || user.isBlocked === true) {
       return "blocked";
     }
@@ -104,41 +110,53 @@ function Users() {
     return "active";
   };
 
-  // -----------------------------------------
-  // Order count
-  // -----------------------------------------
-
+  // Calculate the number of orders belonging to a user
   const getOrderCount = (user) => {
-    /*
-      A single displayed user may represent multiple
-      duplicate records with the same email.
+    const userIds = new Set(
+      (user._userIds || [user.clerkId, user.id, user.userId])
+        .map(normalizeId)
+        .filter(Boolean),
+    );
 
-      We therefore check all IDs belonging to that
-      email so existing orders are not lost.
-    */
-
-    const userIds =
-      user._userIds || [user.clerkId, user.id, user.userId].filter(Boolean);
+    const userEmail = String(user.email || user.emailAddress || "")
+      .trim()
+      .toLowerCase();
 
     return orders.filter((order) => {
-      return userIds.includes(order.userId);
+      const orderUserId = normalizeId(
+        order.userId ??
+          order.clerkId ??
+          order.user?.id ??
+          order.user?.clerkId ??
+          order.customerId,
+      );
+
+      // Match by user ID first
+      if (orderUserId && userIds.has(orderUserId)) {
+        return true;
+      }
+
+      // Fall back to email only if the order explicitly stores it
+      const orderEmail = String(
+        order.userEmail ??
+          order.customerEmail ??
+          order.email ??
+          order.user?.email ??
+          "",
+      )
+        .trim()
+        .toLowerCase();
+
+      return Boolean(userEmail && orderEmail && userEmail === orderEmail);
     }).length;
   };
 
-  // -----------------------------------------
-  // Remove duplicate users
-  // -----------------------------------------
-
+  // Remove duplicate user records with the same email
   const uniqueUsers = useMemo(() => {
     const usersByEmail = new Map();
 
     users.forEach((user) => {
       const email = getUserEmail(user).trim().toLowerCase();
-
-      /*
-        If an account has no email, don't merge it
-        with another account that also has no email.
-      */
       const key = email || `id:${user.id}`;
 
       const existingUser = usersByEmail.get(key);
@@ -152,20 +170,12 @@ function Users() {
         return;
       }
 
-      /*
-        Keep track of every duplicate record ID
-        so order counts still work correctly.
-      */
       const existingIds = existingUser._userIds || [];
-
       const newIds = [user.id, user.clerkId, user.userId].filter(Boolean);
 
       existingUser._userIds = [...new Set([...existingIds, ...newIds])];
 
-      /*
-        If duplicate records exist for the same email,
-        prefer the Admin record.
-      */
+      // Prefer the admin record if duplicate records exist
       if (user.role === "admin" && existingUser.role !== "admin") {
         usersByEmail.set(key, {
           ...user,
@@ -177,16 +187,12 @@ function Users() {
     return Array.from(usersByEmail.values());
   }, [users]);
 
-  // -----------------------------------------
-  // Search + filter
-  // -----------------------------------------
-
+  // Search and filter users
   const filteredUsers = useMemo(() => {
     const query = searchQuery.trim().toLowerCase();
 
     return uniqueUsers.filter((user) => {
       const name = getUserName(user).toLowerCase();
-
       const email = getUserEmail(user).toLowerCase();
 
       const userId = String(
@@ -207,10 +213,7 @@ function Users() {
     });
   }, [uniqueUsers, searchQuery, statusFilter]);
 
-  // -----------------------------------------
   // Role badge
-  // -----------------------------------------
-
   const getRoleBadge = (role) => {
     if (role === "admin") {
       return (
@@ -223,10 +226,7 @@ function Users() {
     return <Badge variant="secondary">User</Badge>;
   };
 
-  // -----------------------------------------
   // Status badge
-  // -----------------------------------------
-
   const getStatusBadge = (status) => {
     if (status === "blocked") {
       return (
@@ -243,10 +243,7 @@ function Users() {
     );
   };
 
-  // -----------------------------------------
-  // Loading
-  // -----------------------------------------
-
+  // Loading state
   if (loading) {
     return (
       <div className="flex min-h-40 items-center justify-center">
@@ -255,16 +252,12 @@ function Users() {
     );
   }
 
-  // -----------------------------------------
-  // Error
-  // -----------------------------------------
-
+  // Error state
   if (error) {
     return (
       <div className="space-y-6">
         <div>
           <h1 className="text-3xl font-bold tracking-tight">Users</h1>
-
           <p className="text-muted-foreground">
             View and manage customer accounts.
           </p>
@@ -273,7 +266,6 @@ function Users() {
         <Card>
           <CardContent className="flex min-h-40 flex-col items-center justify-center gap-4">
             <p className="text-sm text-destructive">{error}</p>
-
             <Button onClick={fetchData}>Try Again</Button>
           </CardContent>
         </Card>
@@ -281,22 +273,17 @@ function Users() {
     );
   }
 
-  // -----------------------------------------
-  // Main UI
-  // -----------------------------------------
-
   return (
     <div className="space-y-6">
       {/* Header */}
       <div>
         <h1 className="text-3xl font-bold tracking-tight">Users</h1>
-
         <p className="text-muted-foreground">
           View and manage customer accounts.
         </p>
       </div>
 
-      {/* Users Card */}
+      {/* Users card */}
       <Card>
         <CardHeader>
           <div className="flex flex-col gap-4 lg:flex-row lg:items-center lg:justify-between">
@@ -315,7 +302,7 @@ function Users() {
                 />
               </div>
 
-              {/* Status Filter */}
+              {/* Status filter */}
               <Select value={statusFilter} onValueChange={setStatusFilter}>
                 <SelectTrigger className="w-full sm:w-40">
                   <SelectValue placeholder="Status" />
@@ -323,9 +310,7 @@ function Users() {
 
                 <SelectContent>
                   <SelectItem value="all">All Users</SelectItem>
-
                   <SelectItem value="active">Active</SelectItem>
-
                   <SelectItem value="blocked">Blocked</SelectItem>
                 </SelectContent>
               </Select>
@@ -342,7 +327,6 @@ function Users() {
 
               <div className="text-center">
                 <p className="font-medium">No users found</p>
-
                 <p className="text-sm text-muted-foreground">
                   {searchQuery || statusFilter !== "all"
                     ? "Try changing your search or filter."
@@ -356,15 +340,10 @@ function Users() {
                 <TableHeader>
                   <TableRow>
                     <TableHead>User</TableHead>
-
                     <TableHead>Email</TableHead>
-
                     <TableHead>Orders</TableHead>
-
                     <TableHead>Role</TableHead>
-
                     <TableHead>Status</TableHead>
-
                     <TableHead className="text-right">Action</TableHead>
                   </TableRow>
                 </TableHeader>
@@ -372,7 +351,6 @@ function Users() {
                 <TableBody>
                   {filteredUsers.map((user) => {
                     const role = getUserRole(user);
-
                     const status = getUserStatus(user);
 
                     return (
@@ -409,7 +387,7 @@ function Users() {
                           {getUserEmail(user)}
                         </TableCell>
 
-                        {/* Orders */}
+                        {/* Order count */}
                         <TableCell>{getOrderCount(user)}</TableCell>
 
                         {/* Role */}
@@ -418,7 +396,7 @@ function Users() {
                         {/* Status */}
                         <TableCell>{getStatusBadge(status)}</TableCell>
 
-                        {/* View */}
+                        {/* View user */}
                         <TableCell className="text-right">
                           <Button asChild variant="outline" size="sm">
                             <Link to={`/users/${user.id}`}>

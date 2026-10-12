@@ -10,10 +10,8 @@ import { useCallback, useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { toast } from "sonner";
 
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-
 import { Button } from "@/components/ui/button";
-
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import api from "../../services/api";
 
 // ============================================================
@@ -52,6 +50,51 @@ const getCustomerName = (order) => {
     order?.userId ||
     "Unknown customer"
   );
+};
+
+// ============================================================
+// Unique Customer Count
+// ============================================================
+
+const normalizeId = (value) => {
+  if (value === null || value === undefined) return "";
+
+  const normalized = String(value).trim();
+
+  return normalized.toLowerCase() === "guest" ? "" : normalized;
+};
+
+const getUniqueCustomerCount = (users) => {
+  const uniqueCustomers = new Map();
+
+  users.forEach((user) => {
+    const role = String(user.role || "").toLowerCase();
+
+    // Exclude administrator accounts.
+    if (role === "admin" || role === "administrator") {
+      return;
+    }
+
+    const email = String(
+      user.email || user.primaryEmailAddress?.emailAddress || "",
+    )
+      .trim()
+      .toLowerCase();
+
+    const id = normalizeId(user.clerkId || user.userId || user.id);
+
+    // Prefer email for deduplication.
+    // Use the account ID if email is unavailable.
+    const key = email || id;
+
+    if (!key) return;
+
+    if (!uniqueCustomers.has(key)) {
+      uniqueCustomers.set(key, user);
+    }
+  });
+
+  return uniqueCustomers.size;
 };
 
 // ============================================================
@@ -104,7 +147,6 @@ function Dashboard() {
       });
     } catch (error) {
       console.error("Failed to load dashboard:", error);
-
       toast.error("Failed to load dashboard data.");
     } finally {
       setLoading(false);
@@ -125,6 +167,9 @@ function Dashboard() {
   // ==========================================================
 
   const { orders, products, users, coupons } = dashboardData;
+
+  // Count unique registered customers instead of raw user records.
+  const totalCustomers = getUniqueCustomerCount(users);
 
   // ----------------------------------------------------------
   // Non-cancelled orders
@@ -182,11 +227,11 @@ function Dashboard() {
 
     {
       title: "Customers",
-      value: users.length.toLocaleString("en-IN"),
+      value: totalCustomers.toLocaleString("en-IN"),
       description:
-        users.length === 1
+        totalCustomers === 1
           ? "1 registered customer"
-          : `${users.length} registered customers`,
+          : `${totalCustomers} registered customers`,
       icon: Users,
     },
   ];
@@ -203,7 +248,6 @@ function Dashboard() {
         <div className="flex items-center justify-between">
           <div>
             <div className="h-8 w-40 animate-pulse rounded-md bg-muted" />
-
             <div className="mt-2 h-4 w-72 animate-pulse rounded-md bg-muted" />
           </div>
         </div>
@@ -479,7 +523,9 @@ function Dashboard() {
                 </div>
 
                 <div className="flex items-center gap-2">
-                  <span className="font-semibold">{users.length}</span>
+                  <span className="font-semibold">
+                    {totalCustomers.toLocaleString("en-IN")}
+                  </span>
 
                   <ArrowUpRight className="size-4 text-muted-foreground" />
                 </div>
