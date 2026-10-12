@@ -1,4 +1,4 @@
-import { Bell, LogOut, Menu, User } from "lucide-react";
+import { LogOut, Menu, User } from "lucide-react";
 import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { NavLink, useNavigate } from "react-router-dom";
@@ -94,9 +94,9 @@ function Header() {
       {/* Right side */}
       <div className="flex items-center gap-2 sm:gap-3">
         {/* Notifications */}
-        <Button variant="ghost" size="icon" aria-label="Notifications">
+        {/* <Button variant="ghost" size="icon" aria-label="Notifications">
           <Bell className="size-4" />
-        </Button>
+        </Button> */}
 
         <Separator orientation="vertical" className="hidden h-6 sm:block" />
 

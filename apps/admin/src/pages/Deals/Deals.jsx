@@ -1,4 +1,4 @@
-import { Edit, MoreHorizontal, Plus, Power, Trash2 } from "lucide-react";
+import { Edit, Plus, Power, Trash2 } from "lucide-react";
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { toast } from "sonner";
@@ -297,13 +297,13 @@ function Deals() {
                           <Trash2 className="h-4 w-4" />
                         </button>
 
-                        <button
+                        {/* <button
                           type="button"
                           className="rounded-lg p-2 text-gray-400"
                           title="More"
                         >
                           <MoreHorizontal className="h-4 w-4" />
-                        </button>
+                        </button> */}
                       </div>
                     </td>
                   </tr>
