@@ -25,11 +25,11 @@ export const navigation = [
     path: "/products",
     icon: ShoppingBag,
   },
-  {
-    label: "Inventory",
-    path: "/inventory",
-    icon: Boxes,
-  },
+  // {
+  //   label: "Inventory",
+  //   path: "/inventory",
+  //   icon: Boxes,
+  // },
   {
     label: "Categories",
     path: "/categories",
