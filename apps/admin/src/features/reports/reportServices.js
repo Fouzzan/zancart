@@ -2,7 +2,7 @@
 import api from "../../services/api";
 
 // ============================================================
-// Fetch all orders
+// Fetch Data
 // ============================================================
 
 export const getAllOrders = async () => {
@@ -10,18 +10,10 @@ export const getAllOrders = async () => {
   return response.data;
 };
 
-// ============================================================
-// Fetch all products
-// ============================================================
-
 export const getAllProducts = async () => {
   const response = await api.get("/products");
   return response.data;
 };
-
-// ============================================================
-// Fetch all users
-// ============================================================
 
 export const getAllUsers = async () => {
   const response = await api.get("/users");
@@ -29,7 +21,7 @@ export const getAllUsers = async () => {
 };
 
 // ============================================================
-// Helper: Convert value to a safe number
+// Helpers
 // ============================================================
 
 const toNumber = (value) => {
@@ -37,21 +29,13 @@ const toNumber = (value) => {
   return Number.isFinite(number) ? number : 0;
 };
 
-// ============================================================
-// Helper: Get order total
-// ============================================================
-
 const getOrderTotal = (order) => {
-  return toNumber(order.totalAmount ?? order.total ?? order.amount);
+  return toNumber(order.totalAmount);
 };
-
-// ============================================================
-// Helper: Get actual inventory quantity
-// ============================================================
 
 const getItemQuantity = (item) => {
   const paidQuantity = toNumber(
-    item.paidQuantity ?? item.quantity ?? 0,
+    item.paidQuantity ?? item.quantity ?? 0
   );
 
   const freeQuantity = toNumber(item.freeQuantity ?? 0);
@@ -59,17 +43,24 @@ const getItemQuantity = (item) => {
   return paidQuantity + freeQuantity;
 };
 
-// ============================================================
-// Helper: Check cancelled order
-// ============================================================
+const normalizeId = (value) => {
+  if (value === null || value === undefined) return "";
+
+  const normalized = String(value).trim();
+
+  if (
+    !normalized ||
+    normalized.toLowerCase() === "guest"
+  ) {
+    return "";
+  }
+
+  return normalized;
+};
 
 const isCancelledOrder = (order) => {
   return order.status?.toLowerCase() === "cancelled";
 };
-
-// ============================================================
-// Helper: Check whether order contributes to revenue
-// ============================================================
 
 const isRevenueOrder = (order) => {
   const status = order.status?.toLowerCase();
@@ -77,8 +68,82 @@ const isRevenueOrder = (order) => {
   return status !== "cancelled" && status !== "failed";
 };
 
+const getUserEmail = (user) => {
+  return String(
+    user.email ||
+      user.emailAddress ||
+      user.primaryEmailAddress?.emailAddress ||
+      user.emailAddresses?.[0]?.emailAddress ||
+      ""
+  )
+    .trim()
+    .toLowerCase();
+};
+
+const getUserName = (user) => {
+  const firstName = user.firstName || "";
+  const lastName = user.lastName || "";
+
+  const fullName = `${firstName} ${lastName}`.trim();
+
+  return (
+    user.name ||
+    user.fullName ||
+    user.username ||
+    fullName ||
+    user.first_name ||
+    user.last_name ||
+    ""
+  );
+};
+
+const getOrderCustomerName = (order) => {
+  const firstName = order.firstName || "";
+  const lastName = order.lastName || "";
+
+  return (
+    order.userName ||
+    order.customerName ||
+    order.address?.fullName ||
+    order.shippingAddress?.fullName ||
+    `${firstName} ${lastName}`.trim() ||
+    order.userEmail ||
+    order.customerEmail ||
+    order.email ||
+    order.user?.name ||
+    order.user?.fullName ||
+    ""
+  );
+};
+
+const getOrderCustomerEmail = (order) => {
+  return String(
+    order.userEmail ||
+      order.customerEmail ||
+      order.email ||
+      order.user?.email ||
+      ""
+  )
+    .trim()
+    .toLowerCase();
+};
+
+const getOrderUserIds = (order) => {
+  return [
+    order.userId,
+    order.clerkId,
+    order.customerId,
+    order.user?.id,
+    order.user?.clerkId,
+    order.customer?.id,
+    order.customer?.clerkId,
+  ]
+    .map(normalizeId)
+    .filter(Boolean);
+};
+
 // ============================================================
-// DATE FILTERING
+// Date Filtering
 // ============================================================
 
 export const getDateRange = (filter) => {
@@ -112,8 +177,9 @@ export const getDateRange = (filter) => {
       const start = new Date(
         now.getFullYear(),
         now.getMonth(),
-        1,
+        1
       );
+
       start.setHours(0, 0, 0, 0);
 
       return { start, end: now };
@@ -121,13 +187,12 @@ export const getDateRange = (filter) => {
 
     case "all":
     default:
-      return { start: null, end: null };
+      return {
+        start: null,
+        end: null,
+      };
   }
 };
-
-// ============================================================
-// Filter orders by date
-// ============================================================
 
 export const filterOrdersByDate = (orders, filter) => {
   if (!Array.isArray(orders)) {
@@ -169,18 +234,18 @@ export const getSalesReport = (orders) => {
   const totalOrders = safeOrders.length;
 
   const cancelledOrders = safeOrders.filter(
-    isCancelledOrder,
+    isCancelledOrder
   ).length;
 
   const activeOrders = safeOrders.filter(
-    (order) => !isCancelledOrder(order),
+    (order) => !isCancelledOrder(order)
   );
 
   const revenueOrders = safeOrders.filter(isRevenueOrder);
 
   const totalRevenue = revenueOrders.reduce(
     (total, order) => total + getOrderTotal(order),
-    0,
+    0
   );
 
   const averageOrderValue =
@@ -189,19 +254,19 @@ export const getSalesReport = (orders) => {
       : 0;
 
   const processingOrders = safeOrders.filter(
-    (order) => order.status?.toLowerCase() === "processing",
+    (order) => order.status?.toLowerCase() === "processing"
   ).length;
 
   const placedOrders = safeOrders.filter(
-    (order) => order.status?.toLowerCase() === "placed",
+    (order) => order.status?.toLowerCase() === "placed"
   ).length;
 
   const shippedOrders = safeOrders.filter(
-    (order) => order.status?.toLowerCase() === "shipped",
+    (order) => order.status?.toLowerCase() === "shipped"
   ).length;
 
   const deliveredOrders = safeOrders.filter(
-    (order) => order.status?.toLowerCase() === "delivered",
+    (order) => order.status?.toLowerCase() === "delivered"
   ).length;
 
   const paymentMethods = {};
@@ -264,7 +329,7 @@ export const getSalesOverTime = (orders) => {
   });
 
   return Object.values(salesByDate).sort(
-    (a, b) => new Date(a.date) - new Date(b.date),
+    (a, b) => new Date(a.date) - new Date(b.date)
   );
 };
 
@@ -278,7 +343,7 @@ export const getProductReport = (orders, products) => {
 
   const productMap = {};
 
-  // Initialize products
+  // Initialize products.
   safeProducts.forEach((product) => {
     productMap[String(product.id)] = {
       productId: product.id,
@@ -290,32 +355,23 @@ export const getProductReport = (orders, products) => {
     };
   });
 
-  // Calculate product sales from non-cancelled orders
+  // Calculate product sales.
   safeOrders.filter(isRevenueOrder).forEach((order) => {
     if (!Array.isArray(order.items)) {
       return;
     }
 
     order.items.forEach((item) => {
-      const rawProductId =
-        item.productId ??
-        item.id ??
-        item.product?.id;
+      const productId = String(item.productId ?? item.id ?? "");
 
-      if (rawProductId === undefined || rawProductId === null) {
+      if (!productId) {
         return;
       }
 
-      const productId = String(rawProductId);
-
       if (!productMap[productId]) {
         productMap[productId] = {
-          productId: rawProductId,
-          title:
-            item.title ||
-            item.name ||
-            item.product?.title ||
-            "Unknown Product",
+          productId: item.productId ?? item.id,
+          title: item.title || item.name || "Unknown Product",
           stock: 0,
           unitsSold: 0,
           revenue: 0,
@@ -323,32 +379,14 @@ export const getProductReport = (orders, products) => {
         };
       }
 
-      const paidQuantity = toNumber(
-        item.paidQuantity ?? item.quantity ?? 0,
-      );
-
       const quantity = getItemQuantity(item);
 
-      // Prefer an actual saved line-item total.
-      // Fall back to unit price multiplied by paid quantity.
-      const savedItemTotal =
+      const revenue = toNumber(
         item.finalItemTotal ??
-        item.originalItemTotal ??
-        item.itemTotal ??
-        item.total;
-
-      const itemPrice = toNumber(
-        item.price ??
-        item.discountPrice ??
-        item.product?.price ??
-        0,
+          item.originalItemTotal ??
+          item.totalPrice ??
+          0
       );
-
-      const revenue =
-        savedItemTotal !== undefined &&
-        savedItemTotal !== null
-          ? toNumber(savedItemTotal)
-          : itemPrice * paidQuantity;
 
       productMap[productId].unitsSold += quantity;
       productMap[productId].revenue += revenue;
@@ -386,51 +424,119 @@ export const getCustomerReport = (orders, users) => {
   const safeOrders = Array.isArray(orders) ? orders : [];
   const safeUsers = Array.isArray(users) ? users : [];
 
-  const customerMap = {};
+  const customerMap = new Map();
+  const userLookup = new Map();
 
-  // Initialize registered users
+  // Register known customers under every available identifier.
   safeUsers.forEach((user) => {
-    customerMap[String(user.id)] = {
-      userId: user.id,
-      name:
-        user.name ||
-        user.fullName ||
-        user.username ||
-        "Unknown Customer",
-      email: user.email || "",
-      orderCount: 0,
-      totalSpent: 0,
-    };
-  });
+    const role = String(
+      user.role || user.publicMetadata?.role || ""
+    ).toLowerCase();
 
-  // Calculate customer spending
-  safeOrders.filter(isRevenueOrder).forEach((order) => {
-    const userId = order.userId;
-
-    if (!userId) {
+    if (role === "admin" || role === "administrator") {
       return;
     }
 
-    const key = String(userId);
+    const ids = [
+      user.id,
+      user.clerkId,
+      user.userId,
+    ]
+      .map(normalizeId)
+      .filter(Boolean);
 
-    if (!customerMap[key]) {
-      customerMap[key] = {
-        userId,
-        name: "Unknown Customer",
-        email: "",
-        orderCount: 0,
-        totalSpent: 0,
-      };
+    const email = getUserEmail(user);
+
+    const customer = {
+      userId: ids[0] || email,
+      name: getUserName(user),
+      email,
+      orderCount: 0,
+      totalSpent: 0,
+    };
+
+    ids.forEach((id) => {
+      userLookup.set(id, customer);
+    });
+
+    if (email) {
+      userLookup.set(`email:${email}`, customer);
     }
-
-    customerMap[key].orderCount += 1;
-    customerMap[key].totalSpent += getOrderTotal(order);
   });
 
-  const customersReport = Object.values(customerMap);
+  // Match orders to registered customers.
+  safeOrders.filter(isRevenueOrder).forEach((order) => {
+    const ids = getOrderUserIds(order);
+    const email = getOrderCustomerEmail(order);
+
+    let customer = null;
+
+    for (const id of ids) {
+      customer = userLookup.get(id);
+
+      if (customer) {
+        break;
+      }
+    }
+
+    if (!customer && email) {
+      customer = userLookup.get(`email:${email}`);
+    }
+
+    const fallbackName = getOrderCustomerName(order);
+
+    if (customer) {
+      const identity = customer.email
+        ? `email:${customer.email}`
+        : `id:${normalizeId(customer.userId)}`;
+
+      if (!customerMap.has(identity)) {
+        customerMap.set(identity, customer);
+      }
+
+      customer = customerMap.get(identity);
+
+      if (
+        (!customer.name ||
+          customer.name === "Unknown Customer") &&
+        fallbackName
+      ) {
+        customer.name = fallbackName;
+      }
+    } else {
+      // Keep unmatched orders grouped by email or available ID.
+      const identity =
+        email ||
+        ids[0] ||
+        fallbackName;
+
+      if (!identity) {
+        return;
+      }
+
+      const key = `unmatched:${identity}`;
+
+      if (!customerMap.has(key)) {
+        customerMap.set(key, {
+          userId: ids[0] || identity,
+          name: fallbackName || "Unknown Customer",
+          email,
+          orderCount: 0,
+          totalSpent: 0,
+        });
+      }
+
+      customer = customerMap.get(key);
+    }
+
+    customer.orderCount += 1;
+    customer.totalSpent += getOrderTotal(order);
+  });
+
+  const customersReport = Array.from(customerMap.values());
 
   const activeCustomers = customersReport.filter(
-    (customer) => customer.orderCount > 0,
+    (customer) => customer.orderCount > 0
   );
 
   const topCustomersBySpending = [...activeCustomers]
@@ -441,9 +547,29 @@ export const getCustomerReport = (orders, users) => {
     .sort((a, b) => b.orderCount - a.orderCount)
     .slice(0, 10);
 
+  const registeredCustomerKeys = new Set();
+
+  safeUsers.forEach((user) => {
+    const role = String(
+      user.role || user.publicMetadata?.role || ""
+    ).toLowerCase();
+
+    if (role === "admin" || role === "administrator") {
+      return;
+    }
+
+    const email = getUserEmail(user);
+    const id = normalizeId(user.clerkId || user.userId || user.id);
+    const key = email || id;
+
+    if (key) {
+      registeredCustomerKeys.add(key);
+    }
+  });
+
   return {
     customers: customersReport,
-    totalCustomers: safeUsers.length,
+    totalCustomers: registeredCustomerKeys.size,
     activeCustomers: activeCustomers.length,
     topCustomersBySpending,
     topCustomersByOrders,
@@ -472,8 +598,14 @@ export const getReportsData = async (filter = "all") => {
 
     salesOverTime: getSalesOverTime(filteredOrders),
 
-    productReport: getProductReport(filteredOrders, products),
+    productReport: getProductReport(
+      filteredOrders,
+      products
+    ),
 
-    customerReport: getCustomerReport(filteredOrders, users),
+    customerReport: getCustomerReport(
+      filteredOrders,
+      users
+    ),
   };
 };
