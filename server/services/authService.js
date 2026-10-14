@@ -110,9 +110,9 @@ async function writeUsers(users) {
   );
 }
 
-// ------------------------------------------------------------
+
 // Register User
-// ------------------------------------------------------------
+
 
 export async function registerUser({
   name,
