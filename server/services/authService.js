@@ -27,6 +27,56 @@ if (!JWT_SECRET) {
   throw new Error("JWT_SECRET is not defined in .env");
 }
 
+const EMAIL_PATTERN = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+function toPublicUser(user) {
+  const isBlocked =
+    user.isBlocked === true || user.status === "blocked";
+
+  return {
+    id: user.id,
+    userId: user.userId,
+    clerkId: user.clerkId,
+    name:
+      user.name ||
+      `${user.firstName || ""} ${user.lastName || ""}`.trim(),
+    firstName: user.firstName,
+    lastName: user.lastName,
+    email: user.email,
+    imageUrl: user.imageUrl,
+    role: user.role === "admin" ? "admin" : "user",
+    status: isBlocked ? "blocked" : "active",
+    isBlocked,
+    createdAt: user.createdAt,
+    source: "auth",
+  };
+}
+
+function getValidationErrorStatus(message) {
+  if (message === "An account with this email already exists.") {
+    return 409;
+  }
+
+  if (
+    [
+      "Name, email and password are required.",
+      "Email address is invalid.",
+      "Password must be at least 6 characters.",
+      "User ID is required.",
+      "Invalid status.",
+      "User not found.",
+    ].includes(message)
+  ) {
+    return 400;
+  }
+
+  return 500;
+}
+
+export function getAuthServiceErrorStatus(error) {
+  return getValidationErrorStatus(error?.message);
+}
+
 // ------------------------------------------------------------
 // Database helpers
 // ------------------------------------------------------------
@@ -87,6 +137,10 @@ export async function registerUser({
     .trim()
     .toLowerCase();
 
+  if (!EMAIL_PATTERN.test(normalizedEmail)) {
+    throw new Error("Email address is invalid.");
+  }
+
   // Check whether email already exists
   const existingUser = users.find(
     (user) =>
@@ -120,14 +174,21 @@ export async function registerUser({
   await writeUsers(users);
 
   // Never return password
-  return {
-    id: user.id,
-    name: user.name,
-    email: user.email,
-    role: user.role,
-    isBlocked: user.isBlocked,
-    createdAt: user.createdAt,
-  };
+  return toPublicUser(user);
+}
+
+
+// Create a regular customer from an authenticated admin request.
+export async function createCustomerByAdmin({
+  name,
+  email,
+  password,
+}) {
+  return registerUser({
+    name,
+    email,
+    password,
+  });
 }
 
 // ------------------------------------------------------------
@@ -162,7 +223,7 @@ export async function loginUser({
   }
 
   // Check blocked status
-  if (user.isBlocked) {
+  if (user.isBlocked === true || user.status === "blocked") {
     throw new Error(
       "Your account has been blocked."
     );
@@ -196,13 +257,17 @@ export async function loginUser({
     token,
 
     user: {
-      id: user.id,
-      name: user.name,
-      email: user.email,
-      role: user.role,
-      isBlocked: user.isBlocked,
+      ...toPublicUser(user),
     },
   };
+}
+
+//get all auth users
+
+export async function getAllAuthUsers() {
+  const users = await readUsers();
+
+  return users.map(toPublicUser);
 }
 
 // ------------------------------------------------------------
@@ -220,14 +285,7 @@ export async function getUserById(userId) {
     return null;
   }
 
-  return {
-    id: user.id,
-    name: user.name,
-    email: user.email,
-    role: user.role,
-    isBlocked: user.isBlocked,
-    createdAt: user.createdAt,
-  };
+  return toPublicUser(user);
 }
 
 // ------------------------------------------------------------
@@ -268,14 +326,7 @@ export async function updateUserRole(
 
   await writeUsers(users);
 
-  return {
-    id: users[userIndex].id,
-    name: users[userIndex].name,
-    email: users[userIndex].email,
-    role: users[userIndex].role,
-    isBlocked: users[userIndex].isBlocked,
-    createdAt: users[userIndex].createdAt,
-  };
+  return toPublicUser(users[userIndex]);
 }
 
 export async function getUserByEmail(email) {
@@ -295,14 +346,30 @@ export async function getUserByEmail(email) {
     return null;
   }
 
-  return {
-    id: user.id,
-    name: user.name,
-    email: user.email,
-    role: user.role,
-    isBlocked: user.isBlocked,
-    createdAt: user.createdAt,
-  };
+  return toPublicUser(user);
+}
+
+export async function updateUserBlockedStatus(userId, isBlocked) {
+  if (!userId) {
+    throw new Error("User ID is required.");
+  }
+
+  const users = await readUsers();
+
+  const userIndex = users.findIndex(
+    (user) => user.id === userId,
+  );
+
+  if (userIndex === -1) {
+    throw new Error("User not found.");
+  }
+
+  users[userIndex].isBlocked = Boolean(isBlocked);
+  users[userIndex].status = isBlocked ? "blocked" : "active";
+
+  await writeUsers(users);
+
+  return toPublicUser(users[userIndex]);
 }
 
 export async function resetUserPassword(userId) {
@@ -338,13 +405,7 @@ export async function resetUserPassword(userId) {
   await writeUsers(users);
 
   return {
-    user: {
-      id: users[userIndex].id,
-      name: users[userIndex].name,
-      email: users[userIndex].email,
-      role: users[userIndex].role,
-      isBlocked: users[userIndex].isBlocked,
-    },
+    user: toPublicUser(users[userIndex]),
     temporaryPassword,
   };
 }
@@ -400,12 +461,5 @@ export async function changeUserPassword(
 
   await writeUsers(users);
 
-  return {
-    id: users[userIndex].id,
-    name: users[userIndex].name,
-    email: users[userIndex].email,
-    role: users[userIndex].role,
-    isBlocked:
-      users[userIndex].isBlocked,
-  };
+  return toPublicUser(users[userIndex]);
 }

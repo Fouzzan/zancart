@@ -2,8 +2,13 @@ import express from "express";
 
 import {
   changeUserPassword,
+  createCustomerByAdmin,
+  getAllAuthUsers,
+  getAuthServiceErrorStatus,
   getUserByEmail,
+  getUserById,
   updateUserRole,
+  updateUserBlockedStatus,
 } from "../services/authService.js";
 
 import { requireAdmin } from "../middleware/requireAdmin.js";
@@ -223,6 +228,139 @@ router.post(
       return res.status(400).json({
         success: false,
         message: error.message || "Unable to prepare image upload.",
+      });
+    }
+  },
+);
+
+router.post(
+  "/users",
+  requireAuth,
+  requireAdmin,
+  async (req, res) => {
+    try {
+      const user = await createCustomerByAdmin(req.body);
+
+      return res.status(201).json({
+        success: true,
+        message: "User created successfully.",
+        user,
+      });
+    } catch (error) {
+      const status = getAuthServiceErrorStatus(error);
+
+      return res.status(status).json({
+        success: false,
+        message: status < 500
+          ? error.message
+          : "Failed to create user.",
+      });
+    }
+  },
+);
+
+router.get(
+  "/users",
+  requireAuth,
+  requireAdmin,
+  async (req, res) => {
+    try {
+      const users = await getAllAuthUsers();
+
+      return res.status(200).json({
+        success: true,
+        users,
+      });
+    } catch (error) {
+      console.error("Failed to fetch auth users:", error);
+
+      return res.status(500).json({
+        success: false,
+        message: "Failed to fetch users.",
+      });
+    }
+  },
+);
+
+router.get(
+  "/users/:id",
+  requireAuth,
+  requireAdmin,
+  async (req, res) => {
+    try {
+      const user = await getUserById(req.params.id);
+
+      if (!user) {
+        return res.status(404).json({
+          success: false,
+          message: "User not found.",
+        });
+      }
+
+      return res.status(200).json({
+        success: true,
+        user,
+      });
+    } catch (error) {
+      console.error("Failed to fetch auth user:", error);
+
+      return res.status(500).json({
+        success: false,
+        message: "Failed to fetch user.",
+      });
+    }
+  },
+);
+
+router.patch(
+  "/users/:id/status",
+  requireAuth,
+  requireAdmin,
+  async (req, res) => {
+    try {
+      const isBlocked =
+        req.body?.isBlocked === true || req.body?.status === "blocked";
+
+      if (
+        req.body?.isBlocked !== true &&
+        req.body?.isBlocked !== false &&
+        req.body?.status !== "active" &&
+        req.body?.status !== "blocked"
+      ) {
+        return res.status(400).json({
+          success: false,
+          message: "Invalid status.",
+        });
+      }
+
+      if (req.user?.userId === req.params.id && isBlocked) {
+        return res.status(400).json({
+          success: false,
+          message: "You cannot block your own account.",
+        });
+      }
+
+      const user = await updateUserBlockedStatus(req.params.id, isBlocked);
+
+      return res.status(200).json({
+        success: true,
+        message: isBlocked
+          ? "User blocked successfully."
+          : "User unblocked successfully.",
+        user,
+      });
+    } catch (error) {
+      const status =
+        error.message === "User not found."
+          ? 404
+          : getAuthServiceErrorStatus(error);
+
+      return res.status(status).json({
+        success: false,
+        message:
+          status < 500
+            ? error.message
+            : "Failed to update user status.",
       });
     }
   },

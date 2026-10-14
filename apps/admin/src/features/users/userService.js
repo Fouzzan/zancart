@@ -28,6 +28,12 @@ export const getUserById = async (id) => {
   return response.data;
 };
 
+export const getAuthUserById = async (id) => {
+  const response = await authApi.get(`/api/admin/users/${id}`);
+
+  return response.data.user;
+};
+
 
 /*
 |--------------------------------------------------------------------------
@@ -48,6 +54,20 @@ export const updateUserStatus = async (
       status: isBlocked
         ? "blocked"
         : "active",
+    }
+  );
+
+  return response.data;
+};
+
+export const updateAuthUserStatus = async (
+  userId,
+  isBlocked
+) => {
+  const response = await authApi.patch(
+    `/api/admin/users/${userId}/status`,
+    {
+      isBlocked,
     }
   );
 
@@ -100,4 +120,51 @@ export const changeUserPassword = async (
   );
 
   return response.data;
+};
+
+export const createUser = async (userData) => {
+  try {
+    const response = await authApi.post(
+      "/api/admin/users",
+      userData,
+    );
+
+    if (!response.data?.success || !response.data?.user) {
+      throw new Error(
+        response.data?.message || "Unable to create customer.",
+      );
+    }
+
+    return response.data.user;
+  } catch (error) {
+    const status = error.response?.status;
+    const message = error.response?.data?.message || error.message;
+
+    if (status === 404 && message === "Route not found.") {
+      throw new Error(
+        "The auth API does not expose POST /api/admin/users yet. Redeploy the backend service with the latest admin routes.",
+        { cause: error },
+      );
+    }
+
+    if (status === 401) {
+      throw new Error("Your admin session has expired. Please sign in again.", {
+        cause: error,
+      });
+    }
+
+    if (status === 403) {
+      throw new Error(
+        "Your account does not have permission to create customers.",
+        { cause: error },
+      );
+    }
+
+    throw new Error(message || "Unable to create customer.", { cause: error });
+  }
+};
+
+export const getAuthUsers = async () => {
+  const response = await authApi.get("/api/admin/users");
+  return response.data.users;
 };

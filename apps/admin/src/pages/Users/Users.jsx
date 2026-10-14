@@ -1,4 +1,4 @@
-import { Eye, Search, Users as UsersIcon } from "lucide-react";
+import { Eye, EyeOff, Search, Users as UsersIcon } from "lucide-react";
 import { useEffect, useMemo, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
@@ -23,7 +23,11 @@ import {
   TableRow,
 } from "@/components/ui/table";
 
-import { getUsers } from "@/features/users/userService";
+import {
+  createUser,
+  getAuthUsers,
+  getUsers,
+} from "@/features/users/userService";
 import { setError, setLoading, setUsers } from "@/features/users/userSlice";
 
 function Users() {
@@ -34,31 +38,171 @@ function Users() {
   const [orders, setOrders] = useState([]);
   const [searchQuery, setSearchQuery] = useState("");
   const [statusFilter, setStatusFilter] = useState("all");
+  const [showAddUser, setShowAddUser] = useState(false);
+  const [dataWarning, setDataWarning] = useState("");
 
-  const API_URL = import.meta.env.VITE_API_URL;
+  const [savingUser, setSavingUser] = useState(false);
+  const [formError, setFormError] = useState("");
+  const [formSuccess, setFormSuccess] = useState("");
+  const [showPassword, setShowPassword] = useState(false);
+  const [showConfirmPassword, setShowConfirmPassword] = useState(false);
+  const [formData, setFormData] = useState({
+    name: "",
+    email: "",
+    password: "",
+    confirmPassword: "",
+  });
+
+  const API_URL = (import.meta.env.VITE_API_URL || "").trim();
+  const EMAIL_PATTERN = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+  const handleCreateUser = async (event) => {
+    event.preventDefault();
+
+    setFormError("");
+    setFormSuccess("");
+
+    const name = formData.name.trim();
+    const email = formData.email.trim().toLowerCase();
+
+    if (!name || !email || !formData.password || !formData.confirmPassword) {
+      setFormError("Please fill in all required fields.");
+      return;
+    }
+
+    if (!EMAIL_PATTERN.test(email)) {
+      setFormError("Please enter a valid email address.");
+      return;
+    }
+
+    if (formData.password.length < 6) {
+      setFormError("Password must be at least 6 characters.");
+      return;
+    }
+
+    if (formData.password !== formData.confirmPassword) {
+      setFormError("Passwords do not match.");
+      return;
+    }
+
+    try {
+      setSavingUser(true);
+
+      await createUser({
+        name,
+        email,
+        password: formData.password,
+      });
+
+      setFormData({
+        name: "",
+        email: "",
+        password: "",
+        confirmPassword: "",
+      });
+
+      setShowAddUser(false);
+      setFormSuccess("Customer created successfully.");
+
+      // Reload both user sources.
+      await fetchData();
+    } catch (error) {
+      setFormError(
+        error.response?.data?.message ||
+          error.response?.data?.error ||
+          error.message ||
+          "Unable to create user. Please try again.",
+      );
+    } finally {
+      setSavingUser(false);
+    }
+  };
 
   // Fetch users and orders
   const fetchData = async () => {
     try {
       dispatch(setLoading(true));
       dispatch(setError(null));
+      setDataWarning("");
 
-      const [usersData, ordersResponse] = await Promise.all([
-        getUsers(),
-        fetch(`${API_URL}/orders`),
-      ]);
+      const [storeUsersResult, authUsersResult, ordersResult] =
+        await Promise.allSettled([
+          getUsers(),
+          getAuthUsers(),
+          fetch(`${API_URL}/orders`),
+        ]);
 
-      if (!ordersResponse.ok) {
-        throw new Error("Failed to fetch orders");
+      const storeUsers =
+        storeUsersResult.status === "fulfilled" &&
+        Array.isArray(storeUsersResult.value)
+          ? storeUsersResult.value.map((user) => ({
+              ...user,
+              source: user.source || "store",
+            }))
+          : [];
+
+      const authUsers =
+        authUsersResult.status === "fulfilled" &&
+        Array.isArray(authUsersResult.value)
+          ? authUsersResult.value.map((user) => ({
+              ...user,
+              source: "auth",
+            }))
+          : [];
+
+      if (storeUsersResult.status === "rejected") {
+        console.error("Failed to fetch store users:", storeUsersResult.reason);
       }
 
-      const ordersData = await ordersResponse.json();
+      if (authUsersResult.status === "rejected") {
+        console.error("Failed to fetch auth users:", authUsersResult.reason);
+      }
 
-      dispatch(setUsers(usersData));
+      let ordersData = [];
+
+      if (ordersResult.status === "fulfilled" && ordersResult.value.ok) {
+        ordersData = await ordersResult.value.json();
+      } else {
+        console.error(
+          "Failed to fetch orders:",
+          ordersResult.status === "rejected"
+            ? ordersResult.reason
+            : ordersResult.value,
+        );
+        setDataWarning(
+          "Orders could not be loaded. User accounts are still shown.",
+        );
+      }
+
+      const mergedUsers = [...storeUsers, ...authUsers];
+
+      if (mergedUsers.length === 0) {
+        const authError =
+          authUsersResult.status === "rejected"
+            ? authUsersResult.reason?.response?.data?.message ||
+              authUsersResult.reason?.message
+            : "";
+
+        const storeError =
+          storeUsersResult.status === "rejected"
+            ? storeUsersResult.reason?.response?.data?.message ||
+              storeUsersResult.reason?.message
+            : "";
+
+        throw new Error(authError || storeError || "Unable to load users.");
+      }
+
+      dispatch(setUsers(mergedUsers));
       setOrders(Array.isArray(ordersData) ? ordersData : []);
     } catch (err) {
-      console.error("Failed to fetch users and orders:", err);
-      dispatch(setError("Unable to load users or orders."));
+      console.error("Failed to fetch users:", err);
+      dispatch(
+        setError(
+          err.message === "Route not found."
+            ? "The auth API does not expose the admin users endpoint yet."
+            : err.message || "Unable to load users.",
+        ),
+      );
     } finally {
       dispatch(setLoading(false));
     }
@@ -175,11 +319,19 @@ function Users() {
 
       existingUser._userIds = [...new Set([...existingIds, ...newIds])];
 
-      // Prefer the admin record if duplicate records exist
-      if (user.role === "admin" && existingUser.role !== "admin") {
+      const shouldPreferUser =
+        user.source === "auth" ||
+        (user.role === "admin" && existingUser.role !== "admin");
+
+      if (shouldPreferUser) {
         usersByEmail.set(key, {
           ...user,
           _userIds: existingUser._userIds,
+          _sources: [
+            ...new Set(
+              [...(existingUser._sources || []), user.source].filter(Boolean),
+            ),
+          ],
         });
       }
     });
@@ -276,12 +428,200 @@ function Users() {
   return (
     <div className="space-y-6">
       {/* Header */}
-      <div>
-        <h1 className="text-3xl font-bold tracking-tight">Users</h1>
-        <p className="text-muted-foreground">
-          View and manage customer accounts.
-        </p>
+      <div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
+        <div>
+          <h1 className="text-3xl font-bold tracking-tight">Users</h1>
+          <p className="text-muted-foreground">
+            View and manage customer accounts.
+          </p>
+        </div>
+
+        {/* <Button
+          onClick={() => {
+            setFormError("");
+            setFormSuccess("");
+            setShowAddUser((current) => !current);
+          }}
+        >
+          {showAddUser ? (
+            <X className="mr-2 size-4" />
+          ) : (
+            <Plus className="mr-2 size-4" />
+          )}
+          {showAddUser ? "Cancel" : "Add User"}
+        </Button> */}
       </div>
+
+      {formSuccess && (
+        <p className="text-sm text-green-600" role="status">
+          {formSuccess}
+        </p>
+      )}
+
+      {dataWarning && (
+        <div className="rounded-lg border border-amber-200 bg-amber-50 px-4 py-3 text-sm text-amber-800">
+          {dataWarning}
+        </div>
+      )}
+
+      {showAddUser && (
+        <Card>
+          <CardHeader>
+            <CardTitle>Create Customer Account</CardTitle>
+            <p className="text-sm text-muted-foreground">
+              Create a customer account using your custom authentication system.
+            </p>
+          </CardHeader>
+
+          <CardContent>
+            <form onSubmit={handleCreateUser} className="space-y-4">
+              <div className="grid gap-4 sm:grid-cols-2">
+                <div className="space-y-2">
+                  <label
+                    htmlFor="new-user-name"
+                    className="text-sm font-medium"
+                  >
+                    Full Name
+                  </label>
+                  <Input
+                    id="new-user-name"
+                    value={formData.name}
+                    onChange={(e) =>
+                      setFormData({ ...formData, name: e.target.value })
+                    }
+                    placeholder="Enter full name"
+                    required
+                  />
+                </div>
+
+                <div className="space-y-2">
+                  <label
+                    htmlFor="new-user-email"
+                    className="text-sm font-medium"
+                  >
+                    Email Address
+                  </label>
+                  <Input
+                    id="new-user-email"
+                    type="email"
+                    value={formData.email}
+                    onChange={(e) =>
+                      setFormData({ ...formData, email: e.target.value })
+                    }
+                    placeholder="customer@example.com"
+                    required
+                  />
+                </div>
+
+                <div className="space-y-2">
+                  <label
+                    htmlFor="new-user-password"
+                    className="text-sm font-medium"
+                  >
+                    Password
+                  </label>
+
+                  <div className="relative">
+                    <Input
+                      id="new-user-password"
+                      type={showPassword ? "text" : "password"}
+                      minLength={6}
+                      autoComplete="new-password"
+                      value={formData.password}
+                      onChange={(e) =>
+                        setFormData({ ...formData, password: e.target.value })
+                      }
+                      placeholder="Minimum 6 characters"
+                      className="pr-10"
+                      required
+                    />
+
+                    <button
+                      type="button"
+                      onClick={() => setShowPassword((current) => !current)}
+                      className="absolute right-0 top-0 flex h-10 w-10 items-center justify-center text-muted-foreground transition-colors hover:text-foreground"
+                      aria-label={
+                        showPassword ? "Hide password" : "Show password"
+                      }
+                    >
+                      {showPassword ? (
+                        <EyeOff className="size-4" />
+                      ) : (
+                        <Eye className="size-4" />
+                      )}
+                    </button>
+                  </div>
+                </div>
+
+                <div className="space-y-2">
+                  <label
+                    htmlFor="new-user-confirm"
+                    className="text-sm font-medium"
+                  >
+                    Confirm Password
+                  </label>
+
+                  <div className="relative">
+                    <Input
+                      id="new-user-confirm"
+                      type={showConfirmPassword ? "text" : "password"}
+                      autoComplete="new-password"
+                      value={formData.confirmPassword}
+                      onChange={(e) =>
+                        setFormData({
+                          ...formData,
+                          confirmPassword: e.target.value,
+                        })
+                      }
+                      placeholder="Re-enter password"
+                      className="pr-10"
+                      required
+                    />
+
+                    <button
+                      type="button"
+                      onClick={() =>
+                        setShowConfirmPassword((current) => !current)
+                      }
+                      className="absolute right-0 top-0 flex h-10 w-10 items-center justify-center text-muted-foreground transition-colors hover:text-foreground"
+                      aria-label={
+                        showConfirmPassword ? "Hide password" : "Show password"
+                      }
+                    >
+                      {showConfirmPassword ? (
+                        <EyeOff className="size-4" />
+                      ) : (
+                        <Eye className="size-4" />
+                      )}
+                    </button>
+                  </div>
+                </div>
+              </div>
+
+              {formError && (
+                <p className="text-sm text-destructive" role="alert">
+                  {formError}
+                </p>
+              )}
+
+              <div className="flex justify-end gap-3">
+                <Button
+                  type="button"
+                  variant="outline"
+                  onClick={() => setShowAddUser(false)}
+                  disabled={savingUser}
+                >
+                  Cancel
+                </Button>
+
+                <Button type="submit" disabled={savingUser}>
+                  {savingUser ? "Creating..." : "Create User"}
+                </Button>
+              </div>
+            </form>
+          </CardContent>
+        </Card>
+      )}
 
       {/* Users card */}
       <Card>

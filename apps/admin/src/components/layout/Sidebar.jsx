@@ -1,6 +1,5 @@
 import {
   BarChart3,
-  Boxes,
   ClipboardList,
   FolderTree,
   Image,
@@ -98,7 +97,6 @@ function Sidebar() {
             <NavLink
               key={item.path}
               to={item.path}
-              onClick={() => setMobileMenuOpen(false)}
               className={({ isActive }) =>
                 [
                   "flex items-center gap-3 rounded-lg px-3 py-2.5 text-sm font-medium transition-colors",
@@ -116,7 +114,7 @@ function Sidebar() {
       </nav>
 
       {/* Bottom */}
-      <div className="border-t p-4">
+      {/* <div className="border-t p-4">
         <div className="flex items-center gap-3 rounded-lg bg-muted px-3 py-3">
           <Boxes className="size-4 text-muted-foreground" />
 
@@ -125,7 +123,7 @@ function Sidebar() {
             <p className="text-xs text-muted-foreground">Administration</p>
           </div>
         </div>
-      </div>
+      </div> */}
     </aside>
   );
 }

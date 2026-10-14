@@ -1,7 +1,11 @@
 import axios from "axios";
 
+const AUTH_API_URL = (import.meta.env.VITE_AUTH_API_URL || "")
+  .replace(/\/+$/, "")
+  .replace(/\/api$/, "");
+
 const authApi = axios.create({
-  baseURL: import.meta.env.VITE_AUTH_API_URL,
+  baseURL: AUTH_API_URL,
 });
 
 authApi.interceptors.request.use(

@@ -21,7 +21,9 @@ import { Separator } from "@/components/ui/separator";
 import { getOrders } from "@/features/orders/orderService";
 import {
   changeUserPassword,
+  getAuthUserById,
   getUserById,
+  updateAuthUserStatus,
   updateAdminRole,
   updateUserStatus,
 } from "@/features/users/userService";
@@ -60,7 +62,17 @@ function UserDetails() {
         setLoading(true);
         setError("");
 
-        const response = await getUserById(id);
+        let response;
+
+        try {
+          response = await getAuthUserById(id);
+        } catch (authError) {
+          if (authError.response?.status !== 404) {
+            throw authError;
+          }
+
+          response = await getUserById(id);
+        }
 
         // Support services that return either a user or an API response.
         const userData =
@@ -221,14 +233,20 @@ function UserDetails() {
       setError("");
 
       const newBlockedStatus = !isBlocked;
-      const response = await updateUserStatus(user.id, newBlockedStatus);
+      const response =
+        user.source === "auth"
+          ? await updateAuthUserStatus(user.id, newBlockedStatus)
+          : await updateUserStatus(user.id, newBlockedStatus);
 
       if (!response) {
         throw new Error("Failed to update user status.");
       }
 
+      const updatedUser = response.user || response;
+
       setUser((currentUser) => ({
         ...currentUser,
+        ...updatedUser,
         isBlocked: newBlockedStatus,
         status: newBlockedStatus ? "blocked" : "active",
       }));
