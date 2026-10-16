@@ -3,7 +3,6 @@ import {
   reduceOrderStock,
   restoreOrderStock,
 } from "@/services/productServices";
-import { useUser } from "@clerk/react";
 import {
   ArrowLeft,
   CheckCircle2,
@@ -19,12 +18,13 @@ import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useLocation, useNavigate } from "react-router-dom";
 import { toast } from "sonner";
+import { useAuthContext } from "../context/AuthContext";
 import { clearCart } from "../redux/slices/cartSlice";
 import { calculateCartDeals } from "../services/dealCalculationService";
 import { createOrder } from "../services/orderServices";
 
 function Payment() {
-  const { user, isLoaded } = useUser();
+  const { user, isLoading } = useAuthContext();
   const navigate = useNavigate();
   const location = useLocation();
   const dispatch = useDispatch();
@@ -102,7 +102,7 @@ function Payment() {
   const handleCreateOrder = async () => {
     if (isProcessing) return;
 
-    if (!isLoaded) {
+    if (isLoading) {
       toast.error("Please wait while your account loads.");
       return;
     }
@@ -241,7 +241,7 @@ function Payment() {
 
       // Create order
       const order = {
-        userId: user.id,
+        userId: user.userId || user.id,
         items: orderItems,
         appliedDeals,
         address,

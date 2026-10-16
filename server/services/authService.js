@@ -60,11 +60,14 @@ function getValidationErrorStatus(message) {
   if (
     [
       "Name, email and password are required.",
+      "Name and email are required.",
       "Email address is invalid.",
+      "Current and new passwords are required.",
       "Password must be at least 6 characters.",
       "User ID is required.",
       "Invalid status.",
       "User not found.",
+      "Current password is incorrect.",
     ].includes(message)
   ) {
     return 400;
@@ -286,6 +289,40 @@ export async function getUserById(userId) {
   }
 
   return toPublicUser(user);
+}
+
+export async function updateOwnProfile(userId, { name, email }) {
+  if (!name?.trim() || !email?.trim()) {
+    throw new Error("Name and email are required.");
+  }
+  const normalizedEmail = email.trim().toLowerCase();
+  if (!EMAIL_PATTERN.test(normalizedEmail)) {
+    throw new Error("Email address is invalid.");
+  }
+  const users = await readUsers();
+  const userIndex = users.findIndex((user) => user.id === userId);
+  if (userIndex === -1) throw new Error("User not found.");
+  if (users.some((user) => user.id !== userId && user.email?.toLowerCase() === normalizedEmail)) {
+    throw new Error("An account with this email already exists.");
+  }
+  users[userIndex].name = name.trim();
+  users[userIndex].email = normalizedEmail;
+  await writeUsers(users);
+  return toPublicUser(users[userIndex]);
+}
+
+export async function changeOwnPassword(userId, currentPassword, newPassword) {
+  if (!currentPassword || !newPassword) throw new Error("Current and new passwords are required.");
+  if (newPassword.length < 6) throw new Error("Password must be at least 6 characters.");
+  const users = await readUsers();
+  const userIndex = users.findIndex((user) => user.id === userId);
+  if (userIndex === -1) throw new Error("User not found.");
+  const matches = await bcrypt.compare(currentPassword, users[userIndex].password || "");
+  if (!matches) throw new Error("Current password is incorrect.");
+  users[userIndex].password = await bcrypt.hash(newPassword, 12);
+  users[userIndex].mustChangePassword = false;
+  await writeUsers(users);
+  return toPublicUser(users[userIndex]);
 }
 
 // ------------------------------------------------------------

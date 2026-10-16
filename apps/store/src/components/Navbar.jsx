@@ -5,54 +5,96 @@ import {
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
 import { Input } from "@/components/ui/input";
-import { Show, UserButton } from "@clerk/react";
 import {
   Heart,
+  LogOut,
   MapPin,
   Menu,
   Package,
   Search,
   ShoppingCart,
+  UserRound,
   X,
 } from "lucide-react";
 import { useState } from "react";
 import { useSelector } from "react-redux";
 import { Link, useLocation, useNavigate } from "react-router-dom";
+import { useAuthContext } from "../context/AuthContext";
 
 function Navbar() {
+  const { user, isAuthenticated, logout } = useAuthContext();
+
   const items = useSelector((state) => state.cart.items);
+  const wishlistItems = useSelector((state) => state.wishlist.items);
+
   const navigate = useNavigate();
   const location = useLocation();
+
   const cartCount = Array.isArray(items)
     ? items.reduce((total, item) => total + (Number(item.quantity) || 0), 0)
     : 0;
-  const wishListCount = useSelector((state) => state.wishlist.items).length;
+
+  const wishListCount = Array.isArray(wishlistItems) ? wishlistItems.length : 0;
+
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const [search, setSearch] = useState();
+  const [search, setSearch] = useState("");
+
   const handleCategorySelect = (category) => {
     const params = new URLSearchParams(location.search);
-
     params.set("category", category);
+    navigate(`/products?${params.toString()}`);
+    setIsMenuOpen(false);
+  };
+
+  const handleSearch = (event) => {
+    event.preventDefault();
+
+    const query = search.trim();
+    if (!query) return;
+
+    const params = new URLSearchParams(location.search);
+    params.set("search", query);
 
     navigate(`/products?${params.toString()}`);
+    setSearch("");
+    setIsMenuOpen(false);
   };
+
+  const handleLogout = () => {
+    logout();
+    setIsMenuOpen(false);
+    navigate("/login", { replace: true });
+  };
+
+  const closeMobileMenu = () => setIsMenuOpen(false);
+
+  const categories = [
+    "Fashion",
+    "Electronics",
+    "Home",
+    "Stationery",
+    "Fitness",
+  ];
+
   return (
-    <header className="sticky top-0 z-50  ">
+    <header className="sticky top-0 z-50">
       <div className="mx-auto max-w-7xl px-4 py-3 sm:px-6 lg:px-8">
-        <nav className="flex h-14 items-center justify-between rounded-full border border-white/40 bg-white/30 px-4 shadow-lg sm:px-6 backdrop-blur-md">
+        <nav className="flex h-14 items-center justify-between rounded-full border border-white/40 bg-white/30 px-4 shadow-lg backdrop-blur-md sm:px-6">
           {/* Logo */}
           <Link
             to="/"
+            onClick={closeMobileMenu}
             className="flex items-center gap-1 text-xl font-semibold tracking-tight text-[#1D1D1F]"
           >
-            {/* <ShoppingBag className="h-8 w-8"/> */}
-
             <span>Z A N C A R T</span>
           </Link>
 
+          {/* Mobile menu toggle */}
           <button
             type="button"
-            onClick={() => setIsMenuOpen(!isMenuOpen)}
+            aria-label={isMenuOpen ? "Close menu" : "Open menu"}
+            aria-expanded={isMenuOpen}
+            onClick={() => setIsMenuOpen((open) => !open)}
             className="rounded-full p-2.5 transition hover:bg-gray-100 md:hidden"
           >
             {isMenuOpen ? (
@@ -62,18 +104,18 @@ function Navbar() {
             )}
           </button>
 
-          {/* Desktop Navigation */}
+          {/* Desktop navigation */}
           <div className="hidden items-center gap-7 md:flex">
             <Link
               to="/"
-              className="text-sm font-medium text-gray-700  hover:text-black transition-transform duration-300 ease-in-out hover:scale-110"
+              className="text-sm font-medium text-gray-700 transition-transform duration-300 ease-in-out hover:scale-110 hover:text-black"
             >
               Home
             </Link>
 
             <Link
               to="/products"
-              className="text-sm font-medium text-gray-700 hover:text-black transition-transform duration-300 ease-in-out hover:scale-110"
+              className="text-sm font-medium text-gray-700 transition-transform duration-300 ease-in-out hover:scale-110 hover:text-black"
             >
               Shop
             </Link>
@@ -83,13 +125,7 @@ function Navbar() {
                 render={
                   <button
                     type="button"
-                    className="
-          text-sm font-medium
-          text-gray-700
-          transition-
-          hover:text-black
-           duration-300 ease-in-out hover:scale-110
-        "
+                    className="text-sm font-medium text-gray-700 transition duration-300 ease-in-out hover:scale-110 hover:text-black"
                   />
                 }
               >
@@ -98,137 +134,57 @@ function Navbar() {
 
               <DropdownMenuContent
                 align="center"
-                className="w-48 border-white/30 bg-white/40 shadow-lg backdrop-blur-md "
+                className="w-48 border-white/30 bg-white/90 shadow-lg backdrop-blur-md"
               >
-                <DropdownMenuItem
-                  onClick={() => handleCategorySelect("Fashion")}
-                  className="transition-all duration-300 ease-in-out hover:scale-105 hover:font-semibold"
-                >
-                  Fashion
-                </DropdownMenuItem>
-
-                <DropdownMenuItem
-                  onClick={() => handleCategorySelect("Electronics")}
-                  className="transition-all duration-300 ease-in-out hover:scale-105 hover:font-semibold"
-                >
-                  Electronics
-                </DropdownMenuItem>
-
-                <DropdownMenuItem
-                  onClick={() => handleCategorySelect("Home")}
-                  className="transition-all duration-300 ease-in-out hover:scale-105 hover:font-semibold"
-                >
-                  Home
-                </DropdownMenuItem>
-
-                <DropdownMenuItem
-                  onClick={() => handleCategorySelect("Stationery")}
-                  className="transition-all duration-300 ease-in-out hover:scale-105 hover:font-semibold"
-                >
-                  Stationery
-                </DropdownMenuItem>
-
-                <DropdownMenuItem
-                  onClick={() => handleCategorySelect("Fitness")}
-                  className="transition-all duration-300 ease-in-out hover:scale-105 hover:font-semibold"
-                >
-                  Fitness
-                </DropdownMenuItem>
+                {categories.map((category) => (
+                  <DropdownMenuItem
+                    key={category}
+                    onClick={() => handleCategorySelect(category)}
+                    className="transition-all duration-300 ease-in-out hover:scale-105 hover:font-semibold"
+                  >
+                    {category}
+                  </DropdownMenuItem>
+                ))}
               </DropdownMenuContent>
             </DropdownMenu>
 
             <Link
               to="/deals"
-              className="text-sm font-medium text-gray-700 hover:text-black transition-transform duration-300 ease-in-out hover:scale-110"
+              className="text-sm font-medium text-gray-700 transition-transform duration-300 ease-in-out hover:scale-110 hover:text-black"
             >
               Deals
             </Link>
           </div>
 
-          {/* Actions */}
+          {/* Right-side actions */}
           <div className="flex items-center gap-1">
             {/* Search */}
             <form
-              onSubmit={(e) => {
-                e.preventDefault();
-
-                const query = search.trim();
-
-                if (!query) return;
-
-                const params = new URLSearchParams(location.search);
-
-                params.set("search", query);
-
-                navigate(`/products?${params.toString()}`);
-
-                setSearch("");
-              }}
-              className="
-    group
-    flex h-10
-    w-10
-    items-center
-    rounded-full
-    border border-transparent
-    bg-transparent
-    transition-all duration-500
-    hover:w-56
-    hover:border-gray-300
-    hover:bg-white
-    focus-within:w-56
-    focus-within:border-gray-300
-    focus-within:bg-white
-  "
+              onSubmit={handleSearch}
+              className="group flex h-10 w-10 items-center rounded-full border border-transparent bg-transparent transition-all duration-500 hover:w-56 hover:border-gray-300 hover:bg-white focus-within:w-56 focus-within:border-gray-300 focus-within:bg-white"
             >
-              {/* Search Icon */}
               <button
                 type="submit"
-                aria-label="Search"
-                className="
-      flex h-10 w-10
-      shrink-0
-      items-center justify-center
-      rounded-full
-      transition-colors
-      hover:bg-gray-100
-    "
+                aria-label="Search products"
+                className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full transition-colors hover:bg-gray-100"
               >
                 <Search className="h-5 w-5 text-[#1D1D1F]" />
               </button>
 
-              {/* Search Input */}
               <Input
                 type="search"
                 placeholder="Search products..."
                 value={search}
-                onChange={(e) => setSearch(e.target.value)}
-                className="
-      h-10
-      min-w-0
-      flex-1
-      border-0
-      bg-transparent
-      px-0
-      opacity-0
-      transition-all duration-300
-
-      group-hover:px-3
-      group-focus-within:px-3
-
-      group-hover:opacity-100
-      group-focus-within:opacity-100
-
-      focus-visible:ring-0
-      focus-visible:ring-offset-0
-    "
+                onChange={(event) => setSearch(event.target.value)}
+                className="h-10 min-w-0 flex-1 border-0 bg-transparent px-0 opacity-0 transition-all duration-300 group-hover:px-3 group-focus-within:px-3 group-hover:opacity-100 group-focus-within:opacity-100 focus-visible:ring-0 focus-visible:ring-offset-0"
               />
             </form>
 
             {/* Wishlist */}
             <Link
               to="/wishlist"
-              className="relative rounded-full p-2.5 hover:bg-gray-100/30 transition-transform duration-300 ease-in-out hover:scale-115"
+              aria-label={`Wishlist${wishListCount ? `, ${wishListCount} items` : ""}`}
+              className="relative rounded-full p-2.5 transition-transform duration-300 ease-in-out hover:scale-110 hover:bg-gray-100/30"
             >
               <Heart className="h-5 w-5" />
 
@@ -242,7 +198,8 @@ function Navbar() {
             {/* Cart */}
             <Link
               to="/cart"
-              className="relative rounded-full p-2.5  hover:bg-gray-100/30 transition-transform duration-300 ease-in-out hover:scale-110"
+              aria-label={`Shopping cart${cartCount ? `, ${cartCount} items` : ""}`}
+              className="relative rounded-full p-2.5 transition-transform duration-300 ease-in-out hover:scale-110 hover:bg-gray-100/30"
             >
               <ShoppingCart className="h-5 w-5" />
 
@@ -253,59 +210,74 @@ function Navbar() {
               )}
             </Link>
 
-            {/* User */}
-            {/* <button
-              className="rounded-full p-2.5 transition hover:bg-gray-100"
-              aria-label="Account"
-            >
-              <User className="h-5 w-5" />
-            </button> */}
-            <Show when="signed-in">
-              <UserButton>
-                <UserButton.MenuItems>
-                  <UserButton.Link
-                    label="My Cart"
-                    labelIcon={<ShoppingCart className="h-4 w-4" />}
-                    href="/cart"
-                  />
+            {/* Desktop account menu */}
+            {isAuthenticated ? (
+              <DropdownMenu>
+                <DropdownMenuTrigger
+                  render={
+                    <button
+                      type="button"
+                      aria-label="Account menu"
+                      className="flex max-w-40 items-center gap-2 rounded-full p-2 transition hover:bg-gray-100"
+                    />
+                  }
+                >
+                  <UserRound className="h-5 w-5 shrink-0" />
+                  <span className="hidden truncate text-sm sm:inline">
+                    {user?.name || "Account"}
+                  </span>
+                </DropdownMenuTrigger>
 
-                  <UserButton.Link
-                    label="My Orders"
-                    labelIcon={<Package className="h-4 w-4" />}
-                    href="/orders"
-                  />
+                <DropdownMenuContent align="end" className="w-52">
+                  <DropdownMenuItem onClick={() => navigate("/profile")}>
+                    <UserRound className="mr-2 h-4 w-4" />
+                    My Profile
+                  </DropdownMenuItem>
 
-                  <UserButton.Link
-                    label="Wishlist"
-                    labelIcon={<Heart className="h-4 w-4" />}
-                    href="/wishlist"
-                  />
+                  <DropdownMenuItem onClick={() => navigate("/orders")}>
+                    <Package className="mr-2 h-4 w-4" />
+                    My Orders
+                  </DropdownMenuItem>
 
-                  <UserButton.Link
-                    label="Addresses"
-                    labelIcon={<MapPin className="h-4 w-4" />}
-                    href="/addresses"
-                  />
-                </UserButton.MenuItems>
-              </UserButton>
-            </Show>
-            <Show when="signed-out">
+                  <DropdownMenuItem onClick={() => navigate("/addresses")}>
+                    <MapPin className="mr-2 h-4 w-4" />
+                    Addresses
+                  </DropdownMenuItem>
+
+                  <DropdownMenuItem onClick={() => navigate("/wishlist")}>
+                    <Heart className="mr-2 h-4 w-4" />
+                    Wishlist
+                  </DropdownMenuItem>
+
+                  <DropdownMenuItem onClick={() => navigate("/cart")}>
+                    <ShoppingCart className="mr-2 h-4 w-4" />
+                    My Cart
+                  </DropdownMenuItem>
+
+                  <DropdownMenuItem onClick={handleLogout}>
+                    <LogOut className="mr-2 h-4 w-4" />
+                    Sign out
+                  </DropdownMenuItem>
+                </DropdownMenuContent>
+              </DropdownMenu>
+            ) : (
               <Link
                 to="/login"
                 className="rounded-full bg-black px-4 py-2 text-sm font-medium text-white transition hover:bg-gray-800"
               >
                 Sign In
               </Link>
-            </Show>
+            )}
           </div>
         </nav>
 
+        {/* Mobile navigation */}
         {isMenuOpen && (
           <div className="mt-2 rounded-2xl border border-black/5 bg-white p-4 shadow-sm md:hidden">
             <div className="flex flex-col gap-1">
               <Link
                 to="/"
-                onClick={() => setIsMenuOpen(false)}
+                onClick={closeMobileMenu}
                 className="rounded-xl px-4 py-3 text-sm font-medium hover:bg-gray-100"
               >
                 Home
@@ -313,27 +285,106 @@ function Navbar() {
 
               <Link
                 to="/products"
-                onClick={() => setIsMenuOpen(false)}
+                onClick={closeMobileMenu}
                 className="rounded-xl px-4 py-3 text-sm font-medium hover:bg-gray-100"
               >
                 Shop
               </Link>
 
-              <Link
-                to="/products"
-                onClick={() => setIsMenuOpen(false)}
-                className="rounded-xl px-4 py-3 text-sm font-medium hover:bg-gray-100"
-              >
+              <p className="px-4 pb-1 pt-3 text-xs font-semibold uppercase tracking-wider text-gray-500">
                 Categories
-              </Link>
+              </p>
+
+              {categories.map((category) => (
+                <button
+                  key={category}
+                  type="button"
+                  onClick={() => handleCategorySelect(category)}
+                  className="rounded-xl px-4 py-3 text-left text-sm font-medium hover:bg-gray-100"
+                >
+                  {category}
+                </button>
+              ))}
 
               <Link
-                to="/products"
-                onClick={() => setIsMenuOpen(false)}
+                to="/deals"
+                onClick={closeMobileMenu}
                 className="rounded-xl px-4 py-3 text-sm font-medium hover:bg-gray-100"
               >
                 Deals
               </Link>
+
+              {isAuthenticated ? (
+                <>
+                  <div className="my-2 border-t border-gray-100" />
+
+                  <p className="px-4 py-2 text-sm text-gray-500">
+                    Signed in as {user?.name || user?.email || "User"}
+                  </p>
+
+                  <Link
+                    to="/profile"
+                    onClick={closeMobileMenu}
+                    className="flex items-center gap-3 rounded-xl px-4 py-3 text-sm font-medium hover:bg-gray-100"
+                  >
+                    <UserRound className="h-4 w-4" />
+                    My Profile
+                  </Link>
+
+                  <Link
+                    to="/orders"
+                    onClick={closeMobileMenu}
+                    className="flex items-center gap-3 rounded-xl px-4 py-3 text-sm font-medium hover:bg-gray-100"
+                  >
+                    <Package className="h-4 w-4" />
+                    My Orders
+                  </Link>
+
+                  <Link
+                    to="/addresses"
+                    onClick={closeMobileMenu}
+                    className="flex items-center gap-3 rounded-xl px-4 py-3 text-sm font-medium hover:bg-gray-100"
+                  >
+                    <MapPin className="h-4 w-4" />
+                    Addresses
+                  </Link>
+
+                  <Link
+                    to="/wishlist"
+                    onClick={closeMobileMenu}
+                    className="flex items-center gap-3 rounded-xl px-4 py-3 text-sm font-medium hover:bg-gray-100"
+                  >
+                    <Heart className="h-4 w-4" />
+                    Wishlist
+                  </Link>
+
+                  <Link
+                    to="/cart"
+                    onClick={closeMobileMenu}
+                    className="flex items-center gap-3 rounded-xl px-4 py-3 text-sm font-medium hover:bg-gray-100"
+                  >
+                    <ShoppingCart className="h-4 w-4" />
+                    My Cart
+                  </Link>
+
+                  <button
+                    type="button"
+                    onClick={handleLogout}
+                    className="flex items-center gap-3 rounded-xl px-4 py-3 text-left text-sm font-medium text-red-600 hover:bg-red-50"
+                  >
+                    <LogOut className="h-4 w-4" />
+                    Sign out
+                  </button>
+                </>
+              ) : (
+                <Link
+                  to="/login"
+                  onClick={closeMobileMenu}
+                  className="mt-2 rounded-xl bg-black px-4 py-3 text-center text-sm font-medium text-white hover:bg-gray-800"
+                >
+                  Sign In
+                </Link>
+              )}
             </div>
           </div>
         )}

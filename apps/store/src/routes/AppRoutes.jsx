@@ -1,4 +1,5 @@
 import Deals from "@/pages/Deals";
+import Profile from "@/pages/Profile";
 import ProtectedRoute from "../components/ProtectedRoute";
 import Addresses from "../pages/Addresses";
 import Cart from "../pages/Cart";
@@ -39,7 +40,7 @@ function AppRoutes() {
         <Route path="/order-success/:id" element={<OrderSuccess />} />
         <Route path="/orders" element={<Orders />} />
         <Route path="/orders/:id" element={<OrderDetails />} />
-        <Route path="/profile" element={<div>Profile</div>} />
+        <Route path="/profile" element={<Profile />} />
       </Route>
     </Routes>
   );

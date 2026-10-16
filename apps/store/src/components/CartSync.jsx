@@ -1,7 +1,6 @@
-import { useUser } from "@clerk/react";
 import { useEffect, useRef } from "react";
 import { useDispatch, useSelector } from "react-redux";
-
+import { useAuthContext } from "../context/AuthContext";
 import { setCart } from "../redux/slices/cartSlice";
 import {
   createUserCart,
@@ -10,7 +9,7 @@ import {
 } from "../services/cartServices";
 
 function CartSync() {
-  const { user, isLoaded } = useUser();
+  const { user, isLoading } = useAuthContext();
   const dispatch = useDispatch();
 
   const items = useSelector((state) => state.cart.items);
@@ -18,82 +17,81 @@ function CartSync() {
 
   const isCartLoaded = useRef(false);
   const previousItems = useRef(null);
+  const activeUserId = user?.userId || user?.id || null;
 
-  // Load user's cart
   useEffect(() => {
-    if (!isLoaded) return;
+    if (isLoading) return;
 
-    const loadCart = async () => {
+    let cancelled = false;
+
+    async function loadCart() {
       isCartLoaded.current = false;
 
-      if (!user) {
-        dispatch(
-          setCart({
-            items: [],
-            cartId: null,
-          }),
-        );
-
-        isCartLoaded.current = true;
+      if (!activeUserId) {
+        dispatch(setCart({ items: [], cartId: null }));
         previousItems.current = [];
+        isCartLoaded.current = true;
         return;
       }
 
       try {
-        const cart = await getUserCart(user.id);
+        const cart = await getUserCart(activeUserId);
+
+        if (cancelled) return;
 
         if (cart) {
           dispatch(
             setCart({
-              items: cart.items,
+              items: cart.items || [],
               cartId: cart.id,
             }),
           );
-
-          previousItems.current = cart.items;
+          previousItems.current = cart.items || [];
         } else {
-          const newCart = await createUserCart(user.id, []);
+          const newCart = await createUserCart(activeUserId, []);
+
+          if (cancelled) return;
 
           dispatch(
             setCart({
-              items: newCart.items,
+              items: newCart.items || [],
               cartId: newCart.id,
             }),
           );
-
-          previousItems.current = newCart.items;
+          previousItems.current = newCart.items || [];
         }
 
         isCartLoaded.current = true;
       } catch (error) {
         console.error("Failed to load cart:", error);
       }
-    };
+    }
 
     loadCart();
-  }, [user, isLoaded, dispatch]);
 
-  // Save cart when the user actually changes it
+    return () => {
+      cancelled = true;
+    };
+  }, [activeUserId, isLoading, dispatch]);
+
   useEffect(() => {
-    if (!isCartLoaded.current || !user || !cartId) return;
+    if (!isCartLoaded.current || !activeUserId || !cartId) return;
 
-    // Don't save if items haven't actually changed
     if (JSON.stringify(previousItems.current) === JSON.stringify(items)) {
       return;
     }
 
-    const saveCart = async () => {
+    async function saveCart() {
       try {
         await updateUserCart(cartId, items);
-
         previousItems.current = items;
       } catch (error) {
         console.error("Failed to save cart:", error);
       }
-    };
+    }
 
     saveCart();
-  }, [items, cartId, user]);
+  }, [items, cartId, activeUserId]);
 
   return null;
 }

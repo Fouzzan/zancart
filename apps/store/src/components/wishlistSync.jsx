@@ -1,7 +1,6 @@
-import { useUser } from "@clerk/react";
 import { useEffect, useRef } from "react";
 import { useDispatch, useSelector } from "react-redux";
-
+import { useAuthContext } from "../context/AuthContext";
 import { setWishlist } from "../redux/slices/wishlistSlice";
 import {
   createUserWishlist,
@@ -10,92 +9,77 @@ import {
 } from "../services/wishlistServices";
 
 function WishlistSync() {
-  const { user, isLoaded } = useUser();
+  const { user, isLoading } = useAuthContext();
   const dispatch = useDispatch();
 
   const items = useSelector((state) => state.wishlist.items);
   const wishlistId = useSelector((state) => state.wishlist.wishlistId);
 
-  const isWishlistLoaded = useRef(false);
-  const previousItems = useRef(null);
+  const userId = user?.userId || user?.id || null;
+  const loadedForUser = useRef(null);
 
-  // Load wishlist when user logs in
   useEffect(() => {
-    if (!isLoaded) return;
+    if (isLoading) return;
 
-    const loadWishlist = async () => {
-      isWishlistLoaded.current = false;
+    let cancelled = false;
 
-      if (!user) {
-        dispatch(
-          setWishlist({
-            items: [],
-            wishlistId: null,
-          }),
-        );
+    async function loadWishlist() {
+      loadedForUser.current = null;
 
-        isWishlistLoaded.current = true;
-        previousItems.current = [];
-
+      if (!userId) {
+        dispatch(setWishlist({ items: [], wishlistId: null }));
         return;
       }
 
       try {
-        const wishlist = await getUserWishlist(user.id);
+        let wishlist = await getUserWishlist(userId);
 
-        if (wishlist) {
-          dispatch(
-            setWishlist({
-              items: wishlist.items,
-              wishlistId: wishlist.id,
-            }),
-          );
-
-          previousItems.current = wishlist.items;
-        } else {
-          const newWishlist = await createUserWishlist(user.id, []);
-
-          dispatch(
-            setWishlist({
-              items: newWishlist.items,
-              wishlistId: newWishlist.id,
-            }),
-          );
-
-          previousItems.current = newWishlist.items;
+        if (!wishlist) {
+          wishlist = await createUserWishlist(userId, []);
         }
 
-        isWishlistLoaded.current = true;
+        if (cancelled) return;
+
+        dispatch(
+          setWishlist({
+            items: wishlist.items || [],
+            wishlistId: wishlist.id,
+          }),
+        );
+
+        loadedForUser.current = userId;
       } catch (error) {
         console.error("Failed to load wishlist:", error);
       }
-    };
+    }
 
     loadWishlist();
-  }, [user, isLoaded, dispatch]);
 
-  // Save wishlist whenever items change
+    return () => {
+      cancelled = true;
+    };
+  }, [userId, isLoading, dispatch]);
+
   useEffect(() => {
-    if (!isWishlistLoaded.current || !user || !wishlistId) {
+    if (
+      isLoading ||
+      !userId ||
+      !wishlistId ||
+      loadedForUser.current !== userId
+    ) {
       return;
     }
 
-    if (JSON.stringify(previousItems.current) === JSON.stringify(items)) {
-      return;
-    }
-
-    const saveWishlist = async () => {
+    const timeout = setTimeout(async () => {
       try {
         await updateUserWishlist(wishlistId, items);
-
-        previousItems.current = items;
       } catch (error) {
         console.error("Failed to save wishlist:", error);
       }
-    };
+    }, 300);
 
-    saveWishlist();
-  }, [items, wishlistId, user]);
+    return () => clearTimeout(timeout);
+  }, [items, wishlistId, userId, isLoading]);
 
   return null;
 }

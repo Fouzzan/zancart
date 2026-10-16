@@ -72,6 +72,10 @@ const authSlice = createSlice({
     clearAuthError: (state) => {
       state.error = null;
     },
+    updateAdmin: (state, action) => {
+      state.admin = action.payload;
+      localStorage.setItem("adminUser", JSON.stringify(action.payload));
+    },
 
     // Restore admin from localStorage
     restoreAuth: (state) => {
@@ -97,6 +101,7 @@ export const {
   loginFailure,
   logout,
   clearAuthError,
+  updateAdmin,
   restoreAuth,
 } = authSlice.actions;
 

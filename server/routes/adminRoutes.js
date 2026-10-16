@@ -2,6 +2,7 @@ import express from "express";
 
 import {
   changeUserPassword,
+  changeOwnPassword,
   createCustomerByAdmin,
   getAllAuthUsers,
   getAuthServiceErrorStatus,
@@ -9,6 +10,7 @@ import {
   getUserById,
   updateUserRole,
   updateUserBlockedStatus,
+  updateOwnProfile,
 } from "../services/authService.js";
 
 import { requireAdmin } from "../middleware/requireAdmin.js";
@@ -18,6 +20,36 @@ import {
 } from "../services/cloudinaryService.js";
 
 const router = express.Router();
+
+router.get("/profile", requireAuth, requireAdmin, async (req, res) => {
+  try {
+    const user = await getUserById(req.user.userId);
+    if (!user) return res.status(404).json({ success: false, message: "User not found." });
+    return res.json({ success: true, user });
+  } catch (error) {
+    return res.status(500).json({ success: false, message: "Failed to fetch profile." });
+  }
+});
+
+router.patch("/profile", requireAuth, requireAdmin, async (req, res) => {
+  try {
+    const user = await updateOwnProfile(req.user.userId, req.body);
+    return res.json({ success: true, message: "Profile updated successfully.", user });
+  } catch (error) {
+    const status = getAuthServiceErrorStatus(error);
+    return res.status(status).json({ success: false, message: error.message || "Failed to update profile." });
+  }
+});
+
+router.patch("/profile/password", requireAuth, requireAdmin, async (req, res) => {
+  try {
+    await changeOwnPassword(req.user.userId, req.body?.currentPassword, req.body?.newPassword);
+    return res.json({ success: true, message: "Password changed successfully." });
+  } catch (error) {
+    const status = error.message === "Current password is incorrect." ? 400 : getAuthServiceErrorStatus(error);
+    return res.status(status).json({ success: false, message: error.message || "Failed to change password." });
+  }
+});
 
 /*
 |--------------------------------------------------------------------------

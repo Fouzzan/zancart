@@ -11,21 +11,24 @@ import {
 } from "@/components/ui/alert-dialog";
 import { Button } from "@/components/ui/button";
 import { Textarea } from "@/components/ui/textarea";
-import { useUser } from "@clerk/react";
 import { Star, Trash2 } from "lucide-react";
 import { useEffect, useState } from "react";
 import { toast } from "sonner";
+import { useAuthContext } from "../context/AuthContext";
 import {
   createReview,
   deleteReview,
   getProductReviews,
   updateReview,
 } from "../services/reviewServices";
-
 import { getUserOrders } from "../services/orderServices";
 
 function ReviewSection({ productId }) {
-  const { user, isLoaded } = useUser();
+  const { user, isLoading } = useAuthContext();
+
+  // Prefer the legacy userId when available to preserve existing records.
+  const userId = user?.userId || user?.id || null;
+  const userName = user?.name || user?.firstName || "Anonymous";
 
   const [reviews, setReviews] = useState([]);
   const [rating, setRating] = useState(0);
@@ -39,40 +42,60 @@ function ReviewSection({ productId }) {
   const [editComment, setEditComment] = useState("");
   const [updating, setUpdating] = useState(false);
 
-  // Fetch reviews
+  // Fetch reviews and identify the current user's review.
   useEffect(() => {
-    const fetchReviews = async () => {
+    let cancelled = false;
+
+    async function fetchReviews() {
       try {
         setLoading(true);
 
         const data = await getProductReviews(productId);
 
+        if (cancelled) return;
+
         setReviews(data);
 
-        if (user) {
-          const userReview = data.find((review) => review.userId === user.id);
+        const userReview = userId
+          ? data.find((review) => String(review.userId) === String(userId))
+          : null;
 
-          setExistingReview(userReview || null);
-        }
+        setExistingReview(userReview || null);
       } catch (error) {
         console.error("Failed to fetch reviews:", error);
+        if (!cancelled) {
+          toast.error("Failed to load product reviews.");
+        }
       } finally {
-        setLoading(false);
+        if (!cancelled) {
+          setLoading(false);
+        }
       }
-    };
+    }
 
     fetchReviews();
-  }, [productId, user]);
 
+    return () => {
+      cancelled = true;
+    };
+  }, [productId, userId]);
+
+  // Check whether the current user purchased this product.
   useEffect(() => {
-    if (!isLoaded || !user) return;
+    let cancelled = false;
 
-    const checkPurchase = async () => {
+    async function checkPurchase() {
+      setHasPurchased(false);
+
+      if (isLoading || !userId) return;
+
       try {
-        const orders = await getUserOrders(user.id);
+        const orders = await getUserOrders(userId);
+
+        if (cancelled) return;
 
         const purchased = orders.some((order) =>
-          order.items.some(
+          (order.items || []).some(
             (item) => String(item.productId) === String(productId),
           ),
         );
@@ -81,25 +104,35 @@ function ReviewSection({ productId }) {
       } catch (error) {
         console.error("Failed to check purchase history:", error);
       }
-    };
+    }
 
     checkPurchase();
-  }, [user, isLoaded, productId]);
 
-  // Calculate average rating
+    return () => {
+      cancelled = true;
+    };
+  }, [userId, isLoading, productId]);
+
   const averageRating =
     reviews.length > 0
       ? (
-          reviews.reduce((total, review) => total + review.rating, 0) /
-          reviews.length
+          reviews.reduce(
+            (total, review) => total + Number(review.rating || 0),
+            0,
+          ) / reviews.length
         ).toFixed(1)
       : "0.0";
 
-  const handleSubmit = async (e) => {
-    e.preventDefault();
+  const handleSubmit = async (event) => {
+    event.preventDefault();
 
-    if (!user) {
+    if (isLoading || !userId) {
       toast.error("Please log in to submit a review.");
+      return;
+    }
+
+    if (!hasPurchased) {
+      toast.error("You can review products you have purchased.");
       return;
     }
 
@@ -108,7 +141,7 @@ function ReviewSection({ productId }) {
       return;
     }
 
-    if (rating === 0) {
+    if (rating < 1 || rating > 5) {
       toast.error("Please select a rating.");
       return;
     }
@@ -123,8 +156,8 @@ function ReviewSection({ productId }) {
 
       const newReview = {
         productId: String(productId),
-        userId: user.id,
-        userName: user.fullName || user.firstName || "Anonymous",
+        userId,
+        userName,
         rating,
         comment: comment.trim(),
         createdAt: new Date().toISOString(),
@@ -132,20 +165,18 @@ function ReviewSection({ productId }) {
 
       const createdReview = await createReview(newReview);
 
-      // Add the newly created review locally.
-      setReviews((prev) => [...prev, createdReview]);
-
+      setReviews((previous) => [...previous, createdReview]);
       setExistingReview(createdReview);
-
       setRating(0);
       setComment("");
 
       toast.success("Review submitted successfully.");
     } catch (error) {
       console.error("Failed to create review:", error);
-
       toast.error(
-        error.message || "Failed to submit review. Please try again.",
+        error.response?.data?.message ||
+          error.message ||
+          "Failed to submit review. Please try again.",
       );
     } finally {
       setSubmitting(false);
@@ -153,21 +184,23 @@ function ReviewSection({ productId }) {
   };
 
   const handleEdit = () => {
+    if (!existingReview) return;
+
     setEditRating(existingReview.rating);
     setEditComment(existingReview.comment);
     setEditing(true);
   };
 
-  const handleUpdate = async (e) => {
-    e.preventDefault();
+  const handleUpdate = async (event) => {
+    event.preventDefault();
 
-    if (editRating === 0) {
-      alert("Please select a rating.");
+    if (editRating < 1 || editRating > 5) {
+      toast.error("Please select a rating.");
       return;
     }
 
     if (!editComment.trim()) {
-      alert("Please write a review.");
+      toast.error("Please write a review.");
       return;
     }
 
@@ -179,9 +212,11 @@ function ReviewSection({ productId }) {
         comment: editComment.trim(),
       });
 
-      setReviews((prev) =>
-        prev.map((review) =>
-          review.id === updatedReview.id ? updatedReview : review,
+      setReviews((previous) =>
+        previous.map((review) =>
+          String(review.id) === String(updatedReview.id)
+            ? updatedReview
+            : review,
         ),
       );
 
@@ -201,9 +236,13 @@ function ReviewSection({ productId }) {
     try {
       await deleteReview(reviewId);
 
-      setReviews((prev) => prev.filter((review) => review.id !== reviewId));
+      setReviews((previous) =>
+        previous.filter((review) => String(review.id) !== String(reviewId)),
+      );
 
       setExistingReview(null);
+      setEditing(false);
+
       toast.success("Review deleted successfully.");
     } catch (error) {
       console.error("Failed to delete review:", error);
@@ -211,7 +250,7 @@ function ReviewSection({ productId }) {
     }
   };
 
-  if (!isLoaded || loading) {
+  if (isLoading || loading) {
     return (
       <section className="mt-12 border-t pt-10">
         <p className="text-muted-foreground">Loading reviews...</p>
@@ -228,7 +267,6 @@ function ReviewSection({ productId }) {
         <div className="mt-3 flex items-center gap-3">
           <div className="flex items-center gap-1">
             <Star className="h-5 w-5 fill-current" />
-
             <span className="font-semibold">{averageRating}</span>
           </div>
 
@@ -246,7 +284,6 @@ function ReviewSection({ productId }) {
         >
           <h3 className="text-lg font-semibold">Write a Review</h3>
 
-          {/* Rating */}
           <div className="mt-5">
             <p className="mb-2 text-sm font-medium">Your Rating</p>
 
@@ -255,6 +292,8 @@ function ReviewSection({ productId }) {
                 <button
                   key={value}
                   type="button"
+                  aria-label={`Rate ${value} out of 5`}
+                  aria-pressed={value === rating}
                   onClick={() => setRating(value)}
                   className="rounded-md p-1 transition hover:scale-110"
                 >
@@ -268,13 +307,13 @@ function ReviewSection({ productId }) {
             </div>
           </div>
 
-          {/* Comment */}
           <div className="mt-5">
             <Textarea
               placeholder="Share your experience with this product..."
               value={comment}
-              onChange={(e) => setComment(e.target.value)}
+              onChange={(event) => setComment(event.target.value)}
               rows={4}
+              maxLength={2000}
             />
           </div>
 
@@ -291,7 +330,6 @@ function ReviewSection({ productId }) {
       {user && existingReview && (
         <div className="mb-10 rounded-2xl border p-5">
           <p className="font-medium">You have already reviewed this product.</p>
-
           <p className="mt-1 text-sm text-muted-foreground">
             You can edit your review below.
           </p>
@@ -307,136 +345,143 @@ function ReviewSection({ productId }) {
             </p>
           </div>
         ) : (
-          reviews.map((review) => (
-            <div key={review.id} className="rounded-2xl border p-5">
-              <div className="flex items-start justify-between gap-4">
-                <div>
-                  <p className="font-semibold">{review.userName}</p>
+          reviews.map((review) => {
+            const isOwnReview =
+              Boolean(userId) && String(review.userId) === String(userId);
 
-                  <div className="mt-1 flex gap-1">
-                    {[1, 2, 3, 4, 5].map((value) => (
-                      <Star
-                        key={value}
-                        className={`h-4 w-4 ${
-                          value <= review.rating ? "fill-current" : ""
-                        }`}
-                      />
-                    ))}
-                  </div>
-                </div>
+            return (
+              <div key={review.id} className="rounded-2xl border p-5">
+                <div className="flex items-start justify-between gap-4">
+                  <div>
+                    <p className="font-semibold">{review.userName}</p>
 
-                {review.userId === user?.id && (
-                  <div className="flex gap-2">
-                    <Button
-                      variant="outline"
-                      size="sm"
-                      onClick={handleEdit}
-                      className="rounded-full"
-                    >
-                      Edit
-                    </Button>
-
-                    <AlertDialog>
-                      <AlertDialogTrigger asChild>
-                        <Button
-                          variant="ghost"
-                          size="icon"
-                          className="rounded-full"
-                        >
-                          <Trash2 className="h-4 w-4" />
-                        </Button>
-                      </AlertDialogTrigger>
-
-                      <AlertDialogContent>
-                        <AlertDialogHeader>
-                          <AlertDialogTitle>
-                            Delete this review?
-                          </AlertDialogTitle>
-
-                          <AlertDialogDescription>
-                            This will permanently delete your review and cannot
-                            be undone.
-                          </AlertDialogDescription>
-                        </AlertDialogHeader>
-
-                        <AlertDialogFooter>
-                          <AlertDialogCancel>Keep Review</AlertDialogCancel>
-
-                          <AlertDialogAction
-                            className="text-red-500 bg-white shadow-lg hover:bg-red-500 hover:text-white"
-                            onClick={() => handleDelete(review.id)}
-                          >
-                            Delete Review
-                          </AlertDialogAction>
-                        </AlertDialogFooter>
-                      </AlertDialogContent>
-                    </AlertDialog>
-                  </div>
-                )}
-              </div>
-
-              {review.userId === user?.id && editing ? (
-                <form onSubmit={handleUpdate} className="mt-4">
-                  {/* Rating */}
-                  <div className="flex gap-1">
-                    {[1, 2, 3, 4, 5].map((value) => (
-                      <button
-                        key={value}
-                        type="button"
-                        onClick={() => setEditRating(value)}
-                        className="rounded-md p-1 transition hover:scale-110"
-                      >
+                    <div className="mt-1 flex gap-1">
+                      {[1, 2, 3, 4, 5].map((value) => (
                         <Star
-                          className={`h-5 w-5 ${
-                            value <= editRating ? "fill-current" : ""
+                          key={value}
+                          className={`h-4 w-4 ${
+                            value <= review.rating ? "fill-current" : ""
                           }`}
                         />
-                      </button>
-                    ))}
+                      ))}
+                    </div>
                   </div>
 
-                  {/* Comment */}
-                  <Textarea
-                    value={editComment}
-                    onChange={(e) => setEditComment(e.target.value)}
-                    rows={4}
-                    className="mt-3"
-                  />
+                  {isOwnReview && (
+                    <div className="flex gap-2">
+                      <Button
+                        type="button"
+                        variant="outline"
+                        size="sm"
+                        onClick={handleEdit}
+                        className="rounded-full"
+                      >
+                        Edit
+                      </Button>
 
-                  <div className="mt-3 flex gap-2">
-                    <Button
-                      type="submit"
-                      disabled={updating}
-                      className="rounded-full"
-                    >
-                      {updating ? "Saving..." : "Save Changes"}
-                    </Button>
+                      <AlertDialog>
+                        <AlertDialogTrigger asChild>
+                          <Button
+                            type="button"
+                            variant="ghost"
+                            size="icon"
+                            aria-label="Delete review"
+                            className="rounded-full"
+                          >
+                            <Trash2 className="h-4 w-4" />
+                          </Button>
+                        </AlertDialogTrigger>
 
-                    <Button
-                      type="button"
-                      variant="outline"
-                      onClick={() => setEditing(false)}
-                      className="rounded-full"
-                    >
-                      Cancel
-                    </Button>
-                  </div>
-                </form>
-              ) : (
-                <p className="mt-4 text-sm leading-6 text-muted-foreground">
-                  {review.comment}
+                        <AlertDialogContent>
+                          <AlertDialogHeader>
+                            <AlertDialogTitle>
+                              Delete this review?
+                            </AlertDialogTitle>
+                            <AlertDialogDescription>
+                              This will permanently delete your review and
+                              cannot be undone.
+                            </AlertDialogDescription>
+                          </AlertDialogHeader>
+
+                          <AlertDialogFooter>
+                            <AlertDialogCancel>Keep Review</AlertDialogCancel>
+                            <AlertDialogAction
+                              className="bg-white text-red-500 shadow-lg hover:bg-red-500 hover:text-white"
+                              onClick={() => handleDelete(review.id)}
+                            >
+                              Delete Review
+                            </AlertDialogAction>
+                          </AlertDialogFooter>
+                        </AlertDialogContent>
+                      </AlertDialog>
+                    </div>
+                  )}
+                </div>
+
+                {isOwnReview && editing ? (
+                  <form onSubmit={handleUpdate} className="mt-4">
+                    <div className="flex gap-1">
+                      {[1, 2, 3, 4, 5].map((value) => (
+                        <button
+                          key={value}
+                          type="button"
+                          aria-label={`Change rating to ${value} out of 5`}
+                          aria-pressed={value === editRating}
+                          onClick={() => setEditRating(value)}
+                          className="rounded-md p-1 transition hover:scale-110"
+                        >
+                          <Star
+                            className={`h-5 w-5 ${
+                              value <= editRating ? "fill-current" : ""
+                            }`}
+                          />
+                        </button>
+                      ))}
+                    </div>
+
+                    <Textarea
+                      value={editComment}
+                      onChange={(event) => setEditComment(event.target.value)}
+                      rows={4}
+                      maxLength={2000}
+                      className="mt-3"
+                    />
+
+                    <div className="mt-3 flex gap-2">
+                      <Button
+                        type="submit"
+                        disabled={updating}
+                        className="rounded-full"
+                      >
+                        {updating ? "Saving..." : "Save Changes"}
+                      </Button>
+
+                      <Button
+                        type="button"
+                        variant="outline"
+                        onClick={() => setEditing(false)}
+                        className="rounded-full"
+                      >
+                        Cancel
+                      </Button>
+                    </div>
+                  </form>
+                ) : (
+                  <p className="mt-4 text-sm leading-6 text-muted-foreground">
+                    {review.comment}
+                  </p>
+                )}
+
+                <p className="mt-3 text-xs text-muted-foreground">
+                  {new Date(review.createdAt).toLocaleDateString("en-IN", {
+                    day: "numeric",
+                    month: "short",
+                    year: "numeric",
+                  })}
                 </p>
-              )}
-
-              <p className="mt-3 text-xs text-muted-foreground">
-                {new Date(review.createdAt).toLocaleDateString("en-IN", {
-                  day: "numeric",
-                  month: "short",
-                  year: "numeric",
-                })}
-              </p>
-            </div>
-          ))
+              </div>
+            );
+          })
         )}
       </div>
     </section>

@@ -6,13 +6,13 @@ import {
   DialogTitle,
 } from "@/components/ui/dialog";
 import { Input } from "@/components/ui/input";
-import { useUser } from "@clerk/react";
 import { ArrowLeft, Pencil, Plus, Star, Trash2 } from "lucide-react";
 import { useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
 import { useNavigate } from "react-router-dom";
 import { toast } from "sonner";
 
+import { useAuthContext } from "../context/AuthContext";
 import {
   createAddress,
   deleteAddress,
@@ -21,8 +21,9 @@ import {
 } from "../services/addressServices";
 
 function Addresses() {
-  const { user, isLoaded } = useUser();
+  const { user, isLoading: isAuthLoading } = useAuthContext();
   const navigate = useNavigate();
+
   const [addresses, setAddresses] = useState([]);
   const [loading, setLoading] = useState(true);
   const [open, setOpen] = useState(false);
@@ -32,30 +33,53 @@ function Addresses() {
     register,
     handleSubmit,
     reset,
-    formState: { errors },
+    formState: { errors, isSubmitting },
   } = useForm();
 
-  // Fetch user's addresses
+  const userId = user?.userId || user?.id;
+
+  // Fetch addresses after authentication has finished loading.
   useEffect(() => {
-    if (!isLoaded || !user) return;
+    if (isAuthLoading) return;
+
+    let cancelled = false;
 
     const fetchAddresses = async () => {
-      try {
-        setLoading(true);
+      if (!userId) {
+        setAddresses([]);
+        setLoading(false);
+        return;
+      }
 
-        const data = await getUserAddresses(user.id);
-        setAddresses(data);
+      setLoading(true);
+
+      try {
+        const data = await getUserAddresses(userId);
+
+        if (!cancelled) {
+          setAddresses(Array.isArray(data) ? data : []);
+        }
       } catch (error) {
         console.error("Failed to fetch addresses:", error);
+
+        if (!cancelled) {
+          toast.error("Failed to load addresses.");
+        }
       } finally {
-        setLoading(false);
+        if (!cancelled) {
+          setLoading(false);
+        }
       }
     };
 
     fetchAddresses();
-  }, [user, isLoaded]);
 
-  // Open Add Address dialog
+    return () => {
+      cancelled = true;
+    };
+  }, [userId, isAuthLoading]);
+
+  // Open Add Address dialog.
   const handleAdd = () => {
     setEditingAddress(null);
 
@@ -70,23 +94,28 @@ function Addresses() {
     setOpen(true);
   };
 
-  // Open Edit Address dialog
+  // Open Edit Address dialog.
   const handleEdit = (address) => {
     setEditingAddress(address);
 
     reset({
-      fullName: address.fullName,
-      phone: address.phone,
-      address: address.address,
-      city: address.city,
-      pinCode: address.pinCode,
+      fullName: address.fullName || "",
+      phone: address.phone || "",
+      address: address.address || "",
+      city: address.city || "",
+      pinCode: address.pinCode || "",
     });
 
     setOpen(true);
   };
 
-  // Add / Edit address
+  // Add or edit an address.
   const onSubmit = async (data) => {
+    if (!userId) {
+      toast.error("Please log in to manage your addresses.");
+      return;
+    }
+
     try {
       if (editingAddress) {
         const updatedAddress = await updateAddress(editingAddress.id, data);
@@ -101,7 +130,7 @@ function Addresses() {
       } else {
         const newAddress = await createAddress({
           ...data,
-          userId: user.id,
+          userId,
           isDefault: addresses.length === 0,
         });
 
@@ -112,12 +141,14 @@ function Addresses() {
 
       setOpen(false);
       reset();
+      setEditingAddress(null);
     } catch (error) {
       console.error("Failed to save address:", error);
+      toast.error(error.response?.data?.message || "Failed to save address.");
     }
   };
 
-  // Delete address
+  // Delete an address.
   const handleDelete = async (addressId) => {
     try {
       await deleteAddress(addressId);
@@ -129,30 +160,31 @@ function Addresses() {
       toast.success("Address deleted successfully.");
     } catch (error) {
       console.error("Failed to delete address:", error);
+      toast.error("Failed to delete address.");
     }
   };
 
-  // Make address default
+  // Make an address the default address.
   const handleSetDefault = async (addressId) => {
     try {
       const updatedAddresses = await Promise.all(
-        addresses.map(async (address) => {
-          const updatedAddress = {
+        addresses.map((address) =>
+          updateAddress(address.id, {
             ...address,
             isDefault: address.id === addressId,
-          };
-
-          return updateAddress(address.id, updatedAddress);
-        }),
+          }),
+        ),
       );
 
       setAddresses(updatedAddresses);
+      toast.success("Default address updated.");
     } catch (error) {
       console.error("Failed to set default address:", error);
+      toast.error("Failed to update the default address.");
     }
   };
 
-  if (!isLoaded || loading) {
+  if (isAuthLoading || loading) {
     return (
       <div className="flex min-h-[60vh] items-center justify-center">
         <p className="text-muted-foreground">Loading addresses...</p>
@@ -176,7 +208,6 @@ function Addresses() {
         <div className="flex items-center justify-between gap-4">
           <div>
             <h1 className="text-3xl font-bold">Address Management</h1>
-
             <p className="mt-2 text-muted-foreground">
               Manage your saved delivery addresses.
             </p>
@@ -190,7 +221,17 @@ function Addresses() {
       </div>
 
       {/* Add / Edit Dialog */}
-      <Dialog open={open} onOpenChange={setOpen}>
+      <Dialog
+        open={open}
+        onOpenChange={(nextOpen) => {
+          setOpen(nextOpen);
+
+          if (!nextOpen) {
+            reset();
+            setEditingAddress(null);
+          }
+        }}
+      >
         <DialogContent className="sm:max-w-lg">
           <DialogHeader>
             <DialogTitle>
@@ -262,7 +303,7 @@ function Addresses() {
               )}
             </div>
 
-            {/* City + PIN */}
+            {/* City and PIN */}
             <div className="grid gap-4 sm:grid-cols-2">
               <div>
                 <label className="mb-2 block text-sm font-medium">City</label>
@@ -305,8 +346,16 @@ function Addresses() {
               </div>
             </div>
 
-            <Button type="submit" className="w-full rounded-full">
-              {editingAddress ? "Save Changes" : "Add Address"}
+            <Button
+              type="submit"
+              className="w-full rounded-full"
+              disabled={isSubmitting}
+            >
+              {isSubmitting
+                ? "Saving..."
+                : editingAddress
+                  ? "Save Changes"
+                  : "Add Address"}
             </Button>
           </form>
         </DialogContent>
@@ -330,7 +379,7 @@ function Addresses() {
         <div className="grid gap-5 sm:grid-cols-2">
           {addresses.map((address) => (
             <div key={address.id} className="rounded-2xl border p-6">
-              {/* Header */}
+              {/* Address Header */}
               <div className="mb-4 flex items-start justify-between gap-3">
                 <div>
                   <h2 className="font-semibold">{address.fullName}</h2>
@@ -344,7 +393,7 @@ function Addresses() {
                 </div>
               </div>
 
-              {/* Address details */}
+              {/* Address Details */}
               <div className="space-y-1 text-sm text-muted-foreground">
                 <p>{address.phone}</p>
                 <p>{address.address}</p>

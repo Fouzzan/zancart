@@ -1,17 +1,6 @@
 {
   "users": [
     {
-      "clerkId": "user_3JJDQcT11Hay732J8WGw6GmiooG",
-      "name": "Fouzan Muhammed KV",
-      "email": "mfouzan961@gmail.com",
-      "imageUrl": "https://img.clerk.com/eyJ0eXBlIjoicHJveHkiLCJzcmMiOiJodHRwczovL2ltYWdlcy5jbGVyay5kZXYvdXBsb2FkZWQvaW1nXzNKb1lpcXVreFkwamhIR2pCTFpnVlRjSEUxOCJ9",
-      "status": "active",
-      "createdAt": "2026-10-03T03:34:18.858Z",
-      "id": "xYpyYYt9DZE",
-      "role": "admin",
-      "isBlocked": false
-    },
-    {
       "clerkId": "user_3JRXi5oydPbuGhpU5Wby7qZJOfW",
       "name": "Fouzan Muhammed KV",
       "email": "fouzanmuhammedkv@gmail.com",
@@ -30,735 +19,6 @@
       "status": "blocked",
       "createdAt": "2026-10-03T04:10:55.646Z",
       "id": "Zmq2mpabzT0"
-    },
-    {
-      "id": "knHFlQiBjhk",
-      "userId": "user_3JJDQcT11Hay732J8WGw6GmiooG",
-      "email": "mfouzan961@gmail.com",
-      "firstName": "Fouzan",
-      "lastName": "Muhammed KV",
-      "name": "Fouzan Muhammed KV",
-      "imageUrl": "https://img.clerk.com/eyJ0eXBlIjoicHJveHkiLCJzcmMiOiJodHRwczovL2ltYWdlcy5jbGVyay5kZXYvdXBsb2FkZWQvaW1nXzNKb1lpcXVreFkwamhIR2pCTFpnVlRjSEUxOCJ9",
-      "status": "active",
-      "isAdmin": false,
-      "createdAt": "2026-10-03T07:23:26.616Z"
-    },
-    {
-      "id": "BsXZ-6U3pE4",
-      "userId": "user_3JJDQcT11Hay732J8WGw6GmiooG",
-      "email": "mfouzan961@gmail.com",
-      "firstName": "Fouzan",
-      "lastName": "Muhammed KV",
-      "name": "Fouzan Muhammed KV",
-      "imageUrl": "https://img.clerk.com/eyJ0eXBlIjoicHJveHkiLCJzcmMiOiJodHRwczovL2ltYWdlcy5jbGVyay5kZXYvdXBsb2FkZWQvaW1nXzNKb1lpcXVreFkwamhIR2pCTFpnVlRjSEUxOCJ9",
-      "status": "active",
-      "isAdmin": false,
-      "createdAt": "2026-10-03T07:23:43.105Z"
-    },
-    {
-      "id": "-Wr0KT-7HzI",
-      "userId": "user_3JJDQcT11Hay732J8WGw6GmiooG",
-      "email": "mfouzan961@gmail.com",
-      "firstName": "Fouzan",
-      "lastName": "Muhammed KV",
-      "name": "Fouzan Muhammed KV",
-      "imageUrl": "https://img.clerk.com/eyJ0eXBlIjoicHJveHkiLCJzcmMiOiJodHRwczovL2ltYWdlcy5jbGVyay5kZXYvdXBsb2FkZWQvaW1nXzNKb1lpcXVreFkwamhIR2pCTFpnVlRjSEUxOCJ9",
-      "status": "active",
-      "isAdmin": false,
-      "createdAt": "2026-10-03T07:24:01.410Z"
-    },
-    {
-      "id": "TbD03icdnzk",
-      "userId": "user_3JJDQcT11Hay732J8WGw6GmiooG",
-      "email": "mfouzan961@gmail.com",
-      "firstName": "Fouzan",
-      "lastName": "Muhammed KV",
-      "name": "Fouzan Muhammed KV",
-      "imageUrl": "https://img.clerk.com/eyJ0eXBlIjoicHJveHkiLCJzcmMiOiJodHRwczovL2ltYWdlcy5jbGVyay5kZXYvdXBsb2FkZWQvaW1nXzNKb1lpcXVreFkwamhIR2pCTFpnVlRjSEUxOCJ9",
-      "status": "active",
-      "isAdmin": false,
-      "createdAt": "2026-10-03T07:26:45.277Z"
-    },
-    {
-      "id": "iyyRhCni2N8",
-      "userId": "user_3JJDQcT11Hay732J8WGw6GmiooG",
-      "email": "mfouzan961@gmail.com",
-      "firstName": "Fouzan",
-      "lastName": "Muhammed KV",
-      "name": "Fouzan Muhammed KV",
-      "imageUrl": "https://img.clerk.com/eyJ0eXBlIjoicHJveHkiLCJzcmMiOiJodHRwczovL2ltYWdlcy5jbGVyay5kZXYvdXBsb2FkZWQvaW1nXzNKb1lpcXVreFkwamhIR2pCTFpnVlRjSEUxOCJ9",
-      "status": "active",
-      "isAdmin": false,
-      "createdAt": "2026-10-03T07:34:16.036Z"
-    },
-    {
-      "id": "tDqFenrMhhU",
-      "userId": "user_3JJDQcT11Hay732J8WGw6GmiooG",
-      "email": "mfouzan961@gmail.com",
-      "firstName": "Fouzan",
-      "lastName": "Muhammed KV",
-      "name": "Fouzan Muhammed KV",
-      "imageUrl": "https://img.clerk.com/eyJ0eXBlIjoicHJveHkiLCJzcmMiOiJodHRwczovL2ltYWdlcy5jbGVyay5kZXYvdXBsb2FkZWQvaW1nXzNKb1lpcXVreFkwamhIR2pCTFpnVlRjSEUxOCJ9",
-      "status": "active",
-      "isAdmin": false,
-      "createdAt": "2026-10-03T09:52:58.806Z"
-    },
-    {
-      "id": "rCvyZvj2FDs",
-      "userId": "user_3JJDQcT11Hay732J8WGw6GmiooG",
-      "email": "mfouzan961@gmail.com",
-      "firstName": "Fouzan",
-      "lastName": "Muhammed KV",
-      "name": "Fouzan Muhammed KV",
-      "imageUrl": "https://img.clerk.com/eyJ0eXBlIjoicHJveHkiLCJzcmMiOiJodHRwczovL2ltYWdlcy5jbGVyay5kZXYvdXBsb2FkZWQvaW1nXzNKb1lpcXVreFkwamhIR2pCTFpnVlRjSEUxOCJ9",
-      "status": "active",
-      "isAdmin": false,
-      "createdAt": "2026-10-03T11:20:05.794Z"
-    },
-    {
-      "id": "Ydu3ZOzcsDQ",
-      "userId": "user_3JJDQcT11Hay732J8WGw6GmiooG",
-      "email": "mfouzan961@gmail.com",
-      "firstName": "Fouzan",
-      "lastName": "Muhammed KV",
-      "name": "Fouzan Muhammed KV",
-      "imageUrl": "https://img.clerk.com/eyJ0eXBlIjoicHJveHkiLCJzcmMiOiJodHRwczovL2ltYWdlcy5jbGVyay5kZXYvdXBsb2FkZWQvaW1nXzNKb1lpcXVreFkwamhIR2pCTFpnVlRjSEUxOCJ9",
-      "status": "active",
-      "isAdmin": false,
-      "createdAt": "2026-10-04T01:01:38.851Z"
-    },
-    {
-      "id": "WhfbRscKNrs",
-      "userId": "user_3JJDQcT11Hay732J8WGw6GmiooG",
-      "email": "mfouzan961@gmail.com",
-      "firstName": "Fouzan",
-      "lastName": "Muhammed KV",
-      "name": "Fouzan Muhammed KV",
-      "imageUrl": "https://img.clerk.com/eyJ0eXBlIjoicHJveHkiLCJzcmMiOiJodHRwczovL2ltYWdlcy5jbGVyay5kZXYvdXBsb2FkZWQvaW1nXzNKb1lpcXVreFkwamhIR2pCTFpnVlRjSEUxOCJ9",
-      "status": "active",
-      "isAdmin": false,
-      "createdAt": "2026-10-04T01:38:12.931Z"
-    },
-    {
-      "id": "-6QM1WEkDCQ",
-      "userId": "user_3JJDQcT11Hay732J8WGw6GmiooG",
-      "email": "mfouzan961@gmail.com",
-      "firstName": "Fouzan",
-      "lastName": "Muhammed KV",
-      "name": "Fouzan Muhammed KV",
-      "imageUrl": "https://img.clerk.com/eyJ0eXBlIjoicHJveHkiLCJzcmMiOiJodHRwczovL2ltYWdlcy5jbGVyay5kZXYvdXBsb2FkZWQvaW1nXzNKb1lpcXVreFkwamhIR2pCTFpnVlRjSEUxOCJ9",
-      "status": "active",
-      "isAdmin": false,
-      "createdAt": "2026-10-04T11:54:23.894Z"
-    },
-    {
-      "id": "ljCCPytVq9I",
-      "userId": "user_3JJDQcT11Hay732J8WGw6GmiooG",
-      "email": "mfouzan961@gmail.com",
-      "firstName": "Fouzan",
-      "lastName": "Muhammed KV",
-      "name": "Fouzan Muhammed KV",
-      "imageUrl": "https://img.clerk.com/eyJ0eXBlIjoicHJveHkiLCJzcmMiOiJodHRwczovL2ltYWdlcy5jbGVyay5kZXYvdXBsb2FkZWQvaW1nXzNKb1lpcXVreFkwamhIR2pCTFpnVlRjSEUxOCJ9",
-      "status": "active",
-      "isAdmin": false,
-      "createdAt": "2026-10-04T11:59:11.907Z"
-    },
-    {
-      "id": "F526InD-ty0",
-      "userId": "user_3JJDQcT11Hay732J8WGw6GmiooG",
-      "email": "mfouzan961@gmail.com",
-      "firstName": "Fouzan",
-      "lastName": "Muhammed KV",
-      "name": "Fouzan Muhammed KV",
-      "imageUrl": "https://img.clerk.com/eyJ0eXBlIjoicHJveHkiLCJzcmMiOiJodHRwczovL2ltYWdlcy5jbGVyay5kZXYvdXBsb2FkZWQvaW1nXzNKb1lpcXVreFkwamhIR2pCTFpnVlRjSEUxOCJ9",
-      "status": "active",
-      "isAdmin": false,
-      "createdAt": "2026-10-04T12:00:15.833Z"
-    },
-    {
-      "id": "5JpPswTfXHg",
-      "userId": "user_3JJDQcT11Hay732J8WGw6GmiooG",
-      "email": "mfouzan961@gmail.com",
-      "firstName": "Fouzan",
-      "lastName": "Muhammed KV",
-      "name": "Fouzan Muhammed KV",
-      "imageUrl": "https://img.clerk.com/eyJ0eXBlIjoicHJveHkiLCJzcmMiOiJodHRwczovL2ltYWdlcy5jbGVyay5kZXYvdXBsb2FkZWQvaW1nXzNKb1lpcXVreFkwamhIR2pCTFpnVlRjSEUxOCJ9",
-      "status": "active",
-      "isAdmin": false,
-      "createdAt": "2026-10-04T12:19:57.073Z"
-    },
-    {
-      "id": "WTLPJwnRmiM",
-      "userId": "user_3JJDQcT11Hay732J8WGw6GmiooG",
-      "email": "mfouzan961@gmail.com",
-      "firstName": "Fouzan",
-      "lastName": "Muhammed KV",
-      "name": "Fouzan Muhammed KV",
-      "imageUrl": "https://img.clerk.com/eyJ0eXBlIjoicHJveHkiLCJzcmMiOiJodHRwczovL2ltYWdlcy5jbGVyay5kZXYvdXBsb2FkZWQvaW1nXzNKb1lpcXVreFkwamhIR2pCTFpnVlRjSEUxOCJ9",
-      "status": "active",
-      "isAdmin": false,
-      "createdAt": "2026-10-04T12:20:54.993Z"
-    },
-    {
-      "id": "CNIMbJib-V4",
-      "userId": "user_3JJDQcT11Hay732J8WGw6GmiooG",
-      "email": "mfouzan961@gmail.com",
-      "firstName": "Fouzan",
-      "lastName": "Muhammed KV",
-      "name": "Fouzan Muhammed KV",
-      "imageUrl": "https://img.clerk.com/eyJ0eXBlIjoicHJveHkiLCJzcmMiOiJodHRwczovL2ltYWdlcy5jbGVyay5kZXYvdXBsb2FkZWQvaW1nXzNKb1lpcXVreFkwamhIR2pCTFpnVlRjSEUxOCJ9",
-      "status": "active",
-      "isAdmin": false,
-      "createdAt": "2026-10-04T12:30:02.463Z"
-    },
-    {
-      "id": "5lgPgmM71BY",
-      "userId": "user_3JJDQcT11Hay732J8WGw6GmiooG",
-      "email": "mfouzan961@gmail.com",
-      "firstName": "Fouzan",
-      "lastName": "Muhammed KV",
-      "name": "Fouzan Muhammed KV",
-      "imageUrl": "https://img.clerk.com/eyJ0eXBlIjoicHJveHkiLCJzcmMiOiJodHRwczovL2ltYWdlcy5jbGVyay5kZXYvdXBsb2FkZWQvaW1nXzNKb1lpcXVreFkwamhIR2pCTFpnVlRjSEUxOCJ9",
-      "status": "active",
-      "isAdmin": false,
-      "createdAt": "2026-10-04T12:46:16.419Z"
-    },
-    {
-      "id": "gr_EJNidIvk",
-      "userId": "user_3JJDQcT11Hay732J8WGw6GmiooG",
-      "email": "mfouzan961@gmail.com",
-      "firstName": "Fouzan",
-      "lastName": "Muhammed KV",
-      "name": "Fouzan Muhammed KV",
-      "imageUrl": "https://img.clerk.com/eyJ0eXBlIjoicHJveHkiLCJzcmMiOiJodHRwczovL2ltYWdlcy5jbGVyay5kZXYvdXBsb2FkZWQvaW1nXzNKb1lpcXVreFkwamhIR2pCTFpnVlRjSEUxOCJ9",
-      "status": "active",
-      "isAdmin": false,
-      "createdAt": "2026-10-04T12:49:21.983Z"
-    },
-    {
-      "id": "FHOlwmP19as",
-      "userId": "user_3JJDQcT11Hay732J8WGw6GmiooG",
-      "email": "mfouzan961@gmail.com",
-      "firstName": "Fouzan",
-      "lastName": "Muhammed KV",
-      "name": "Fouzan Muhammed KV",
-      "imageUrl": "https://img.clerk.com/eyJ0eXBlIjoicHJveHkiLCJzcmMiOiJodHRwczovL2ltYWdlcy5jbGVyay5kZXYvdXBsb2FkZWQvaW1nXzNKb1lpcXVreFkwamhIR2pCTFpnVlRjSEUxOCJ9",
-      "status": "active",
-      "isAdmin": false,
-      "createdAt": "2026-10-04T14:39:34.942Z"
-    },
-    {
-      "id": "EBcavigtqRg",
-      "userId": "user_3JJDQcT11Hay732J8WGw6GmiooG",
-      "email": "mfouzan961@gmail.com",
-      "firstName": "Fouzan",
-      "lastName": "Muhammed KV",
-      "name": "Fouzan Muhammed KV",
-      "imageUrl": "https://img.clerk.com/eyJ0eXBlIjoicHJveHkiLCJzcmMiOiJodHRwczovL2ltYWdlcy5jbGVyay5kZXYvdXBsb2FkZWQvaW1nXzNKb1lpcXVreFkwamhIR2pCTFpnVlRjSEUxOCJ9",
-      "status": "active",
-      "isAdmin": false,
-      "createdAt": "2026-10-04T14:44:53.428Z"
-    },
-    {
-      "id": "-y4JtMV4FNU",
-      "userId": "user_3JJDQcT11Hay732J8WGw6GmiooG",
-      "email": "mfouzan961@gmail.com",
-      "firstName": "Fouzan",
-      "lastName": "Muhammed KV",
-      "name": "Fouzan Muhammed KV",
-      "imageUrl": "https://img.clerk.com/eyJ0eXBlIjoicHJveHkiLCJzcmMiOiJodHRwczovL2ltYWdlcy5jbGVyay5kZXYvdXBsb2FkZWQvaW1nXzNKb1lpcXVreFkwamhIR2pCTFpnVlRjSEUxOCJ9",
-      "status": "active",
-      "isAdmin": false,
-      "createdAt": "2026-10-04T15:02:52.252Z"
-    },
-    {
-      "id": "g2M6FesZYOM",
-      "userId": "user_3JJDQcT11Hay732J8WGw6GmiooG",
-      "email": "mfouzan961@gmail.com",
-      "firstName": "Fouzan",
-      "lastName": "Muhammed KV",
-      "name": "Fouzan Muhammed KV",
-      "imageUrl": "https://img.clerk.com/eyJ0eXBlIjoicHJveHkiLCJzcmMiOiJodHRwczovL2ltYWdlcy5jbGVyay5kZXYvdXBsb2FkZWQvaW1nXzNKb1lpcXVreFkwamhIR2pCTFpnVlRjSEUxOCJ9",
-      "status": "active",
-      "isAdmin": false,
-      "createdAt": "2026-10-04T15:05:46.311Z"
-    },
-    {
-      "id": "sSVXQ3wQIDc",
-      "userId": "user_3JJDQcT11Hay732J8WGw6GmiooG",
-      "email": "mfouzan961@gmail.com",
-      "firstName": "Fouzan",
-      "lastName": "Muhammed KV",
-      "name": "Fouzan Muhammed KV",
-      "imageUrl": "https://img.clerk.com/eyJ0eXBlIjoicHJveHkiLCJzcmMiOiJodHRwczovL2ltYWdlcy5jbGVyay5kZXYvdXBsb2FkZWQvaW1nXzNKb1lpcXVreFkwamhIR2pCTFpnVlRjSEUxOCJ9",
-      "status": "active",
-      "isAdmin": false,
-      "createdAt": "2026-10-04T15:10:07.052Z"
-    },
-    {
-      "id": "no62z31zFtM",
-      "userId": "user_3JJDQcT11Hay732J8WGw6GmiooG",
-      "email": "mfouzan961@gmail.com",
-      "firstName": "Fouzan",
-      "lastName": "Muhammed KV",
-      "name": "Fouzan Muhammed KV",
-      "imageUrl": "https://img.clerk.com/eyJ0eXBlIjoicHJveHkiLCJzcmMiOiJodHRwczovL2ltYWdlcy5jbGVyay5kZXYvdXBsb2FkZWQvaW1nXzNKb1lpcXVreFkwamhIR2pCTFpnVlRjSEUxOCJ9",
-      "status": "active",
-      "isAdmin": false,
-      "createdAt": "2026-10-04T15:15:22.738Z"
-    },
-    {
-      "id": "eqerDC5JfMo",
-      "userId": "user_3JJDQcT11Hay732J8WGw6GmiooG",
-      "email": "mfouzan961@gmail.com",
-      "firstName": "Fouzan",
-      "lastName": "Muhammed KV",
-      "name": "Fouzan Muhammed KV",
-      "imageUrl": "https://img.clerk.com/eyJ0eXBlIjoicHJveHkiLCJzcmMiOiJodHRwczovL2ltYWdlcy5jbGVyay5kZXYvdXBsb2FkZWQvaW1nXzNKb1lpcXVreFkwamhIR2pCTFpnVlRjSEUxOCJ9",
-      "status": "active",
-      "isAdmin": false,
-      "createdAt": "2026-10-04T15:16:22.094Z"
-    },
-    {
-      "id": "1y3Or1VW_4Q",
-      "userId": "user_3JJDQcT11Hay732J8WGw6GmiooG",
-      "email": "mfouzan961@gmail.com",
-      "firstName": "Fouzan",
-      "lastName": "Muhammed KV",
-      "name": "Fouzan Muhammed KV",
-      "imageUrl": "https://img.clerk.com/eyJ0eXBlIjoicHJveHkiLCJzcmMiOiJodHRwczovL2ltYWdlcy5jbGVyay5kZXYvdXBsb2FkZWQvaW1nXzNKb1lpcXVreFkwamhIR2pCTFpnVlRjSEUxOCJ9",
-      "status": "active",
-      "isAdmin": false,
-      "createdAt": "2026-10-04T15:26:54.090Z"
-    },
-    {
-      "id": "UuuV-ecs2SA",
-      "userId": "user_3JJDQcT11Hay732J8WGw6GmiooG",
-      "email": "mfouzan961@gmail.com",
-      "firstName": "Fouzan",
-      "lastName": "Muhammed KV",
-      "name": "Fouzan Muhammed KV",
-      "imageUrl": "https://img.clerk.com/eyJ0eXBlIjoicHJveHkiLCJzcmMiOiJodHRwczovL2ltYWdlcy5jbGVyay5kZXYvdXBsb2FkZWQvaW1nXzNKb1lpcXVreFkwamhIR2pCTFpnVlRjSEUxOCJ9",
-      "status": "active",
-      "isAdmin": false,
-      "createdAt": "2026-10-04T15:27:54.026Z"
-    },
-    {
-      "id": "EbDsxsrRXZE",
-      "userId": "user_3JJDQcT11Hay732J8WGw6GmiooG",
-      "email": "mfouzan961@gmail.com",
-      "firstName": "Fouzan",
-      "lastName": "Muhammed KV",
-      "name": "Fouzan Muhammed KV",
-      "imageUrl": "https://img.clerk.com/eyJ0eXBlIjoicHJveHkiLCJzcmMiOiJodHRwczovL2ltYWdlcy5jbGVyay5kZXYvdXBsb2FkZWQvaW1nXzNKb1lpcXVreFkwamhIR2pCTFpnVlRjSEUxOCJ9",
-      "status": "active",
-      "isAdmin": false,
-      "createdAt": "2026-10-04T16:33:08.668Z"
-    },
-    {
-      "id": "N0NKNnOyg94",
-      "userId": "user_3JJDQcT11Hay732J8WGw6GmiooG",
-      "email": "mfouzan961@gmail.com",
-      "firstName": "Fouzan",
-      "lastName": "Muhammed KV",
-      "name": "Fouzan Muhammed KV",
-      "imageUrl": "https://img.clerk.com/eyJ0eXBlIjoicHJveHkiLCJzcmMiOiJodHRwczovL2ltYWdlcy5jbGVyay5kZXYvdXBsb2FkZWQvaW1nXzNKb1lpcXVreFkwamhIR2pCTFpnVlRjSEUxOCJ9",
-      "status": "active",
-      "isAdmin": false,
-      "createdAt": "2026-10-04T16:35:02.134Z"
-    },
-    {
-      "id": "KmUrme_by6o",
-      "userId": "user_3JJDQcT11Hay732J8WGw6GmiooG",
-      "email": "mfouzan961@gmail.com",
-      "firstName": "Fouzan",
-      "lastName": "Muhammed KV",
-      "name": "Fouzan Muhammed KV",
-      "imageUrl": "https://img.clerk.com/eyJ0eXBlIjoicHJveHkiLCJzcmMiOiJodHRwczovL2ltYWdlcy5jbGVyay5kZXYvdXBsb2FkZWQvaW1nXzNKb1lpcXVreFkwamhIR2pCTFpnVlRjSEUxOCJ9",
-      "status": "active",
-      "isAdmin": false,
-      "createdAt": "2026-10-04T16:42:22.148Z"
-    },
-    {
-      "id": "t3y3pQa5hIk",
-      "userId": "user_3JJDQcT11Hay732J8WGw6GmiooG",
-      "email": "mfouzan961@gmail.com",
-      "firstName": "Fouzan",
-      "lastName": "Muhammed KV",
-      "name": "Fouzan Muhammed KV",
-      "imageUrl": "https://img.clerk.com/eyJ0eXBlIjoicHJveHkiLCJzcmMiOiJodHRwczovL2ltYWdlcy5jbGVyay5kZXYvdXBsb2FkZWQvaW1nXzNKb1lpcXVreFkwamhIR2pCTFpnVlRjSEUxOCJ9",
-      "status": "active",
-      "isAdmin": false,
-      "createdAt": "2026-10-04T17:54:50.030Z"
-    },
-    {
-      "id": "NXm1okCpj-8",
-      "userId": "user_3JJDQcT11Hay732J8WGw6GmiooG",
-      "email": "mfouzan961@gmail.com",
-      "firstName": "Fouzan",
-      "lastName": "Muhammed KV",
-      "name": "Fouzan Muhammed KV",
-      "imageUrl": "https://img.clerk.com/eyJ0eXBlIjoicHJveHkiLCJzcmMiOiJodHRwczovL2ltYWdlcy5jbGVyay5kZXYvdXBsb2FkZWQvaW1nXzNKb1lpcXVreFkwamhIR2pCTFpnVlRjSEUxOCJ9",
-      "status": "active",
-      "isAdmin": false,
-      "createdAt": "2026-10-04T18:14:48.670Z"
-    },
-    {
-      "id": "db38rJdzQAY",
-      "userId": "user_3JJDQcT11Hay732J8WGw6GmiooG",
-      "email": "mfouzan961@gmail.com",
-      "firstName": "Fouzan",
-      "lastName": "Muhammed KV",
-      "name": "Fouzan Muhammed KV",
-      "imageUrl": "https://img.clerk.com/eyJ0eXBlIjoicHJveHkiLCJzcmMiOiJodHRwczovL2ltYWdlcy5jbGVyay5kZXYvdXBsb2FkZWQvaW1nXzNKb1lpcXVreFkwamhIR2pCTFpnVlRjSEUxOCJ9",
-      "status": "active",
-      "isAdmin": false,
-      "createdAt": "2026-10-04T18:16:31.878Z"
-    },
-    {
-      "id": "uX7bTeXTo3M",
-      "userId": "user_3JJDQcT11Hay732J8WGw6GmiooG",
-      "email": "mfouzan961@gmail.com",
-      "firstName": "Fouzan",
-      "lastName": "Muhammed KV",
-      "name": "Fouzan Muhammed KV",
-      "imageUrl": "https://img.clerk.com/eyJ0eXBlIjoicHJveHkiLCJzcmMiOiJodHRwczovL2ltYWdlcy5jbGVyay5kZXYvdXBsb2FkZWQvaW1nXzNKb1lpcXVreFkwamhIR2pCTFpnVlRjSEUxOCJ9",
-      "status": "active",
-      "isAdmin": false,
-      "createdAt": "2026-10-04T18:20:58.924Z"
-    },
-    {
-      "id": "qRILk8FXyEo",
-      "userId": "user_3JJDQcT11Hay732J8WGw6GmiooG",
-      "email": "mfouzan961@gmail.com",
-      "firstName": "Fouzan",
-      "lastName": "Muhammed KV",
-      "name": "Fouzan Muhammed KV",
-      "imageUrl": "https://img.clerk.com/eyJ0eXBlIjoicHJveHkiLCJzcmMiOiJodHRwczovL2ltYWdlcy5jbGVyay5kZXYvdXBsb2FkZWQvaW1nXzNKb1lpcXVreFkwamhIR2pCTFpnVlRjSEUxOCJ9",
-      "status": "active",
-      "isAdmin": false,
-      "createdAt": "2026-10-04T18:21:17.825Z"
-    },
-    {
-      "id": "Cp5rnN5QBQI",
-      "userId": "user_3JJDQcT11Hay732J8WGw6GmiooG",
-      "email": "mfouzan961@gmail.com",
-      "firstName": "Fouzan",
-      "lastName": "Muhammed KV",
-      "name": "Fouzan Muhammed KV",
-      "imageUrl": "https://img.clerk.com/eyJ0eXBlIjoicHJveHkiLCJzcmMiOiJodHRwczovL2ltYWdlcy5jbGVyay5kZXYvdXBsb2FkZWQvaW1nXzNKb1lpcXVreFkwamhIR2pCTFpnVlRjSEUxOCJ9",
-      "status": "active",
-      "isAdmin": false,
-      "createdAt": "2026-10-05T04:04:42.579Z"
-    },
-    {
-      "id": "4uqNvIEmww8",
-      "userId": "user_3JJDQcT11Hay732J8WGw6GmiooG",
-      "email": "mfouzan961@gmail.com",
-      "firstName": "Fouzan",
-      "lastName": "Muhammed KV",
-      "name": "Fouzan Muhammed KV",
-      "imageUrl": "https://img.clerk.com/eyJ0eXBlIjoicHJveHkiLCJzcmMiOiJodHRwczovL2ltYWdlcy5jbGVyay5kZXYvdXBsb2FkZWQvaW1nXzNKb1lpcXVreFkwamhIR2pCTFpnVlRjSEUxOCJ9",
-      "status": "active",
-      "isAdmin": false,
-      "createdAt": "2026-10-05T04:05:38.919Z"
-    },
-    {
-      "id": "IW57DkZJd_0",
-      "userId": "user_3JJDQcT11Hay732J8WGw6GmiooG",
-      "email": "mfouzan961@gmail.com",
-      "firstName": "Fouzan",
-      "lastName": "Muhammed KV",
-      "name": "Fouzan Muhammed KV",
-      "imageUrl": "https://img.clerk.com/eyJ0eXBlIjoicHJveHkiLCJzcmMiOiJodHRwczovL2ltYWdlcy5jbGVyay5kZXYvdXBsb2FkZWQvaW1nXzNKb1lpcXVreFkwamhIR2pCTFpnVlRjSEUxOCJ9",
-      "status": "active",
-      "isAdmin": false,
-      "createdAt": "2026-10-05T04:11:35.960Z"
-    },
-    {
-      "id": "NrxYw-dakb4",
-      "userId": "user_3JJDQcT11Hay732J8WGw6GmiooG",
-      "email": "mfouzan961@gmail.com",
-      "firstName": "Fouzan",
-      "lastName": "Muhammed KV",
-      "name": "Fouzan Muhammed KV",
-      "imageUrl": "https://img.clerk.com/eyJ0eXBlIjoicHJveHkiLCJzcmMiOiJodHRwczovL2ltYWdlcy5jbGVyay5kZXYvdXBsb2FkZWQvaW1nXzNKb1lpcXVreFkwamhIR2pCTFpnVlRjSEUxOCJ9",
-      "status": "active",
-      "isAdmin": false,
-      "createdAt": "2026-10-05T04:13:35.310Z"
-    },
-    {
-      "id": "xIhMumrMynI",
-      "userId": "user_3JJDQcT11Hay732J8WGw6GmiooG",
-      "email": "mfouzan961@gmail.com",
-      "firstName": "Fouzan",
-      "lastName": "Muhammed KV",
-      "name": "Fouzan Muhammed KV",
-      "imageUrl": "https://img.clerk.com/eyJ0eXBlIjoicHJveHkiLCJzcmMiOiJodHRwczovL2ltYWdlcy5jbGVyay5kZXYvdXBsb2FkZWQvaW1nXzNKb1lpcXVreFkwamhIR2pCTFpnVlRjSEUxOCJ9",
-      "status": "active",
-      "isAdmin": false,
-      "createdAt": "2026-10-05T04:21:25.450Z"
-    },
-    {
-      "id": "CiJPqRhvXgc",
-      "userId": "user_3JJDQcT11Hay732J8WGw6GmiooG",
-      "email": "mfouzan961@gmail.com",
-      "firstName": "Fouzan",
-      "lastName": "Muhammed KV",
-      "name": "Fouzan Muhammed KV",
-      "imageUrl": "https://img.clerk.com/eyJ0eXBlIjoicHJveHkiLCJzcmMiOiJodHRwczovL2ltYWdlcy5jbGVyay5kZXYvdXBsb2FkZWQvaW1nXzNKb1lpcXVreFkwamhIR2pCTFpnVlRjSEUxOCJ9",
-      "status": "active",
-      "isAdmin": false,
-      "createdAt": "2026-10-05T04:39:25.097Z"
-    },
-    {
-      "id": "QUiUjhHTvZ4",
-      "userId": "user_3JJDQcT11Hay732J8WGw6GmiooG",
-      "email": "mfouzan961@gmail.com",
-      "firstName": "Fouzan",
-      "lastName": "Muhammed KV",
-      "name": "Fouzan Muhammed KV",
-      "imageUrl": "https://img.clerk.com/eyJ0eXBlIjoicHJveHkiLCJzcmMiOiJodHRwczovL2ltYWdlcy5jbGVyay5kZXYvdXBsb2FkZWQvaW1nXzNKb1lpcXVreFkwamhIR2pCTFpnVlRjSEUxOCJ9",
-      "status": "active",
-      "isAdmin": false,
-      "createdAt": "2026-10-05T04:43:52.447Z"
-    },
-    {
-      "id": "SBlLqCv-W1Y",
-      "userId": "user_3JJDQcT11Hay732J8WGw6GmiooG",
-      "email": "mfouzan961@gmail.com",
-      "firstName": "Fouzan",
-      "lastName": "Muhammed KV",
-      "name": "Fouzan Muhammed KV",
-      "imageUrl": "https://img.clerk.com/eyJ0eXBlIjoicHJveHkiLCJzcmMiOiJodHRwczovL2ltYWdlcy5jbGVyay5kZXYvdXBsb2FkZWQvaW1nXzNKb1lpcXVreFkwamhIR2pCTFpnVlRjSEUxOCJ9",
-      "status": "active",
-      "isAdmin": false,
-      "createdAt": "2026-10-05T04:47:45.114Z"
-    },
-    {
-      "id": "4mBIU6OX9L4",
-      "userId": "user_3JJDQcT11Hay732J8WGw6GmiooG",
-      "email": "mfouzan961@gmail.com",
-      "firstName": "Fouzan",
-      "lastName": "Muhammed KV",
-      "name": "Fouzan Muhammed KV",
-      "imageUrl": "https://img.clerk.com/eyJ0eXBlIjoicHJveHkiLCJzcmMiOiJodHRwczovL2ltYWdlcy5jbGVyay5kZXYvdXBsb2FkZWQvaW1nXzNKb1lpcXVreFkwamhIR2pCTFpnVlRjSEUxOCJ9",
-      "status": "active",
-      "isAdmin": false,
-      "createdAt": "2026-10-05T04:47:59.630Z"
-    },
-    {
-      "id": "rM2GX7p2WGw",
-      "userId": "user_3JJDQcT11Hay732J8WGw6GmiooG",
-      "email": "mfouzan961@gmail.com",
-      "firstName": "Fouzan",
-      "lastName": "Muhammed KV",
-      "name": "Fouzan Muhammed KV",
-      "imageUrl": "https://img.clerk.com/eyJ0eXBlIjoicHJveHkiLCJzcmMiOiJodHRwczovL2ltYWdlcy5jbGVyay5kZXYvdXBsb2FkZWQvaW1nXzNKb1lpcXVreFkwamhIR2pCTFpnVlRjSEUxOCJ9",
-      "status": "active",
-      "isAdmin": false,
-      "createdAt": "2026-10-05T04:48:44.411Z"
-    },
-    {
-      "id": "X4E3a4uwpeE",
-      "userId": "user_3JJDQcT11Hay732J8WGw6GmiooG",
-      "email": "mfouzan961@gmail.com",
-      "firstName": "Fouzan",
-      "lastName": "Muhammed KV",
-      "name": "Fouzan Muhammed KV",
-      "imageUrl": "https://img.clerk.com/eyJ0eXBlIjoicHJveHkiLCJzcmMiOiJodHRwczovL2ltYWdlcy5jbGVyay5kZXYvdXBsb2FkZWQvaW1nXzNKb1lpcXVreFkwamhIR2pCTFpnVlRjSEUxOCJ9",
-      "status": "active",
-      "isAdmin": false,
-      "createdAt": "2026-10-05T04:49:43.102Z"
-    },
-    {
-      "id": "y2CZDog0Qcw",
-      "userId": "user_3JJDQcT11Hay732J8WGw6GmiooG",
-      "email": "mfouzan961@gmail.com",
-      "firstName": "Fouzan",
-      "lastName": "Muhammed KV",
-      "name": "Fouzan Muhammed KV",
-      "imageUrl": "https://img.clerk.com/eyJ0eXBlIjoicHJveHkiLCJzcmMiOiJodHRwczovL2ltYWdlcy5jbGVyay5kZXYvdXBsb2FkZWQvaW1nXzNKb1lpcXVreFkwamhIR2pCTFpnVlRjSEUxOCJ9",
-      "status": "active",
-      "isAdmin": false,
-      "createdAt": "2026-10-05T06:23:43.264Z"
-    },
-    {
-      "id": "bjrbPKbSzxA",
-      "userId": "user_3JJDQcT11Hay732J8WGw6GmiooG",
-      "email": "mfouzan961@gmail.com",
-      "firstName": "Fouzan",
-      "lastName": "Muhammed KV",
-      "name": "Fouzan Muhammed KV",
-      "imageUrl": "https://img.clerk.com/eyJ0eXBlIjoicHJveHkiLCJzcmMiOiJodHRwczovL2ltYWdlcy5jbGVyay5kZXYvdXBsb2FkZWQvaW1nXzNKb1lpcXVreFkwamhIR2pCTFpnVlRjSEUxOCJ9",
-      "status": "active",
-      "isAdmin": false,
-      "createdAt": "2026-10-05T06:24:29.702Z"
-    },
-    {
-      "id": "KMxxIhM71hQ",
-      "userId": "user_3JJDQcT11Hay732J8WGw6GmiooG",
-      "email": "mfouzan961@gmail.com",
-      "firstName": "Fouzan",
-      "lastName": "Muhammed KV",
-      "name": "Fouzan Muhammed KV",
-      "imageUrl": "https://img.clerk.com/eyJ0eXBlIjoicHJveHkiLCJzcmMiOiJodHRwczovL2ltYWdlcy5jbGVyay5kZXYvdXBsb2FkZWQvaW1nXzNKb1lpcXVreFkwamhIR2pCTFpnVlRjSEUxOCJ9",
-      "status": "active",
-      "isAdmin": false,
-      "createdAt": "2026-10-05T06:27:32.289Z"
-    },
-    {
-      "id": "53200841-c946-4484-bdf3-d2763b1de836",
-      "name": "Test User",
-      "email": "test@zancart.com",
-      "password": "$2b$12$zIXMh9nGCO3vI.4TBrXj6OHt2HYB.AKt1w1BAkex7rMR69Hf2ccbK",
-      "role": "user",
-      "isBlocked": false,
-      "createdAt": "2026-10-06T07:26:12.644Z"
-    },
-    {
-      "id": "oGuBVk5zsAM",
-      "userId": "user_3JJDQcT11Hay732J8WGw6GmiooG",
-      "email": "mfouzan961@gmail.com",
-      "firstName": "Fouzan",
-      "lastName": "Muhammed KV",
-      "name": "Fouzan Muhammed KV",
-      "imageUrl": "https://img.clerk.com/eyJ0eXBlIjoicHJveHkiLCJzcmMiOiJodHRwczovL2ltYWdlcy5jbGVyay5kZXYvdXBsb2FkZWQvaW1nXzNKb1lpcXVreFkwamhIR2pCTFpnVlRjSEUxOCJ9",
-      "status": "active",
-      "isAdmin": false,
-      "createdAt": "2026-10-09T07:22:50.796Z"
-    },
-    {
-      "id": "JXYLwphXJ4U",
-      "userId": "user_3JJDQcT11Hay732J8WGw6GmiooG",
-      "email": "mfouzan961@gmail.com",
-      "firstName": "Fouzan",
-      "lastName": "Muhammed KV",
-      "name": "Fouzan Muhammed KV",
-      "imageUrl": "https://img.clerk.com/eyJ0eXBlIjoicHJveHkiLCJzcmMiOiJodHRwczovL2ltYWdlcy5jbGVyay5kZXYvdXBsb2FkZWQvaW1nXzNKb1lpcXVreFkwamhIR2pCTFpnVlRjSEUxOCJ9",
-      "status": "active",
-      "isAdmin": false,
-      "createdAt": "2026-10-09T07:23:37.122Z"
-    },
-    {
-      "id": "R11Nl6-E3sI",
-      "userId": "user_3JJDQcT11Hay732J8WGw6GmiooG",
-      "email": "mfouzan961@gmail.com",
-      "firstName": "Fouzan",
-      "lastName": "Muhammed KV",
-      "name": "Fouzan Muhammed KV",
-      "imageUrl": "https://img.clerk.com/eyJ0eXBlIjoicHJveHkiLCJzcmMiOiJodHRwczovL2ltYWdlcy5jbGVyay5kZXYvdXBsb2FkZWQvaW1nXzNKb1lpcXVreFkwamhIR2pCTFpnVlRjSEUxOCJ9",
-      "status": "active",
-      "isAdmin": false,
-      "createdAt": "2026-10-09T07:24:22.311Z"
-    },
-    {
-      "id": "DzA_XbGUkv4",
-      "userId": "user_3JJDQcT11Hay732J8WGw6GmiooG",
-      "email": "mfouzan961@gmail.com",
-      "firstName": "Fouzan",
-      "lastName": "Muhammed KV",
-      "name": "Fouzan Muhammed KV",
-      "imageUrl": "https://img.clerk.com/eyJ0eXBlIjoicHJveHkiLCJzcmMiOiJodHRwczovL2ltYWdlcy5jbGVyay5kZXYvdXBsb2FkZWQvaW1nXzNKb1lpcXVreFkwamhIR2pCTFpnVlRjSEUxOCJ9",
-      "status": "active",
-      "isAdmin": false,
-      "createdAt": "2026-10-09T09:09:01.744Z"
-    },
-    {
-      "id": "iGKhnY6PPWk",
-      "userId": "user_3JJDQcT11Hay732J8WGw6GmiooG",
-      "email": "mfouzan961@gmail.com",
-      "firstName": "Fouzan",
-      "lastName": "Muhammed KV",
-      "name": "Fouzan Muhammed KV",
-      "imageUrl": "https://img.clerk.com/eyJ0eXBlIjoicHJveHkiLCJzcmMiOiJodHRwczovL2ltYWdlcy5jbGVyay5kZXYvdXBsb2FkZWQvaW1nXzNKb1lpcXVreFkwamhIR2pCTFpnVlRjSEUxOCJ9",
-      "status": "active",
-      "isAdmin": false,
-      "createdAt": "2026-10-09T09:52:23.725Z"
-    },
-    {
-      "id": "gr8oXxRG_6s",
-      "userId": "user_3JJDQcT11Hay732J8WGw6GmiooG",
-      "email": "mfouzan961@gmail.com",
-      "firstName": "Fouzan",
-      "lastName": "Muhammed KV",
-      "name": "Fouzan Muhammed KV",
-      "imageUrl": "https://img.clerk.com/eyJ0eXBlIjoicHJveHkiLCJzcmMiOiJodHRwczovL2ltYWdlcy5jbGVyay5kZXYvdXBsb2FkZWQvaW1nXzNKb1lpcXVreFkwamhIR2pCTFpnVlRjSEUxOCJ9",
-      "status": "active",
-      "isAdmin": false,
-      "createdAt": "2026-10-09T09:52:59.048Z"
-    },
-    {
-      "id": "LDu80w-IL1w",
-      "userId": "user_3JJDQcT11Hay732J8WGw6GmiooG",
-      "email": "mfouzan961@gmail.com",
-      "firstName": "Fouzan",
-      "lastName": "Muhammed KV",
-      "name": "Fouzan Muhammed KV",
-      "imageUrl": "https://img.clerk.com/eyJ0eXBlIjoicHJveHkiLCJzcmMiOiJodHRwczovL2ltYWdlcy5jbGVyay5kZXYvdXBsb2FkZWQvaW1nXzNKb1lpcXVreFkwamhIR2pCTFpnVlRjSEUxOCJ9",
-      "status": "active",
-      "isAdmin": false,
-      "createdAt": "2026-10-09T09:53:12.499Z"
-    },
-    {
-      "id": "aKioVd3b5cM",
-      "userId": "user_3JJDQcT11Hay732J8WGw6GmiooG",
-      "email": "mfouzan961@gmail.com",
-      "firstName": "Fouzan",
-      "lastName": "Muhammed KV",
-      "name": "Fouzan Muhammed KV",
-      "imageUrl": "https://img.clerk.com/eyJ0eXBlIjoicHJveHkiLCJzcmMiOiJodHRwczovL2ltYWdlcy5jbGVyay5kZXYvdXBsb2FkZWQvaW1nXzNKb1lpcXVreFkwamhIR2pCTFpnVlRjSEUxOCJ9",
-      "status": "active",
-      "isAdmin": false,
-      "createdAt": "2026-10-09T09:53:21.797Z"
-    },
-    {
-      "id": "KKMysT-Ow0o",
-      "userId": "user_3JJDQcT11Hay732J8WGw6GmiooG",
-      "email": "mfouzan961@gmail.com",
-      "firstName": "Fouzan",
-      "lastName": "Muhammed KV",
-      "name": "Fouzan Muhammed KV",
-      "imageUrl": "https://img.clerk.com/eyJ0eXBlIjoicHJveHkiLCJzcmMiOiJodHRwczovL2ltYWdlcy5jbGVyay5kZXYvdXBsb2FkZWQvaW1nXzNKb1lpcXVreFkwamhIR2pCTFpnVlRjSEUxOCJ9",
-      "status": "active",
-      "isAdmin": false,
-      "createdAt": "2026-10-09T09:54:08.877Z"
-    },
-    {
-      "id": "Zk3eief0Vec",
-      "userId": "user_3JJDQcT11Hay732J8WGw6GmiooG",
-      "email": "mfouzan961@gmail.com",
-      "firstName": "Fouzan",
-      "lastName": "Muhammed KV",
-      "name": "Fouzan Muhammed KV",
-      "imageUrl": "https://img.clerk.com/eyJ0eXBlIjoicHJveHkiLCJzcmMiOiJodHRwczovL2ltYWdlcy5jbGVyay5kZXYvdXBsb2FkZWQvaW1nXzNKb1lpcXVreFkwamhIR2pCTFpnVlRjSEUxOCJ9",
-      "status": "active",
-      "isAdmin": false,
-      "createdAt": "2026-10-09T09:54:55.899Z"
-    },
-    {
-      "id": "yJNtWnmM_7g",
-      "userId": "user_3JJDQcT11Hay732J8WGw6GmiooG",
-      "email": "mfouzan961@gmail.com",
-      "firstName": "Fouzan",
-      "lastName": "Muhammed KV",
-      "name": "Fouzan Muhammed KV",
-      "imageUrl": "https://img.clerk.com/eyJ0eXBlIjoicHJveHkiLCJzcmMiOiJodHRwczovL2ltYWdlcy5jbGVyay5kZXYvdXBsb2FkZWQvaW1nXzNKb1lpcXVreFkwamhIR2pCTFpnVlRjSEUxOCJ9",
-      "status": "active",
-      "isAdmin": false,
-      "createdAt": "2026-10-09T09:55:43.841Z"
-    },
-    {
-      "id": "mQaENG7tZv8",
-      "userId": "user_3JJDQcT11Hay732J8WGw6GmiooG",
-      "email": "mfouzan961@gmail.com",
-      "firstName": "Fouzan",
-      "lastName": "Muhammed KV",
-      "name": "Fouzan Muhammed KV",
-      "imageUrl": "https://img.clerk.com/eyJ0eXBlIjoicHJveHkiLCJzcmMiOiJodHRwczovL2ltYWdlcy5jbGVyay5kZXYvdXBsb2FkZWQvaW1nXzNKb1lpcXVreFkwamhIR2pCTFpnVlRjSEUxOCJ9",
-      "status": "active",
-      "isAdmin": false,
-      "createdAt": "2026-10-09T10:29:31.606Z"
     }
   ],
   "products": [
@@ -778,7 +38,7 @@
       ],
       "rating": 5,
       "reviewCount": 1,
-      "stock": 33,
+      "stock": 32,
       "featured": true,
       "trending": true
     },
@@ -798,7 +58,7 @@
       ],
       "rating": 5,
       "reviewCount": 1,
-      "stock": 24,
+      "stock": 22,
       "featured": true,
       "trending": false
     },
@@ -818,7 +78,7 @@
       ],
       "rating": 4.7,
       "reviewCount": 211,
-      "stock": 41,
+      "stock": 39,
       "featured": false,
       "trending": true
     },
@@ -838,7 +98,7 @@
       ],
       "rating": 4.5,
       "reviewCount": 76,
-      "stock": 18,
+      "stock": 16,
       "featured": true,
       "trending": true
     },
@@ -878,7 +138,7 @@
       ],
       "rating": 4.5,
       "reviewCount": 97,
-      "stock": 29,
+      "stock": 28,
       "featured": false,
       "trending": true
     },
@@ -898,7 +158,7 @@
       ],
       "rating": 4.8,
       "reviewCount": 154,
-      "stock": 32,
+      "stock": 31,
       "featured": true,
       "trending": true
     },
@@ -2966,6 +2226,149 @@
       "userId": "user_3JRbYpDqrify8jbTRBObB1fomjB",
       "items": [],
       "id": "RbnDIEt3OSM"
+    },
+    {
+      "userId": "2cef06f9-3ff0-45b4-8969-1a89217eb5bc",
+      "items": [],
+      "id": "MOdM582q2j4"
+    },
+    {
+      "userId": "49e30bb2-7dc3-49e3-9b34-6af9d5e8171f",
+      "items": [
+        {
+          "id": "2",
+          "title": "Premium Linen Shirt",
+          "description": "Lightweight linen shirt with a relaxed fit, perfect for summer and smart casual occasions.",
+          "price": 1799,
+          "discountPrice": 1399,
+          "category": "Fashion",
+          "subcategory": "Shirts",
+          "brand": "NorthLane",
+          "images": [
+            "https://images.unsplash.com/photo-1602810318383-e386cc2a3ccf",
+            "https://images.unsplash.com/photo-1596755094514-f87e34085b2c",
+            "https://images.unsplash.com/photo-1603252109303-2751441dd157"
+          ],
+          "rating": 5,
+          "reviewCount": 1,
+          "stock": 24,
+          "featured": true,
+          "trending": false,
+          "quantity": 1
+        },
+        {
+          "id": "3",
+          "title": "Slim Fit Denim Jeans",
+          "description": "Modern slim-fit denim jeans with stretch fabric for comfortable everyday movement.",
+          "price": 2299,
+          "discountPrice": 1799,
+          "category": "Fashion",
+          "subcategory": "Jeans",
+          "brand": "DenimCo",
+          "images": [
+            "https://images.unsplash.com/photo-1542272604-787c3835535d",
+            "https://images.unsplash.com/photo-1541099649105-f69ad21f3246",
+            "https://images.unsplash.com/photo-1475178626620-a4d074967452"
+          ],
+          "rating": 4.7,
+          "reviewCount": 211,
+          "stock": 41,
+          "featured": false,
+          "trending": true,
+          "quantity": 1
+        },
+        {
+          "id": "4",
+          "title": "Classic Bomber Jacket",
+          "description": "Minimal bomber jacket with a contemporary silhouette for casual streetwear looks.",
+          "price": 3499,
+          "discountPrice": 2799,
+          "category": "Fashion",
+          "subcategory": "Jackets",
+          "brand": "StreetMode",
+          "images": [
+            "https://images.unsplash.com/photo-1551028719-00167b16eac5",
+            "https://images.unsplash.com/photo-1521223890158-f9f7c3d5d504",
+            "https://images.unsplash.com/photo-1487222477894-8943e31ef7b2"
+          ],
+          "rating": 4.5,
+          "reviewCount": 76,
+          "stock": 18,
+          "featured": true,
+          "trending": true,
+          "quantity": 1
+        }
+      ],
+      "id": "hG7CrrKdoTs"
+    },
+    {
+      "userId": "3cedd7c7-0ad3-40fe-8512-ccfa854442dd",
+      "items": [
+        {
+          "id": "1",
+          "title": "Classic Oversized T-Shirt",
+          "description": "Premium cotton oversized t-shirt designed for everyday comfort and casual styling.",
+          "price": 999,
+          "discountPrice": 799,
+          "category": "Fashion",
+          "subcategory": "T-Shirts",
+          "brand": "UrbanFit",
+          "images": [
+            "https://images.unsplash.com/photo-1521572267360-ee0c2909d518",
+            "https://images.unsplash.com/photo-1503342217505-b0a15ec3261c",
+            "https://images.unsplash.com/photo-1583743814966-8936f5b7be1a"
+          ],
+          "rating": 5,
+          "reviewCount": 1,
+          "stock": 33,
+          "featured": true,
+          "trending": true,
+          "quantity": 1
+        },
+        {
+          "id": "2",
+          "title": "Premium Linen Shirt",
+          "description": "Lightweight linen shirt with a relaxed fit, perfect for summer and smart casual occasions.",
+          "price": 1799,
+          "discountPrice": 1399,
+          "category": "Fashion",
+          "subcategory": "Shirts",
+          "brand": "NorthLane",
+          "images": [
+            "https://images.unsplash.com/photo-1602810318383-e386cc2a3ccf",
+            "https://images.unsplash.com/photo-1596755094514-f87e34085b2c",
+            "https://images.unsplash.com/photo-1603252109303-2751441dd157"
+          ],
+          "rating": 5,
+          "reviewCount": 1,
+          "stock": 23,
+          "featured": true,
+          "trending": false,
+          "quantity": 1
+        },
+        {
+          "id": "3",
+          "title": "Slim Fit Denim Jeans",
+          "description": "Modern slim-fit denim jeans with stretch fabric for comfortable everyday movement.",
+          "price": 2299,
+          "discountPrice": 1799,
+          "category": "Fashion",
+          "subcategory": "Jeans",
+          "brand": "DenimCo",
+          "images": [
+            "https://images.unsplash.com/photo-1542272604-787c3835535d",
+            "https://images.unsplash.com/photo-1541099649105-f69ad21f3246",
+            "https://images.unsplash.com/photo-1475178626620-a4d074967452"
+          ],
+          "rating": 4.7,
+          "reviewCount": 211,
+          "stock": 40,
+          "featured": false,
+          "trending": true,
+          "quantity": 1
+        }
+      ],
+      "id": "ewNhzLaQhL8"
     }
   ],
   "wishlists": [
@@ -3080,6 +2483,102 @@
       "userId": "user_3JRbYpDqrify8jbTRBObB1fomjB",
       "items": [],
       "id": "eyTJ4xaP3yA"
+    },
+    {
+      "userId": "2cef06f9-3ff0-45b4-8969-1a89217eb5bc",
+      "items": [],
+      "id": "5Ivc-N4WZX8"
+    },
+    {
+      "userId": "49e30bb2-7dc3-49e3-9b34-6af9d5e8171f",
+      "items": [
+        {
+          "id": "1",
+          "title": "Classic Oversized T-Shirt",
+          "description": "Premium cotton oversized t-shirt designed for everyday comfort and casual styling.",
+          "price": 999,
+          "discountPrice": 799,
+          "category": "Fashion",
+          "subcategory": "T-Shirts",
+          "brand": "UrbanFit",
+          "images": [
+            "https://images.unsplash.com/photo-1521572267360-ee0c2909d518",
+            "https://images.unsplash.com/photo-1503342217505-b0a15ec3261c",
+            "https://images.unsplash.com/photo-1583743814966-8936f5b7be1a"
+          ],
+          "rating": 5,
+          "reviewCount": 1,
+          "stock": 33,
+          "featured": true,
+          "trending": true
+        },
+        {
+          "id": "5",
+          "title": "Casual Polo T-Shirt",
+          "description": "Classic polo t-shirt made with soft breathable fabric for everyday wear.",
+          "price": 1299,
+          "discountPrice": 999,
+          "category": "Fashion",
+          "subcategory": "T-Shirts",
+          "brand": "UrbanFit",
+          "images": [
+            "https://images.unsplash.com/photo-1581655353564-df123a1eb820",
+            "https://images.unsplash.com/photo-1618354691373-d851c5c3a990",
+            "https://images.unsplash.com/photo-1521572267360-ee0c2909d518"
+          ],
+          "rating": 4.3,
+          "reviewCount": 63,
+          "stock": 52,
+          "featured": false,
+          "trending": false
+        },
+        {
+          "id": "6",
+          "title": "Relaxed Cargo Pants",
+          "description": "Utility-inspired cargo pants with multiple pockets and a relaxed contemporary fit.",
+          "price": 1999,
+          "discountPrice": 1599,
+          "category": "Fashion",
+          "subcategory": "Pants",
+          "brand": "StreetMode",
+          "images": [
+            "https://images.unsplash.com/photo-1624378439575-d8705ad7ae80",
+            "https://images.unsplash.com/photo-1517445312882-bc9910d016b7",
+            "https://images.unsplash.com/photo-1506630448388-4e683c67ddb0"
+          ],
+          "rating": 4.5,
+          "reviewCount": 97,
+          "stock": 29,
+          "featured": false,
+          "trending": true
+        },
+        {
+          "id": "7",
+          "title": "Minimal Black Hoodie",
+          "description": "Soft fleece hoodie with a clean minimal design for relaxed everyday styling.",
+          "price": 2499,
+          "discountPrice": 1999,
+          "category": "Fashion",
+          "subcategory": "Hoodies",
+          "brand": "NorthLane",
+          "images": [
+            "https://images.unsplash.com/photo-1556905055-8f358a7a47b2",
+            "https://images.unsplash.com/photo-1578681994506-b8f463449011",
+            "https://images.unsplash.com/photo-1509967419530-da38b4704bc6"
+          ],
+          "rating": 4.8,
+          "reviewCount": 154,
+          "stock": 32,
+          "featured": true,
+          "trending": true
+        }
+      ],
+      "id": "bPuBjdEcr50"
+    },
+    {
+      "userId": "3cedd7c7-0ad3-40fe-8512-ccfa854442dd",
+      "items": [],
+      "id": "0UUw52BSrfA"
     }
   ],
   "addresses": [
@@ -3112,1064 +2611,157 @@
       "userId": "user_3JJDQcT11Hay732J8WGw6GmiooG",
       "isDefault": false,
       "id": "mYcNoI_D7kA"
+    },
+    {
+      "fullName": "Fouzan Muhammed K V",
+      "phone": "9778263326",
+      "address": "Betterinu",
+      "city": "PERINTHALMANNA",
+      "pinCode": "679322",
+      "userId": "49e30bb2-7dc3-49e3-9b34-6af9d5e8171f",
+      "isDefault": true,
+      "id": "aDfQu3ahjng"
+    },
+    {
+      "fullName": "Fouzan Muhammed K V",
+      "phone": "9778263326",
+      "address": "Kallivalappil house",
+      "city": "Pattambi",
+      "pinCode": "679337",
+      "userId": "3cedd7c7-0ad3-40fe-8512-ccfa854442dd",
+      "isDefault": true,
+      "id": "T-nyHyukGIE"
     }
   ],
   "orders": [
     {
-      "userId": "user_3JJDQcT11Hay732J8WGw6GmiooG",
-      "items": [
-        {
-          "productId": "2",
-          "title": "Premium Linen Shirt",
-          "image": "https://images.unsplash.com/photo-1602810318383-e386cc2a3ccf",
-          "price": 1399,
-          "quantity": 5
-        },
-        {
-          "productId": "6",
-          "title": "Relaxed Cargo Pants",
-          "image": "https://images.unsplash.com/photo-1624378439575-d8705ad7ae80",
-          "price": 1599,
-          "quantity": 1
-        },
-        {
-          "productId": "5",
-          "title": "Casual Polo T-Shirt",
-          "image": "https://images.unsplash.com/photo-1581655353564-df123a1eb820",
-          "price": 999,
-          "quantity": 1
-        }
-      ],
-      "address": {
-        "fullName": "Fouzan Muhammed K V",
-        "phone": "9778263326",
-        "address": "Betterinu",
-        "city": "PERINTHALMANNA",
-        "pinCode": "679322",
-        "userId": "user_3JJDQcT11Hay732J8WGw6GmiooG",
-        "isDefault": true,
-        "id": "Vkt0ypa8bu8"
-      },
-      "paymentMethod": "upi",
-      "totalAmount": 9593,
-      "status": "delivered",
-      "createdAt": "2026-09-18T05:29:42.635Z",
-      "id": "pk6dV1iASXU"
-    },
-    {
-      "userId": "user_3JJDQcT11Hay732J8WGw6GmiooG",
-      "items": [
-        {
-          "productId": "3",
-          "title": "Slim Fit Denim Jeans",
-          "image": "https://images.unsplash.com/photo-1542272604-787c3835535d",
-          "price": 1799,
-          "quantity": 1
-        }
-      ],
-      "address": {
-        "fullName": "Fouzan Muhammed K V",
-        "phone": "9778263326",
-        "address": "Betterinu",
-        "city": "PERINTHALMANNA",
-        "pinCode": "679322",
-        "userId": "user_3JJDQcT11Hay732J8WGw6GmiooG",
-        "isDefault": true,
-        "id": "Vkt0ypa8bu8"
-      },
-      "paymentMethod": "upi",
-      "totalAmount": 1799,
-      "status": "cancelled",
-      "createdAt": "2026-09-18T05:30:13.378Z",
-      "id": "6jK69SZ8-U4"
-    },
-    {
-      "userId": "user_3JJDQcT11Hay732J8WGw6GmiooG",
-      "items": [
-        {
-          "productId": "2",
-          "title": "Premium Linen Shirt",
-          "image": "https://images.unsplash.com/photo-1602810318383-e386cc2a3ccf",
-          "price": 1399,
-          "quantity": 1
-        }
-      ],
-      "address": {
-        "fullName": "Fouzan Muhammed K V",
-        "phone": "9778263326",
-        "address": "Betterinu",
-        "city": "PERINTHALMANNA",
-        "pinCode": "679322",
-        "userId": "user_3JJDQcT11Hay732J8WGw6GmiooG",
-        "isDefault": true,
-        "id": "Vkt0ypa8bu8"
-      },
-      "paymentMethod": "upi",
-      "totalAmount": 1399,
-      "status": "cancelled",
-      "createdAt": "2026-09-18T05:31:21.180Z",
-      "id": "ktMItJrCDLs"
-    },
-    {
-      "userId": "user_3JJDQcT11Hay732J8WGw6GmiooG",
-      "items": [
-        {
-          "productId": "7",
-          "title": "Minimal Black Hoodie",
-          "image": "https://images.unsplash.com/photo-1556905055-8f358a7a47b2",
-          "price": 1999,
-          "quantity": 1
-        }
-      ],
-      "address": {
-        "fullName": "Fouzan Muhammed K V",
-        "phone": "9778263326",
-        "address": "Betterinu",
-        "city": "PERINTHALMANNA",
-        "pinCode": "679322",
-        "userId": "user_3JJDQcT11Hay732J8WGw6GmiooG",
-        "isDefault": true,
-        "id": "Vkt0ypa8bu8"
-      },
-      "paymentMethod": "upi",
-      "totalAmount": 1999,
-      "status": "cancelled",
-      "createdAt": "2026-09-18T05:48:55.971Z",
-      "id": "Qq4_ednQlk4"
-    },
-    {
-      "userId": "user_3JJDQcT11Hay732J8WGw6GmiooG",
+      "userId": "3cedd7c7-0ad3-40fe-8512-ccfa854442dd",
       "items": [
         {
           "productId": "1",
           "title": "Classic Oversized T-Shirt",
           "image": "https://images.unsplash.com/photo-1521572267360-ee0c2909d518",
           "price": 799,
-          "quantity": 1
+          "quantity": 1,
+          "deal": {
+            "id": "deal_002",
+            "title": "Buy 1 Get 1 Free",
+            "description": "Buy one qualifying product and get another qualifying product free.",
+            "type": "bogo",
+            "products": [
+              "1",
+              "4"
+            ],
+            "discountType": "free_item",
+            "discountValue": 100,
+            "image": "",
+            "startDate": "2026-10-04T00:00:00.000Z",
+            "endDate": "2026-10-15T23:59:59.000Z",
+            "isActive": true,
+            "priority": 2,
+            "createdAt": "2026-10-04T00:00:00.000Z"
+          },
+          "dealDiscount": 0,
+          "originalItemTotal": 799,
+          "finalItemTotal": 799,
+          "finalUnitPrice": 799,
+          "freeQuantity": 0,
+          "paidQuantity": 1,
+          "discountPercentage": 0,
+          "appliedTier": null
         },
-        {
-          "productId": "2",
-          "title": "Premium Linen Shirt",
-          "image": "https://images.unsplash.com/photo-1602810318383-e386cc2a3ccf",
-          "price": 1399,
-          "quantity": 1
-        }
-      ],
-      "address": {
-        "fullName": "Fouzan Muhammed K V",
-        "phone": "9778263326",
-        "address": "Betterinu",
-        "city": "PERINTHALMANNA",
-        "pinCode": "679322",
-        "userId": "user_3JJDQcT11Hay732J8WGw6GmiooG",
-        "isDefault": true,
-        "id": "Vkt0ypa8bu8"
-      },
-      "paymentMethod": "upi",
-      "totalAmount": 2198,
-      "status": null,
-      "createdAt": "2026-09-18T06:09:06.771Z",
-      "id": "grs4_VLWeA0"
-    },
-    {
-      "userId": "user_3JJDQcT11Hay732J8WGw6GmiooG",
-      "items": [
-        {
-          "productId": "1",
-          "title": "Classic Oversized T-Shirt",
-          "image": "https://images.unsplash.com/photo-1521572267360-ee0c2909d518",
-          "price": 799,
-          "quantity": 2
-        }
-      ],
-      "address": {
-        "fullName": "Fouzan Muhammed K V",
-        "phone": "9778263326",
-        "address": "Betterinu",
-        "city": "PERINTHALMANNA",
-        "pinCode": "679322",
-        "userId": "user_3JJDQcT11Hay732J8WGw6GmiooG",
-        "isDefault": true,
-        "id": "Vkt0ypa8bu8"
-      },
-      "paymentMethod": "upi",
-      "subtotal": 1598,
-      "coupon": null,
-      "discountAmount": 0,
-      "totalAmount": 1598,
-      "status": "placed",
-      "createdAt": "2026-09-18T06:32:58.832Z",
-      "id": "JioknUn97XY"
-    },
-    {
-      "userId": "user_3JJDQcT11Hay732J8WGw6GmiooG",
-      "items": [
-        {
-          "productId": "1",
-          "title": "Classic Oversized T-Shirt",
-          "image": "https://images.unsplash.com/photo-1521572267360-ee0c2909d518",
-          "price": 799,
-          "quantity": 1
-        },
-        {
-          "productId": "2",
-          "title": "Premium Linen Shirt",
-          "image": "https://images.unsplash.com/photo-1602810318383-e386cc2a3ccf",
-          "price": 1399,
-          "quantity": 1
-        }
-      ],
-      "address": {
-        "fullName": "Fouzan Muhammed K V",
-        "phone": "9778263326",
-        "address": "Betterinu",
-        "city": "PERINTHALMANNA",
-        "pinCode": "679322",
-        "userId": "user_3JJDQcT11Hay732J8WGw6GmiooG",
-        "isDefault": true,
-        "id": "Vkt0ypa8bu8"
-      },
-      "paymentMethod": "cod",
-      "subtotal": 2198,
-      "coupon": null,
-      "discountAmount": 0,
-      "totalAmount": 2198,
-      "status": "cancelled",
-      "createdAt": "2026-09-18T06:33:30.803Z",
-      "id": "aSp_1tblE3U"
-    },
-    {
-      "userId": "user_3JJDQcT11Hay732J8WGw6GmiooG",
-      "items": [
-        {
-          "productId": "1",
-          "title": "Classic Oversized T-Shirt",
-          "image": "https://images.unsplash.com/photo-1521572267360-ee0c2909d518",
-          "price": 799,
-          "quantity": 1
-        }
-      ],
-      "address": {
-        "fullName": "Fouzan Muhammed K V",
-        "phone": "9778263326",
-        "address": "Betterinu",
-        "city": "PERINTHALMANNA",
-        "pinCode": "679322",
-        "userId": "user_3JJDQcT11Hay732J8WGw6GmiooG",
-        "isDefault": true,
-        "id": "Vkt0ypa8bu8"
-      },
-      "paymentMethod": "upi",
-      "subtotal": 799,
-      "coupon": null,
-      "discountAmount": 0,
-      "totalAmount": 799,
-      "status": "cancelled",
-      "createdAt": "2026-09-18T06:34:31.652Z",
-      "id": "XxOnVr6GIr4"
-    },
-    {
-      "userId": "user_3JJDQcT11Hay732J8WGw6GmiooG",
-      "items": [
-        {
-          "productId": "1",
-          "title": "Classic Oversized T-Shirt",
-          "image": "https://images.unsplash.com/photo-1521572267360-ee0c2909d518",
-          "price": 799,
-          "quantity": 1
-        }
-      ],
-      "address": {
-        "fullName": "Fouzan Muhammed K V",
-        "phone": "9778263326",
-        "address": "Betterinu",
-        "city": "PERINTHALMANNA",
-        "pinCode": "679322",
-        "userId": "user_3JJDQcT11Hay732J8WGw6GmiooG",
-        "isDefault": true,
-        "id": "Vkt0ypa8bu8"
-      },
-      "paymentMethod": "card",
-      "subtotal": 799,
-      "coupon": null,
-      "discountAmount": 0,
-      "totalAmount": 799,
-      "status": "cancelled",
-      "createdAt": "2026-09-18T06:35:00.630Z",
-      "id": "H6ezdfdVchs"
-    },
-    {
-      "userId": "user_3JJDQcT11Hay732J8WGw6GmiooG",
-      "items": [
-        {
-          "productId": "3",
-          "title": "Slim Fit Denim Jeans",
-          "image": "https://images.unsplash.com/photo-1542272604-787c3835535d",
-          "price": 1799,
-          "quantity": 1
-        }
-      ],
-      "address": {
-        "fullName": "Fouzan Muhammed K V",
-        "phone": "9778263326",
-        "address": "Betterinu",
-        "city": "PERINTHALMANNA",
-        "pinCode": "679322",
-        "userId": "user_3JJDQcT11Hay732J8WGw6GmiooG",
-        "isDefault": true,
-        "id": "Vkt0ypa8bu8"
-      },
-      "paymentMethod": "upi",
-      "subtotal": 1799,
-      "coupon": null,
-      "discountAmount": 0,
-      "totalAmount": 1799,
-      "status": "cancelled",
-      "createdAt": "2026-09-18T09:49:50.387Z",
-      "id": "quE0iqsMJCc"
-    },
-    {
-      "userId": "user_3JJDQcT11Hay732J8WGw6GmiooG",
-      "items": [
-        {
-          "productId": "4",
-          "title": "Classic Bomber Jacket",
-          "image": "https://images.unsplash.com/photo-1551028719-00167b16eac5",
-          "price": 2799,
-          "quantity": 1
-        }
-      ],
-      "address": {
-        "fullName": "Fouzan Muhammed K V",
-        "phone": "9778263326",
-        "address": "Betterinu",
-        "city": "PERINTHALMANNA",
-        "pinCode": "679322",
-        "userId": "user_3JJDQcT11Hay732J8WGw6GmiooG",
-        "isDefault": true,
-        "id": "Vkt0ypa8bu8"
-      },
-      "paymentMethod": "cod",
-      "subtotal": 2799,
-      "coupon": null,
-      "discountAmount": 0,
-      "totalAmount": 2799,
-      "status": "delivered",
-      "createdAt": "2026-09-18T10:08:10.154Z",
-      "id": "GAqtvIiYJ_o"
-    },
-    {
-      "userId": "user_3JJDQcT11Hay732J8WGw6GmiooG",
-      "items": [
-        {
-          "productId": "6",
-          "title": "Relaxed Cargo Pants",
-          "image": "https://images.unsplash.com/photo-1624378439575-d8705ad7ae80",
-          "price": 1599,
-          "quantity": 5
-        },
-        {
-          "productId": "1",
-          "title": "Classic Oversized T-Shirt",
-          "image": "https://images.unsplash.com/photo-1521572267360-ee0c2909d518",
-          "price": 799,
-          "quantity": 3
-        },
-        {
-          "productId": "4",
-          "title": "Classic Bomber Jacket",
-          "image": "https://images.unsplash.com/photo-1551028719-00167b16eac5",
-          "price": 2799,
-          "quantity": 4
-        },
-        {
-          "productId": "8",
-          "title": "Floral Summer Dress",
-          "image": "https://images.unsplash.com/photo-1496747611176-843222e1e57c",
-          "price": 1899,
-          "quantity": 2
-        },
-        {
-          "productId": "7",
-          "title": "Minimal Black Hoodie",
-          "image": "https://images.unsplash.com/photo-1556905055-8f358a7a47b2",
-          "price": 1999,
-          "quantity": 3
-        },
-        {
-          "productId": "5",
-          "title": "Casual Polo T-Shirt",
-          "image": "https://images.unsplash.com/photo-1581655353564-df123a1eb820",
-          "price": 999,
-          "quantity": 1
-        },
-        {
-          "productId": "2",
-          "title": "Premium Linen Shirt",
-          "image": "https://images.unsplash.com/photo-1602810318383-e386cc2a3ccf",
-          "price": 1399,
-          "quantity": 1
-        },
-        {
-          "productId": "3",
-          "title": "Slim Fit Denim Jeans",
-          "image": "https://images.unsplash.com/photo-1542272604-787c3835535d",
-          "price": 1799,
-          "quantity": 3
-        },
-        {
-          "productId": "9",
-          "title": "Elegant Midi Dress",
-          "image": "https://images.unsplash.com/photo-1595777457583-95e059d581b8",
-          "price": 2299,
-          "quantity": 1
-        },
-        {
-          "productId": "10",
-          "title": "High Waist Wide Leg Jeans",
-          "image": "https://images.unsplash.com/photo-1584370848010-d7fe6bc767ec",
-          "price": 1699,
-          "quantity": 1
-        }
-      ],
-      "address": {
-        "fullName": "Fouzan Muhammed K V",
-        "phone": "9778263326",
-        "address": "Betterinu",
-        "city": "PERINTHALMANNA",
-        "pinCode": "679322",
-        "userId": "user_3JJDQcT11Hay732J8WGw6GmiooG",
-        "isDefault": true,
-        "id": "Vkt0ypa8bu8"
-      },
-      "paymentMethod": "upi",
-      "subtotal": 43176,
-      "coupon": null,
-      "discountAmount": 0,
-      "totalAmount": 43176,
-      "status": "placed",
-      "createdAt": "2026-09-18T12:10:53.165Z",
-      "id": "NrCkYQuYp9w"
-    },
-    {
-      "userId": "user_3JJDQcT11Hay732J8WGw6GmiooG",
-      "items": [
-        {
-          "productId": "1",
-          "title": "Classic Oversized T-Shirt",
-          "image": "https://images.unsplash.com/photo-1521572267360-ee0c2909d518",
-          "price": 799,
-          "quantity": 3
-        },
-        {
-          "productId": "7",
-          "title": "Minimal Black Hoodie",
-          "image": "https://images.unsplash.com/photo-1556905055-8f358a7a47b2",
-          "price": 1999,
-          "quantity": 2
-        },
-        {
-          "productId": "5",
-          "title": "Casual Polo T-Shirt",
-          "image": "https://images.unsplash.com/photo-1581655353564-df123a1eb820",
-          "price": 999,
-          "quantity": 1
-        },
-        {
-          "productId": "2",
-          "title": "Premium Linen Shirt",
-          "image": "https://images.unsplash.com/photo-1602810318383-e386cc2a3ccf",
-          "price": 1399,
-          "quantity": 1
-        },
-        {
-          "productId": "3",
-          "title": "Slim Fit Denim Jeans",
-          "image": "https://images.unsplash.com/photo-1542272604-787c3835535d",
-          "price": 1799,
-          "quantity": 3
-        }
-      ],
-      "address": {
-        "fullName": "Fouzan Muhammed K V",
-        "phone": "9778263326",
-        "address": "Kallivalappil house",
-        "city": "Pattambi",
-        "pinCode": "679337",
-        "userId": "user_3JJDQcT11Hay732J8WGw6GmiooG",
-        "isDefault": false,
-        "id": "C1wWHpKM9bQ"
-      },
-      "paymentMethod": "card",
-      "subtotal": 14190,
-      "coupon": null,
-      "discountAmount": 0,
-      "totalAmount": 14190,
-      "status": "placed",
-      "createdAt": "2026-09-19T02:26:05.702Z",
-      "id": "C7n1qFVxBuY"
-    },
-    {
-      "userId": "user_3JJDQcT11Hay732J8WGw6GmiooG",
-      "items": [
-        {
-          "productId": "4",
-          "title": "Classic Bomber Jacket",
-          "image": "https://images.unsplash.com/photo-1551028719-00167b16eac5",
-          "price": 2799,
-          "quantity": 4
-        },
-        {
-          "productId": "8",
-          "title": "Floral Summer Dress",
-          "image": "https://images.unsplash.com/photo-1496747611176-843222e1e57c",
-          "price": 1899,
-          "quantity": 1
-        },
-        {
-          "productId": "7",
-          "title": "Minimal Black Hoodie",
-          "image": "https://images.unsplash.com/photo-1556905055-8f358a7a47b2",
-          "price": 1999,
-          "quantity": 2
-        },
-        {
-          "productId": "5",
-          "title": "Casual Polo T-Shirt",
-          "image": "https://images.unsplash.com/photo-1581655353564-df123a1eb820",
-          "price": 999,
-          "quantity": 1
-        },
-        {
-          "productId": "2",
-          "title": "Premium Linen Shirt",
-          "image": "https://images.unsplash.com/photo-1602810318383-e386cc2a3ccf",
-          "price": 1399,
-          "quantity": 1
-        },
-        {
-          "productId": "3",
-          "title": "Slim Fit Denim Jeans",
-          "image": "https://images.unsplash.com/photo-1542272604-787c3835535d",
-          "price": 1799,
-          "quantity": 3
-        }
-      ],
-      "address": {
-        "fullName": "Fouzan Muhammed K V",
-        "phone": "9778263326",
-        "address": "Kallivalappil house",
-        "city": "Pattambi",
-        "pinCode": "679337",
-        "userId": "user_3JJDQcT11Hay732J8WGw6GmiooG",
-        "isDefault": false,
-        "id": "C1wWHpKM9bQ"
-      },
-      "paymentMethod": "upi",
-      "subtotal": 24888,
-      "coupon": null,
-      "discountAmount": 0,
-      "totalAmount": 24888,
-      "status": "placed",
-      "createdAt": "2026-09-19T02:28:26.556Z",
-      "id": "yufC4wAOIEk"
-    },
-    {
-      "userId": "user_3JJDQcT11Hay732J8WGw6GmiooG",
-      "items": [
-        {
-          "productId": "6",
-          "title": "Relaxed Cargo Pants",
-          "image": "https://images.unsplash.com/photo-1624378439575-d8705ad7ae80",
-          "price": 1599,
-          "quantity": 6
-        },
-        {
-          "productId": "1",
-          "title": "Classic Oversized T-Shirt",
-          "image": "https://images.unsplash.com/photo-1521572267360-ee0c2909d518",
-          "price": 799,
-          "quantity": 3
-        },
-        {
-          "productId": "4",
-          "title": "Classic Bomber Jacket",
-          "image": "https://images.unsplash.com/photo-1551028719-00167b16eac5",
-          "price": 2799,
-          "quantity": 4
-        },
-        {
-          "productId": "8",
-          "title": "Floral Summer Dress",
-          "image": "https://images.unsplash.com/photo-1496747611176-843222e1e57c",
-          "price": 1899,
-          "quantity": 1
-        },
-        {
-          "productId": "7",
-          "title": "Minimal Black Hoodie",
-          "image": "https://images.unsplash.com/photo-1556905055-8f358a7a47b2",
-          "price": 1999,
-          "quantity": 2
-        },
-        {
-          "productId": "5",
-          "title": "Casual Polo T-Shirt",
-          "image": "https://images.unsplash.com/photo-1581655353564-df123a1eb820",
-          "price": 999,
-          "quantity": 1
-        },
-        {
-          "productId": "2",
-          "title": "Premium Linen Shirt",
-          "image": "https://images.unsplash.com/photo-1602810318383-e386cc2a3ccf",
-          "price": 1399,
-          "quantity": 2
-        },
-        {
-          "productId": "3",
-          "title": "Slim Fit Denim Jeans",
-          "image": "https://images.unsplash.com/photo-1542272604-787c3835535d",
-          "price": 1799,
-          "quantity": 3
-        }
-      ],
-      "address": {
-        "fullName": "Fouzan Muhammed K V",
-        "phone": "9778263326",
-        "address": "Kallivalappil house",
-        "city": "Pattambi",
-        "pinCode": "679337",
-        "userId": "user_3JJDQcT11Hay732J8WGw6GmiooG",
-        "isDefault": false,
-        "id": "C1wWHpKM9bQ"
-      },
-      "paymentMethod": "upi",
-      "subtotal": 38278,
-      "coupon": null,
-      "discountAmount": 0,
-      "totalAmount": 38278,
-      "status": "cancelled",
-      "createdAt": "2026-09-19T02:29:08.505Z",
-      "id": "Qc-wVdo_wcU"
-    },
-    {
-      "userId": "user_3JJDQcT11Hay732J8WGw6GmiooG",
-      "items": [
-        {
-          "productId": "6",
-          "title": "Relaxed Cargo Pants",
-          "image": "https://images.unsplash.com/photo-1624378439575-d8705ad7ae80",
-          "price": 1599,
-          "quantity": 5
-        },
-        {
-          "productId": "1",
-          "title": "Classic Oversized T-Shirt",
-          "image": "https://images.unsplash.com/photo-1521572267360-ee0c2909d518",
-          "price": 799,
-          "quantity": 4
-        },
-        {
-          "productId": "4",
-          "title": "Classic Bomber Jacket",
-          "image": "https://images.unsplash.com/photo-1551028719-00167b16eac5",
-          "price": 2799,
-          "quantity": 4
-        },
-        {
-          "productId": "8",
-          "title": "Floral Summer Dress",
-          "image": "https://images.unsplash.com/photo-1496747611176-843222e1e57c",
-          "price": 1899,
-          "quantity": 1
-        },
-        {
-          "productId": "7",
-          "title": "Minimal Black Hoodie",
-          "image": "https://images.unsplash.com/photo-1556905055-8f358a7a47b2",
-          "price": 1999,
-          "quantity": 2
-        },
-        {
-          "productId": "5",
-          "title": "Casual Polo T-Shirt",
-          "image": "https://images.unsplash.com/photo-1581655353564-df123a1eb820",
-          "price": 999,
-          "quantity": 1
-        },
-        {
-          "productId": "2",
-          "title": "Premium Linen Shirt",
-          "image": "https://images.unsplash.com/photo-1602810318383-e386cc2a3ccf",
-          "price": 1399,
-          "quantity": 1
-        },
-        {
-          "productId": "3",
-          "title": "Slim Fit Denim Jeans",
-          "image": "https://images.unsplash.com/photo-1542272604-787c3835535d",
-          "price": 1799,
-          "quantity": 3
-        }
-      ],
-      "address": {
-        "fullName": "Fouzan Muhammed K V",
-        "phone": "9778263326",
-        "address": "Kallivalappil house",
-        "city": "Pattambi",
-        "pinCode": "679337",
-        "userId": "user_3JJDQcT11Hay732J8WGw6GmiooG",
-        "isDefault": false,
-        "id": "X6xmxsbVt0o"
-      },
-      "paymentMethod": "cod",
-      "subtotal": 36079,
-      "coupon": null,
-      "discountAmount": 0,
-      "totalAmount": 36079,
-      "status": "placed",
-      "createdAt": "2026-09-19T03:34:09.320Z",
-      "id": "M5AT2BNrLZo"
-    },
-    {
-      "userId": "user_3JJDQcT11Hay732J8WGw6GmiooG",
-      "items": [
-        {
-          "productId": "6",
-          "title": "Relaxed Cargo Pants",
-          "image": "https://images.unsplash.com/photo-1624378439575-d8705ad7ae80",
-          "price": 1599,
-          "quantity": 5
-        },
-        {
-          "productId": "1",
-          "title": "Classic Oversized T-Shirt",
-          "image": "https://images.unsplash.com/photo-1521572267360-ee0c2909d518",
-          "price": 799,
-          "quantity": 3
-        },
-        {
-          "productId": "4",
-          "title": "Classic Bomber Jacket",
-          "image": "https://images.unsplash.com/photo-1551028719-00167b16eac5",
-          "price": 2799,
-          "quantity": 4
-        },
-        {
-          "productId": "8",
-          "title": "Floral Summer Dress",
-          "image": "https://images.unsplash.com/photo-1496747611176-843222e1e57c",
-          "price": 1899,
-          "quantity": 1
-        },
-        {
-          "productId": "7",
-          "title": "Minimal Black Hoodie",
-          "image": "https://images.unsplash.com/photo-1556905055-8f358a7a47b2",
-          "price": 1999,
-          "quantity": 5
-        },
-        {
-          "productId": "5",
-          "title": "Casual Polo T-Shirt",
-          "image": "https://images.unsplash.com/photo-1581655353564-df123a1eb820",
-          "price": 999,
-          "quantity": 1
-        },
-        {
-          "productId": "2",
-          "title": "Premium Linen Shirt",
-          "image": "https://images.unsplash.com/photo-1602810318383-e386cc2a3ccf",
-          "price": 1399,
-          "quantity": 1
-        },
-        {
-          "productId": "3",
-          "title": "Slim Fit Denim Jeans",
-          "image": "https://images.unsplash.com/photo-1542272604-787c3835535d",
-          "price": 1799,
-          "quantity": 3
-        }
-      ],
-      "address": {
-        "fullName": "Fouzan Muhammed K V",
-        "phone": "9778263326",
-        "address": "Kallivalappil house",
-        "city": "Pattambi",
-        "pinCode": "679337",
-        "userId": "user_3JJDQcT11Hay732J8WGw6GmiooG",
-        "isDefault": false,
-        "id": "C1wWHpKM9bQ"
-      },
-      "paymentMethod": "card",
-      "subtotal": 41277,
-      "coupon": null,
-      "discountAmount": 0,
-      "totalAmount": 41277,
-      "status": "placed",
-      "createdAt": "2026-09-22T07:38:43.643Z",
-      "id": "B1D7m7Led6I"
-    },
-    {
-      "userId": "user_3JJDQcT11Hay732J8WGw6GmiooG",
-      "items": [
-        {
-          "productId": "12",
-          "title": "Classic Blazer",
-          "image": "https://images.unsplash.com/photo-1591047139829-d91aecb6caea",
-          "price": 3199,
-          "quantity": 4
-        }
-      ],
-      "address": {
-        "fullName": "Fouzan Muhammed K V",
-        "phone": "9778263326",
-        "address": "Kallivalappil house",
-        "city": "Pattambi",
-        "pinCode": "679337",
-        "userId": "user_3JJDQcT11Hay732J8WGw6GmiooG",
-        "isDefault": false,
-        "id": "C1wWHpKM9bQ"
-      },
-      "paymentMethod": "cod",
-      "subtotal": 12796,
-      "coupon": null,
-      "discountAmount": 0,
-      "totalAmount": 12796,
-      "status": "delivered",
-      "createdAt": "2026-10-01T14:32:38.013Z",
-      "id": "xaJ0iPjMoe8"
-    },
-    {
-      "userId": "user_3JJDQcT11Hay732J8WGw6GmiooG",
-      "items": [
-        {
-          "productId": "12",
-          "title": "Classic Blazer",
-          "image": "https://images.unsplash.com/photo-1591047139829-d91aecb6caea",
-          "price": 3199,
-          "quantity": 3
-        }
-      ],
-      "address": {
-        "fullName": "Fouzan Muhammed K V",
-        "phone": "9778263326",
-        "address": "Kallivalappil house",
-        "city": "Pattambi",
-        "pinCode": "679337",
-        "userId": "user_3JJDQcT11Hay732J8WGw6GmiooG",
-        "isDefault": false,
-        "id": "C1wWHpKM9bQ"
-      },
-      "paymentMethod": "cod",
-      "subtotal": 9597,
-      "coupon": null,
-      "discountAmount": 0,
-      "totalAmount": 9597,
-      "status": "shipped",
-      "createdAt": "2026-10-01T14:36:03.912Z",
-      "id": "wtAEWAW1o-8"
-    },
-    {
-      "userId": "user_3JJDQcT11Hay732J8WGw6GmiooG",
-      "items": [
-        {
-          "productId": "1",
-          "title": "Classic Oversized T-Shirt",
-          "image": "https://images.unsplash.com/photo-1521572267360-ee0c2909d518",
-          "price": 799,
-          "quantity": 2
-        }
-      ],
-      "address": {
-        "fullName": "Fouzan Muhammed K V",
-        "phone": "9778263326",
-        "address": "Kallivalappil house",
-        "city": "Pattambi",
-        "pinCode": "679337",
-        "userId": "user_3JJDQcT11Hay732J8WGw6GmiooG",
-        "isDefault": false,
-        "id": "C1wWHpKM9bQ"
-      },
-      "paymentMethod": "cod",
-      "subtotal": 1598,
-      "coupon": null,
-      "discountAmount": 0,
-      "totalAmount": 1598,
-      "status": "cancelled",
-      "createdAt": "2026-10-01T14:55:54.485Z",
-      "id": "5WsSsTDQWFg"
-    },
-    {
-      "userId": "user_3JJDQcT11Hay732J8WGw6GmiooG",
-      "items": [
-        {
-          "productId": "1",
-          "title": "Classic Oversized T-Shirt",
-          "image": "https://images.unsplash.com/photo-1521572267360-ee0c2909d518",
-          "price": 799,
-          "quantity": 6
-        }
-      ],
-      "address": {
-        "fullName": "Fouzan Muhammed K V",
-        "phone": "9778263326",
-        "address": "Kallivalappil house",
-        "city": "Pattambi",
-        "pinCode": "679337",
-        "userId": "user_3JJDQcT11Hay732J8WGw6GmiooG",
-        "isDefault": false,
-        "id": "C1wWHpKM9bQ"
-      },
-      "paymentMethod": "cod",
-      "subtotal": 4794,
-      "coupon": null,
-      "discountAmount": 0,
-      "totalAmount": 4794,
-      "status": "cancelled",
-      "createdAt": "2026-10-03T01:41:15.795Z",
-      "id": "Q8RN4JK6FnQ"
-    },
-    {
-      "userId": "user_3JJDQcT11Hay732J8WGw6GmiooG",
-      "items": [
-        {
-          "productId": "11",
-          "title": "Oversized Knit Sweater",
-          "image": "https://images.unsplash.com/photo-1434389677669-e08b4cac3105",
-          "price": 1799,
-          "quantity": 1
-        }
-      ],
-      "address": {
-        "fullName": "Fouzan Muhammed K V",
-        "phone": "9778263326",
-        "address": "Kallivalappil house",
-        "city": "Pattambi",
-        "pinCode": "679337",
-        "userId": "user_3JJDQcT11Hay732J8WGw6GmiooG",
-        "isDefault": false,
-        "id": "C1wWHpKM9bQ"
-      },
-      "paymentMethod": "cod",
-      "subtotal": 1799,
-      "coupon": {
-        "code": "WELCOME20",
-        "discountType": "percentage",
-        "discountValue": 20,
-        "minimumOrderAmount": 500,
-        "expiryDate": "2026-12-31",
-        "isActive": true,
-        "id": "7K7PtvGxI6M"
-      },
-      "discountAmount": 359.8,
-      "totalAmount": 1439.2,
-      "status": "placed",
-      "createdAt": "2026-10-03T07:17:43.222Z",
-      "id": "7wobGQEgclM"
-    },
-    {
-      "userId": "user_3JJDQcT11Hay732J8WGw6GmiooG",
-      "items": [
         {
           "productId": "2",
           "title": "Premium Linen Shirt",
           "image": "https://images.unsplash.com/photo-1602810318383-e386cc2a3ccf",
           "price": 1399,
           "quantity": 1,
+          "deal": {
+            "id": "deal_003",
+            "title": "Buy More, Save More",
+            "description": "Get bigger discounts when you purchase more qualifying items.",
+            "type": "quantity_discount",
+            "products": [
+              "2",
+              "5",
+              "6"
+            ],
+            "discountType": "tiered",
+            "tiers": [
+              {
+                "quantity": 2,
+                "discount": 10
+              },
+              {
+                "quantity": 3,
+                "discount": 15
+              },
+              {
+                "quantity": 4,
+                "discount": 20
+              }
+            ],
+            "image": "",
+            "startDate": "2026-10-04T00:00:00.000Z",
+            "endDate": "2026-10-31T23:59:59.000Z",
+            "isActive": true,
+            "priority": 3,
+            "createdAt": "2026-10-04T00:00:00.000Z"
+          },
+          "dealDiscount": 0,
           "originalItemTotal": 1399,
-          "dealDiscount": 419.7,
-          "finalItemTotal": 979.3,
+          "finalItemTotal": 1399,
+          "finalUnitPrice": 1399,
           "freeQuantity": 0,
           "paidQuantity": 1,
-          "deal": {
-            "id": "deal_001",
-            "title": "Weekend Flash Sale",
-            "type": "flash_sale"
-          },
-          "discountPercentage": 30,
+          "discountPercentage": 0,
+          "appliedTier": null
+        },
+        {
+          "productId": "3",
+          "title": "Slim Fit Denim Jeans",
+          "image": "https://images.unsplash.com/photo-1542272604-787c3835535d",
+          "price": 1799,
+          "quantity": 1,
+          "deal": null,
+          "dealDiscount": 0,
+          "originalItemTotal": 1799,
+          "finalItemTotal": 1799,
+          "finalUnitPrice": 0,
+          "freeQuantity": 0,
+          "paidQuantity": 1,
+          "discountPercentage": 0,
           "appliedTier": null
         }
       ],
-      "address": {
-        "fullName": "Fouzan Muhammed K V",
-        "phone": "9778263326",
-        "address": "Kallivalappil house",
-        "city": "Pattambi",
-        "pinCode": "679337",
-        "userId": "user_3JJDQcT11Hay732J8WGw6GmiooG",
-        "isDefault": false,
-        "id": "C1wWHpKM9bQ"
-      },
-      "paymentMethod": "card",
-      "subtotal": 979.3,
-      "dealDiscount": 419.7,
-      "bundleDiscount": 0,
-      "dealTotal": 979.3,
-      "coupon": null,
-      "discountAmount": 0,
-      "totalAmount": 979.3,
       "appliedDeals": {
         "productDeals": [
           {
-            "dealId": "deal_001",
-            "title": "Weekend Flash Sale",
-            "type": "flash_sale",
+            "productId": "1",
+            "dealId": "deal_002",
+            "title": "Buy 1 Get 1 Free",
+            "type": "bogo",
+            "discount": 0,
+            "quantity": 1,
+            "freeQuantity": 0,
+            "paidQuantity": 1
+          },
+          {
             "productId": "2",
-            "discount": 419.7,
-            "freeQuantity": 0
+            "dealId": "deal_003",
+            "title": "Buy More, Save More",
+            "type": "quantity_discount",
+            "discount": 0,
+            "quantity": 1,
+            "freeQuantity": 0,
+            "paidQuantity": 1
           }
         ],
-        "bundles": []
-      },
-      "status": "placed",
-      "createdAt": "2026-10-04T16:32:38.742Z",
-      "id": "Ygu_8cLeX00"
-    },
-    {
-      "userId": "guest",
-      "items": [
-        {
-          "productId": "onq-RS7Zjxw",
-          "title": "Vintage Shirt",
-          "image": "https://res.cloudinary.com/hkw5bslv/image/upload/v1791530527/zancart/products/wuyexfvisxt9qxfzzw3n.png",
-          "price": 200,
-          "quantity": 1,
-          "deal": null,
-          "dealDiscount": 0,
-          "originalItemTotal": 200,
-          "finalItemTotal": 200,
-          "finalUnitPrice": 0,
-          "freeQuantity": 0,
-          "paidQuantity": 1,
-          "discountPercentage": 0,
-          "appliedTier": null
-        },
-        {
-          "productId": "7",
-          "title": "Minimal Black Hoodie",
-          "image": "https://images.unsplash.com/photo-1556905055-8f358a7a47b2",
-          "price": 1999,
-          "quantity": 1,
-          "deal": null,
-          "dealDiscount": 0,
-          "originalItemTotal": 1999,
-          "finalItemTotal": 1999,
-          "finalUnitPrice": 0,
-          "freeQuantity": 0,
-          "paidQuantity": 1,
-          "discountPercentage": 0,
-          "appliedTier": null
-        }
-      ],
-      "appliedDeals": {
-        "productDeals": [],
         "bundles": [],
-        "subtotal": 2199,
+        "subtotal": 3997,
         "totalDiscount": 0,
         "bundleDiscount": 0,
-        "finalTotal": 2199
+        "finalTotal": 3997
       },
       "address": {
         "fullName": "Fouzan Muhammed K V",
@@ -4177,20 +2769,20 @@
         "address": "Kallivalappil house",
         "city": "Pattambi",
         "pinCode": "679337",
-        "userId": "user_3JJDQcT11Hay732J8WGw6GmiooG",
-        "isDefault": false,
-        "id": "C1wWHpKM9bQ"
+        "userId": "3cedd7c7-0ad3-40fe-8512-ccfa854442dd",
+        "isDefault": true,
+        "id": "T-nyHyukGIE"
       },
       "paymentMethod": "cod",
       "coupon": null,
       "discountAmount": 0,
       "dealDiscount": 0,
       "bundleDiscount": 0,
-      "subtotal": 2199,
-      "totalAmount": 2199,
+      "subtotal": 3997,
+      "totalAmount": 3997,
       "status": "placed",
-      "createdAt": "2026-10-11T16:27:24.889Z",
-      "id": "22M8iCQYuEk"
+      "createdAt": "2026-10-15T06:07:17.463Z",
+      "id": "MYO78-HleeE"
     }
   ],
   "coupons": [
@@ -4382,6 +2974,10 @@
     {
       "name": "Fouzan",
       "id": "7gW8_ufMDAY"
+    },
+    {
+      "name": "Nike",
+      "id": "7Uc32pHJh5Y"
     }
   ],
   "deals": [
@@ -4510,6 +3106,51 @@
       "link": "/products?category=Beauty",
       "order": 5,
       "isActive": true
+    },
+    {
+      "image": "https://res.cloudinary.com/hkw5bslv/image/upload/v1792125994/zancart/banners/fxgqjb68jdymxp9p1xkc.png",
+      "link": "/products",
+      "order": 1,
+      "isActive": false,
+      "createdAt": "2026-10-16T04:46:41.185Z",
+      "updatedAt": "2026-10-16T04:52:38.427Z",
+      "id": "84lnQTRjAzM"
+    },
+    {
+      "image": "https://res.cloudinary.com/hkw5bslv/image/upload/v1792126039/zancart/banners/ap5yuqwapp2ug5fzhcpi.png",
+      "link": "/products?category=Fashion",
+      "order": 2,
+      "isActive": false,
+      "createdAt": "2026-10-16T04:47:23.571Z",
+      "updatedAt": "2026-10-16T04:52:40.614Z",
+      "id": "hL5ygdetBC4"
+    },
+    {
+      "image": "https://res.cloudinary.com/hkw5bslv/image/upload/v1792126082/zancart/banners/yzdb8bda9snix0l3dr0e.png",
+      "link": "/products?category=Electronics",
+      "order": 3,
+      "isActive": false,
+      "createdAt": "2026-10-16T04:48:08.710Z",
+      "updatedAt": "2026-10-16T04:52:41.903Z",
+      "id": "6IcjsMb8X7U"
+    },
+    {
+      "image": "https://res.cloudinary.com/hkw5bslv/image/upload/v1792126136/zancart/banners/goq3129n6zvzcdqd8lkz.png",
+      "link": "/products?category=Home",
+      "order": 4,
+      "isActive": false,
+      "createdAt": "2026-10-16T04:49:09.209Z",
+      "updatedAt": "2026-10-16T04:52:43.088Z",
+      "id": "Y9MgPQv2zHw"
+    },
+    {
+      "image": "https://res.cloudinary.com/hkw5bslv/image/upload/v1792126182/zancart/banners/qokc22sqrfinbbsfltxe.png",
+      "link": "/products?category=Beauty",
+      "order": 5,
+      "isActive": false,
+      "createdAt": "2026-10-16T04:49:58.711Z",
+      "updatedAt": "2026-10-16T04:52:44.250Z",
+      "id": "pGIafe1qpTM"
     }
   ],
   "$schema": "./node_modules/json-server/schema.json"

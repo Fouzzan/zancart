@@ -14,6 +14,7 @@ import {
 import { NavLink } from "react-router-dom";
 
 export const navigation = [
+  // { label: "Profile", path: "/profile", icon: UserRound },
   {
     label: "Dashboard",
     path: "/dashboard",
@@ -60,7 +61,7 @@ export const navigation = [
     icon: TicketPercent,
   },
   {
-    label: "reviews",
+    label: "Reviews",
     path: "/reviews",
     icon: MessageSquare,
   },
@@ -89,28 +90,63 @@ function Sidebar() {
       </div>
 
       {/* Navigation */}
-      <nav className="flex-1 space-y-1 p-4">
-        {navigation.map((item) => {
-          const Icon = item.icon;
 
-          return (
-            <NavLink
-              key={item.path}
-              to={item.path}
-              className={({ isActive }) =>
-                [
-                  "flex items-center gap-3 rounded-lg px-3 py-2.5 text-sm font-medium transition-colors",
-                  isActive
-                    ? "bg-primary text-primary-foreground"
-                    : "text-muted-foreground hover:bg-muted hover:text-foreground",
-                ].join(" ")
-              }
-            >
-              <Icon className="size-4" />
-              {item.label}
-            </NavLink>
-          );
-        })}
+      <nav className="flex flex-1 flex-col p-4">
+        {/* Account navigation */}
+        <div className="mb-4 space-y-1">
+          {navigation
+            .filter((item) => item.path === "/profile")
+            .map((item) => {
+              const Icon = item.icon;
+
+              return (
+                <NavLink
+                  key={item.path}
+                  to={item.path}
+                  end
+                  className={({ isActive }) =>
+                    [
+                      "flex items-center gap-3 rounded-lg px-3 py-2.5 text-sm font-medium transition-colors",
+                      isActive
+                        ? "bg-primary text-primary-foreground"
+                        : "text-muted-foreground hover:bg-muted hover:text-foreground",
+                    ].join(" ")
+                  }
+                >
+                  <Icon className="size-4" />
+                  {item.label}
+                </NavLink>
+              );
+            })}
+        </div>
+
+        {/* Main navigation */}
+        <div className="space-y-1">
+          {navigation
+            .filter((item) => item.path !== "/profile")
+            .map((item) => {
+              const Icon = item.icon;
+
+              return (
+                <NavLink
+                  key={item.path}
+                  to={item.path}
+                  end={item.path === "/dashboard"}
+                  className={({ isActive }) =>
+                    [
+                      "flex items-center gap-3 rounded-lg px-3 py-2.5 text-sm font-medium transition-colors",
+                      isActive
+                        ? "bg-primary text-primary-foreground"
+                        : "text-muted-foreground hover:bg-muted hover:text-foreground",
+                    ].join(" ")
+                  }
+                >
+                  <Icon className="size-4" />
+                  {item.label}
+                </NavLink>
+              );
+            })}
+        </div>
       </nav>
 
       {/* Bottom */}

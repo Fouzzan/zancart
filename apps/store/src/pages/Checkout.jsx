@@ -1,9 +1,9 @@
-import { useUser } from "@clerk/react";
 import { Check, Gift, MapPin, Plus, Tag, X } from "lucide-react";
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 
+import { useAuthContext } from "../context/AuthContext";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { toast } from "sonner";
@@ -18,7 +18,7 @@ function Checkout() {
   const navigate = useNavigate();
   const dispatch = useDispatch();
 
-  const { user, isLoaded } = useUser();
+  const { user, isLoading: isAuthLoading } = useAuthContext();
 
   const cartItems = useSelector((state) => state.cart?.items);
   const items = Array.isArray(cartItems) ? cartItems : [];
@@ -48,22 +48,12 @@ function Checkout() {
   const [dealLoading, setDealLoading] = useState(false);
   const [dealError, setDealError] = useState("");
 
-  /*
-   * -----------------------------------------
-   * FORMAT PRICE
-   * -----------------------------------------
-   */
-  const formatPrice = (value) => {
-    return Number(value || 0).toLocaleString("en-IN", {
+  const formatPrice = (value) =>
+    Number(value || 0).toLocaleString("en-IN", {
       maximumFractionDigits: 2,
     });
-  };
 
-  /*
-   * -----------------------------------------
-   * CALCULATE DEALS
-   * -----------------------------------------
-   */
+  // Calculate deals for the current cart.
   useEffect(() => {
     let cancelled = false;
 
@@ -77,7 +67,8 @@ function Checkout() {
           bundleDiscount: 0,
           finalTotal: 0,
         });
-
+        setDealLoading(false);
+        setDealError("");
         return;
       }
 
@@ -110,32 +101,14 @@ function Checkout() {
     };
   }, [items]);
 
-  /*
-   * -----------------------------------------
-   * DEAL-AWARE VALUES
-   * -----------------------------------------
-   */
-
-  // Subtotal after flash sale / BOGO /
-  // quantity discounts.
+  // Deal-aware totals.
   const subtotal = Number(dealCalculation.subtotal || 0);
-
-  // Bundle discount is applied after the
-  // product-level subtotal.
   const bundleDiscount = Number(dealCalculation.bundleDiscount || 0);
-
-  // Total after all product-level and bundle deals.
   const dealTotal = Number(dealCalculation.finalTotal || 0);
 
-  /*
-   * -----------------------------------------
-   * COUPON DISCOUNT
-   * -----------------------------------------
-   */
+  // Coupon discount.
   const getDiscountAmount = () => {
-    if (!appliedCoupon) {
-      return 0;
-    }
+    if (!appliedCoupon) return 0;
 
     if (appliedCoupon.discountType === "percentage") {
       return Math.min(
@@ -152,26 +125,34 @@ function Checkout() {
   };
 
   const discountAmount = getDiscountAmount();
-
   const total = Math.max(0, dealTotal - discountAmount);
 
-  /*
-   * -----------------------------------------
-   * FETCH ADDRESSES
-   * -----------------------------------------
-   */
+  // Fetch addresses after authentication has finished loading.
   useEffect(() => {
-    if (!isLoaded || !user) {
-      return;
-    }
+    if (isAuthLoading) return;
 
     let cancelled = false;
 
     const fetchAddresses = async () => {
+      if (!user) {
+        setAddresses([]);
+        setLoading(false);
+        return;
+      }
+
+      const userId = user.userId || user.id;
+
+      if (!userId) {
+        console.error("Authenticated user ID is missing.");
+        setAddresses([]);
+        setLoading(false);
+        return;
+      }
+
       try {
         setLoading(true);
 
-        const data = await getUserAddresses(user.id);
+        const data = await getUserAddresses(userId);
         const safeAddresses = Array.isArray(data) ? data : [];
 
         if (cancelled) return;
@@ -188,9 +169,8 @@ function Checkout() {
           dispatch(setSelectedAddress(safeAddresses[0]));
         }
       } catch (error) {
-        console.error("Failed to fetch addresses:", error);
-
         if (!cancelled) {
+          console.error("Failed to fetch addresses:", error);
           setAddresses([]);
         }
       } finally {
@@ -205,13 +185,9 @@ function Checkout() {
     return () => {
       cancelled = true;
     };
-  }, [user, isLoaded, dispatch]);
+  }, [user, isAuthLoading, dispatch]);
 
-  /*
-   * -----------------------------------------
-   * APPLY COUPON
-   * -----------------------------------------
-   */
+  // Apply coupon.
   const handleApplyCoupon = async () => {
     const code = couponCode.trim();
 
@@ -226,110 +202,60 @@ function Checkout() {
 
       const coupon = await getCouponByCode(code);
 
-      /*
-       * Coupon doesn't exist
-       */
       if (!coupon) {
         dispatch(setCoupon(null));
-
         setCouponError("Invalid coupon code.");
-
         toast.error("Invalid coupon code.");
-
         return;
       }
 
-      /*
-       * Coupon inactive
-       */
       if (!coupon.isActive) {
         dispatch(setCoupon(null));
-
         setCouponError("This coupon is no longer active.");
-
         toast.error("This coupon is no longer valid.");
-
         return;
       }
 
-      /*
-       * Coupon expired
-       */
       const today = new Date().toISOString().split("T")[0];
 
-      if (coupon.expiryDate < today) {
+      if (coupon.expiryDate && coupon.expiryDate < today) {
         dispatch(setCoupon(null));
-
         setCouponError("This coupon has expired.");
-
         toast.error("This coupon is no longer valid.");
-
         return;
       }
 
-      /*
-       * Minimum order validation
-       *
-       * IMPORTANT:
-       * Validate against the price after
-       * product/bundle deals.
-       */
       if (subtotal < Number(coupon.minimumOrderAmount || 0)) {
         dispatch(setCoupon(null));
 
-        setCouponError(
-          `Minimum order amount is ₹${coupon.minimumOrderAmount}.`,
-        );
-
-        toast.error(`Minimum order amount is ₹${coupon.minimumOrderAmount}.`);
-
+        const message = `Minimum order amount is ₹${coupon.minimumOrderAmount}.`;
+        setCouponError(message);
+        toast.error(message);
         return;
       }
 
-      /*
-       * Coupon is valid
-       */
       dispatch(setCoupon(coupon));
-
       setCouponError("");
       setCouponCode(coupon.code);
 
       toast.success("Coupon applied successfully.");
     } catch (error) {
       console.error("Failed to apply coupon:", error);
-
       setCouponError("Unable to validate coupon. Please try again.");
     } finally {
       setCouponLoading(false);
     }
   };
 
-  /*
-   * -----------------------------------------
-   * REMOVE COUPON
-   * -----------------------------------------
-   */
   const handleRemoveCoupon = () => {
     dispatch(setCoupon(null));
-
     setCouponCode("");
     setCouponError("");
   };
 
-  /*
-   * -----------------------------------------
-   * SELECT ADDRESS
-   * -----------------------------------------
-   */
   const handleSelectAddress = (address) => {
     dispatch(setSelectedAddress(address));
   };
-
-  /*
-   * -----------------------------------------
-   * CONTINUE TO PAYMENT
-   * -----------------------------------------
-   */
 
   const handleContinueToPayment = () => {
     if (!selectedAddress) {
@@ -356,11 +282,16 @@ function Checkout() {
     });
   };
 
-  /*
-   * -----------------------------------------
-   * EMPTY CART
-   * -----------------------------------------
-   */
+  // Wait for authentication and address loading.
+  if (isAuthLoading || loading) {
+    return (
+      <div className="flex min-h-[60vh] items-center justify-center">
+        <p className="text-muted-foreground">Loading checkout...</p>
+      </div>
+    );
+  }
+
+  // Empty cart.
   if (items.length === 0) {
     return (
       <div className="flex min-h-[60vh] flex-col items-center justify-center px-4 text-center">
@@ -380,37 +311,16 @@ function Checkout() {
     );
   }
 
-  /*
-   * -----------------------------------------
-   * LOADING
-   * -----------------------------------------
-   */
-  if (!isLoaded || loading) {
-    return (
-      <div className="flex min-h-[60vh] items-center justify-center">
-        <p className="text-muted-foreground">Loading checkout...</p>
-      </div>
-    );
-  }
-
-  /*
-   * -----------------------------------------
-   * RENDER
-   * -----------------------------------------
-   */
   return (
     <main className="mx-auto max-w-6xl px-4 py-8 sm:px-6">
       <h1 className="mb-8 text-3xl font-bold">Checkout</h1>
 
       <div className="grid gap-8 lg:grid-cols-[1fr_380px]">
-        {/* =====================================
-            DELIVERY ADDRESS
-        ====================================== */}
+        {/* Delivery address */}
         <section className="rounded-2xl border p-6">
           <div className="mb-6 flex items-center justify-between gap-4">
             <div>
               <h2 className="text-xl font-semibold">Delivery Address</h2>
-
               <p className="mt-1 text-sm text-muted-foreground">
                 Select where you want your order delivered.
               </p>
@@ -506,22 +416,22 @@ function Checkout() {
           )}
         </section>
 
-        {/* =====================================
-            ORDER SUMMARY
-        ====================================== */}
+        {/* Order summary */}
         <section className="h-fit rounded-2xl border p-6">
           <h2 className="mb-6 text-xl font-semibold">Order Summary</h2>
 
-          {/* Products */}
           <div className="space-y-4">
-            {dealCalculation.items.map((item) => {
+            {(Array.isArray(dealCalculation.items)
+              ? dealCalculation.items
+              : []
+            ).map((item) => {
               const hasDeal = Number(item.dealDiscount || 0) > 0;
 
               return (
                 <div key={item.id} className="flex gap-3">
                   <img
                     src={item.images?.[0]}
-                    alt={item.title}
+                    alt={item.title || "Product"}
                     className="h-16 w-16 rounded-lg object-cover"
                   />
 
@@ -567,7 +477,6 @@ function Checkout() {
 
           <div className="my-6 border-t" />
 
-          {/* Deal status */}
           {dealLoading && (
             <div className="mb-5 rounded-xl bg-muted/50 p-3 text-center text-sm text-muted-foreground">
               Checking available deals...
@@ -580,17 +489,14 @@ function Checkout() {
             </div>
           )}
 
-          {/* Bundle savings */}
           {bundleDiscount > 0 && (
             <div className="mb-5 rounded-xl bg-green-50 p-3">
               <div className="flex justify-between text-sm">
                 <span className="font-medium text-green-700">
                   Bundle savings
                 </span>
-
                 <span className="font-semibold text-green-700">
-                  -₹
-                  {formatPrice(bundleDiscount)}
+                  -₹{formatPrice(bundleDiscount)}
                 </span>
               </div>
             </div>
@@ -600,7 +506,6 @@ function Checkout() {
           <div>
             <div className="mb-3 flex items-center gap-2">
               <Tag className="h-4 w-4" />
-
               <h3 className="font-medium">Apply Coupon</h3>
             </div>
 
@@ -608,8 +513,8 @@ function Checkout() {
               <div className="flex gap-2">
                 <Input
                   value={couponCode}
-                  onChange={(e) => {
-                    setCouponCode(e.target.value.toUpperCase());
+                  onChange={(event) => {
+                    setCouponCode(event.target.value.toUpperCase());
                     setCouponError("");
                   }}
                   placeholder="Enter coupon code"
@@ -663,22 +568,17 @@ function Checkout() {
 
           <div className="my-6 border-t" />
 
-          {/* Price Details */}
+          {/* Price details */}
           <div className="space-y-3">
             <div className="flex justify-between">
               <span className="text-muted-foreground">Subtotal</span>
-
               <span>₹{formatPrice(subtotal)}</span>
             </div>
 
             {bundleDiscount > 0 && (
               <div className="flex justify-between text-green-600">
                 <span>Bundle savings</span>
-
-                <span>
-                  -₹
-                  {formatPrice(bundleDiscount)}
-                </span>
+                <span>-₹{formatPrice(bundleDiscount)}</span>
               </div>
             )}
 
@@ -687,17 +587,12 @@ function Checkout() {
                 <span>
                   Coupon {appliedCoupon?.code ? `(${appliedCoupon.code})` : ""}
                 </span>
-
-                <span>
-                  -₹
-                  {formatPrice(discountAmount)}
-                </span>
+                <span>-₹{formatPrice(discountAmount)}</span>
               </div>
             )}
 
             <div className="flex justify-between">
               <span className="text-muted-foreground">Delivery</span>
-
               <span>Free</span>
             </div>
           </div>
@@ -706,11 +601,10 @@ function Checkout() {
 
           <div className="flex justify-between text-lg font-bold">
             <span>Total</span>
-
             <span>₹{formatPrice(total)}</span>
           </div>
 
-          {dealCalculation.totalDiscount > 0 && (
+          {Number(dealCalculation.totalDiscount || 0) > 0 && (
             <p className="mt-3 text-center text-sm font-medium text-green-600">
               🎉 You're saving ₹{formatPrice(dealCalculation.totalDiscount)}{" "}
               with deals

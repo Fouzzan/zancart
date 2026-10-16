@@ -1,0 +1,84 @@
+[
+  {
+    "id": "usr_admin_1791283785396",
+    "name": "ZanCart Admin",
+    "email": "admin@zancart.com",
+    "password": "$2b$12$q8dJOkfr.9wtuESjKTeq7ec0zSZMYo/BD7.Lu.aNKean0YQCxLYEa",
+    "role": "admin",
+    "isBlocked": false,
+    "createdAt": "2026-10-06T10:49:45.398Z",
+    "mustChangePassword": false
+  },
+  {
+    "clerkId": "user_3JRXi5oydPbuGhpU5Wby7qZJOfW",
+    "name": "Fouzan Muhammed KV",
+    "email": "fouzanmuhammedkv@gmail.com",
+    "imageUrl": "https://img.clerk.com/eyJ0eXBlIjoicHJveHkiLCJzcmMiOiJodHRwczovL2ltYWdlcy5jbGVyay5kZXYvb2F1dGhfZ29vZ2xlL2ltZ18zSlJYaUJBSnY1UFhHM2xHb01GTFVOV1kwdFIifQ",
+    "status": "active",
+    "createdAt": "2026-10-03T03:35:08.812Z",
+    "id": "eFYvB-64VIM",
+    "role": "user",
+    "password": "$2b$12$K4zuYKFS0SBwLjMQosEyEemM0r0U8egosEW1jCZdOQYq/9CCSqdwi",
+    "mustChangePassword": false
+  },
+  {
+    "clerkId": "user_3JRbYpDqrify8jbTRBObB1fomjB",
+    "name": "fouzan",
+    "email": "fouzzanai@gmail.com",
+    "imageUrl": "https://img.clerk.com/eyJ0eXBlIjoicHJveHkiLCJzcmMiOiJodHRwczovL2ltYWdlcy5jbGVyay5kZXYvb2F1dGhfZ29vZ2xlL2ltZ18zSlJiWW53WUUyamNNNkVKaHVvQzlTSFNJRUEifQ",
+    "role": "user",
+    "status": "active",
+    "createdAt": "2026-10-03T04:10:55.646Z",
+    "id": "Zmq2mpabzT0",
+    "password": "$2b$12$r8Fe5puRWFuTapA2dyAid.BtdatEyc3tCjzAyx2gumPtE9C8Lr.cO",
+    "mustChangePassword": false,
+    "isBlocked": false
+  },
+  {
+    "id": "53200841-c946-4484-bdf3-d2763b1de836",
+    "name": "Test User",
+    "email": "test@zancart.com",
+    "password": "$2b$12$zIXMh9nGCO3vI.4TBrXj6OHt2HYB.AKt1w1BAkex7rMR69Hf2ccbK",
+    "role": "user",
+    "isBlocked": false,
+    "createdAt": "2026-10-06T07:26:12.644Z"
+  },
+  {
+    "id": "2cef06f9-3ff0-45b4-8969-1a89217eb5bc",
+    "name": "Fouzan Muhammed K V",
+    "email": "fouzan@gmail.com",
+    "password": "$2b$12$TKmvDRkHW019oak9Iz5F4.LKiGkVred9momwaBo/qNrqWKHWnMuUO",
+    "role": "user",
+    "isBlocked": false,
+    "createdAt": "2026-10-14T10:38:32.391Z"
+  },
+  {
+    "id": "3705ec0b-ded0-463a-a9ea-b3f05b3329d2",
+    "name": "ZanCart Test User",
+    "email": "zancart.auth.test.20261014@example.com",
+    "password": "$2b$12$pQ4M7d3qXBCHpxKHoOKpou.PakCrZgDOuMEWJ7EfaJ7287mDB3yyK",
+    "role": "user",
+    "isBlocked": false,
+    "createdAt": "2026-10-14T11:41:48.168Z"
+  },
+  {
+    "id": "49e30bb2-7dc3-49e3-9b34-6af9d5e8171f",
+    "name": "test",
+    "email": "test@gmail.com",
+    "password": "$2b$12$cavtur3MROStiWUHHL/Kz.mjkhIe2SzwAbcpwnwdOyzRp3dca0t3S",
+    "role": "admin",
+    "isBlocked": false,
+    "createdAt": "2026-10-15T05:44:00.640Z",
+    "mustChangePassword": false
+  },
+  {
+    "id": "3cedd7c7-0ad3-40fe-8512-ccfa854442dd",
+    "name": "Fouzan",
+    "email": "mfouzan961@gmail.com",
+    "password": "$2b$12$JQ1dWWAa6U6UCToeyb9KnOnMfur0PRY2LWtGCSAE1mgZnByGWf4ee",
+    "role": "admin",
+    "isBlocked": false,
+    "createdAt": "2026-10-15T06:00:27.020Z",
+    "mustChangePassword": false
+  }
+]

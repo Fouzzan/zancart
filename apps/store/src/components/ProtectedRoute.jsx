@@ -1,19 +1,19 @@
-import { useAuth } from "@clerk/react";
 import { Navigate, Outlet, useLocation } from "react-router-dom";
+import { useAuthContext } from "../context/AuthContext";
 
 function ProtectedRoute() {
-  const { isLoaded, isSignedIn } = useAuth();
+  const { isLoading, isAuthenticated } = useAuthContext();
   const location = useLocation();
 
-  if (!isLoaded) {
+  if (isLoading) {
     return (
-      <div className="flex my-[25%] justify-center items-center align-center">
+      <div className="my-[25%] flex items-center justify-center">
         <p>Loading...</p>
       </div>
     );
   }
 
-  if (!isSignedIn) {
+  if (!isAuthenticated) {
     return <Navigate to="/login" replace state={{ from: location }} />;
   }
 

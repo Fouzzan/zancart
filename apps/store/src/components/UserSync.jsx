@@ -1,26 +1,6 @@
-import { useUser } from "@clerk/react";
-import { useEffect } from "react";
-import { syncUser } from "../services/userServices";
-
 function UserSync() {
-  const { user, isLoaded } = useUser();
-
-  useEffect(() => {
-    if (!isLoaded || !user) {
-      return;
-    }
-
-    const synchronizeUser = async () => {
-      try {
-        await syncUser(user);
-      } catch (error) {
-        console.error("Failed to sync user:", error);
-      }
-    };
-
-    synchronizeUser();
-  }, [user, isLoaded]);
-
+  // Authentication is now managed by AuthContext.
+  // Do not create duplicate user records during rendering.
   return null;
 }
 

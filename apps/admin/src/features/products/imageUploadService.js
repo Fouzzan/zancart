@@ -1,7 +1,7 @@
-import api from "@/services/api";
 import imageCompression from "browser-image-compression";
 
-const AUTH_API_URL = import.meta.env.VITE_AUTH_API_URL;
+const CLOUDINARY_CLOUD_NAME = import.meta.env.VITE_CLOUDINARY_CLOUD_NAME;
+const CLOUDINARY_UPLOAD_PRESET = import.meta.env.VITE_CLOUDINARY_UPLOAD_PRESET;
 
 const compressionOptions = {
   maxSizeMB: 1,
@@ -9,44 +9,31 @@ const compressionOptions = {
   useWebWorker: true,
 };
 
-export const uploadProductImage = async (file) => {
-  if (!AUTH_API_URL) {
-    throw new Error("VITE_AUTH_API_URL is not configured.");
+export const uploadProductImage = async (file, folder = "zancart/products") => {
+  if (!CLOUDINARY_CLOUD_NAME || !CLOUDINARY_UPLOAD_PRESET) {
+    throw new Error(
+      "Cloudinary is not configured. Check VITE_CLOUDINARY_CLOUD_NAME and VITE_CLOUDINARY_UPLOAD_PRESET."
+    );
   }
 
-  if (!file.type.startsWith("image/")) {
-    throw new Error(`${file.name} is not a valid image.`);
+  if (!file || !file.type.startsWith("image/")) {
+    throw new Error("Please select a valid image file.");
   }
 
-  // Compress the image before uploading.
-  const compressedFile = await imageCompression(
-    file,
-    compressionOptions
-  );
+  const compressedFile = await imageCompression(file, compressionOptions);
 
-  // Ask the authenticated Express backend to sign the upload.
-  const signatureResponse = await api.post(
-    `${AUTH_API_URL}/api/admin/uploads/signature`
-  );
-
-  const {
-    cloudName,
-    apiKey,
-    timestamp,
-    folder,
-    signature,
-  } = signatureResponse.data.upload;
-
-  // Upload directly to Cloudinary.
   const uploadData = new FormData();
   uploadData.append("file", compressedFile);
-  uploadData.append("api_key", apiKey);
-  uploadData.append("timestamp", String(timestamp));
-  uploadData.append("folder", folder);
-  uploadData.append("signature", signature);
+  uploadData.append("upload_preset", CLOUDINARY_UPLOAD_PRESET);
+
+  // The preset can define the folder. If the preset permits it,
+  // this parameter organizes uploads into the requested folder.
+  if (folder) {
+    uploadData.append("folder", folder);
+  }
 
   const response = await fetch(
-    `https://api.cloudinary.com/v1_1/${cloudName}/image/upload`,
+    `https://api.cloudinary.com/v1_1/${CLOUDINARY_CLOUD_NAME}/image/upload`,
     {
       method: "POST",
       body: uploadData,
@@ -57,8 +44,12 @@ export const uploadProductImage = async (file) => {
 
   if (!response.ok) {
     throw new Error(
-      result.error?.message || "Image upload failed."
+      result.error?.message || "Cloudinary image upload failed."
     );
+  }
+
+  if (!result.secure_url) {
+    throw new Error("Cloudinary did not return an image URL.");
   }
 
   return result.secure_url;
