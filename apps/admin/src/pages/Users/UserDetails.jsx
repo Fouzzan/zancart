@@ -1,9 +1,19 @@
+import { Badge } from "@/components/ui/badge";
+import { Button } from "@/components/ui/button";
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { Separator } from "@/components/ui/separator";
+import { getOrders } from "@/features/orders/orderService";
+import {
+  getAuthUserById,
+  getUserById,
+  updateAdminRole,
+  updateAuthUserStatus,
+  updateUserStatus,
+} from "@/features/users/userService";
 import {
   ArrowLeft,
   Ban,
   CheckCircle,
-  Eye,
-  EyeOff,
   Shield,
   ShieldOff,
   User,
@@ -11,49 +21,28 @@ import {
   UserX,
 } from "lucide-react";
 import { useEffect, useMemo, useState } from "react";
+import { useSelector } from "react-redux";
 import { useNavigate, useParams } from "react-router-dom";
-
-import { Badge } from "@/components/ui/badge";
-import { Button } from "@/components/ui/button";
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { Separator } from "@/components/ui/separator";
-
-import { getOrders } from "@/features/orders/orderService";
-import {
-  changeUserPassword,
-  getAuthUserById,
-  getUserById,
-  updateAuthUserStatus,
-  updateAdminRole,
-  updateUserStatus,
-} from "@/features/users/userService";
 
 function UserDetails() {
   const { id } = useParams();
   const navigate = useNavigate();
+  const currentAdmin = useSelector((state) => state.auth.admin);
+
+  const isSuperAdmin =
+    String(currentAdmin?.role || "")
+      .trim()
+      .toLowerCase() === "superadmin";
 
   const [user, setUser] = useState(null);
   const [orders, setOrders] = useState([]);
   const [loading, setLoading] = useState(true);
   const [loadingOrders, setLoadingOrders] = useState(true);
-
   const [updatingStatus, setUpdatingStatus] = useState(false);
   const [updatingRole, setUpdatingRole] = useState(false);
-
-  const [newPassword, setNewPassword] = useState("");
-  const [confirmPassword, setConfirmPassword] = useState("");
-  const [changingPassword, setChangingPassword] = useState(false);
-  const [showNewPassword, setShowNewPassword] = useState(false);
-  const [showConfirmPassword, setShowConfirmPassword] = useState(false);
-  const [passwordError, setPasswordError] = useState("");
-  const [passwordSuccess, setPasswordSuccess] = useState("");
-
   const [error, setError] = useState("");
 
-  // ---------------------------------------------------------------------------
   // Fetch User
-  // ---------------------------------------------------------------------------
-
   useEffect(() => {
     let cancelled = false;
 
@@ -74,7 +63,6 @@ function UserDetails() {
           response = await getUserById(id);
         }
 
-        // Support services that return either a user or an API response.
         const userData =
           response?.data?.user ?? response?.data ?? response?.user ?? response;
 
@@ -108,10 +96,7 @@ function UserDetails() {
     };
   }, [id]);
 
-  // ---------------------------------------------------------------------------
   // Fetch Orders and Match Them to This User
-  // ---------------------------------------------------------------------------
-
   useEffect(() => {
     let cancelled = false;
 
@@ -137,9 +122,6 @@ function UserDetails() {
                 ? response.data.orders
                 : [];
 
-        // IMPORTANT:
-        // The JSON Server user ID may differ from the Clerk ID.
-        // Orders use the Clerk ID in their userId field.
         const possibleUserIds = [
           user.id,
           user.userId,
@@ -207,10 +189,7 @@ function UserDetails() {
     };
   }, [user]);
 
-  // ---------------------------------------------------------------------------
   // User Status
-  // ---------------------------------------------------------------------------
-
   const isBlocked = useMemo(() => {
     if (!user) return false;
 
@@ -221,10 +200,7 @@ function UserDetails() {
     return user.status === "blocked";
   }, [user]);
 
-  // ---------------------------------------------------------------------------
   // Block / Unblock User
-  // ---------------------------------------------------------------------------
-
   const handleStatusChange = async () => {
     if (!user) return;
 
@@ -233,6 +209,7 @@ function UserDetails() {
       setError("");
 
       const newBlockedStatus = !isBlocked;
+
       const response =
         user.source === "auth"
           ? await updateAuthUserStatus(user.id, newBlockedStatus)
@@ -263,10 +240,7 @@ function UserDetails() {
     }
   };
 
-  // ---------------------------------------------------------------------------
   // Enable / Disable Admin Access
-  // ---------------------------------------------------------------------------
-
   const handleAdminRoleChange = async () => {
     if (!user?.email) return;
 
@@ -276,7 +250,12 @@ function UserDetails() {
       setUpdatingRole(true);
       setError("");
 
-      const response = await updateAdminRole(user.email, newRole);
+      const response = await updateAdminRole(
+        user.email,
+        newRole,
+        currentAdmin?.id,
+        currentAdmin?.role,
+      );
 
       if (!response?.success) {
         throw new Error(response?.message || "Failed to update admin access.");
@@ -299,72 +278,7 @@ function UserDetails() {
     }
   };
 
-  // ---------------------------------------------------------------------------
-  // Change Password
-  // ---------------------------------------------------------------------------
-
-  const handleChangePassword = async (event) => {
-    event?.preventDefault();
-
-    if (!user?.email) {
-      setPasswordError("User email is unavailable.");
-      return;
-    }
-
-    setPasswordError("");
-    setPasswordSuccess("");
-
-    if (!newPassword) {
-      setPasswordError("Please enter a new password.");
-      return;
-    }
-
-    if (newPassword.length < 6) {
-      setPasswordError("Password must be at least 6 characters.");
-      return;
-    }
-
-    if (!confirmPassword) {
-      setPasswordError("Please confirm the new password.");
-      return;
-    }
-
-    if (newPassword !== confirmPassword) {
-      setPasswordError("Passwords do not match.");
-      return;
-    }
-
-    try {
-      setChangingPassword(true);
-
-      const response = await changeUserPassword(user.email, newPassword);
-
-      if (!response?.success) {
-        throw new Error(response?.message || "Failed to change password.");
-      }
-
-      setNewPassword("");
-      setConfirmPassword("");
-      setShowNewPassword(false);
-      setShowConfirmPassword(false);
-      setPasswordSuccess("Password changed successfully.");
-    } catch (err) {
-      console.error("Failed to change password:", err);
-
-      setPasswordError(
-        err.response?.data?.message ||
-          err.message ||
-          "Failed to change password.",
-      );
-    } finally {
-      setChangingPassword(false);
-    }
-  };
-
-  // ---------------------------------------------------------------------------
   // Loading State
-  // ---------------------------------------------------------------------------
-
   if (loading) {
     return (
       <div className="flex min-h-[400px] items-center justify-center">
@@ -373,10 +287,7 @@ function UserDetails() {
     );
   }
 
-  // ---------------------------------------------------------------------------
   // User Not Found
-  // ---------------------------------------------------------------------------
-
   if (!user) {
     return (
       <div className="space-y-6 p-4 sm:p-6">
@@ -406,14 +317,9 @@ function UserDetails() {
     );
   }
 
-  // ---------------------------------------------------------------------------
   // Order Statistics
-  // ---------------------------------------------------------------------------
-
   const totalOrders = orders.length;
 
-  // The order schema uses totalAmount.
-  // This total includes all matched orders, including cancelled orders.
   const totalSpent = orders.reduce((total, order) => {
     const amount = Number(
       order.totalAmount ?? order.total ?? order.amount ?? 0,
@@ -422,10 +328,12 @@ function UserDetails() {
     return total + (Number.isFinite(amount) ? amount : 0);
   }, 0);
 
-  // ---------------------------------------------------------------------------
+  const userName =
+    user.name ||
+    user.fullName ||
+    `${user.firstName || ""} ${user.lastName || ""}`.trim() ||
+    "Unnamed User";
   // Main UI
-  // ---------------------------------------------------------------------------
-
   return (
     <div className="space-y-6 p-4 sm:p-6">
       {/* Header */}
@@ -667,144 +575,6 @@ function UserDetails() {
         </CardContent>
       </Card>
 
-      {/* Account Security */}
-      <Card>
-        <CardHeader>
-          <CardTitle className="flex items-center gap-2">
-            <Shield className="size-5" />
-            Account Security
-          </CardTitle>
-        </CardHeader>
-
-        <CardContent>
-          <form onSubmit={handleChangePassword} className="space-y-4">
-            <div>
-              <p className="font-medium">Change Password</p>
-              <p className="mt-1 text-sm text-muted-foreground">
-                Set a new password for this user.
-              </p>
-            </div>
-
-            <div className="grid gap-4 sm:grid-cols-2">
-              {/* New Password */}
-              <div className="space-y-2">
-                <label htmlFor="new-password" className="text-sm font-medium">
-                  New Password
-                </label>
-
-                <div className="relative">
-                  <input
-                    id="new-password"
-                    name="new-password"
-                    type={showNewPassword ? "text" : "password"}
-                    value={newPassword}
-                    onChange={(event) => {
-                      setNewPassword(event.target.value);
-                      setPasswordError("");
-                      setPasswordSuccess("");
-                    }}
-                    placeholder="Enter new password"
-                    autoComplete="new-password"
-                    className="flex h-10 w-full rounded-md border bg-background px-3 py-2 pr-10 text-sm outline-none transition focus:ring-2 focus:ring-ring"
-                  />
-
-                  <button
-                    type="button"
-                    onClick={() => setShowNewPassword((current) => !current)}
-                    className="absolute right-0 top-0 flex h-10 w-10 items-center justify-center text-muted-foreground transition-colors hover:text-foreground"
-                    aria-label={
-                      showNewPassword ? "Hide password" : "Show password"
-                    }
-                  >
-                    {showNewPassword ? (
-                      <EyeOff className="size-4" />
-                    ) : (
-                      <Eye className="size-4" />
-                    )}
-                  </button>
-                </div>
-              </div>
-
-              {/* Confirm Password */}
-              <div className="space-y-2">
-                <label
-                  htmlFor="confirm-password"
-                  className="text-sm font-medium"
-                >
-                  Confirm Password
-                </label>
-
-                <div className="relative">
-                  <input
-                    id="confirm-password"
-                    name="confirm-password"
-                    type={showConfirmPassword ? "text" : "password"}
-                    value={confirmPassword}
-                    onChange={(event) => {
-                      setConfirmPassword(event.target.value);
-                      setPasswordError("");
-                      setPasswordSuccess("");
-                    }}
-                    placeholder="Confirm new password"
-                    autoComplete="new-password"
-                    className="flex h-10 w-full rounded-md border bg-background px-3 py-2 pr-10 text-sm outline-none transition focus:ring-2 focus:ring-ring"
-                  />
-
-                  <button
-                    type="button"
-                    onClick={() =>
-                      setShowConfirmPassword((current) => !current)
-                    }
-                    className="absolute right-0 top-0 flex h-10 w-10 items-center justify-center text-muted-foreground transition-colors hover:text-foreground"
-                    aria-label={
-                      showConfirmPassword ? "Hide password" : "Show password"
-                    }
-                  >
-                    {showConfirmPassword ? (
-                      <EyeOff className="size-4" />
-                    ) : (
-                      <Eye className="size-4" />
-                    )}
-                  </button>
-                </div>
-              </div>
-            </div>
-
-            {passwordError && (
-              <div
-                role="alert"
-                className="rounded-lg border border-destructive/30 bg-destructive/10 px-4 py-3 text-sm text-destructive"
-              >
-                {passwordError}
-              </div>
-            )}
-
-            <p className="text-xs text-muted-foreground">
-              Password must be at least 6 characters.
-            </p>
-
-            <div className="flex justify-end">
-              <Button
-                type="submit"
-                disabled={changingPassword || !newPassword || !confirmPassword}
-              >
-                {changingPassword ? "Changing..." : "Change Password"}
-              </Button>
-            </div>
-
-            {passwordSuccess && (
-              <div
-                role="status"
-                className="flex items-center gap-2 rounded-lg border border-green-500/30 bg-green-500/10 px-4 py-3 text-sm text-green-700"
-              >
-                <CheckCircle className="size-4 shrink-0" />
-                <span>{passwordSuccess}</span>
-              </div>
-            )}
-          </form>
-        </CardContent>
-      </Card>
-
       {/* Order Statistics */}
       <div className="grid gap-4 sm:grid-cols-2">
         <Card>
@@ -866,7 +636,6 @@ function UserDetails() {
                 <tbody>
                   {orders.map((order, index) => {
                     const orderItems = order.items || order.products || [];
-
                     const orderTotal = Number(
                       order.totalAmount ?? order.total ?? order.amount ?? 0,
                     );

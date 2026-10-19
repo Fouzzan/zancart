@@ -56,29 +56,85 @@ export const updateAuthUserStatus = async (userId, isBlocked) => {
   return publicUser(response.data);
 };
 
-export const updateAdminRole = async (email, role) => {
-  if (!["admin", "user"].includes(role)) {
-    throw new Error("Invalid role.");
+export const updateAdminRole = async (email, role, actorId, actorRole) => {
+  if (actorRole !== "superadmin") {
+    throw new Error("Only a Super Admin can change administrator access.");
   }
 
-  const response = await authDb.get("/users", {
-    params: { email: email.trim().toLowerCase() },
-  });
+  if (!["user", "admin"].includes(role)) {
+    throw new Error("Only customer or admin roles can be assigned here.");
+  }
 
-  const user = response.data.find(
-    (record) => record.email?.toLowerCase() === email.trim().toLowerCase(),
+  const normalizedEmail = email.trim().toLowerCase();
+  const response = await authDb.get("/users");
+  const records = response.data;
+
+  const user = records.find(
+    (record) => record.email?.trim().toLowerCase() === normalizedEmail,
   );
 
   if (!user) {
-    throw new Error("User not found.");
+    throw new Error("User not found in the authentication database.");
   }
 
-  await authDb.patch(`/users/${user.id}`, { role });
+  if (String(user.id) === String(actorId)) {
+    throw new Error("You cannot change your own elevated role.");
+  }
 
-  return {
-    success: true,
-    user: publicUser({ ...user, role }),
-  };
+  if (user.role === "superadmin") {
+    throw new Error("A Super Admin role cannot be changed from this screen.");
+  }
+
+  if (user.role === "admin" && role === "user") {
+    const superAdmins = records.filter(
+      (record) => record.role === "superadmin",
+    );
+
+    if (superAdmins.length === 0) {
+      throw new Error("At least one Super Admin must remain.");
+    }
+  }
+
+  const updated = await authDb.patch(`/users/${user.id}`, { role });
+
+  return { success: true, user: publicUser(updated.data) };
+};
+
+export const createAdmin = async ({ name, email, password }) => {
+  const normalizedEmail = email?.trim().toLowerCase();
+
+  if (!name?.trim() || !normalizedEmail || !password) {
+    throw new Error("Name, email, and password are required.");
+  }
+
+  if (password.length < 6) {
+    throw new Error("Password must be at least 6 characters.");
+  }
+
+  const response = await authDb.get("/users");
+
+  if (
+    response.data.some(
+      (record) => record.email?.trim().toLowerCase() === normalizedEmail,
+    )
+  ) {
+    throw new Error("An account with this email already exists.");
+  }
+
+  const hashedPassword = await bcrypt.hash(password, 12);
+
+  const created = await authDb.post("/users", {
+    name: name.trim(),
+    email: normalizedEmail,
+    password: hashedPassword,
+    role: "admin",
+    isBlocked: false,
+    status: "active",
+    createdAt: new Date().toISOString(),
+    mustChangePassword: true,
+  });
+
+  return publicUser(created.data);
 };
 
 export const changeUserPassword = async (email, newPassword) => {
@@ -122,6 +178,7 @@ export const createUser = async (userData) => {
   }
 
   const response = await authDb.get("/users");
+
   const exists = response.data.some(
     (user) => user.email?.toLowerCase() === email,
   );
@@ -136,7 +193,7 @@ export const createUser = async (userData) => {
     name,
     email,
     password,
-    role: "user",
+    role: userData.role === "admin" ? "admin" : "user",
     isBlocked: false,
     status: "active",
     createdAt: new Date().toISOString(),

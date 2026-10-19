@@ -20,7 +20,7 @@ export const loginAdmin = async (email, password) => {
     throw new Error("Invalid email or password.");
   }
 
-  if (user.role !== "admin") {
+  if (!["admin", "superadmin"].includes(user.role)) {
     throw new Error("Admin access required.");
   }
 
@@ -33,7 +33,7 @@ export const loginAdmin = async (email, password) => {
   return {
     user: {
       ...admin,
-      role: "admin",
+      role: user.role,
     },
     token: `demo-${user.id}`,
   };

@@ -32,7 +32,6 @@ import { setError, setLoading, setUsers } from "@/features/users/userSlice";
 
 function Users() {
   const dispatch = useDispatch();
-
   const { users, loading, error } = useSelector((state) => state.users);
 
   const [orders, setOrders] = useState([]);
@@ -46,6 +45,7 @@ function Users() {
   const [formSuccess, setFormSuccess] = useState("");
   const [showPassword, setShowPassword] = useState(false);
   const [showConfirmPassword, setShowConfirmPassword] = useState(false);
+
   const [formData, setFormData] = useState({
     name: "",
     email: "",
@@ -58,7 +58,6 @@ function Users() {
 
   const handleCreateUser = async (event) => {
     event.preventDefault();
-
     setFormError("");
     setFormSuccess("");
 
@@ -118,7 +117,7 @@ function Users() {
     }
   };
 
-  // Fetch users and orders
+  // Fetch users and orders.
   const fetchData = async () => {
     try {
       dispatch(setLoading(true));
@@ -169,6 +168,7 @@ function Users() {
             ? ordersResult.reason
             : ordersResult.value,
         );
+
         setDataWarning(
           "Orders could not be loaded. User accounts are still shown.",
         );
@@ -196,6 +196,7 @@ function Users() {
       setOrders(Array.isArray(ordersData) ? ordersData : []);
     } catch (err) {
       console.error("Failed to fetch users:", err);
+
       dispatch(
         setError(
           err.message === "Route not found."
@@ -210,11 +211,11 @@ function Users() {
 
   useEffect(() => {
     fetchData();
-    // Initial data load
+    // Initial data load.
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
-  // Normalize IDs before comparing them
+  // Normalize IDs before comparing them.
   const normalizeId = (value) => {
     if (value === null || value === undefined) return "";
 
@@ -228,7 +229,7 @@ function Users() {
     return normalized;
   };
 
-  // User helpers
+  // User helpers.
   const getUserName = (user) => {
     return (
       user.name ||
@@ -243,7 +244,14 @@ function Users() {
   };
 
   const getUserRole = (user) => {
-    return user.role === "admin" ? "admin" : "user";
+    const role = String(user.role || "user")
+      .trim()
+      .toLowerCase();
+
+    if (role === "superadmin") return "superadmin";
+    if (role === "admin") return "admin";
+
+    return "user";
   };
 
   const getUserStatus = (user) => {
@@ -254,7 +262,7 @@ function Users() {
     return "active";
   };
 
-  // Calculate the number of orders belonging to a user
+  // Calculate the number of orders belonging to a user.
   const getOrderCount = (user) => {
     const userIds = new Set(
       (user._userIds || [user.clerkId, user.id, user.userId])
@@ -275,12 +283,12 @@ function Users() {
           order.customerId,
       );
 
-      // Match by user ID first
+      // Match by user ID first.
       if (orderUserId && userIds.has(orderUserId)) {
         return true;
       }
 
-      // Fall back to email only if the order explicitly stores it
+      // Fall back to email only if the order explicitly stores it.
       const orderEmail = String(
         order.userEmail ??
           order.customerEmail ??
@@ -295,7 +303,7 @@ function Users() {
     }).length;
   };
 
-  // Remove duplicate user records with the same email
+  // Remove duplicate user records with the same email.
   const uniqueUsers = useMemo(() => {
     const usersByEmail = new Map();
 
@@ -339,11 +347,16 @@ function Users() {
     return Array.from(usersByEmail.values());
   }, [users]);
 
-  // Search and filter users
+  // Search and filter normal customers only.
   const filteredUsers = useMemo(() => {
     const query = searchQuery.trim().toLowerCase();
 
     return uniqueUsers.filter((user) => {
+      // Exclude admin and superadmin accounts from the Users page.
+      if (getUserRole(user) !== "user") {
+        return false;
+      }
+
       const name = getUserName(user).toLowerCase();
       const email = getUserEmail(user).toLowerCase();
 
@@ -365,8 +378,16 @@ function Users() {
     });
   }, [uniqueUsers, searchQuery, statusFilter]);
 
-  // Role badge
+  // Role badge.
   const getRoleBadge = (role) => {
+    if (role === "superadmin") {
+      return (
+        <Badge className="border-0 bg-purple-100 text-purple-800 hover:bg-purple-100">
+          Super Admin
+        </Badge>
+      );
+    }
+
     if (role === "admin") {
       return (
         <Badge className="border-0 bg-primary/10 text-primary hover:bg-primary/10">
@@ -378,7 +399,7 @@ function Users() {
     return <Badge variant="secondary">User</Badge>;
   };
 
-  // Status badge
+  // Status badge.
   const getStatusBadge = (status) => {
     if (status === "blocked") {
       return (
@@ -395,7 +416,7 @@ function Users() {
     );
   };
 
-  // Loading state
+  // Loading state.
   if (loading) {
     return (
       <div className="flex min-h-40 items-center justify-center">
@@ -404,7 +425,7 @@ function Users() {
     );
   }
 
-  // Error state
+  // Error state.
   if (error) {
     return (
       <div className="space-y-6">
@@ -436,20 +457,7 @@ function Users() {
           </p>
         </div>
 
-        {/* <Button
-          onClick={() => {
-            setFormError("");
-            setFormSuccess("");
-            setShowAddUser((current) => !current);
-          }}
-        >
-          {showAddUser ? (
-            <X className="mr-2 size-4" />
-          ) : (
-            <Plus className="mr-2 size-4" />
-          )}
-          {showAddUser ? "Cancel" : "Add User"}
-        </Button> */}
+        {/* Add User button remains disabled/commented out. */}
       </div>
 
       {formSuccess && (
@@ -730,7 +738,7 @@ function Users() {
                         {/* Order count */}
                         <TableCell>{getOrderCount(user)}</TableCell>
 
-                        {/* Role */}
+                        {/* Only normal customers reach this table. */}
                         <TableCell>{getRoleBadge(role)}</TableCell>
 
                         {/* Status */}

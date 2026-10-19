@@ -1,6 +1,6 @@
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
-import { Link, useLocation, useNavigate } from "react-router-dom";
+import { Link, Navigate, useLocation, useNavigate } from "react-router-dom";
 import { toast } from "sonner";
 import { z } from "zod";
 import Image from "../assets/Login/login.png";
@@ -12,7 +12,7 @@ const loginSchema = z.object({
 });
 
 function Login() {
-  const { login } = useAuthContext();
+  const { login, user, isAuthenticated, isLoading } = useAuthContext();
   const navigate = useNavigate();
   const location = useLocation();
 
@@ -44,6 +44,18 @@ function Login() {
       );
     }
   };
+
+  if (isLoading) {
+    return (
+      <div className="flex min-h-screen items-center justify-center">
+        <p>Checking your session...</p>
+      </div>
+    );
+  }
+
+  if (isAuthenticated && user) {
+    return <Navigate to="/" replace />;
+  }
 
   return (
     <main className="min-h-[calc(100vh-108px)] bg-[#f7f6f2] px-4 py-10 sm:px-6 lg:px-10">

@@ -13,7 +13,7 @@ import {
   updateOwnProfile,
 } from "../services/authService.js";
 
-import { requireAdmin } from "../middleware/requireAdmin.js";
+import { requireAdmin, requireSuperAdmin } from "../middleware/requireAdmin.js";
 import { requireAuth } from "../middleware/requireAuth.js";
 import {
   createProductUploadSignature,
@@ -68,7 +68,7 @@ router.patch("/profile/password", requireAuth, requireAdmin, async (req, res) =>
 router.patch(
   "/users/role",
   requireAuth,
-  requireAdmin,
+   requireSuperAdmin,
   async (req, res) => {
     try {
       const { email, role } = req.body;

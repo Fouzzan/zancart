@@ -9,7 +9,7 @@ import {
   SheetTrigger,
 } from "@/components/ui/sheet";
 import { logout } from "@/features/auth/authSlice";
-import { ChevronDown, LogOut, Menu, User } from "lucide-react";
+import { ChevronDown, LogOut, Menu, ShieldCheck, User } from "lucide-react";
 import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { NavLink, useNavigate } from "react-router-dom";
@@ -22,6 +22,17 @@ function Header() {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const { admin } = useSelector((state) => state.auth);
+  const isSuperAdmin = admin?.role === "superadmin";
+  const mobileNavigation = isSuperAdmin
+    ? [
+        ...navigation,
+        {
+          label: "Admin Management",
+          path: "/admin-management",
+          icon: ShieldCheck,
+        },
+      ]
+    : navigation;
 
   const firstName = admin?.name?.split(" ")[0] || "Admin";
 
@@ -60,14 +71,17 @@ function Header() {
             </Button>
           </SheetTrigger>
 
-          <SheetContent side="left" className="w-72 p-0">
+          <SheetContent
+            side="left"
+            className="max-h-dvh w-72 overflow-y-auto p-0"
+          >
             <SheetHeader className="border-b px-6 py-4 text-left">
               <SheetTitle className="text-xl font-bold">ZanCart</SheetTitle>
               <p className="text-xs text-muted-foreground">Admin Panel</p>
             </SheetHeader>
 
             <nav className="space-y-1 p-4">
-              {navigation.map((item) => {
+              {mobileNavigation.map((item) => {
                 const Icon = item.icon;
 
                 return (

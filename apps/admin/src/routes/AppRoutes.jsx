@@ -25,9 +25,12 @@ import Categories from "../pages/Categories/Categories";
 import Dashboard from "../pages/Dashboard/Dashboard";
 import Deals from "../pages/Deals/Deals";
 import Login from "../pages/Login/Login";
-import ProductReviews from "../pages/Reviews/ProductReviews";
 import Profile from "../pages/Profile/Profile";
+import ProductReviews from "../pages/Reviews/ProductReviews";
 import Unauthorized from "../pages/Unauthorized/Unauthorized";
+
+// Super Admin page
+import AdminManagement from "@/pages/AdminManagement/AdminManagement";
 
 import ProtectedRoute from "./ProtectedRoute";
 
@@ -92,6 +95,16 @@ function AppRoutes() {
         <Route path="/banners/create" element={<CreateBanner />} />
 
         <Route path="/banners/edit/:id" element={<EditBanner />} />
+
+        {/* Super Admin-only route */}
+        <Route
+          path="/admin-management"
+          element={
+            <ProtectedRoute allowedRoles={["superadmin"]}>
+              <AdminManagement />
+            </ProtectedRoute>
+          }
+        />
       </Route>
 
       <Route path="*" element={<Navigate to="/dashboard" replace />} />

@@ -129,6 +129,14 @@
     }
 }
 
+/* The floating mobile navigation is present on every storefront route. Keep
+   the final page content and footer controls clear of the dock and home area. */
+@media (max-width: 767px) {
+  body {
+    padding-bottom: calc(92px + env(safe-area-inset-bottom));
+  }
+}
+
 /* Search input clear button */
 input[type="search"]::-webkit-search-cancel-button {
   -webkit-appearance: none;

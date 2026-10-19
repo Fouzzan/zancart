@@ -32,100 +32,75 @@ function ProductList() {
   const navigate = useNavigate();
   const { products, loading, error } = useSelector((state) => state.product);
   const [searchParams] = useSearchParams();
+
   const searchQuery = searchParams.get("search") || "";
   const categoryQuery = searchParams.get("category") || "";
   const sortQuery = searchParams.get("sort") || "recommended";
   const priceQuery = searchParams.get("price") || "all";
   const ratingQuery = searchParams.get("rating") || "all";
 
-  // Products Filtering based on category logic
+  // Product filtering
   const filteredProducts = products.filter((product) => {
     const search = searchQuery.toLowerCase();
     const category = categoryQuery.toLowerCase();
 
     const matchesSearch =
-      product.title.toLowerCase().includes(search) ||
-      product.description.toLowerCase().includes(search) ||
-      product.category.toLowerCase().includes(search) ||
-      product.subcategory.toLowerCase().includes(search) ||
-      product.brand.toLowerCase().includes(search);
+      (product.title || "").toLowerCase().includes(search) ||
+      (product.description || "").toLowerCase().includes(search) ||
+      (product.category || "").toLowerCase().includes(search) ||
+      (product.subcategory || "").toLowerCase().includes(search) ||
+      (product.brand || "").toLowerCase().includes(search);
 
     const matchesCategory =
-      !category || product.category.toLowerCase() === category;
+      !category || (product.category || "").toLowerCase() === category;
 
     return matchesSearch && matchesCategory;
   });
 
-  // Price Filter Logic
-
+  // Price filtering
   const priceFilteredProducts = filteredProducts.filter((product) => {
     const price = Number(product.discountPrice);
 
-    if (priceQuery === "under-1000") {
-      return price < 1000;
-    }
-
-    if (priceQuery === "1000-5000") {
-      return price >= 1000 && price <= 5000;
-    }
-
-    if (priceQuery === "5000-10000") {
-      return price > 5000 && price <= 10000;
-    }
-
-    if (priceQuery === "above-10000") {
-      return price > 10000;
-    }
+    if (priceQuery === "under-1000") return price < 1000;
+    if (priceQuery === "1000-5000") return price >= 1000 && price <= 5000;
+    if (priceQuery === "5000-10000") return price > 5000 && price <= 10000;
+    if (priceQuery === "above-10000") return price > 10000;
 
     return true;
   });
 
-  // Products filtering on rating logic
+  // Rating filtering
   const ratingFilteredProducts = priceFilteredProducts.filter((product) => {
     const rating = Number(product.rating);
 
-    if (ratingQuery === "4") {
-      return rating >= 4;
-    }
-
-    if (ratingQuery === "3") {
-      return rating >= 3;
-    }
-
-    if (ratingQuery === "2") {
-      return rating >= 2;
-    }
+    if (ratingQuery === "4") return rating >= 4;
+    if (ratingQuery === "3") return rating >= 3;
+    if (ratingQuery === "2") return rating >= 2;
 
     return true;
   });
-  // Products sorting logic
 
+  // Sorting
   const sortedProducts = [...ratingFilteredProducts].sort((a, b) => {
     const priceA = Number(a.discountPrice);
     const priceB = Number(b.discountPrice);
 
-    if (sortQuery === "price-low") {
-      return priceA - priceB;
-    }
-
-    if (sortQuery === "price-high") {
-      return priceB - priceA;
-    }
-
-    if (sortQuery === "rating") {
-      return Number(b.rating) - Number(a.rating);
-    }
+    if (sortQuery === "price-low") return priceA - priceB;
+    if (sortQuery === "price-high") return priceB - priceA;
+    if (sortQuery === "rating") return Number(b.rating) - Number(a.rating);
 
     return 0;
   });
 
-  // remove filter function
-
+  // Remove a specific filter
   const removeFilter = (filter) => {
     const params = new URLSearchParams(searchParams);
     params.delete(filter);
-
     navigate(`/products?${params.toString()}`);
+  };
+
+  const clearAllFilters = () => {
+    navigate("/products");
   };
 
   const priceLabels = {
@@ -135,13 +110,10 @@ function ProductList() {
     "above-10000": "Above ₹10,000",
   };
 
-  // pagination
+  // Pagination
   const [currentPage, setCurrentPage] = useState(1);
-
   const productsPerPage = 12;
-
   const totalPages = Math.ceil(sortedProducts.length / productsPerPage);
-
   const startIndex = (currentPage - 1) * productsPerPage;
 
   const paginatedProducts = sortedProducts.slice(
@@ -155,6 +127,7 @@ function ProductList() {
     setCurrentPage(1);
   }, [searchParamsString]);
 
+  // Fetch products
   useEffect(() => {
     const fetchProducts = async () => {
       try {
@@ -166,40 +139,53 @@ function ProductList() {
         dispatch(setLoading(false));
       } catch (error) {
         console.error("Failed to fetch products:", error);
-
         dispatch(setError("Unable to load products. Please try again."));
+        dispatch(setLoading(false));
       }
     };
 
     fetchProducts();
   }, [dispatch]);
 
+  const hasActiveFilters =
+    Boolean(searchQuery) ||
+    Boolean(categoryQuery) ||
+    priceQuery !== "all" ||
+    ratingQuery !== "all";
+
   return (
-    <div className="p-6">
-      {/* select UI for sorting */}
-      <div className="mb-6 flex items-center justify-between">
-        <div>
-          <h1 className="text-3xl font-bold">Product List</h1>
+    <div className="min-w-0 p-3 sm:p-5 md:p-6">
+      {/* Heading and sorting/filter controls */}
+      <div className="mb-5 flex min-w-0 flex-col gap-4 lg:mb-6 lg:flex-row lg:items-center lg:justify-between">
+        <div className="min-w-0">
+          <h1 className="text-2xl font-bold tracking-tight sm:text-3xl">
+            Product List
+          </h1>
 
           {searchQuery && (
-            <p className="mt-1 text-sm text-muted-foreground">
+            <p className="mt-1 break-words text-sm text-muted-foreground">
               Results for "{searchQuery}"
+            </p>
+          )}
+
+          {categoryQuery && (
+            <p className="mt-1 text-sm text-muted-foreground">
+              Category: {categoryQuery}
             </p>
           )}
         </div>
 
-        <div className="flex justify-end gap-2">
+        {/* Controls use a two-column layout on smaller screens */}
+        <div className="grid w-full min-w-0 grid-cols-2 gap-2 sm:gap-3 lg:w-auto lg:flex lg:flex-wrap lg:justify-end">
           <Select
             value={sortQuery}
             onValueChange={(value) => {
               const params = new URLSearchParams(searchParams);
-
               params.set("sort", value);
-
               navigate(`/products?${params.toString()}`);
             }}
           >
-            <SelectTrigger className="w-45">
+            <SelectTrigger className="h-10 w-full min-w-0 text-xs sm:text-sm lg:w-44">
               <SelectValue placeholder="Sort by" />
             </SelectTrigger>
 
@@ -210,8 +196,6 @@ function ProductList() {
               <SelectItem value="rating">Rating</SelectItem>
             </SelectContent>
           </Select>
-
-          {/* UI for price filtering */}
 
           <Select
             value={priceQuery}
@@ -227,7 +211,7 @@ function ProductList() {
               navigate(`/products?${params.toString()}`);
             }}
           >
-            <SelectTrigger className="w-45">
+            <SelectTrigger className="h-10 w-full min-w-0 text-xs sm:text-sm lg:w-44">
               <SelectValue placeholder="Price" />
             </SelectTrigger>
 
@@ -239,7 +223,7 @@ function ProductList() {
               <SelectItem value="above-10000">Above ₹10,000</SelectItem>
             </SelectContent>
           </Select>
-          {/* UI for rating Filter */}
+
           <Select
             value={ratingQuery}
             onValueChange={(value) => {
@@ -254,7 +238,7 @@ function ProductList() {
               navigate(`/products?${params.toString()}`);
             }}
           >
-            <SelectTrigger className="w-45">
+            <SelectTrigger className="col-span-2 h-10 w-full min-w-0 text-xs sm:text-sm lg:col-span-1 lg:w-44">
               <SelectValue placeholder="Rating" />
             </SelectTrigger>
 
@@ -268,86 +252,87 @@ function ProductList() {
         </div>
       </div>
 
-      {/* Filter Badges */}
-      <div className="mb-6 flex flex-wrap items-center gap-2">
-        {searchQuery && (
-          <Badge variant="secondary" className="gap-1">
-            Search: {searchQuery}
-            <button
-              type="button"
-              onClick={() => removeFilter("search")}
-              className="ml-1"
-            >
-              ×
-            </button>
-          </Badge>
-        )}
+      {/* Active filter badges */}
+      {hasActiveFilters && (
+        <div className="mb-5 flex min-w-0 flex-wrap items-center gap-2">
+          {searchQuery && (
+            <Badge variant="secondary" className="max-w-full gap-1">
+              <span className="max-w-40 truncate sm:max-w-60">
+                Search: {searchQuery}
+              </span>
+              <button
+                type="button"
+                aria-label="Remove search filter"
+                onClick={() => removeFilter("search")}
+                className="ml-1 shrink-0"
+              >
+                ×
+              </button>
+            </Badge>
+          )}
 
-        {categoryQuery && (
-          <Badge variant="secondary" className="gap-1">
-            {categoryQuery}
-            <button
-              type="button"
-              onClick={() => removeFilter("category")}
-              className="ml-1"
-            >
-              ×
-            </button>
-          </Badge>
-        )}
+          {categoryQuery && (
+            <Badge variant="secondary" className="max-w-full gap-1">
+              <span className="max-w-32 truncate">{categoryQuery}</span>
+              <button
+                type="button"
+                aria-label="Remove category filter"
+                onClick={() => removeFilter("category")}
+                className="ml-1 shrink-0"
+              >
+                ×
+              </button>
+            </Badge>
+          )}
 
-        {priceQuery !== "all" && (
-          <Badge variant="secondary" className="gap-1">
-            {priceLabels[priceQuery]}
-            <button
-              type="button"
-              onClick={() => removeFilter("price")}
-              className="ml-1"
-            >
-              ×
-            </button>
-          </Badge>
-        )}
+          {priceQuery !== "all" && (
+            <Badge variant="secondary" className="gap-1">
+              <span>{priceLabels[priceQuery]}</span>
+              <button
+                type="button"
+                aria-label="Remove price filter"
+                onClick={() => removeFilter("price")}
+                className="ml-1 shrink-0"
+              >
+                ×
+              </button>
+            </Badge>
+          )}
 
-        {ratingQuery !== "all" && (
-          <Badge variant="secondary" className="gap-1">
-            {ratingQuery}★ & above
-            <button
-              type="button"
-              onClick={() => removeFilter("rating")}
-              className="ml-1"
-            >
-              ×
-            </button>
-          </Badge>
-        )}
+          {ratingQuery !== "all" && (
+            <Badge variant="secondary" className="gap-1">
+              <span>{ratingQuery}★ & above</span>
+              <button
+                type="button"
+                aria-label="Remove rating filter"
+                onClick={() => removeFilter("rating")}
+                className="ml-1 shrink-0"
+              >
+                ×
+              </button>
+            </Badge>
+          )}
 
-        {(searchQuery ||
-          categoryQuery ||
-          priceQuery !== "all" ||
-          ratingQuery !== "all") && (
           <Button
             variant="ghost"
             size="sm"
-            onClick={() => navigate("/products")}
+            onClick={clearAllFilters}
+            className="h-8 shrink-0 px-2 text-xs sm:text-sm"
           >
             Clear all
           </Button>
-        )}
-      </div>
+        </div>
+      )}
 
-      {/* Product grid */}
-
-      {/* Product grid */}
-
+      {/* Loading state */}
       {loading ? (
-        <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-4">
-          {Array.from({ length: 12 }).map((_, index) => (
+        <div className="grid min-w-0 grid-cols-2 gap-3 sm:gap-5 lg:grid-cols-3 xl:grid-cols-4">
+          {Array.from({ length: 8 }).map((_, index) => (
             <ProductCardSkeleton key={index} />
           ))}
         </div>
       ) : error ? (
-        <div className="flex min-h-100 flex-col items-center justify-center rounded-2xl border border-border bg-muted/30 px-6 text-center">
+        <div className="flex min-h-80 flex-col items-center justify-center rounded-2xl border border-border bg-muted/30 px-4 text-center sm:min-h-100 sm:px-6">
           <div className="mb-4 flex h-14 w-14 items-center justify-center rounded-full bg-background text-2xl shadow-sm">
             ⚠️
           </div>
@@ -362,17 +347,17 @@ function ProductList() {
         </div>
       ) : paginatedProducts.length > 0 ? (
         <>
-          <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-4">
+          {/* Responsive product grid */}
+          <div className="grid min-w-0 grid-cols-2 gap-3 sm:gap-5 lg:grid-cols-3 xl:grid-cols-4">
             {paginatedProducts.map((product) => (
               <ProductCard key={product.id} product={product} />
             ))}
           </div>
 
           {/* Pagination */}
-
           {totalPages > 1 && (
-            <Pagination className="mt-10">
-              <PaginationContent>
+            <Pagination className="mt-8 max-w-full overflow-x-auto sm:mt-10">
+              <PaginationContent className="flex-nowrap">
                 <PaginationItem>
                   <PaginationPrevious
                     onClick={() => {
@@ -423,8 +408,8 @@ function ProductList() {
           )}
         </>
       ) : (
-        <div className="flex min-h-100 flex-col items-center justify-center rounded-2xl border border-border bg-muted/30 px-6 text-center">
-          <div className="mb-4 flex h-14 w-14 items-center justify-center rounded-full bg-background shadow-sm">
+        <div className="flex min-h-80 flex-col items-center justify-center rounded-2xl border border-border bg-muted/30 px-4 text-center sm:min-h-100 sm:px-6">
+          <div className="mb-4 flex h-14 w-14 items-center justify-center rounded-full bg-background text-2xl shadow-sm">
             🔍
           </div>
 
@@ -432,12 +417,12 @@ function ProductList() {
             No products found
           </h2>
 
-          <p className="mt-2 max-w-md text-sm text-muted-foreground">
-            We couldn't find any products matching "{searchQuery}". Try
-            searching for something else.
+          <p className="mt-2 max-w-md break-words text-sm text-muted-foreground">
+            We couldn't find any products matching "{searchQuery}". Try changing
+            your search or filters.
           </p>
 
-          <Button className="mt-6" onClick={() => navigate("/products")}>
+          <Button className="mt-6" onClick={clearAllFilters}>
             Clear Filters
           </Button>
         </div>

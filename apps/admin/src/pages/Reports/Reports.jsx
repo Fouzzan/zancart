@@ -1,5 +1,7 @@
 import {
   BarChart3,
+  CalendarDays,
+  Download,
   Package,
   RefreshCw,
   ShoppingCart,
@@ -33,15 +35,11 @@ const formatCurrency = (value) => {
 };
 
 const formatDate = (value) => {
-  if (!value) {
-    return "";
-  }
+  if (!value) return "";
 
   const date = new Date(`${value}T00:00:00`);
 
-  if (Number.isNaN(date.getTime())) {
-    return value;
-  }
+  if (Number.isNaN(date.getTime())) return value;
 
   return date.toLocaleDateString("en-IN", {
     day: "numeric",
@@ -58,7 +56,6 @@ const salesChartConfig = {
     label: "Revenue",
     color: "var(--chart-1)",
   },
-
   orders: {
     label: "Orders",
     color: "var(--chart-2)",
@@ -73,9 +70,13 @@ function Reports() {
   const [reportData, setReportData] = useState(null);
 
   const [selectedFilter, setSelectedFilter] = useState("all");
+  const [customMode, setCustomMode] = useState(false);
+  const [startDate, setStartDate] = useState("");
+  const [endDate, setEndDate] = useState("");
+  const [appliedRange, setAppliedRange] = useState(null);
+  const [filterError, setFilterError] = useState("");
 
   const [loading, setLoading] = useState(true);
-
   const [refreshing, setRefreshing] = useState(false);
 
   // ==========================================================
@@ -91,19 +92,21 @@ function Reports() {
           setLoading(true);
         }
 
-        const data = await getReportsData(selectedFilter);
+        const filter =
+          selectedFilter === "custom" ? appliedRange : selectedFilter;
+
+        const data = await getReportsData(filter);
 
         setReportData(data);
       } catch (error) {
         console.error("Failed to fetch reports:", error);
-
         toast.error("Failed to load reports.");
       } finally {
         setLoading(false);
         setRefreshing(false);
       }
     },
-    [selectedFilter],
+    [selectedFilter, appliedRange],
   );
 
   useEffect(() => {
@@ -119,7 +122,6 @@ function Reports() {
       <main className="space-y-8 p-6">
         <div>
           <div className="h-8 w-40 animate-pulse rounded-md bg-muted" />
-
           <div className="mt-2 h-4 w-72 animate-pulse rounded-md bg-muted" />
         </div>
 
@@ -147,11 +149,8 @@ function Reports() {
   // ==========================================================
 
   const salesReport = reportData?.salesReport || {};
-
   const productReport = reportData?.productReport || {};
-
   const customerReport = reportData?.customerReport || {};
-
   const salesOverTime = reportData?.salesOverTime || [];
 
   // ==========================================================
@@ -162,9 +161,7 @@ function Reports() {
     .slice(0, 10)
     .map((product) => ({
       ...product,
-
       title: product.title || product.name || "Unknown Product",
-
       unitsSold: Number(product.unitsSold) || 0,
     }));
 
@@ -176,11 +173,8 @@ function Reports() {
     .slice(0, 10)
     .map((customer) => ({
       ...customer,
-
       name: customer.name || customer.email || "Unknown Customer",
-
       totalSpent: Number(customer.totalSpent) || 0,
-
       orderCount: Number(customer.orderCount) || 0,
     }));
 
@@ -189,31 +183,116 @@ function Reports() {
   // ==========================================================
 
   const filters = [
-    {
-      value: "today",
-      label: "Today",
-    },
-
-    {
-      value: "7days",
-      label: "7 Days",
-    },
-
-    {
-      value: "30days",
-      label: "30 Days",
-    },
-
-    {
-      value: "month",
-      label: "This Month",
-    },
-
-    {
-      value: "all",
-      label: "All Time",
-    },
+    { value: "today", label: "Today" },
+    { value: "yesterday", label: "Yesterday" },
+    { value: "7days", label: "Last 7 days" },
+    { value: "30days", label: "Last 30 days" },
+    { value: "thisWeek", label: "This week" },
+    { value: "lastWeek", label: "Last week" },
+    { value: "month", label: "This month" },
+    { value: "lastMonth", label: "Last month" },
+    { value: "3months", label: "Last 3 months" },
+    { value: "year", label: "This year" },
+    { value: "all", label: "All time" },
   ];
+
+  const applyCustomRange = () => {
+    if (!startDate || !endDate) {
+      setFilterError("Please select both a start date and an end date.");
+      return;
+    }
+
+    if (startDate > endDate) {
+      setFilterError("Start date must be before or equal to the end date.");
+      return;
+    }
+
+    const today = new Date();
+    const todayString = [
+      today.getFullYear(),
+      String(today.getMonth() + 1).padStart(2, "0"),
+      String(today.getDate()).padStart(2, "0"),
+    ].join("-");
+
+    if (startDate > todayString || endDate > todayString) {
+      setFilterError("Future dates are not allowed.");
+      return;
+    }
+
+    setFilterError("");
+    setAppliedRange({ startDate, endDate });
+    setSelectedFilter("custom");
+  };
+
+  const resetFilters = () => {
+    setFilterError("");
+    setCustomMode(false);
+    setStartDate("");
+    setEndDate("");
+    setAppliedRange(null);
+    setSelectedFilter("all");
+  };
+
+  // ==========================================================
+  // Export CSV
+  // ==========================================================
+
+  const exportCsv = () => {
+    const period =
+      selectedFilter === "custom" && appliedRange
+        ? `${appliedRange.startDate} to ${appliedRange.endDate}`
+        : filters.find((item) => item.value === selectedFilter)?.label ||
+          "All time";
+
+    const rows = [
+      ["Report", "ZanCart Reports"],
+      ["Period", period],
+      [],
+      ["Metric", "Value"],
+      ["Total Revenue", salesReport.totalRevenue || 0],
+      ["Total Orders", salesReport.totalOrders || 0],
+      ["Cancelled Orders", salesReport.cancelledOrders || 0],
+      ["Average Order Value", salesReport.averageOrderValue || 0],
+      ["Active Customers", customerReport.activeCustomers || 0],
+      [],
+      ["Top Products", "Units Sold", "Revenue"],
+      ...topProducts.map((product) => [
+        product.title,
+        product.unitsSold,
+        product.revenue || product.totalRevenue || 0,
+      ]),
+      [],
+      ["Top Customers", "Orders", "Total Spent"],
+      ...topCustomers.map((customer) => [
+        customer.name,
+        customer.orderCount,
+        customer.totalSpent,
+      ]),
+    ];
+
+    const csv = rows
+      .map((row) =>
+        row
+          .map((value) => `"${String(value ?? "").replace(/"/g, '""')}"`)
+          .join(","),
+      )
+      .join("\r\n");
+
+    const blob = new Blob(["\uFEFF", csv], {
+      type: "text/csv;charset=utf-8;",
+    });
+
+    const url = URL.createObjectURL(blob);
+    const link = document.createElement("a");
+
+    link.href = url;
+    link.download = `zancart-report-${new Date()
+      .toISOString()
+      .slice(0, 10)}.csv`;
+
+    link.click();
+    URL.revokeObjectURL(url);
+  };
 
   // ==========================================================
   // Render
@@ -221,9 +300,7 @@ function Reports() {
 
   return (
     <main className="space-y-8 p-6">
-      {/* ======================================================
-          Header
-      ====================================================== */}
+      {/* Header */}
 
       <div className="flex flex-col gap-4 lg:flex-row lg:items-center lg:justify-between">
         <div>
@@ -243,36 +320,147 @@ function Reports() {
           <RefreshCw
             className={`mr-2 h-4 w-4 ${refreshing ? "animate-spin" : ""}`}
           />
-
           {refreshing ? "Refreshing..." : "Refresh"}
         </Button>
       </div>
 
-      {/* ======================================================
-          Date Filters
-      ====================================================== */}
+      {/* Date Filters */}
 
-      <div className="flex flex-wrap gap-2">
-        {filters.map((filter) => (
-          <Button
-            key={filter.value}
-            variant={selectedFilter === filter.value ? "default" : "outline"}
-            size="sm"
-            onClick={() => setSelectedFilter(filter.value)}
-            className="rounded-full"
-          >
-            {filter.label}
-          </Button>
-        ))}
-      </div>
+      <Card>
+        <CardHeader className="pb-3">
+          <CardTitle className="flex items-center gap-2 text-base">
+            <CalendarDays className="h-4 w-4" />
+            Report period
+          </CardTitle>
 
-      {/* ======================================================
-          KPI Cards
-      ====================================================== */}
+          <p className="text-sm text-muted-foreground">
+            Choose a preset or select an exact date range for your reports.
+          </p>
+        </CardHeader>
+
+        <CardContent className="space-y-4">
+          <div className="flex flex-wrap gap-2">
+            {filters.map((filter) => (
+              <Button
+                key={filter.value}
+                variant={
+                  !customMode && selectedFilter === filter.value
+                    ? "default"
+                    : "outline"
+                }
+                size="sm"
+                onClick={() => {
+                  setCustomMode(false);
+                  setFilterError("");
+                  setSelectedFilter(filter.value);
+                }}
+                className="rounded-full"
+              >
+                {filter.label}
+              </Button>
+            ))}
+
+            <Button
+              variant={customMode ? "default" : "outline"}
+              size="sm"
+              onClick={() => setCustomMode(true)}
+              className="rounded-full"
+            >
+              Custom range
+            </Button>
+          </div>
+
+          {customMode && (
+            <div className="grid gap-3 rounded-xl border p-4 sm:grid-cols-[1fr_1fr_auto_auto] sm:items-end">
+              <div className="space-y-2">
+                <label
+                  htmlFor="report-start-date"
+                  className="text-sm font-medium"
+                >
+                  Start date
+                </label>
+
+                <input
+                  id="report-start-date"
+                  type="date"
+                  value={startDate}
+                  max={
+                    endDate ||
+                    [
+                      new Date().getFullYear(),
+                      String(new Date().getMonth() + 1).padStart(2, "0"),
+                      String(new Date().getDate()).padStart(2, "0"),
+                    ].join("-")
+                  }
+                  onChange={(event) => setStartDate(event.target.value)}
+                  className="h-10 w-full rounded-md border border-input bg-background px-3 text-sm"
+                />
+              </div>
+
+              <div className="space-y-2">
+                <label
+                  htmlFor="report-end-date"
+                  className="text-sm font-medium"
+                >
+                  End date
+                </label>
+
+                <input
+                  id="report-end-date"
+                  type="date"
+                  value={endDate}
+                  min={startDate || undefined}
+                  max={[
+                    new Date().getFullYear(),
+                    String(new Date().getMonth() + 1).padStart(2, "0"),
+                    String(new Date().getDate()).padStart(2, "0"),
+                  ].join("-")}
+                  onChange={(event) => setEndDate(event.target.value)}
+                  className="h-10 w-full rounded-md border border-input bg-background px-3 text-sm"
+                />
+              </div>
+
+              <Button onClick={applyCustomRange}>Apply filters</Button>
+
+              <Button variant="outline" onClick={resetFilters}>
+                Reset
+              </Button>
+
+              {filterError && (
+                <p className="text-sm text-destructive sm:col-span-4">
+                  {filterError}
+                </p>
+              )}
+            </div>
+          )}
+
+          <div className="flex flex-col gap-3 border-t pt-3 sm:flex-row sm:items-center sm:justify-between">
+            <p className="text-sm text-muted-foreground">
+              Showing:{" "}
+              <span className="font-medium text-foreground">
+                {selectedFilter === "custom" && appliedRange
+                  ? `${appliedRange.startDate} to ${appliedRange.endDate}`
+                  : filters.find((filter) => filter.value === selectedFilter)
+                      ?.label || "All time"}
+              </span>
+            </p>
+
+            <Button
+              variant="outline"
+              size="sm"
+              onClick={exportCsv}
+              className="w-fit"
+            >
+              <Download className="mr-2 h-4 w-4" />
+              Export CSV
+            </Button>
+          </div>
+        </CardContent>
+      </Card>
+
+      {/* KPI Cards */}
 
       <div className="grid gap-4 md:grid-cols-2 xl:grid-cols-4">
-        {/* Total Revenue */}
-
         <Card>
           <CardContent className="p-6">
             <div className="flex items-center justify-between">
@@ -280,7 +468,6 @@ function Reports() {
                 <p className="text-sm font-medium text-muted-foreground">
                   Total Revenue
                 </p>
-
                 <p className="mt-2 text-2xl font-bold">
                   {formatCurrency(salesReport.totalRevenue)}
                 </p>
@@ -297,8 +484,6 @@ function Reports() {
           </CardContent>
         </Card>
 
-        {/* Total Orders */}
-
         <Card>
           <CardContent className="p-6">
             <div className="flex items-center justify-between">
@@ -306,7 +491,6 @@ function Reports() {
                 <p className="text-sm font-medium text-muted-foreground">
                   Total Orders
                 </p>
-
                 <p className="mt-2 text-2xl font-bold">
                   {salesReport.totalOrders || 0}
                 </p>
@@ -323,8 +507,6 @@ function Reports() {
           </CardContent>
         </Card>
 
-        {/* Average Order Value */}
-
         <Card>
           <CardContent className="p-6">
             <div className="flex items-center justify-between">
@@ -332,7 +514,6 @@ function Reports() {
                 <p className="text-sm font-medium text-muted-foreground">
                   Average Order Value
                 </p>
-
                 <p className="mt-2 text-2xl font-bold">
                   {formatCurrency(salesReport.averageOrderValue)}
                 </p>
@@ -349,8 +530,6 @@ function Reports() {
           </CardContent>
         </Card>
 
-        {/* Active Customers */}
-
         <Card>
           <CardContent className="p-6">
             <div className="flex items-center justify-between">
@@ -358,7 +537,6 @@ function Reports() {
                 <p className="text-sm font-medium text-muted-foreground">
                   Active Customers
                 </p>
-
                 <p className="mt-2 text-2xl font-bold">
                   {customerReport.activeCustomers || 0}
                 </p>
@@ -375,10 +553,7 @@ function Reports() {
           </CardContent>
         </Card>
       </div>
-
-      {/* ======================================================
-          Revenue & Orders Chart
-      ====================================================== */}
+      {/* Revenue & Orders Chart */}
 
       <Card>
         <CardHeader>
@@ -485,14 +660,10 @@ function Reports() {
         </CardContent>
       </Card>
 
-      {/* ======================================================
-          Ranked Lists
-      ====================================================== */}
+      {/* Ranked Lists */}
 
       <div className="grid gap-6 lg:grid-cols-2">
-        {/* ====================================================
-            Top Selling Products
-        ==================================================== */}
+        {/* Top Selling Products */}
 
         <Card>
           <CardHeader>
@@ -523,8 +694,6 @@ function Reports() {
                     key={product.productId || product.id || index}
                     className="flex items-center gap-4 rounded-xl border p-4 transition-colors hover:bg-muted/50"
                   >
-                    {/* Rank */}
-
                     <div
                       className={`flex h-9 w-9 shrink-0 items-center justify-center rounded-full text-sm font-bold ${
                         index === 0
@@ -535,8 +704,6 @@ function Reports() {
                       {index + 1}
                     </div>
 
-                    {/* Product */}
-
                     <div className="min-w-0 flex-1">
                       <p className="truncate font-medium">{product.title}</p>
 
@@ -545,8 +712,6 @@ function Reports() {
                         {product.unitsSold === 1 ? "unit" : "units"} sold
                       </p>
                     </div>
-
-                    {/* Sales */}
 
                     <div className="text-right">
                       <p className="font-semibold">
@@ -564,9 +729,7 @@ function Reports() {
           </CardContent>
         </Card>
 
-        {/* ====================================================
-            Top Customers
-        ==================================================== */}
+        {/* Top Customers */}
 
         <Card>
           <CardHeader>
@@ -597,8 +760,6 @@ function Reports() {
                     key={customer.userId || customer.id || index}
                     className="flex items-center gap-4 rounded-xl border p-4 transition-colors hover:bg-muted/50"
                   >
-                    {/* Rank */}
-
                     <div
                       className={`flex h-9 w-9 shrink-0 items-center justify-center rounded-full text-sm font-bold ${
                         index === 0
@@ -609,8 +770,6 @@ function Reports() {
                       {index + 1}
                     </div>
 
-                    {/* Customer */}
-
                     <div className="min-w-0 flex-1">
                       <p className="truncate font-medium">{customer.name}</p>
 
@@ -619,8 +778,6 @@ function Reports() {
                         {customer.orderCount === 1 ? "order" : "orders"}
                       </p>
                     </div>
-
-                    {/* Spending */}
 
                     <div className="text-right">
                       <p className="font-semibold">
