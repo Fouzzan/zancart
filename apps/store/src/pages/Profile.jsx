@@ -21,8 +21,8 @@ import { toast } from "sonner";
 
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
-import { uploadProductImage } from "../../../admin/src/features/products/imageUploadService";
 import { useAuthContext } from "../context/AuthContext";
+import { uploadProductImage } from "../services/imageUploadService";
 
 const DEFAULT_PREFERENCES = {
   orderUpdates: true,
