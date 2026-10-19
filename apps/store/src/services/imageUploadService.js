@@ -1,17 +1,9 @@
 
-import imageCompression from "browser-image-compression";
-
 const CLOUDINARY_CLOUD_NAME =
   import.meta.env.VITE_CLOUDINARY_CLOUD_NAME;
 
 const CLOUDINARY_UPLOAD_PRESET =
   import.meta.env.VITE_CLOUDINARY_UPLOAD_PRESET;
-
-const compressionOptions = {
-  maxSizeMB: 1,
-  maxWidthOrHeight: 1600,
-  useWebWorker: true,
-};
 
 export const uploadProductImage = async (
   file,
@@ -27,13 +19,8 @@ export const uploadProductImage = async (
     throw new Error("Please select a valid image file.");
   }
 
-  const compressedFile = await imageCompression(
-    file,
-    compressionOptions
-  );
-
   const uploadData = new FormData();
-  uploadData.append("file", compressedFile);
+  uploadData.append("file", file);
   uploadData.append("upload_preset", CLOUDINARY_UPLOAD_PRESET);
 
   if (folder) {
