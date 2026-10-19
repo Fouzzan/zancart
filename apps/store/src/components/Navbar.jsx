@@ -83,7 +83,7 @@ function Navbar() {
     <>
       <header className="sticky top-0 z-50">
         <div className="mx-auto max-w-7xl px-4 py-3 sm:px-6 lg:px-8">
-          <nav className="flex h-14 items-center justify-between rounded-full border border-white/40 bg-white/30 px-4 shadow-lg backdrop-blur-md sm:px-6">
+          <nav className="relative flex h-14 items-center justify-between rounded-full border border-white/40 bg-white/30 px-4 shadow-lg backdrop-blur-md sm:px-6">
             {/* Logo */}
             {/* Mobile header: normal and expanded search states */}
             <div className="relative flex w-full items-center justify-between md:hidden">
@@ -167,16 +167,17 @@ function Navbar() {
               )}
             </div>
 
-            {/* Desktop navigation */}
-            <div className="hidden items-center gap-7 md:flex">
-              <Link
-                to="/"
-                onClick={closeMobileMenu}
-                className="hidden items-center gap-1 text-xl font-semibold tracking-tight text-[#1D1D1F] md:flex"
-              >
-                <span>Z A N C A R T</span>
-              </Link>
+            {/* Desktop logo */}
+            <Link
+              to="/"
+              onClick={closeMobileMenu}
+              className="hidden items-center gap-1 text-xl font-semibold tracking-tight text-[#1D1D1F] md:flex"
+            >
+              <span>Z A N C A R T</span>
+            </Link>
 
+            {/* Desktop navigation — centered */}
+            <div className="absolute left-1/2 hidden -translate-x-1/2 items-center gap-7 md:flex">
               <Link
                 to="/"
                 className="text-sm font-medium text-gray-700 transition-transform duration-300 ease-in-out hover:scale-110 hover:text-black"
